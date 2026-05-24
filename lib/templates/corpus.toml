@@ -1,0 +1,65 @@
+# corpus.toml — @CORPUS_NAME@
+#
+# SpeechPrint corpus configuration. This file is the single source of truth
+# for how recordings in this corpus are annotated.
+
+[corpus]
+name    = "@CORPUS_NAME@"
+created = ""  # ISO-8601 date, auto-filled on first annotate
+authors = []
+
+[defaults]
+language    = "@LANGUAGE@"   # en, de, it, es, fr, cs, ...
+speaker_sex = "U"            # M, F, U (unknown)
+# Override per-recording in [recordings."<file>.wav"] sections below.
+
+[pipeline]
+auto_ensemble = @AUTO_ENSEMBLE@   # Run `speechprint ensemble` after annotate
+
+[whisperx]
+model        = "large-v3"   # tiny, base, small, medium, large-v2, large-v3
+device       = "auto"       # auto, cpu, cuda, mps
+compute_type = "float16"    # float16, int8, float32
+
+[mfa]
+# Acoustic model + dictionary names follow MFA's convention:
+# english_mfa, german_mfa, italian_mfa, spanish_mfa, french_mfa, czech_mfa, ...
+# acoustic_model = "italian_mfa"
+# dictionary     = "italian_mfa"
+
+[prosody]
+# Adaptive thresholds: actual rise/fall cutoff is max(floor, std_factor * std_dev)
+# so a quiet recording isn't spammed with rise/fall symbols.
+pitch_floor    = 75      # Hz (lower → male voice, songs, low speakers)
+pitch_ceiling  = 500     # Hz (upper → female / child / falsetto)
+rise_floor_st  = 3.0     # Minimum semitones to call a rise
+fall_floor_st  = 3.0     # Minimum semitones to call a fall
+std_factor     = 0.75    # Movement must also exceed this × std_dev of all movements
+
+[export]
+formats         = ["textgrid", "csv", "json"]
+include_figures = true
+include_zip     = false  # Set true to bundle outputs as a .zip after each annotate
+
+[textgrid]
+# Tier set produced by the pipeline (in order)
+tiers = ["words", "syllables", "phonemes", "f0_pitch", "prosody_labels", "warnings_review"]
+
+[paths]
+data_dir   = "data"
+output_dir = "out"
+
+# Per-recording overrides
+# -----------------------------------------------------------------------------
+# Uncomment and edit to override defaults for individual files in data/.
+#
+# [recordings."S01_read_001.wav"]
+# language     = "de"
+# speaker_sex  = "F"
+# pitch_floor  = 90
+# pitch_ceiling = 450
+#
+# [recordings."song_demo.wav"]
+# language     = "en"
+# # Sung material — flag so ensemble can mark it as melodic, not linguistic
+# is_sung      = true

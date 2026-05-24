@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "speechprint"
+version = "0.3.0"
+description = "SpeechPrint installer and corpus creator for Linux"
+requires-python = ">=3.11"
+dependencies = ["PyGObject"]
+
+[project.scripts]
+speechprint-installer = "lib.main:main"
+speechprint = "lib.cli:main"
+
+[tool.setuptools]
+packages = ["lib", "lib.modes", "lib.ui"]
+
+[tool.setuptools.package-dir]
+"" = "."
+
+[tool.setuptools.package-data]
+lib = ["ui/dark.css"]
+
+[tool.pyright]
+typeCheckingMode = "off"
+
+[tool.ruff]
+select = ["E", "F"]
+ignore = ["E402", "E501"]
