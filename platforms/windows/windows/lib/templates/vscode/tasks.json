@@ -1,0 +1,86 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Annotate active file",
+      "type": "shell",
+      "command": "speechprint",
+      "args": [
+        "annotate",
+        "${file}",
+        "--language",
+        "@LANGUAGE@"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Ensemble",
+      "type": "shell",
+      "command": "speechprint",
+      "args": [
+        "ensemble"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Batch annotate data/",
+      "type": "shell",
+      "command": "speechprint",
+      "args": [
+        "corpus",
+        "data/",
+        "--language",
+        "@LANGUAGE@"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Export only (TextGrid + EAF + CSV)",
+      "type": "shell",
+      "command": "speechprint",
+      "args": [
+        "export",
+        "${file}",
+        "--formats",
+        "textgrid,eaf,csv"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Prosody only",
+      "type": "shell",
+      "command": "speechprint",
+      "args": [
+        "prosody",
+        "${file}",
+        "--language",
+        "@LANGUAGE@"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+# SpeechPrint outputs (auto-generated)
+/out/**
+!/out/.gitkeep
+
+# Large audio — keep WAV references but ignore by default
+# Uncomment the next line if you want to track WAVs in git
+# /data/**.wav
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# OS
+.DS_Store
+.AppleDouble/
+.LSOverride/
+Thumbs.db
+
+# Misc
+.env
+local_settings.py

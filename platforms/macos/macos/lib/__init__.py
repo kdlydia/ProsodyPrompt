@@ -1,0 +1,1 @@
+"""SpeechPrint launcher library."""

@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# SpeechPrint - macOS launcher
+#
+# Mirrors the Linux launcher exactly:
+#   No args   → opens the Qt GUI (lib.main)
+#   Args      → forwards to the CLI (lib.cli)
+#
+# Locates Python in this order:
+#   1. $SPEECHPRINT_ROOT/.venv/bin/python  (post-installer)
+#   2. $HOME/SpeechPrint/.venv/bin/python  (default install location)
+#   3. /opt/homebrew/bin/python3 / /usr/local/bin/python3
+#   4. /usr/bin/python3 (system, may lack PyQt6)
+
+set -euo pipefail
+
+SPEECHPRINT_LAUNCHER_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+if [ -f "$SPEECHPRINT_LAUNCHER_DIR/speechprint-config.json" ]; then
+    export SPEECHPRINT_ROOT="$SPEECHPRINT_LAUNCHER_DIR"
+elif [ -f "$SPEECHPRINT_LAUNCHER_DIR/../speechprint-config.json" ]; then
+    export SPEECHPRINT_ROOT="$(cd "$SPEECHPRINT_LAUNCHER_DIR/.." && pwd)"
+else
+    echo "Error: speechprint-config.json not found" >&2
+    echo "Expected at: $SPEECHPRINT_LAUNCHER_DIR/speechprint-config.json" >&2
+    exit 1
+fi
+
+export SPEECHPRINT_LAUNCHER_DIR
+export PYTHONPATH="$SPEECHPRINT_ROOT:$SPEECHPRINT_ROOT/lib:${PYTHONPATH:-}"
+
+# Pick a Python.
+PY=""
+for cand in \
+    "$SPEECHPRINT_ROOT/.venv/bin/python" \
+    "$HOME/SpeechPrint/.venv/bin/python" \
+    "/opt/homebrew/bin/python3" \
+    "/usr/local/bin/python3" \
+    "/usr/bin/python3"
+do
+    if [ -x "$cand" ]; then
+        PY="$cand"
+        break
+    fi
+done
+
+if [ -z "$PY" ]; then
+    echo "Error: No Python found." >&2
+    echo "Run the installer or install Python 3.11+ first." >&2
+    exit 1
+fi
+
+# Quick sanity check: if PyQt6 is missing and the user is launching the GUI,
+# point them at the installer rather than crashing.
+if [ $# -eq 0 ]; then
+    if ! "$PY" -c "import PyQt6" 2>/dev/null; then
+        osascript -e 'display dialog "SpeechPrint cannot find PyQt6.\n\nRun the installer first (double-click SpeechPrint, choose Install SpeechPrint), or install manually:\n\n    '"$PY"' -m pip install PyQt6\n" with title "SpeechPrint" buttons {"OK"} default button "OK"' 2>/dev/null || true
+        echo "Error: PyQt6 not installed for $PY" >&2
+        exit 1
+    fi
+    exec "$PY" -m lib.main
+else
+    exec "$PY" -m lib.cli "$@"
+fi

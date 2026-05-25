@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Annotate active WAV",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "speechprint_pkg.cli",
+      "args": [
+        "annotate",
+        "${file}",
+        "--language",
+        "@LANGUAGE@"
+      ],
+      "console": "integratedTerminal",
+      "env": {
+        "SPEECHPRINT_ROOT": "${env:SPEECHPRINT_ROOT}",
+        "MFA_ROOT_DIR": "${env:MFA_ROOT_DIR}"
+      }
+    },
+    {
+      "name": "Ensemble",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "speechprint_pkg.cli",
+      "args": [
+        "ensemble"
+      ],
+      "console": "integratedTerminal"
+    }
+  ]
+}

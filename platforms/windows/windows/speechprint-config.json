@@ -1,0 +1,52 @@
+{
+  "version": "0.3.0",
+  "package_root": "${SPEECHPRINT_ROOT}",
+  "paths": {
+    "lib": "${SPEECHPRINT_ROOT}/lib",
+    "scripts": "${SPEECHPRINT_ROOT}/lib/scripts",
+    "templates": "${SPEECHPRINT_ROOT}/lib/templates",
+    "python_path": "${SPEECHPRINT_ROOT}/lib"
+  },
+  "executables": {
+    "create_corpus_sh": "${SPEECHPRINT_ROOT}/lib/scripts/create_corpus.sh",
+    "install_deps_sh": "${SPEECHPRINT_ROOT}/lib/scripts/install_deps.sh"
+  },
+  "environment_variables": {
+    "SPEECHPRINT_ROOT": "automatically detected",
+    "PYTHONPATH": "${SPEECHPRINT_ROOT}/lib:${PYTHONPATH}",
+    "SPEECHPRINT_TEMPLATE_DIR": "${SPEECHPRINT_ROOT}/lib/templates",
+    "SPEECHPRINT_SCRIPT_DIR": "${SPEECHPRINT_ROOT}/lib/scripts"
+  },
+  "languages": {
+    "supported": [
+      "en", "de", "it", "es", "fr", "cs", "nl", "pt", "pl",
+      "sv", "no", "da", "fi", "tr", "el", "ru", "uk", "ar",
+      "hi", "zh", "ja", "ko"
+    ],
+    "default": "en",
+    "names": {
+      "en": "English",
+      "de": "German",
+      "it": "Italian",
+      "es": "Spanish",
+      "fr": "French",
+      "cs": "Czech",
+      "nl": "Dutch",
+      "pt": "Portuguese",
+      "pl": "Polish",
+      "sv": "Swedish",
+      "no": "Norwegian",
+      "da": "Danish",
+      "fi": "Finnish",
+      "tr": "Turkish",
+      "el": "Greek",
+      "ru": "Russian",
+      "uk": "Ukrainian",
+      "ar": "Arabic",
+      "hi": "Hindi",
+      "zh": "Chinese",
+      "ja": "Japanese",
+      "ko": "Korean"
+    }
+  }
+}
