@@ -25,7 +25,7 @@ into a unified research-oriented pipeline.
 Install and launch:
 
 ```bash id="mbz8pv"
-cd linux
+cd platforms/linux
 export SPEECHPRINT_ROOT="$PWD"
 uv run python -m lib.main
 ```
@@ -58,7 +58,7 @@ The installer automates:
 
 Download the latest Linux release from:
 
-[SpeechPrint Releases](https://github.com/opensourceartwork/SpeechPrint/releases?utm_source=chatgpt.com)
+[SpeechPrint Releases](https://github.com/kdlydia/SpeechPrint/releases)
 
 Launch:
 
@@ -187,10 +187,9 @@ Linux currently serves as the reference implementation.
 
 # Documentation
 
-* [Linux Guide](https://github.com/opensourceartwork/SpeechPrint/blob/main/docs/LINUX.md?utm_source=chatgpt.com)
-* [macOS Guide](https://github.com/opensourceartwork/SpeechPrint/blob/main/docs/MACOS.md?utm_source=chatgpt.com)
-* [Windows Guide](https://github.com/opensourceartwork/SpeechPrint/blob/main/docs/WINDOWS.md?utm_source=chatgpt.com)
-* [Development Guide](https://github.com/opensourceartwork/SpeechPrint/blob/main/docs/DEVELOP.md?utm_source=chatgpt.com)
+* [Linux Guide](platforms/linux/README.md)
+* [macOS Guide](platforms/macos/README.md)
+* [Windows Guide](platforms/windows/README.md)
 
 ---
 
