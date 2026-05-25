@@ -97,7 +97,7 @@ picks the first audio input device ffmpeg sees. If you need a different
 microphone, set it as the Windows default input device (Settings → Sound
 → Input).
 
-## Notes / honesty about the current pipeline
+## Current Pipeline Status
 
 - **Word timing**: WhisperX `align()` when available; otherwise
   segment-proportional or equal-width — a warning is written into the

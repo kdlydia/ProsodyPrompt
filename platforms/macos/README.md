@@ -77,7 +77,7 @@ macos/
 └── resources/speechprint.png
 ```
 
-## Notes / honesty about the current pipeline
+## Current Pipeline Status
 
 - **Word timing**: WhisperX `align()` when available; otherwise
   segment-proportional or equal-width — a warning is written into the
