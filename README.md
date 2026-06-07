@@ -1,42 +1,31 @@
-**A linguistic prosody annotation environment and field-research toolkit.**  
-Drop a WAV in, get a Praat TextGrid out — with symbolic prosody, multi-tracker F0 comparison, and pathways to articulatory synthesis.
+# SpeechPrint
 
-> ⚠️ **For Linux machines only.** macOS and Windows ports are planned. See platform status below.
+Linguistic prosody annotation environment and field-research toolkit.
+Drop a WAV in, get a Praat TextGrid out.
 
----
+Linux only for now. macOS and Windows planned.
 
-```
-┌─────────────────────────────────────────────────────┐
-│  Navigate to the SpeechPrint GitHub page:           │
-│  https://github.com/speechprint/SpeechPrint         │
-└─────────────────────────────────────────────────────┘
-```
+Source: https://github.com/kdlydia/SpeechPrint
 
 ---
 
-## What SpeechPrint is
+SpeechPrint is for anyone who needs to go from raw audio to structured prosodic annotation without a phonetics lab. It runs a pipeline from transcription through forced alignment to symbolic prosody labels, outputs a Praat TextGrid, and lets you compare five pitch trackers side by side so you can decide which one looks right for your recording.
 
-SpeechPrint is a Swiss army knife for anyone who needs to go from raw audio to structured prosodic annotation — without knowing how to get WhisperX to work, without a phonetics lab, and without specialist software beyond Praat.
+It works for two kinds of material: recordings where you have a human-annotated TextGrid already (DoReCo fieldwork corpora, ELAN exports) and recordings where you have audio only and need everything done automatically.
 
-It is designed for two kinds of users:
-
-**Field linguists and language documenters** who need fast, reproducible prosodic pre-annotation for under-resourced or endangered languages. No ASR model exists for your language? SpeechPrint can work from your own human-annotated TextGrid tiers and apply the acoustic analysis automatically.
-
-**Computational researchers and students** who want to compare pitch tracking algorithms, evaluate forced alignment quality, or produce symbolic prosody layers for corpora quickly.
-
-The longer dream — and where this is heading — is a system in which prosody is not just analysed but *authored*: a combined text editor and speech DAW where you draw an intonation contour, hum a prosodic pattern, or sketch source-target articulatory trajectories, and the system generates speech accordingly. People write scripts but need actors to figure out how to say them. Why not encode that in the script.
+The longer direction is a system where prosody is not just analysed but authored — a combined text editor and speech DAW where you draw an intonation contour or sketch a prosodic pattern and the system generates speech accordingly. People write scripts but need actors to figure out how to say them. The idea is to encode that in the script itself. DrawSpeech (Chen et al., 2025) showed this is tractable: users draw rough pitch sketches per word and a diffusion model recovers the full contour. SpeechPrint's symbolic tier is the analysis side of that loop; the synthesis side is where this is heading.
 
 ---
 
 ## Quick start
 
 ```bash
-git clone https://github.com/speechprint/SpeechPrint
+git clone https://github.com/kdlydia/SpeechPrint
 cd SpeechPrint/linux
 python run.py
 ```
 
-That's it. The interactive CLI opens immediately — no GUI, no configuration files to edit. It works like `pacman`: asks questions, shows numbered options, lets you toggle trackers on and off, then runs the pipeline.
+The interactive CLI opens immediately. No GUI, no config files. It asks questions and shows numbered options — choose language, tracker, annotation source — then runs the pipeline.
 
 ```
 ════════════════════════════════════════════════════════
@@ -69,60 +58,14 @@ On first run, choose **3** to check and install missing dependencies automatical
 
 SpeechPrint asks this at launch. Your answer determines the entire pipeline.
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  Annotation source                                          │
-│                                                             │
-│  ○  I have a human-annotated TextGrid (DoReCo / fieldwork)  │
-│     → words, phones, and timing come from your file.        │
-│     → Only acoustic measurement and prosody labelling       │
-│        are applied automatically.                           │
-│                                                             │
-│  ○  I have audio only — run full automatic pipeline         │
-│     → Transcription → alignment → phonemization             │
-│        → acoustic measurement → prosody labels              │
-│                                                             │
-│                              [ Next → ]                     │
-└─────────────────────────────────────────────────────────────┘
-```
+The CLI asks three questions before running.
 
-**Human-annotated path** (DoReCo, ELAN export, manually corrected TextGrid):  
-Tier names are mapped automatically. DoReCo uses `@TA` or `@6` suffixes; SpeechPrint detects both. Words, phones, and utterance boundaries are read directly, and only the F0 extraction and prosody labelling steps run automatically. This is the recommended path for endangered and under-resourced languages.
+**1. Do you have a human-annotated TextGrid?**
+If yes, point it at your file. DoReCo's `@TA` and `@6` tier suffixes are detected automatically; words, phones, and utterance boundaries come from your annotation, and only the F0 extraction and prosody labelling run automatically. This is the recommended path for endangered and under-resourced languages.
+If no, the full nine-stage pipeline runs from transcription to prosody labels.
 
-**Automatic path** (audio only):  
-Full nine-stage pipeline: transcription → forced alignment → phonemization → syllabification → F0 extraction → prosody labelling.
-
----
-
-## Step 1 — Language selection
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│  Language                                                   │
-│                                                             │
-│  Common languages (ASR + forced alignment available)        │
-│  ┌──────────────────────────────────────────────────────┐   │
-│  │  English (en)  German (de)  Spanish (es)             │   │
-│  │  French (fr)   Italian (it) Japanese (ja)  ...       │   │
-│  └──────────────────────────────────────────────────────┘   │
-│                                                             │
-│  ○  My language is not listed above                         │
-│     Language ISO code (optional): [      ]                  │
-│                                                             │
-│     ☐  Find a phonologically similar supported language     │
-│        (uses IPA consonant/vowel inventory overlap)         │
-│        Suggested: Italian for Romance; Japanese for         │
-│        mora-timed languages; etc.                           │
-│                                                             │
-│     Note: ASR output will be phonetically plausible but     │
-│     lexically incorrect. Prosody labels remain acoustically │
-│     valid regardless of transcription quality.              │
-│                                                             │
-│                              [ Next → ]                     │
-└─────────────────────────────────────────────────────────────┘
-```
-
-When no model exists for your language, SpeechPrint ranks available ASR languages by phonological distance — measured by consonant inventory overlap and vowel system similarity from PHOIBLE/WALS data. A Chibchan language will be offered Quechua or a similar inventory before it is offered English.
+**2. Language.**
+For common languages (English, German, Spanish, French, Italian, and others) SpeechPrint uses WhisperX large-v3 for transcription and MFA for phone-level alignment on English. For endangered or under-resourced languages, it can suggest the phonologically closest supported model using consonant and vowel inventory overlap from PHOIBLE data. ASR output on an unsupported language will be phonetically plausible but lexically incorrect; the prosody labels are acoustically valid regardless of transcription quality.
 
 ---
 
@@ -138,24 +81,8 @@ SpeechPrint supports five pitch trackers. You can run one or all in parallel; th
 | **Praat AC + Xu(1999)** | Signal-processing | Reference / comparison | Good fallback; known octave-error risk |
 | **YIN** (librosa) | Signal-processing | Speed only | No V/UV detector — unreliable for prosody |
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  Pitch tracker                                              │
-│                                                             │
-│  ☑  pYIN (recommended for clean speech)                     │
-│  ☑  CREPE (recommended for field/archival)                  │
-│  ☑  PESTO                                                   │
-│  ☑  Praat AC + Xu(1999)                                     │
-│  ☐  YIN (not recommended for prosody)                       │
-│                                                             │
-│  ☑  Generate comparison TextGrid                            │
-│     (one prosody_* tier per tracker)                        │
-│                                                             │
-│                              [ Run → ]                      │
-└─────────────────────────────────────────────────────────────┘
-```
-
-The comparison TextGrid lets you open the same recording in Praat and inspect all five prosody tiers simultaneously — choose whichever matches your perception of the intonation.
+**3. Pitch tracker.**
+Toggle any combination. Enabling comparison mode writes a separate `prosody_*` tier for each tracker so you can open the same recording in Praat and compare them directly — choose whichever matches your perception of the intonation.
 
 ---
 
