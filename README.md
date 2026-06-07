@@ -1,4 +1,4 @@
-# SpeechPrint
+# ProsodyPrompt
 
 Linguistic prosody annotation environment and field-research toolkit.
 Drop a WAV in, get a Praat TextGrid out.
