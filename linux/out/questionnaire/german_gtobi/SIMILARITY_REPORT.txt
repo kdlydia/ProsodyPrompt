@@ -1,0 +1,48 @@
+WHISPER vs HUMAN ANNOTATION SIMILARITY REPORT
+==================================================
+
+eine_gelbe_banane
+  Human words : ['eine', 'gelbe', 'banane']
+  Whisper words: ['eine', 'gerbe', 'banana']
+  LCS match   : 1/3 = 33.3%  (fuzzy 66.7%)
+  Verdict     : SOMEWHAT SIMILAR
+  → Include whisper words tier in v_full/v_both: True
+
+einige_melonen
+  Human words : ['einige', 'melonen']
+  Whisper words: ['einigen', 'mal', 'lohnt']
+  LCS match   : 0/3 = 0.0%  (fuzzy 33.3%)
+  Verdict     : DIFFERENT
+  → Include whisper words tier in v_full/v_both: False
+
+er_sang_die_lieder
+  Human words : ['er', 'sang', 'die', 'lieder']
+  Whisper words: ['hesangli', 'lieder']
+  LCS match   : 1/4 = 25.0%  (fuzzy 25.0%)
+  Verdict     : DIFFERENT
+  → Include whisper words tier in v_full/v_both: False
+
+er_will_die_rosen_haben
+  Human words : ['er', 'will', 'die', 'rosen', 'haben']
+  Whisper words: ['er', 'will', 'die', 'rosen', 'haben']
+  LCS match   : 5/5 = 100.0%  (fuzzy 80.0%)
+  Verdict     : VERY SIMILAR
+  → Include whisper words tier in v_full/v_both: True
+
+ich_wohne_in_bern
+  Human words : ['ich', 'wohne', 'in', 'bern']
+  Whisper words: ['ich', 'wohne', 'in', 'bern']
+  LCS match   : 4/4 = 100.0%  (fuzzy 75.0%)
+  Verdict     : VERY SIMILAR
+  → Include whisper words tier in v_full/v_both: True
+
+
+VERSION GUIDE
+----------------------------------------
+v_human : BEST for questionnaire — uses hand-annotated word
+          boundaries for ALL analysis (syllables/phonemes/prosody).
+          Shows GToBI annotation alongside SpeechPrint prosody.
+v_full  : Shows full SpeechPrint output (whisper-based) next to
+          the GToBI reference. Good for comparing whisper vs human.
+v_both  : Best of both: whisper words visible, but prosody/phonemes
+          computed from human word boundaries.

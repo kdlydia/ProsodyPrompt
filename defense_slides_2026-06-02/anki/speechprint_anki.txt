@@ -1,0 +1,65 @@
+#separator:tab
+#html:false
+#notetype column:1
+
+Basic	What does CREPE stand for?	Convolutional REpresentation for Pitch Estimation — a deep convolutional neural network for pitch tracking, published at ICASSP 2018 by NYU MARL.
+Basic	Where was CREPE developed and when?	Music and Audio Research Laboratory (MARL) at NYU Steinhardt. Published at ICASSP 2018.
+Basic	In one sentence: why is CREPE better than Praat for endangered languages?	CREPE learned pitch from data — it makes no assumptions about the voice being harmonic. Praat assumes the voice has nice overtones, which may not hold for unusual phonation.
+Basic	What does pYIN give you that YIN does not?	A voiced/unvoiced probability for every frame. YIN always outputs a pitch value — even over silence. pYIN can say "I don't know."
+Basic	Why is YIN's zero-unknown rate a red flag?	It has no voiced/unvoiced detector. It produces a pitch value even during silence, fricatives, and stop closures. A zero-unknown rate means it cannot distinguish speech from noise.
+Basic	What is pitch declination?	The natural downward drift of F0 over the course of an utterance — like your voice relaxing as you reach the end of a sentence. Nothing to do with prosodic structure.
+Basic	Why did declination cause falls to outnumber rises by so much?	Without removing it, the algorithm labelled the slow downward drift as falling movements. After subtracting the linear slope per utterance, the ratio improved.
+Basic	What is the MAD and why did you use it instead of std?	Median Absolute Deviation. It is the robust alternative to standard deviation — based on the median, so outlier movements (very fast accents) cannot inflate it.
+Basic	What is the 1.4826 factor in the MAD formula?	It makes MAD a consistent estimator of standard deviation under a Gaussian assumption — so the threshold scale stays comparable to what it was with std.
+Basic	What is the utterance boundary reset optimisation?	Syllables across an utterance break are no longer compared as neighbours. Final syllable of utterance A (low, due to final lowering) was being compared to first syllable of B (reset high) — producing a false contrast.
+Basic	What is nucleus edge trimming and why 15%?	The first and last 15% of the vowel nucleus window are skipped before sampling F0. Those edges are in consonant-transition, where pitch is unstable. 15% is a common heuristic for this in phonetics.
+Basic	What is octave recovery in Xu(1999)?	Before discarding an outlier F0 frame, try multiplying and dividing by 2. If either value passes the threshold, keep the best one. Recover data rather than throwing it away.
+Basic	What are the two pipeline configurations and when is each used?	English/German: pYIN (fast, no download, good V/UV). DoReCo Daakie: CREPE (most accurate, no harmonic assumptions, offline).
+Basic	Why does an octave error invert a prosody label?	ΔF₀ = 12·log₂(offset/onset). If the onset is halved (an octave error), that adds +12 ST of error to ΔF₀. A −2 ST fall becomes +10 ST, labelled strongly rising. The annotation flips.
+Basic	What does Xu(1999) do?	Removes spike frames: any F0 deviating more than 12 semitones from the utterance median is flagged. Then applies 1:2:1 triangular smoothing to the remaining voiced frames.
+Basic	What is the GToBI pattern that SpeechPrint fails on, and why?	L*+H — a rising accent where the high peak comes on the POST-accent syllable, not the starred syllable. SpeechPrint detects the rise but assigns the star to the wrong syllable because it only looks locally.
+Basic	What would fix the L*+H failure?	A look-ahead window: if the syllable following a low starred tone has a substantially higher F0 peak, shift the accent marker forward one syllable.
+Basic	What are the 9 pipeline stages in order?	Load audio, Transcribe (WhisperX), Clean transcript, Force-align (MFA), Extract F0+intensity, Phonemize (espeak-ng → IPA), Label prosody, Write TextGrid, Export CSV+JSON.
+Basic	What is the accent marker (*) and what three cues trigger it?	* marks a prominent syllable. Triggers when the syllable is: louder by ≥1.5 dB AND (higher in F0 by ≥1 ST OR longer by factor ≥1.25) than its neighbours.
+Basic	What does the overline ‾ mean and why not a dash?	‾ means high level — mean F0 above neighbouring syllables. Dash was ambiguous and hard to read in a narrow Praat tier. Overline and underscore form a natural visual pair: above/below the baseline.
+Basic	What symbol combination means "prominently accented, high, strongly rising"?	*‾//
+Basic	What symbol means "low and weakly falling"?	_\
+Basic	In plain terms, what did switching from absolute to relative thresholds fix?	It stopped the system from caring about raw dB numbers. What matters for prominence is not how loud a syllable is, but how much louder it is than its neighbours.
+Basic	How many octave errors did Praat make in 30 seconds of the English recording?	238 frames.
+Basic	How many octave errors in the Daakie recording (same window)?	40 frames.
+Basic	How many syllables are in the DoReCo Daakie recording?	453 syllables over 162.7 seconds.
+Basic	What is final lowering?	A phonetic phenomenon where F0 drops toward the end of an intonational phrase — the voice physically relaxes. The last syllable of an utterance is systematically lower in pitch.
+Basic	CREPE hop length in this project, and what temporal resolution does that give?	10 ms hop → 16,269 frames for 162.7 s. (pYIN at 256 samples/44100 Hz ≈ 5.8 ms gives ~28,000 frames.)
+Basic	What is the confidence threshold for CREPE's voiced/unvoiced decision?	0.5 periodicity score. Frames below that are treated as unvoiced.
+Basic	Why does CREPE run at 16 kHz?	That is the sample rate the model was trained on. The audio is resampled internally before inference.
+Basic	One-sentence intuition for the whole thesis.	Speech has prosody — pitch, stress, rhythm — that transcription discards. SpeechPrint recovers a symbolic version of it automatically, for any language, in two minutes.
+
+Cloze	Praat had {{c1::238}} octave errors in {{c2::30}} seconds of the English recording.	Compare: pYIN and CREPE had none.
+Cloze	CREPE produced {{c1::9,912}} voiced frames — {{c2::60.9%}} of the total frames in the DoReCo recording.	pYIN produced 16,634 at a finer hop (proportionally similar voiced rate).
+Cloze	The fraction of syllables labelled "strong" went from {{c1::30.9%}} to {{c2::21.0%}} after the MAD optimisation.	Target range from the phonetic literature: 15–20%.
+Cloze	Falls went from {{c1::26.7%}} to {{c2::18.8%}} after declination removal.	Rises went from 16.3% to 13.5%.
+Cloze	The rises-to-falls ratio improved from {{c1::0.61}} to {{c2::0.72}} after all five optimisations.	Closer to 1.0 means more balanced — what natural speech should produce.
+Cloze	GToBI results: {{c1::3}} out of {{c2::5}} sentences correctly labelled.	The 2 failures both share the L*+H delayed-peak pattern.
+Cloze	The pipeline has {{c1::9}} sequential stages.	From WAV file to TextGrid + CSV + JSON.
+Cloze	CREPE is a {{c1::six}}-layer deep convolutional neural network.	Operates on a 1024-sample raw waveform window per frame.
+Cloze	The nucleus edge trimming discards the outer {{c1::15%}} from each end of the vowel nucleus.	Reason: consonant-transition contamination at onset and offset.
+Cloze	The Xu(1999) spike threshold is {{c1::12}} semitones from the utterance median.	12 semitones = one octave — the signature size of an octave error.
+Cloze	MAD is multiplied by {{c1::1.4826}} to make it equivalent to σ under a Gaussian assumption.	This is standard in robust statistics.
+Cloze	The weak-rise floor is {{c1::0.5}} semitones. The adaptive factor is {{c1::0.35}} × σ (or MAD).	A strong movement is 2.5× the weak threshold.
+Cloze	The accent amplitude threshold is {{c1::1.5}} dB above neighbours.	Combined with either +1 ST in F0 or ×1.25 in duration.
+Cloze	The DoReCo recording is {{c1::162.7}} seconds long and contains {{c2::34}} utterances.	Inter-utterance gaps average 1.05 s.
+Cloze	pYIN runs at approximately {{c1::3–5}}× real-time on CPU.	CREPE is slower — appropriate for offline/archival use only.
+Cloze	Switching from absolute to relative amplitude reduced the false-positive accent rate from approximately {{c1::35%}} to {{c2::24%}}.	Local contrast matters, not raw dB.
+Cloze	YIN reported {{c1::27,350}} voiced frames — {{c2::97.7%}} of all frames — because it has {{c3::no voiced/unvoiced detector}}.	This is a red flag: it produces pitch values even over silence.
+Cloze	The two German sentences that failed were both labelled {{c1::L*+H}} in GToBI.	This is the delayed-peak pattern where the high comes after the starred syllable.
+Cloze	With pYIN, GToBI results were {{c1::3}} correct, {{c2::1}} partial, {{c3::1}} incorrect. With CREPE + corrected IPA: {{c4::1}} correct, {{c5::4}} partial.	CREPE gets the pitch direction right on all 5; pYIN gets the binary score. The * accent threshold needs recalibrating for short sentences.
+Cloze	The MFA transcription error found: "gelbe" → {{c1::gerbe}}, "einige Melonen" → {{c2::einigen mal lohnt}}, "er sang die Lieder" → {{c3::hesangli lieder}}.	3/5 sentences had wrong MFA transcriptions. MFA timing also off by 66–430 ms in all 5. Solution: abandon MFA, hardcode correct German IPA.
+Cloze	The GToBI tiers used as input for the German BEST pipeline are: {{c1::Wort}} (human word boundaries) and {{c2::Ton}} (expert point tier with tone labels).	MFA provides sp_phonemes and sp_syllables; only prosody is automatic.
+Cloze	The GToBI Ton tier is a {{c1::point tier}} (TextTier), not an interval tier.	It stores one label per accent/boundary tone event. We convert it to an interval tier by mapping each point to the syllable it falls in.
+Basic	What tiers does the German GToBI BEST pipeline output and where does each come from?	words (Wort, human GToBI annotation) · syllables (MFA IPA) · phones (MFA IPA) · gtobi (Ton expert labels, point → interval) · prosody (CREPE + 5 optimisations)
+Basic	Why did CREPE produce a more acoustically motivated result for "ich wohne in Bern" than pYIN?	CREPE placed the accent on [voː] (wohne), which genuinely has the highest F0 in the sentence. pYIN placed it on [nə] which is wrong by any measure. CREPE was still not formally correct (should be Bern), but its choice was grounded in the actual acoustic signal.
+Basic	What is the one fix that would address L*+H failures in both pYIN and CREPE pipelines?	A look-ahead window: if the syllable immediately after a low-starred syllable has a substantially higher F0 peak, shift the accent marker forward one syllable.
+Basic	In the GToBI BEST output, what does the gtobi tier show?	The expert GToBI label (e.g. L+H*, H+L*) placed as an interval on whichever syllable the Ton point falls in. All other syllables are empty. Enables direct visual comparison with the prosody tier in Praat.
+Cloze	In the formula ΔF₀ = 12 · log₂({{c1::offset/onset}}), a positive value means {{c2::rising}} and a negative value means {{c3::falling}}.	If onset is halved by an octave error, ΔF₀ gets +12 ST of error.
+Cloze	The DoReCo tier used for utterance boundaries in the optimisation is {{c1::tx@TA}}.	tx@TA = orthographic sentence transcription, utterance-level timing.
+Cloze	The DoReCo tier for SAMPA phonemes is {{c1::ph@TA}}; for Daakie words it is {{c2::wd@TA}}; for English glosses it is {{c3::gl@TA}}.	All human-annotated — no ASR used for Daakie.

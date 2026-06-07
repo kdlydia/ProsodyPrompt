@@ -1,0 +1,680 @@
+%\chapter{Methods}
+
+\chapter{Methods}
+\label{methods}
+
+\section{Pitch Extraction and Octave Error Correction}
+\label{sec:pitch_extraction}
+
+A central challenge in automated prosody labelling is the reliability of the
+underlying fundamental frequency (F0) measurements. SpeechPrint originally used
+Praat's default autocorrelation pitch tracker (the SCC method), which is
+susceptible to \emph{octave errors}: frames where the tracker identifies a
+harmonic partial rather than the true F0. An octave error is not a small
+perturbation --- it corresponds to a shift of exactly 12 semitones, which is
+typically the full pitch range of a speaker. When the F0 onset or offset of a
+syllable nucleus is contaminated by such an error, the intra-syllable pitch
+movement $\Delta_{F_0}$ can be completely wrong. For example, if the true F0 at
+syllable onset is 214\,Hz and Praat mistakenly reports 107\,Hz (the second
+sub-harmonic, 12\,ST below), a genuinely rising syllable will appear to the
+labeller as level or even falling. As demonstrated empirically below, 238 such
+octave errors were found in the first 30 seconds of the English test recording
+alone --- directly explaining many of the erroneous prosody labels previously
+observed.
+
+\subsection{Comparative Evaluation: Praat, Librosa pYIN, and CREPE}
+\label{sec:tracker_comparison}
+
+To address this, three pitch trackers were evaluated and compared:
+
+\begin{enumerate}
+
+\item \textbf{Praat SCC (raw):} The default Praat pitch tracker, using the
+      cross-correlation method with a pitch floor of 75\,Hz and ceiling of
+      600\,Hz. This is the out-of-the-box Parselmouth call (\texttt{to\_pitch}).
+      It is susceptible to octave jumps, particularly at voicing boundaries,
+      because the autocorrelation function has local maxima at integer multiples
+      of the period.
+
+\item \textbf{Praat AC + Xu (1999) correction:} An improved Praat call
+      (\texttt{to\_pitch\_ac}) with \texttt{octave\_jump\_cost=0.5} (double the
+      default penalty), which discourages the tracker from jumping an octave
+      between adjacent frames. Residual outliers are then removed using the
+      median-based spike-removal algorithm of Xu~(1999) \cite{xu1999}: the median
+      F0 across all voiced frames is computed; any frame whose F0 deviates more
+      than 12 semitones from that median is replaced with \texttt{None}. The
+      surviving values are then smoothed with one pass of triangular weighting
+      (weights 1:2:1 over three consecutive voiced frames), attenuating
+      frame-to-frame noise while preserving the overall pitch trajectory.
+
+\item \textbf{Librosa pYIN (probabilistic YIN):} A state-of-the-art monophonic
+      F0 tracker based on the probabilistic extension of the YIN algorithm
+      \cite{mauch2014pyin}. Unlike Praat, pYIN returns a voicing probability for
+      each frame, allowing unvoiced frames to be cleanly masked rather than
+      forced to zero. It is less susceptible to octave errors because it jointly
+      models F0 continuity and voicing likelihood. The implementation from
+      librosa 0.11 \cite{mcfee2015librosa} was used with a frame length of 2048
+      samples and a hop of 256 samples at 16\,kHz, giving a temporal resolution
+      of approximately 16\,ms.
+
+\item \textbf{CREPE:} The Convolutional REpresentation for Pitch Estimation
+      \cite{kim2018crepe} is a data-driven pitch tracker published at ICASSP 2018
+      by the Music and Audio Research Laboratory (MARL) at NYU Steinhardt. Unlike
+      signal-processing methods such as Praat and pYIN, CREPE does not model the
+      vocal source as a harmonic series and does not compute an autocorrelation or
+      difference function. Instead, it feeds the raw time-domain waveform (a
+      1024-sample window centred on each frame) directly into a six-layer deep
+      convolutional neural network, which produces a 360-bin probability
+      distribution over log-frequency bins spanning 32.7\,Hz to 1975.5\,Hz. The
+      predicted F0 is the expected value of this distribution; the maximum bin
+      confidence serves as a voicing probability, replacing the need for a
+      separate voiced/unvoiced detector. Because CREPE learns its pitch model
+      from a large and diverse training corpus rather than deriving it from
+      acoustic first principles, it is not fooled by irregular phonation patterns
+      (creaky voice, breathy voice, laryngealisation) that can corrupt the
+      autocorrelation peak used by Praat and pYIN. The PyTorch port
+      \texttt{torchcrepe} \cite{morrisonTorchcrepe} was used with the
+      \texttt{full} model capacity, a 10\,ms hop length (giving a temporal
+      resolution of 16,269 frames for the 162.7\,s DoReCo recording), batched
+      inference (\texttt{batch\_size=128}) to stay within CPU memory limits, and a
+      periodicity confidence threshold of 0.5 for the voiced/unvoiced decision.
+      CREPE requires resampling the audio to 16\,kHz before inference; this step
+      is performed internally by \texttt{torchcrepe}.
+
+
+\item \textbf{PESTO (Pitch Estimation with Self-supervised Transposition-equivariant
+      Objective):} A self-supervised pitch tracker \cite{riou2023pesto} that learns
+      F0 estimation without any labelled pitch data, by training on synthetic
+      pitch-shifted copies of the same audio signal. Because a pitch-shifted version
+      of a recording contains identical melodic intervals, the model learns a
+      representation that is invariant to absolute frequency and sensitive only to
+      relative pitch structure. This is a fundamentally different inductive bias from
+      CREPE (supervised learning of absolute frequency bins from labelled data) and
+      from pYIN and Praat (signal-processing models of the autocorrelation function).
+
+      The implementation used is \texttt{pesto-pitch} v2.0.1, which wraps a
+      convolutional model trained on the MIR-1K singing-voice corpus. The model
+      is invoked via \texttt{pesto.predict()} with a 10\,ms step size and a
+      periodicity threshold of 0.5 for the voiced/unvoiced decision, matching the
+      CREPE configuration for comparability. Input audio is resampled to 16\,kHz
+      before inference. A noteworthy caveat is that the MIR-1K training corpus
+      consists of singing voice rather than read or conversational speech; the
+      model's behaviour on speech-specific phonation types (glottalization,
+      creak, boundary devoicing) has not been validated against a speech ground
+      truth. PESTO is included here as a fifth tracker to place a
+      self-supervised-learning data point alongside the supervised deep-learning
+      tracker (CREPE) and the signal-processing trackers (pYIN, YIN, Praat).
+
+\end{enumerate}
+
+\subsection{Speaker-adaptive pitch range}
+
+A prerequisite for reliable pitch extraction is a pitch search range matched to
+the speaker. The default Praat range (75--600\,Hz) covers both bass and soprano
+voice types simultaneously, which increases the risk of octave errors in
+narrower-range recordings. SpeechPrint v3 therefore auto-detects the speaker's
+pitch range from a 20-second scan of the recording using pYIN at loose bounds
+(65--500\,Hz), computes the median of the voiced frames, and sets the working
+floor and ceiling to $\text{median} \times 0.5$ and $\text{median} \times 2.5$
+respectively. This restricts the search space to a plausible single-speaker range
+without manual tuning.
+
+\subsection{Final pipeline}
+
+Two pipeline configurations are adopted depending on the recording type.
+
+For the \textbf{English minimal-pairs recording and the five German GToBI
+sentences} (read speech with available ASR support), Librosa pYIN is the primary
+pitch tracker. pYIN requires no model download, runs at approximately
+3--5$\times$ real-time on CPU, and its voiced/unvoiced probability mask cleanly
+suppresses unvoiced frames without further intervention. The GToBI evaluation
+provides additional empirical justification for this choice: pYIN with five
+algorithmic optimisations scores three correct, one partial, and one incorrect
+on the binary per-sentence metric, whereas CREPE with the same optimisations
+scores one correct and four partial (Section~\ref{sec:gtobi_results}). For
+short, clean studio utterances where the autocorrelation assumption holds,
+pYIN is therefore both more accurate and more computationally efficient.
+The full pitch track is extracted once per audio file and stored in memory;
+subsequent syllable nucleus measurements look up the pre-computed values at
+the relevant time points. Xu~(1999) spike removal is applied as a safety net
+for any residual octave artefacts.
+
+For the \textbf{DoReCo Daakie and Cabécar archival recordings}
+(human-annotation pipeline, no available ASR), CREPE is used as the primary
+pitch tracker. CREPE makes no assumptions about the harmonic structure of the
+voice source, which is particularly important for recordings of
+under-resourced languages where the phonation characteristics may not match
+the distributions assumed by signal-processing models trained on large-language
+speech. The computational cost is acceptable when processing single archival
+recordings offline. Xu~(1999) spike removal is applied after CREPE as a safety
+net, and the relative prosody labelling procedure described in
+Section~\ref{sec:prosody_label_method} is applied identically to both
+pipelines.
+
+% ADDED HERE — implementation, methodology, evaluation design, demo design, amplitude, relative vs absolute
+% (Lonce feedback: write what you actually did; more text beyond literature review; demo design with ASCII; methodology)
+
+\section{System Architecture and Implementation}
+\label{sec:implementation}
+
+SpeechPrint is implemented as a Python pipeline organized into nine sequential
+stages. The pipeline is invoked from the command line with a WAV file and a
+language code; it produces a Praat-format TextGrid, a set of CSV tables, and a
+JSON manifest, all written to a per-recording output directory. The nine stages
+are as follows.
+
+\paragraph{Stage 1: Load audio.}
+The WAV file is read using the Python \texttt{wave} module to extract sample
+rate, channel count, and total duration. These values are stored in the manifest
+and used to validate downstream timing assertions.
+
+\paragraph{Stage 2: Transcribe.}
+WhisperX with the \texttt{large-v3} model is used to obtain a text transcript
+and coarse segment timing. The model is loaded from a local cache to avoid
+repeated downloads. Voice activity detection parameters
+(\texttt{vad\_onset=0.3}, \texttt{vad\_offset=0.2}) are lowered relative to the
+defaults in order to detect short initial syllables that would otherwise be
+missed. If WhisperX is unavailable, the system falls back to plain Whisper, and
+if that is also unavailable, to a filename-derived fallback transcript.
+
+\paragraph{Stage 3: Prepare transcript.}
+The raw transcript is cleaned of punctuation, normalized to lowercase, and split
+into word tokens. Silent intervals longer than 40\,ms between consecutive word
+boundaries are labelled \texttt{<sil N.NNs>} in the words tier.
+
+\paragraph{Stage 4: Forced alignment.}
+For English, the Montreal Forced Aligner (MFA) is used when available, providing
+phone-level timing. For other languages, WhisperX's CTC alignment step is used,
+which gives word-level timestamps. If neither is available, words are distributed
+proportionally within each Whisper segment.
+
+\paragraph{Stage 5: Pitch and intensity extraction.}
+A single full-file pitch track is extracted using Librosa pYIN (see
+Section~\ref{sec:pitch_extraction}) and stored in memory. Intensity is extracted
+using Parselmouth's \texttt{to\_intensity} method with a 40\,ms window. Both
+tracks are computed once and subsequently queried by time index for each syllable
+measurement, avoiding redundant file I/O.
+
+\paragraph{Stage 6: Phonemization.}
+Word strings are phonemized using \texttt{espeak-ng} via the Python phonemizer
+library \cite{barnard2021phonemizer}, which produces IPA phone sequences. The
+language code is mapped to an espeak backend code (e.g.\ \texttt{en-us} for
+English, \texttt{de} for German). Phones are then grouped into syllables using a
+maximum-onset heuristic: vowel nuclei are identified by membership in a fixed set
+of IPA vowel characters, and intervocalic consonant clusters are split so that as
+many consonants as possible are assigned to the following syllable onset.
+
+\paragraph{Stage 7: Symbolic prosody labelling.}
+Prosody labels are assigned in two sub-steps. First, acoustic measurements are
+made at each syllable's vowel nucleus: ten time-evenly-spaced F0 values are
+sampled from the pre-computed pYIN track, and the mean intensity over the same
+window is read from the Parselmouth intensity object. Second, the labelling
+function (see Section~\ref{sec:prosody_label_method}) assigns a symbol to each
+syllable based on the computed measurements and the measurements of its
+neighbours.
+
+\paragraph{Stage 8: Write TextGrid.}
+A five-tier Praat TextGrid is written in plain text format. Empty intervals are
+inserted automatically to ensure each tier covers the full duration of the
+recording contiguously, as required by Praat's parser.
+
+\paragraph{Stage 9: Export CSV and JSON.}
+Per-word, per-syllable, and per-phoneme tables are exported as CSV files for
+downstream statistical analysis. A recording-level prosody summary table and a
+JSON manifest containing all extracted values are also written.
+
+\section{Syllabification and Nucleus Identification}
+\label{sec:syllabification}
+
+Syllable boundaries within each word are determined by the positions of vowel
+nuclei in the IPA phone sequence. The vowel detection function checks membership
+in a fixed set of IPA vowel symbols that covers cardinal monophthongs,
+IPA-specific vowel characters (schwa, open-mid, near-close, etc.), long-vowel
+digraphs, and common English diphthong sequences. Consonantal glides (/w/, /j/,
+/l/, /r/, etc.) are explicitly excluded even when they contain vowel-like
+acoustic properties.
+
+For each pair of consecutive vowels separated by one or more consonants, the
+consonant cluster is split at the midpoint, following the maximum-onset principle
+of syllable theory \cite{kahn1976syllable}: the second half of the cluster forms
+the onset of the following syllable, and the first half forms the coda of the
+preceding syllable. Where MFA phone-level timing is available, the actual onset
+and offset times of the vowel phone are used directly for the nucleus window.
+Otherwise, the nucleus window is estimated proportionally within the syllable
+span.
+
+\section{Prosody Labelling Algorithm}
+\label{sec:prosody_label_method}
+
+The symbolic prosody labels are assigned using the following procedure, applied
+to each syllable in sequence.
+
+\paragraph{Pitch movement.}
+The intra-syllable pitch movement $\Delta_{F_0}$ is computed as:
+\begin{equation}
+  \Delta_{F_0} = 12 \log_2\!\left(\frac{F_0^{\mathrm{offset}}}{F_0^{\mathrm{onset}}}\right)
+\end{equation}
+where $F_0^{\mathrm{onset}}$ is the first voiced pYIN sample in the nucleus
+window and $F_0^{\mathrm{offset}}$ is the last voiced sample. Pitch movement is
+considered \emph{rising} if $\Delta_{F_0} > \theta_{\mathrm{weak}}$ and
+\emph{falling} if $\Delta_{F_0} < -\theta_{\mathrm{weak}}$.
+
+\paragraph{Adaptive thresholds.}
+The weak-rise threshold $\theta_{\mathrm{weak}}$ is computed from the standard
+deviation of all intra-syllable pitch movements in the recording:
+\begin{equation}
+  \theta_{\mathrm{weak}} = \max\!\left(\theta_{\mathrm{floor}},\;
+    \alpha \cdot \mathrm{std}(\{\Delta_{F_0,i}\})\right)
+\end{equation}
+with a floor of $\theta_{\mathrm{floor}} = 0.5$\,ST and an adaptive factor of
+$\alpha = 0.35$. A strong movement is defined as
+$|\Delta_{F_0}| \geq 2.5 \cdot \theta_{\mathrm{weak}}$, and is labelled
+\texttt{//} or \texttt{\textbackslash\textbackslash} rather than \texttt{/} or
+\texttt{\textbackslash}. This design ensures that the thresholds scale with the
+actual pitch range of the recording rather than applying a fixed semitone
+criterion regardless of speaker.
+
+\paragraph{Height relative to neighbours.}
+In addition to the intra-syllable movement, the mean F0 of each syllable is
+compared to the mean of its immediate neighbours. A syllable whose mean F0 is
+more than 0.8\,ST above the neighbourhood mean is labelled as high
+(\texttt{{\={}}}, U+203E overline); one more than 0.8\,ST below is labelled as
+low (\texttt{\_}). The overline was chosen as a visual counterpart to the
+underscore: both are single horizontal strokes, one above and one below the
+text baseline, making the high/low contrast immediately readable in a Praat tier.
+
+\paragraph{Relative amplitude and accent detection.}
+The amplitude of each syllable is compared to the mean amplitude of its
+neighbours in the same $\pm 2$ syllable window. If the syllable is more than
+1.5\,dB louder than its neighbours and simultaneously higher in mean F0 (by more
+than 1.0\,ST) or longer in duration (by a factor of at least 1.25), it receives
+an accent marker \texttt{*}. This three-cue definition of prominence (louder,
+higher, longer) is motivated by the multi-parametric nature of prosodic
+prominence documented in the phonetic literature \cite{ladd2008intonational}.
+
+\paragraph{Symbol assembly.}
+The final symbol is assembled as \texttt{[*][height][direction]}, where each
+component is present only if the corresponding condition is satisfied. For
+example, a syllable that is prominent, high, and rising receives
+\texttt{*{\={}}//}; one that is low and weakly falling receives
+\texttt{\_\textbackslash}; one that is merely falling with no height contrast
+receives \texttt{\textbackslash}; and one for which no voiced frames are
+available receives \texttt{?}.
+
+\section{Amplitude Analysis: Window Size and Relative Measurement}
+\label{sec:amplitude}
+
+A specific concern raised during evaluation was whether the amplitude analysis
+window was appropriate. The original implementation measured mean intensity over
+the entire syllable duration, which for syllables spanning 200--400\,ms could
+smooth over the rapid amplitude rise that marks the onset of a prominent accent.
+The supervisor noted: ``you'd want an RMS follower which would operate on a
+shorter window of time and then you'd smooth it'' (Krifka, meeting June 2026).
+
+In SpeechPrint v3, intensity is extracted using Parselmouth with a 40\,ms
+analysis window (reduced from the Praat default of approximately 100\,ms) and
+then averaged over the nucleus window. This provides a more responsive estimate
+of the amplitude peak within the syllable rather than the mean across the whole
+duration including quieter onset consonants.
+
+The key change in the labelling logic is the shift from absolute to relative
+amplitude. The original system compared amplitude against a fixed threshold in
+decibels. The revised system computes the difference between the syllable's mean
+intensity and the mean intensity of its neighbours within a $\pm 2$ syllable
+window, which produces a speaker-normalised and recording-normalised quantity.
+This addresses the concern that ``66 decibels doesn't sound outrageous but I
+don't know in the context of what the other ones are'' (Krifka, meeting June 2026):
+what matters for prominence is not the absolute level but the local contrast.
+
+\section{Evaluation Design}
+\label{sec:eval_design}
+
+The evaluation of SpeechPrint's prosody output takes two forms.
+
+\subsection{Automatic benchmark: GToBI comparison}
+
+The five German sentences from the GToBI training corpus
+(\url{http://www.gtobi.uni-koeln.de/}) were used as a controlled benchmark.
+These sentences were selected because they have been annotated by expert
+phoneticians according to GToBI conventions and represent a range of tone types:
+L+H* (rising nuclear accent), H+L* (falling), H+!H* (downstepped high), and
+L*+H (rising accent with low starred tone). The comparison procedure is:
+\begin{enumerate}
+\item Human word boundaries from the Wort tier are used as input, removing
+      alignment error as a confound.
+\item SpeechPrint's prosody labels are assigned using the procedure described
+      in Section~\ref{sec:prosody_label_method}.
+\item The GToBI tone symbol and its position within the word sequence are
+      compared to the SpeechPrint label on the corresponding syllable.
+\end{enumerate}
+
+\subsection{Perceptual evaluation: questionnaire}
+
+A short questionnaire will be administered to linguists who are not specialists
+in phonetics. Participants are shown a Praat TextGrid display of a sentence
+alongside an audio recording and asked to judge: (a) whether the prosody tier
+symbols match their perception of the intonation, (b) whether the accent marker
+appears on the correct word, and (c) how useful they would find such an
+annotation in their own work.
+
+The questionnaire covers four corpora: the five German GToBI sentences,
+selected English minimal pairs, a Daakie excerpt, and a Cabécar excerpt.
+All four corpora are presented in a consistent six-tier TextGrid structure
+(\texttt{sentence} $|$ \texttt{words} $|$ \texttt{translation} $|$
+\texttt{syllables} $|$ \texttt{phones} $|$ \texttt{prosody}) so that
+participants can compare annotation formats across languages without
+reorienting to a different layout. The \texttt{translation} tier is populated
+for non-English corpora and left empty for English. No expert annotation tier
+(such as the GToBI \texttt{gtobi} tier) is included in the questionnaire
+TextGrids, to avoid priming participants toward a ``correct'' answer.
+
+For the English corpus, five sentence pairs were selected based on two
+criteria: (1) the system's \texttt{*} accent marker appeared on the
+linguistically expected word in both members of the pair, and (2) the prosodic
+contrast was auditorily salient to a non-specialist. The selected pairs are
+described in Section~\ref{sec:english_analysis}.
+
+\section{Demo Design: ASCII Prosody Symbols as Visual Representation}
+\label{sec:demo_design}
+
+A design principle of SpeechPrint is that the prosody representation should be
+legible without specialist software. The chosen symbols are:
+
+\begin{center}
+\begin{tabular}{cl}
+\hline
+Symbol & Meaning \\
+\hline
+\texttt{/}  & Weakly rising pitch within the syllable \\
+\texttt{//} & Strongly rising \\
+\texttt{\textbackslash}  & Weakly falling pitch \\
+\texttt{\textbackslash\textbackslash} & Strongly falling \\
+\texttt{{\={}}} & High level (mean F0 above neighbouring syllables) \\
+\texttt{\_} & Low level (mean F0 below neighbouring syllables) \\
+\texttt{*}  & Prominent accent (louder, higher, or longer than neighbours) \\
+\texttt{?}  & Unvoiced or insufficient F0 data \\
+\hline
+\end{tabular}
+\end{center}
+
+Symbols may be combined: for example, \texttt{*{\={}}//} denotes a prominently
+accented syllable that is high in the speaker's range and strongly rising; \texttt{\_\textbackslash\textbackslash}
+denotes a syllable that is low in the speaker's range and strongly falling.
+
+These symbols were chosen for visual legibility without specialist software.
+\texttt{/} and \texttt{\textbackslash} resemble the slopes of a pitch contour;
+the overline \texttt{{\={}}} and underscore \texttt{\_} form a natural pair
+marking height above and below the local mean; \texttt{*} is a conventional
+prominence marker in linguistic notation. All symbols are available in plain
+ASCII and render unambiguously in a monospaced font and in Praat tier columns.
+
+The demo video for the evaluation questionnaire walks through the following
+sequence: (1) a raw audio recording is shown in Praat; (2) SpeechPrint
+processes it and adds five tiers; (3) the prosody tier is highlighted and the
+symbols are explained; (4) two minimal-pair sentences differing only in which
+word receives the accent are compared side by side, showing how the \texttt{*}
+marker moves between tiers. The demo is kept to approximately five minutes, in
+line with the supervisor's recommendation that longer demos cause participants
+to lose focus before reaching the questionnaire items.
+
+\section{Linguistic Rationale for Syllable-Level Annotation}
+\label{sec:linguistic_rationale}
+
+The choice to annotate prosody at the syllable level rather than the word or
+phoneme level reflects several considerations from the linguistic literature.
+Prosodic features such as pitch accents and boundary tones are canonically
+associated with syllables in metrical and autosegmental phonology
+\cite{ladd2008intonational, beckman2006tobi}. In languages with lexical stress,
+such as English and German, the accented syllable within a word is the primary
+site of F0 movements and amplitude peaks. Annotating at the word level would
+obscure which part of a multi-syllable word carries the prosodic event; annotating
+at the phoneme level would over-specify, since prosodic movements span the entire
+nucleus and not just a single phone.
+
+Vowel nuclei receive special attention because they are the primary carriers of
+F0: the vocal folds can vibrate continuously through a vowel, whereas consonants
+frequently produce brief interruptions or reductions in periodicity. This means
+that a pitch measurement made during a fricative or stop consonant would often
+return undefined values, whereas a measurement made during the vowel nucleus is
+almost always reliable. The ten-point time-normalised sampling procedure adopted
+here, in which F0 is sampled at equal intervals across the nucleus, follows the
+algorithm described in Xu~(1999) \cite{xu1999} and allows comparison of pitch
+contour shapes across syllables of different durations.
+
+\section{Algorithmic Optimisations to the Prosody Labeller}
+\label{sec:optimisations}
+
+The baseline prosody labelling algorithm described in
+Section~\ref{sec:prosody_label_method} was improved in four ways, motivated by
+observable deficiencies in the output distribution rather than theoretical
+assumptions. Each optimisation targets a specific, diagnosable failure mode.
+
+\subsection{MAD-based adaptive threshold}
+
+The baseline uses the standard deviation $\sigma$ of all intra-syllable pitch
+movements to set the weak-rise threshold $\theta_{\mathrm{weak}} = \max(0.5,
+0.35\sigma)$. Standard deviation is sensitive to outliers: a small number of
+syllables with very fast pitch movements (e.g.\ a sharp accent) inflates
+$\sigma$, which in turn inflates both thresholds and causes many genuinely
+strong movements to be classified as weak.
+
+The fix is to replace $\sigma$ with the \emph{normalised median absolute
+deviation} (MAD):
+\begin{equation}
+  \hat{\sigma}_{\mathrm{MAD}} = 1.4826 \cdot \mathrm{median}\!\left(
+    \{|\Delta_{F_0,i} - \tilde{\Delta}|\}\right)
+\end{equation}
+where $\tilde{\Delta}$ is the median pitch movement and the factor 1.4826
+makes $\hat{\sigma}_{\mathrm{MAD}}$ a consistent estimator of $\sigma$ under a
+Gaussian assumption \cite{rousseeuw1993alternatives}. MAD is the standard robust
+alternative to $\sigma$ used in outlier detection. The empirical effect on the
+Daakie recording: the fraction of syllables labelled as \emph{strongly} rising
+or falling fell from 30.9\% to 21.0\%, moving from an implausibly high rate
+toward the expected range of 15--20\%.
+
+\subsection{Utterance boundary reset}
+
+The baseline compares each syllable's mean F0 and amplitude to those of its
+immediate neighbours without regard for utterance structure. This causes errors
+at utterance boundaries: the final syllable of an utterance typically undergoes
+\emph{final lowering} (a well-documented phonetic phenomenon whereby F0 drops
+toward the end of an intonational phrase), making it systematically lower in F0
+and amplitude than the first syllable of the following utterance, which resets
+to a higher level. Comparing these two syllables as neighbours therefore produces
+a spurious high-versus-low contrast.
+
+The fix is straightforward: the end time of each utterance is extracted from the
+\texttt{tx@TA} tier and used as a \emph{break point}. Syllables on opposite
+sides of a break are never used as each other's neighbours in the height or
+amplitude comparisons. Only within-utterance neighbour pairs are considered.
+
+\subsection{Pitch declination removal}
+
+Even within a single utterance, F0 exhibits a systematic downward trend over
+time known as \emph{declination}: the baseline F0 at the start of an utterance
+is higher than at the end, independent of the prosodic structure
+\cite{pierrehumbert1980phonology}. Without correction, this trend inflates the
+count of syllables labelled as falling simply because their F0 is lower than
+the preceding syllable---a consequence of the global trend, not of a genuine
+falling movement.
+
+The fix is to fit a linear regression to the sequence of syllable-mean F0
+values within each utterance as a function of time:
+\begin{equation}
+  \hat{f}(t) = a \cdot t + b
+\end{equation}
+and to subtract the slope component before the height comparison:
+\begin{equation}
+  f_0^{\mathrm{det}}(i) = f_0^{\mathrm{mean}}(i) - a \cdot (t_i - \bar{t})
+\end{equation}
+where $\bar{t}$ is the mean time within the utterance. Subtracting only the
+slope (not the intercept) preserves the absolute F0 level for the accent
+detector, while removing the temporal drift. The empirical effect on the Daakie
+recording: the falls-to-rises ratio improved from 0.61 (26.7\% falls,
+16.3\% rises) to 0.72 (18.8\% falls, 13.5\% rises), indicating a more balanced
+and plausible prosodic label distribution.
+
+\subsection{Nucleus edge trimming}
+
+The baseline samples F0 at ten equally spaced points across the full vowel
+nucleus window $[t_{\mathrm{v0}}, t_{\mathrm{v1}}]$. The first and last
+sampling points are therefore positioned at the very onset and offset of the
+vowel, where the vocal tract is still transitioning from or to the adjacent
+consonant. This transition region typically produces lower F0 values (due to
+incomplete glottal adduction) or missing voicing, which contaminates the onset
+and offset estimates used to compute the intra-syllable pitch movement.
+
+The fix is to trim 15\% from each end of the nucleus window before sampling:
+\begin{equation}
+  t_{\mathrm{start}} = t_{\mathrm{v0}} + 0.15 \cdot d, \quad
+  t_{\mathrm{end}}   = t_{\mathrm{v1}} - 0.15 \cdot d
+\end{equation}
+where $d = t_{\mathrm{v1}} - t_{\mathrm{v0}}$ is the nucleus duration. The
+trimmed window is used only if it is at least 10\,ms long; otherwise the full
+window is retained. The empirical effect is a slight increase in the unknown
+rate (from 0.9\% to 1.5\%), which is expected: more conservative sampling means
+a short or partially devoiced nucleus is more likely to be flagged as
+unvoiced---a correct outcome rather than a spurious one.
+
+\subsection{Octave recovery in spike removal}
+
+The baseline Xu~(1999) implementation sets any F0 frame deviating more than
+12\,ST from the utterance median to \texttt{None}, discarding it. However, many
+such frames are not random noise but genuine octave errors: the tracker found
+the second harmonic at $f_0 / 2$ or a doubled pitch at $2f_0$ instead of the
+true fundamental. The octave alternative is the correct value and should be
+recovered rather than discarded.
+
+The fix: before setting a flagged frame to \texttt{None}, the two octave
+alternatives $f \times 2$ and $f \div 2$ are tested against the utterance
+median. If either is within 12\,ST of the median, the closest one replaces the
+original frame. Only if both alternatives also fail the threshold is the frame
+discarded. This recovers data points that would otherwise inflate the unknown
+rate.
+
+\section{Application to DoReCo Daakie: Endangered-Language Pipeline}
+\label{sec:doreco_pipeline}
+
+The DoReCo corpus provides a 162.7-second archival recording of Daakie (Port
+Vato, Vanuatu) with detailed human-annotated TextGrid tiers \cite{seifart2022doreco}.
+Because no forced aligner or ASR model exists for Daakie, the standard
+SpeechPrint word-alignment and phonemization stages (Stages 2--4 and 6) are
+replaced entirely by the existing human annotations, and only the acoustic
+measurement and prosody-labelling stages are applied automatically.
+
+\subsection{Tier sources}
+
+The following tiers are taken directly from the DoReCo TextGrid without
+modification:
+
+\begin{description}
+  \item[\texttt{sentence}] Utterance-level Daakie orthographic transcription
+        (\texttt{tx@TA} tier).
+  \item[\texttt{translation}] Utterance-level English free translation
+        (\texttt{ft@TA} tier).
+  \item[\texttt{words}] Daakie word intervals (\texttt{wd@TA} tier). Silent
+        intervals longer than 40\,ms are labelled \texttt{<sil N.NNs>}.
+  \item[\texttt{gloss}] English morpheme glosses (\texttt{gl@TA} tier),
+        aligned to the same word intervals.
+  \item[\texttt{phones}] SAMPA-based phoneme intervals (\texttt{ph@TA} tier),
+        as annotated by the DoReCo transcribers. The Daakie phone inventory
+        includes length-marked vowels (\texttt{a:}, \texttt{e:}, etc.),
+        labialized consonants (\texttt{b\_w}, \texttt{m\_w}), and the
+        near-open front vowel \texttt{\{}.
+\end{description}
+
+\subsection{Syllabification from human-annotated phones}
+
+Because no Daakie syllabifier exists, syllable boundaries are derived from the
+\texttt{ph@TA} phone sequence using the same maximum-onset heuristic applied to
+IPA in the English pipeline. The Daakie vowel set is defined by membership in a
+fixed inventory established from the full phone tier. Each word's phones are
+grouped into syllables by identifying vowel nuclei and splitting intervocalic
+consonant clusters at the midpoint. The nucleus window for F0 measurement is the
+span of vowel phones within the syllable, as determined by the human phone-level
+timing.
+
+\subsection{F0 extraction: CREPE at full resolution}
+
+CREPE (\texttt{torchcrepe}, \texttt{full} model, 10\,ms hop) is used as the
+F0 tracker for the DoReCo pipeline rather than pYIN, for the reasons established
+in Section~\ref{sec:tracker_comparison}: CREPE makes no assumptions about the
+harmonic structure of the voice source, which is particularly important for an
+under-resourced language where the phonation characteristics are not captured by
+training data for the signal-processing models. At a 10\,ms hop, CREPE produces
+16,269 frames over the 162.7-second recording, of which 9,912 (60.9\%) exceed
+the confidence threshold of 0.5 and are treated as voiced. Xu~(1999) spike
+removal is applied to each syllable nucleus measurement after CREPE, as a safety
+net for any residual artefacts.
+
+\subsection{Comparative tracker evaluation on Daakie}
+
+For reference, three additional pitch trackers were applied to the same recording
+and their outputs stored as parallel prosody tiers in the TextGrid. Table~%
+\ref{tab:daakie_trackers} summarises the voiced frame counts and the proportion
+of syllables receiving an unknown label (\texttt{?}), which indicates that the
+tracker found insufficient voiced frames in the nucleus.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrr}
+\hline
+Tracker & Voiced frames & Unknown syllables & Notes \\
+\hline
+CREPE (full, 10\,ms)  & 9{,}912  & 4 (0.9\%)  & best accuracy \\
+pYIN (librosa)        & 16{,}634 & 11 (2.4\%) & reliable V/UV detection \\
+Praat AC              & 16{,}784 & 2 (0.4\%)  & known octave errors \\
+YIN (librosa)         & 27{,}350 & 0 (0.0\%)  & no V/UV detection --- unreliable \\
+\hline
+\end{tabular}
+\caption{Pitch tracker comparison on the DoReCo Daakie recording (162.7\,s,
+453 syllables). V/UV = voiced/unvoiced. YIN's zero unknown rate reflects the
+absence of any voiced/unvoiced detector: it returns a pitch estimate for every
+frame including unvoiced consonants and silence, making its high voiced-frame
+count an artefact rather than a measure of accuracy.}
+\label{tab:daakie_trackers}
+\end{table}
+
+\section{Application to DoReCo Cabécar: Second Archival Recording}
+\label{sec:cabeca_pipeline}
+
+A second DoReCo recording was processed to assess whether the human-annotation
+pipeline generalises beyond Daakie. The Cabécar recording documents an
+81.8-second session in Cabécar (ISO~639-3: \texttt{cjp}), a Chibchan language
+spoken in the Talamanca region of Costa Rica. Like Daakie, Cabécar has no
+available ASR model or pronunciation dictionary; all word and phone timing
+comes from human DoReCo annotation. The recording contains 28 utterances,
+213 words, and 431 syllables after processing.
+
+\subsection{Tier mapping: \texttt{@6} suffix convention}
+
+The Cabécar TextGrid follows the DoReCo \texttt{@6} tier-naming convention
+rather than the \texttt{@TA} convention used for Daakie. The mapping is:
+\texttt{tx@6} (utterance-level transcription), \texttt{ft@6} (English
+translation), \texttt{wd@6} (word intervals), \texttt{gl@6} (English morpheme
+glosses), \texttt{ph@6} (SAMPA phones). The SpeechPrint pipeline was
+parameterised to read these tier names; all downstream processing
+--- syllabification, nucleus measurement, and prosody labelling --- is
+identical to the Daakie pipeline.
+
+\subsection{Cabécar vowel inventory}
+
+The Cabécar vowel set was identified from the full \texttt{ph@6} tier. Twelve
+vowel phones are present, eight with nasal variants indicated by a tilde suffix:
+\texttt{a}, \texttt{a\~{}}, \texttt{E}, \texttt{E\~{}}, \texttt{I},
+\texttt{I\~{}}, \texttt{O}, \texttt{O\~{}}, \texttt{U}, \texttt{i},
+\texttt{u}, \texttt{u\~{}}. This inventory is passed to the maximum-onset
+syllabifier as the definition of a vowel nucleus.
+
+\subsection{F0 extraction and pipeline}
+
+CREPE (\texttt{torchcrepe}, \texttt{full} model, 10\,ms hop, batch\_size=128)
+is used as the primary F0 tracker, identical to the Daakie configuration. The
+speaker's pitch range was auto-detected from the first 20 seconds of audio
+(85--426\,Hz), indicating a higher fundamental frequency than the Daakie
+speaker. All five algorithmic optimisations (MAD threshold, utterance boundary
+reset, declination removal, nucleus edge trimming, and octave recovery) are
+applied identically. The resulting TextGrid uses the same six-tier questionnaire
+structure as all other corpora.
+
+% ENDED ADDING

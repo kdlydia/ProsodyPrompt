@@ -1,0 +1,12 @@
+# SpeechPrint annotation log for audio_2026-05-30_19-01-35.wav
+[1/9] Loading audio — /home/lydia/School/UPF/semester3/test2/SpeechPrint-main/linux/audio_2026-05-30_19-01-35.wav
+[2/9] Transcribing speech with Whisper — language=en
+[3/9] Preparing transcript for alignment — do you want tea or coffee do you want tea or coffee did you …
+[4/9] Running forced alignment
+[5/9] Extracting pitch, intensity, and formants
+[6/9] Creating IPA / phone layer
+[7/9] Creating symbolic prosody layer
+[8/9] Writing Praat TextGrid
+[9/9] Exporting CSV / ZIP
+
+✓ Wrote /home/lydia/School/UPF/semester3/test2/SpeechPrint-main/linux/out/english/audio_2026-05-30_19-01-35

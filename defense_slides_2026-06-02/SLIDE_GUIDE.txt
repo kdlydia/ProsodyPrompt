@@ -1,0 +1,99 @@
+DEFENSE SLIDES — Pitch Tracker Comparison
+SpeechPrint, Lydia Krifka-Dobes, June 2026
+============================================================
+
+SLIDE ORDER GUIDE
+-----------------
+
+SLIDES 01–05  (German GToBI — all trackers agree, no octave errors)
+   01_tracker_comparison_GermanA_keine_errors.png   — "eine gelbe Banane"
+   02_tracker_comparison_GermanB_keine_errors.png   — "einige Melonen"
+   03_tracker_comparison_GermanC_keine_errors.png   — "er sang die Lieder"
+   04_tracker_comparison_GermanD_keine_errors.png   — "er will die Rosen haben"
+   05_tracker_comparison_GermanE_keine_errors.png   — "ich wohne in Bern"
+
+   WHAT TO SAY: "On clean German sentences, all four trackers — Praat, Praat
+   with Xu(1999) correction, Librosa pYIN, and CREPE — agree within 2 Hz.
+   The red vertical lines mark octave-error frames; there are none."
+
+SLIDE 06  (English — 238 octave errors!)
+   06_tracker_comparison_ENGLISH_238_octave_errors.png
+
+   WHAT TO SAY: "On my English recording, Praat's raw output has 238 frames
+   where it reports half the true F0 — the classic octave error your supervisor
+   mentioned. The top panel shows dense red marks near 107 Hz. The pYIN panel
+   (third) shows the correct smooth contour near 200–214 Hz. CREPE agrees."
+
+SLIDE 07  (Daakie/DoReCo — 40 octave errors)
+   07_tracker_comparison_DORECO_40_octave_errors.png
+
+   WHAT TO SAY: "Same issue in the Daakie recording, 40 errors in 30 seconds."
+
+SLIDE 08  (KEY FINDING — bar chart comparing all trackers)
+   08_KEY_FINDING_octave_error_all_trackers_bar_chart.png
+
+   WHAT TO SAY: "This summarises the finding. For German, all bars are at the
+   same height — the trackers agree. For English, Praat (red) reports ~107 Hz
+   while CREPE (purple) and pYIN (green) report ~180–214 Hz. The sub-octave
+   error is clear and consistent."
+
+SLIDE 09  (WHY this matters — octave error causes wrong prosody label)
+   09_WHY_octave_error_causes_wrong_prosody_label.png
+
+   WHAT TO SAY: "Here is why this matters for prosody labelling. The equation
+   ΔF₀ = 12·log₂(offset/onset) drives the / \ - labels. If the onset is wrong
+   by 12 ST (an octave), the movement calculation is off by ±12 ST — which
+   flips a rising syllable to a falling label or vice versa. Left panel: what
+   Praat reports → the label comes out '-' (level). Right panel: what pYIN
+   sees → the same syllable correctly labelled '/' (rising)."
+
+SLIDE 10  (GToBI accuracy table — before vs. after)
+   10_GTOBI_comparison_table_human_vs_SpeechPrint_v3.png
+
+   WHAT TO SAY: "After switching to pYIN, three of five GToBI sentences are
+   correctly labelled. The two failures share the L*+H pattern where the
+   prosodic peak follows the starred syllable — a known challenge for local
+   F0 labellers. Future work could add a look-ahead window."
+
+NEW SLIDES (insert into presentation):
+-----------------------------------------------------------
+
+SLIDE 18b — Insert after Slide 17 (Daakie octave errors)
+   11_DORECO_tracker_table_and_optimisations.png
+
+   LEFT PANEL: four-tracker comparison table (CREPE / pYIN / Praat / YIN)
+     — voiced frame counts, unknown syllable counts, key property of each.
+     — CREPE highlighted in green as the chosen DoReCo tracker.
+     — YIN row in red — zero unknowns is a red flag, not a strength.
+
+   RIGHT PANEL: before/after bar chart for the 5 algorithmic optimisations
+     — Strong movements: 30.9% → 21.0%
+     — Falls: 26.7% → 18.8%
+     — Rises: 16.3% → 13.5%
+     — Rises/Falls ratio: 0.61 → 0.72 (scaled ×10 for visibility)
+
+SLIDE 21b — Insert after Slide 21 (GToBI pYIN results table)
+   13_GTOBI_BEST_summary.png
+   [NEW — GToBI BEST: 5-tier view of all 5 sentences with CREPE prosody]
+   Shows words / syllables / phones / gtobi (expert) / prosody side by side.
+   Insert BEFORE slide 21c (optimisations).
+
+SLIDE 21c — Insert after Slide 21b
+   12_OPTIMISATIONS_table.png
+
+   Five-row table: optimisation name / problem diagnosed / fix /
+   empirical effect. One row per optimisation:
+     1. MAD threshold         — std inflated → 30.9% strong → fix: MAD ×1.4826
+     2. Utterance boundary    — cross-boundary comparisons → fix: block at tx@TA
+     3. Declination removal   — falls>>rises drift → fix: linear detrend per utt
+     4. Nucleus edge trim     — transition contamination → fix: skip outer 15%
+     5. Octave recovery       — discard vs recover → fix: try ×2/÷2 first
+
+============================================================
+PANEL LAYOUT GUIDE (each comparison figure has 4 panels):
+  Top:    Praat SCC raw          — red verticals = octave errors
+  2nd:    Praat AC + Xu(1999)    — corrected version
+  3rd:    Librosa pYIN           — voiced/unvoiced masked cleanly
+  Bottom: torchcrepe (CREPE)     — deep CNN, best accuracy
+  Dashed horizontals at 100, 200, 400 Hz for scale reference.
+============================================================

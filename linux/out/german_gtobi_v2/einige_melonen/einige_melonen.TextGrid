@@ -1,0 +1,236 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0
+xmax = 1.2600226757369615
+tiers? <exists>
+size = 6
+item []:
+    item [1]:
+        class = "IntervalTier"
+        name = "words"
+        xmin = 0
+        xmax = 1.2600226757369615
+        intervals: size = 5
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.294
+            text = ""
+        intervals [2]:
+            xmin = 0.294
+            xmax = 0.536
+            text = "einige"
+        intervals [3]:
+            xmin = 0.536
+            xmax = 0.576
+            text = ""
+        intervals [4]:
+            xmin = 0.576
+            xmax = 0.92
+            text = "melonen"
+        intervals [5]:
+            xmin = 0.92
+            xmax = 1.2600226757369615
+            text = ""
+    item [2]:
+        class = "IntervalTier"
+        name = "syllables"
+        xmin = 0
+        xmax = 1.2600226757369615
+        intervals: size = 9
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.294
+            text = ""
+        intervals [2]:
+            xmin = 0.294
+            xmax = 0.3424
+            text = "aɪ"
+        intervals [3]:
+            xmin = 0.3424
+            xmax = 0.43920000000000003
+            text = "nɪ"
+        intervals [4]:
+            xmin = 0.43920000000000003
+            xmax = 0.536
+            text = "ɡə"
+        intervals [5]:
+            xmin = 0.536
+            xmax = 0.576
+            text = ""
+        intervals [6]:
+            xmin = 0.576
+            xmax = 0.6742857142857143
+            text = "me"
+        intervals [7]:
+            xmin = 0.6742857142857143
+            xmax = 0.7725714285714286
+            text = "lo"
+        intervals [8]:
+            xmin = 0.7725714285714286
+            xmax = 0.92
+            text = "nen"
+        intervals [9]:
+            xmin = 0.92
+            xmax = 1.2600226757369615
+            text = ""
+    item [3]:
+        class = "IntervalTier"
+        name = "phonemes"
+        xmin = 0
+        xmax = 1.2600226757369615
+        intervals: size = 15
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.294
+            text = ""
+        intervals [2]:
+            xmin = 0.294
+            xmax = 0.3424
+            text = "aɪ"
+        intervals [3]:
+            xmin = 0.3424
+            xmax = 0.39080000000000004
+            text = "n"
+        intervals [4]:
+            xmin = 0.39080000000000004
+            xmax = 0.43920000000000003
+            text = "ɪ"
+        intervals [5]:
+            xmin = 0.43920000000000003
+            xmax = 0.48760000000000003
+            text = "ɡ"
+        intervals [6]:
+            xmin = 0.48760000000000003
+            xmax = 0.536
+            text = "ə"
+        intervals [7]:
+            xmin = 0.536
+            xmax = 0.576
+            text = ""
+        intervals [8]:
+            xmin = 0.576
+            xmax = 0.6251428571428571
+            text = "m"
+        intervals [9]:
+            xmin = 0.6251428571428571
+            xmax = 0.6742857142857143
+            text = "eː"
+        intervals [10]:
+            xmin = 0.6742857142857143
+            xmax = 0.7234285714285714
+            text = "l"
+        intervals [11]:
+            xmin = 0.7234285714285714
+            xmax = 0.7725714285714286
+            text = "oː"
+        intervals [12]:
+            xmin = 0.7725714285714286
+            xmax = 0.8217142857142857
+            text = "n"
+        intervals [13]:
+            xmin = 0.8217142857142857
+            xmax = 0.8708571428571429
+            text = "ə"
+        intervals [14]:
+            xmin = 0.8708571428571429
+            xmax = 0.92
+            text = "n"
+        intervals [15]:
+            xmin = 0.92
+            xmax = 1.2600226757369615
+            text = ""
+    item [4]:
+        class = "IntervalTier"
+        name = "f0_pitch"
+        xmin = 0
+        xmax = 1.2600226757369615
+        intervals: size = 9
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.294
+            text = ""
+        intervals [2]:
+            xmin = 0.294
+            xmax = 0.3424
+            text = "118"
+        intervals [3]:
+            xmin = 0.3424
+            xmax = 0.43920000000000003
+            text = "131"
+        intervals [4]:
+            xmin = 0.43920000000000003
+            xmax = 0.536
+            text = "156"
+        intervals [5]:
+            xmin = 0.536
+            xmax = 0.576
+            text = ""
+        intervals [6]:
+            xmin = 0.576
+            xmax = 0.6742857142857143
+            text = "144"
+        intervals [7]:
+            xmin = 0.6742857142857143
+            xmax = 0.7725714285714286
+            text = "110"
+        intervals [8]:
+            xmin = 0.7725714285714286
+            xmax = 0.92
+            text = "101"
+        intervals [9]:
+            xmin = 0.92
+            xmax = 1.2600226757369615
+            text = ""
+    item [5]:
+        class = "IntervalTier"
+        name = "prosody_labels"
+        xmin = 0
+        xmax = 1.2600226757369615
+        intervals: size = 9
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.294
+            text = ""
+        intervals [2]:
+            xmin = 0.294
+            xmax = 0.3424
+            text = "–"
+        intervals [3]:
+            xmin = 0.3424
+            xmax = 0.43920000000000003
+            text = "//"
+        intervals [4]:
+            xmin = 0.43920000000000003
+            xmax = 0.536
+            text = "//"
+        intervals [5]:
+            xmin = 0.536
+            xmax = 0.576
+            text = ""
+        intervals [6]:
+            xmin = 0.576
+            xmax = 0.6742857142857143
+            text = "*\\"
+        intervals [7]:
+            xmin = 0.6742857142857143
+            xmax = 0.7725714285714286
+            text = "\\"
+        intervals [8]:
+            xmin = 0.7725714285714286
+            xmax = 0.92
+            text = "–"
+        intervals [9]:
+            xmin = 0.92
+            xmax = 1.2600226757369615
+            text = ""
+    item [6]:
+        class = "IntervalTier"
+        name = "warnings_review"
+        xmin = 0
+        xmax = 1.2600226757369615
+        intervals: size = 1
+        intervals [1]:
+            xmin = 0.0
+            xmax = 1.2600226757369615
+            text = "ok"

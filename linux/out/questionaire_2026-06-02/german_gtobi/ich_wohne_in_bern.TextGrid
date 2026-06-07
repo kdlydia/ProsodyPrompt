@@ -1,0 +1,214 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0
+xmax = 1.1548979591836734
+tiers? <exists>
+size = 6
+item []:
+    item [1]:
+        class = "IntervalTier"
+        name = "Wort"
+        xmin = 0
+        xmax = 1.1548979591836734
+        intervals: size = 6
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.07276211371875475
+            text = ""
+        intervals [2]:
+            xmin = 0.07276211371875475
+            xmax = 0.2155328468782882
+            text = "Ich"
+        intervals [3]:
+            xmin = 0.2155328468782882
+            xmax = 0.5003067286104759
+            text = "wohne"
+        intervals [4]:
+            xmin = 0.5003067286104759
+            xmax = 0.6469153847044055
+            text = "in"
+        intervals [5]:
+            xmin = 0.6469153847044055
+            xmax = 1.006912555950756
+            text = "Bern"
+        intervals [6]:
+            xmin = 1.006912555950756
+            xmax = 1.1548979591836734
+            text = ""
+    item [2]:
+        class = "TextTier"
+        name = "Ton"
+        xmin = 0
+        xmax = 1.1548979591836734
+        points: size = 2
+        points [1]:
+            number = 0.3022699051956392
+            mark = "L*+H"
+        points [2]:
+            number = 1.006912555950756
+            mark = "L-%"
+    item [3]:
+        class = "IntervalTier"
+        name = "syllables"
+        xmin = 0
+        xmax = 1.1548979591836734
+        intervals: size = 7
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.07276211371875475
+            text = ""
+        intervals [2]:
+            xmin = 0.07276211371875475
+            xmax = 0.2155328468782882
+            text = "ɪç"
+        intervals [3]:
+            xmin = 0.2155328468782882
+            xmax = 0.35791978774438205
+            text = "voː"
+        intervals [4]:
+            xmin = 0.35791978774438205
+            xmax = 0.5003067286104759
+            text = "nə"
+        intervals [5]:
+            xmin = 0.5003067286104759
+            xmax = 0.6469153847044055
+            text = "ɪn"
+        intervals [6]:
+            xmin = 0.6469153847044055
+            xmax = 1.006912555950756
+            text = "bɛɾn"
+        intervals [7]:
+            xmin = 1.006912555950756
+            xmax = 1.1548979591836734
+            text = ""
+    item [4]:
+        class = "IntervalTier"
+        name = "phonemes"
+        xmin = 0
+        xmax = 1.1548979591836734
+        intervals: size = 14
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.07276211371875475
+            text = ""
+        intervals [2]:
+            xmin = 0.07276211371875475
+            xmax = 0.14414748029852148
+            text = "ɪ"
+        intervals [3]:
+            xmin = 0.14414748029852148
+            xmax = 0.2155328468782882
+            text = "ç"
+        intervals [4]:
+            xmin = 0.2155328468782882
+            xmax = 0.28672631731133513
+            text = "v"
+        intervals [5]:
+            xmin = 0.28672631731133513
+            xmax = 0.35791978774438205
+            text = "oː"
+        intervals [6]:
+            xmin = 0.35791978774438205
+            xmax = 0.42911325817742896
+            text = "n"
+        intervals [7]:
+            xmin = 0.42911325817742896
+            xmax = 0.5003067286104759
+            text = "ə"
+        intervals [8]:
+            xmin = 0.5003067286104759
+            xmax = 0.5736110566574406
+            text = "ɪ"
+        intervals [9]:
+            xmin = 0.5736110566574406
+            xmax = 0.6469153847044055
+            text = "n"
+        intervals [10]:
+            xmin = 0.6469153847044055
+            xmax = 0.736914677515993
+            text = "b"
+        intervals [11]:
+            xmin = 0.736914677515993
+            xmax = 0.8269139703275807
+            text = "ɛ"
+        intervals [12]:
+            xmin = 0.8269139703275807
+            xmax = 0.9169132631391683
+            text = "ɾ"
+        intervals [13]:
+            xmin = 0.9169132631391683
+            xmax = 1.006912555950756
+            text = "n"
+        intervals [14]:
+            xmin = 1.006912555950756
+            xmax = 1.1548979591836734
+            text = ""
+    item [5]:
+        class = "IntervalTier"
+        name = "f0_vowel"
+        xmin = 0
+        xmax = 1.1548979591836734
+        intervals: size = 7
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.07276211371875475
+            text = ""
+        intervals [2]:
+            xmin = 0.07276211371875475
+            xmax = 0.2155328468782882
+            text = "116|114Hz  59.9dB"
+        intervals [3]:
+            xmin = 0.2155328468782882
+            xmax = 0.35791978774438205
+            text = "107|131Hz  74.6dB"
+        intervals [4]:
+            xmin = 0.35791978774438205
+            xmax = 0.5003067286104759
+            text = "155|152Hz  74.2dB"
+        intervals [5]:
+            xmin = 0.5003067286104759
+            xmax = 0.6469153847044055
+            text = "152|106Hz  73.7dB"
+        intervals [6]:
+            xmin = 0.6469153847044055
+            xmax = 1.006912555950756
+            text = "91|91Hz  69.7dB"
+        intervals [7]:
+            xmin = 1.006912555950756
+            xmax = 1.1548979591836734
+            text = ""
+    item [6]:
+        class = "IntervalTier"
+        name = "prosody"
+        xmin = 0
+        xmax = 1.1548979591836734
+        intervals: size = 7
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.07276211371875475
+            text = ""
+        intervals [2]:
+            xmin = 0.07276211371875475
+            xmax = 0.2155328468782882
+            text = "_"
+        intervals [3]:
+            xmin = 0.2155328468782882
+            xmax = 0.35791978774438205
+            text = "_//"
+        intervals [4]:
+            xmin = 0.35791978774438205
+            xmax = 0.5003067286104759
+            text = "*-"
+        intervals [5]:
+            xmin = 0.5003067286104759
+            xmax = 0.6469153847044055
+            text = "\\"
+        intervals [6]:
+            xmin = 0.6469153847044055
+            xmax = 1.006912555950756
+            text = "_"
+        intervals [7]:
+            xmin = 1.006912555950756
+            xmax = 1.1548979591836734
+            text = ""

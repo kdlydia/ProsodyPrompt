@@ -7,11 +7,11 @@
 \label{sec:pitch_extraction}
 
 A central challenge in automated prosody labelling is the reliability of the
-underlying fundamental frequency (F0) measurements. SpeechPrint originally used
+underlying fundamental frequency (F0) measurements. ProsodyPrompt originally used
 Praat's default autocorrelation pitch tracker (the SCC method), which is
 susceptible to \emph{octave errors}: frames where the tracker identifies a
 harmonic partial rather than the true F0. An octave error is not a small
-perturbation --- it corresponds to a shift of exactly 12 semitones, which is
+perturbation: it corresponds to a shift of exactly 12 semitones, which is
 typically the full pitch range of a speaker. When the F0 onset or offset of a
 syllable nucleus is contaminated by such an error, the intra-syllable pitch
 movement $\Delta_{F_0}$ can be completely wrong. For example, if the true F0 at
@@ -19,7 +19,7 @@ syllable onset is 214\,Hz and Praat mistakenly reports 107\,Hz (the second
 sub-harmonic, 12\,ST below), a genuinely rising syllable will appear to the
 labeller as level or even falling. As demonstrated empirically below, 238 such
 octave errors were found in the first 30 seconds of the English test recording
-alone --- directly explaining many of the erroneous prosody labels previously
+alone, directly explaining many of the erroneous prosody labels previously
 observed.
 
 \subsection{Comparative Evaluation: Praat, Librosa pYIN, and CREPE}
@@ -112,7 +112,7 @@ To address this, three pitch trackers were evaluated and compared:
 A prerequisite for reliable pitch extraction is a pitch search range matched to
 the speaker. The default Praat range (75--600\,Hz) covers both bass and soprano
 voice types simultaneously, which increases the risk of octave errors in
-narrower-range recordings. SpeechPrint v3 therefore auto-detects the speaker's
+narrower-range recordings. ProsodyPrompt v3 therefore auto-detects the speaker's
 pitch range from a 20-second scan of the recording using pYIN at loose bounds
 (65--500\,Hz), computes the median of the voiced frames, and sets the working
 floor and ceiling to $\text{median} \times 0.5$ and $\text{median} \times 2.5$
@@ -157,7 +157,7 @@ pipelines.
 \section{System Architecture and Implementation}
 \label{sec:implementation}
 
-SpeechPrint is implemented as a Python pipeline organized into nine sequential
+ProsodyPrompt is implemented as a Python pipeline organized into nine sequential
 stages. The pipeline is invoked from the command line with a WAV file and a
 language code; it produces a Praat-format TextGrid, a set of CSV tables, and a
 JSON manifest, all written to a per-recording output directory. The nine stages
@@ -311,7 +311,7 @@ smooth over the rapid amplitude rise that marks the onset of a prominent accent.
 The supervisor noted: ``you'd want an RMS follower which would operate on a
 shorter window of time and then you'd smooth it'' (Krifka, meeting June 2026).
 
-In SpeechPrint v3, intensity is extracted using Parselmouth with a 40\,ms
+In ProsodyPrompt v3, intensity is extracted using Parselmouth with a 40\,ms
 analysis window (reduced from the Praat default of approximately 100\,ms) and
 then averaged over the nucleus window. This provides a more responsive estimate
 of the amplitude peak within the syllable rather than the mean across the whole
@@ -329,7 +329,7 @@ what matters for prominence is not the absolute level but the local contrast.
 \section{Evaluation Design}
 \label{sec:eval_design}
 
-The evaluation of SpeechPrint's prosody output takes two forms.
+The evaluation of ProsodyPrompt's prosody output takes two forms.
 
 \subsection{Automatic benchmark: GToBI comparison}
 
@@ -342,10 +342,10 @@ L*+H (rising accent with low starred tone). The comparison procedure is:
 \begin{enumerate}
 \item Human word boundaries from the Wort tier are used as input, removing
       alignment error as a confound.
-\item SpeechPrint's prosody labels are assigned using the procedure described
+\item ProsodyPrompt's prosody labels are assigned using the procedure described
       in Section~\ref{sec:prosody_label_method}.
 \item The GToBI tone symbol and its position within the word sequence are
-      compared to the SpeechPrint label on the corresponding syllable.
+      compared to the ProsodyPrompt label on the corresponding syllable.
 \end{enumerate}
 
 \subsection{Perceptual evaluation: questionnaire}
@@ -377,7 +377,7 @@ described in Section~\ref{sec:english_analysis}.
 \section{Demo Design: ASCII Prosody Symbols as Visual Representation}
 \label{sec:demo_design}
 
-A design principle of SpeechPrint is that the prosody representation should be
+A design principle of ProsodyPrompt is that the prosody representation should be
 legible without specialist software. The chosen symbols are:
 
 \begin{center}
@@ -409,7 +409,7 @@ prominence marker in linguistic notation. All symbols are available in plain
 ASCII and render unambiguously in a monospaced font and in Praat tier columns.
 
 The demo video for the evaluation questionnaire walks through the following
-sequence: (1) a raw audio recording is shown in Praat; (2) SpeechPrint
+sequence: (1) a raw audio recording is shown in Praat; (2) ProsodyPrompt
 processes it and adds five tiers; (3) the prosody tier is highlighted and the
 symbols are explained; (4) two minimal-pair sentences differing only in which
 word receives the accent are compared side by side, showing how the \texttt{*}
@@ -559,7 +559,7 @@ The DoReCo corpus provides a 162.7-second archival recording of Daakie (Port
 Vato, Vanuatu) with detailed human-annotated TextGrid tiers
 \cite{seifart2022doreco,krifka2024daakie}.
 Because no forced aligner or ASR model exists for Daakie, the standard
-SpeechPrint word-alignment and phonemization stages (Stages 2--4 and 6) are
+ProsodyPrompt word-alignment and phonemization stages (Stages 2--4 and 6) are
 replaced entirely by the existing human annotations, and only the acoustic
 measurement and prosody-labelling stages are applied automatically.
 
@@ -625,7 +625,7 @@ Tracker & Voiced frames & Unknown syllables & Notes \\
 CREPE (full, 10\,ms)  & 9{,}912  & 4 (0.9\%)  & best accuracy \\
 pYIN (librosa)        & 16{,}634 & 11 (2.4\%) & reliable V/UV detection \\
 Praat AC              & 16{,}784 & 2 (0.4\%)  & known octave errors \\
-YIN (librosa)         & 27{,}350 & 0 (0.0\%)  & no V/UV detection --- unreliable \\
+YIN (librosa)         & 27{,}350 & 0 (0.0\%)  & no V/UV detection; unreliable \\
 \hline
 \end{tabular}
 \caption{Pitch tracker comparison on the DoReCo Daakie recording (162.7\,s,
@@ -653,9 +653,9 @@ The Cabécar TextGrid follows the DoReCo \texttt{@6} tier-naming convention
 rather than the \texttt{@TA} convention used for Daakie. The mapping is:
 \texttt{tx@6} (utterance-level transcription), \texttt{ft@6} (English
 translation), \texttt{wd@6} (word intervals), \texttt{gl@6} (English morpheme
-glosses), \texttt{ph@6} (SAMPA phones). The SpeechPrint pipeline was
+glosses), \texttt{ph@6} (SAMPA phones). The ProsodyPrompt pipeline was
 parameterised to read these tier names; all downstream processing
---- syllabification, nucleus measurement, and prosody labelling --- is
+(syllabification, nucleus measurement, and prosody labelling) is
 identical to the Daakie pipeline.
 
 \subsection{Cabécar vowel inventory}

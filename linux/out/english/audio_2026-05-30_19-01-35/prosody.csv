@@ -1,0 +1,2 @@
+file,language,duration_s,n_words,n_syllables,n_phonemes,mean_f0_hz,min_f0_hz,max_f0_hz,f0_std_st,mean_intensity_db,prominent_count,rising_count,falling_count,level_count,alignment_source
+audio_2026-05-30_19-01-35.wav,en,305.4585,454,618,1528,184.31469556497498,76.36260706059704,366.2055887835556,6.876100156874924,61.342482887993135,1,68,149,394,whisperx

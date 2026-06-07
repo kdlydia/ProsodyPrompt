@@ -1,0 +1,2 @@
+file,language,duration_s,n_words,n_syllables,n_phonemes,mean_f0_hz,min_f0_hz,max_f0_hz,f0_std_st,mean_intensity_db,prominent_count,rising_count,falling_count,level_count,alignment_source
+er_will_die_rosen_haben.wav,de,1.2681179138321996,5,7,17,110.08130373448694,94.87555310258122,135.3153365336983,2.7005136151965976,70.56013974487198,1,1,1,5,whisperx

@@ -1,0 +1,292 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0
+xmax = 1.484625850340136
+tiers? <exists>
+size = 8
+item []:
+    item [1]:
+        class = "IntervalTier"
+        name = "sentence"
+        xmin = 0
+        xmax = 1.484625850340136
+        intervals: size = 3
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.10507221634716003
+            text = ""
+        intervals [2]:
+            xmin = 0.10507221634716003
+            xmax = 1.2144090434290382
+            text = "eine gelbe Banane"
+        intervals [3]:
+            xmin = 1.2144090434290382
+            xmax = 1.484625850340136
+            text = ""
+    item [2]:
+        class = "IntervalTier"
+        name = "translation"
+        xmin = 0
+        xmax = 1.484625850340136
+        intervals: size = 3
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.10507221634716003
+            text = ""
+        intervals [2]:
+            xmin = 0.10507221634716003
+            xmax = 1.2144090434290382
+            text = "a yellow banana"
+        intervals [3]:
+            xmin = 1.2144090434290382
+            xmax = 1.484625850340136
+            text = ""
+    item [3]:
+        class = "IntervalTier"
+        name = "words"
+        xmin = 0
+        xmax = 1.484625850340136
+        intervals: size = 5
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.10507221634716003
+            text = ""
+        intervals [2]:
+            xmin = 0.10507221634716003
+            xmax = 0.30287886144413195
+            text = "eine"
+        intervals [3]:
+            xmin = 0.30287886144413195
+            xmax = 0.6060641416025315
+            text = "gelbe"
+        intervals [4]:
+            xmin = 0.6060641416025315
+            xmax = 1.2144090434290382
+            text = "Banane"
+        intervals [5]:
+            xmin = 1.2144090434290382
+            xmax = 1.484625850340136
+            text = ""
+    item [4]:
+        class = "IntervalTier"
+        name = "gloss"
+        xmin = 0
+        xmax = 1.484625850340136
+        intervals: size = 5
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.10507221634716003
+            text = ""
+        intervals [2]:
+            xmin = 0.10507221634716003
+            xmax = 0.30287886144413195
+            text = "a"
+        intervals [3]:
+            xmin = 0.30287886144413195
+            xmax = 0.6060641416025315
+            text = "yellow"
+        intervals [4]:
+            xmin = 0.6060641416025315
+            xmax = 1.2144090434290382
+            text = "banana"
+        intervals [5]:
+            xmin = 1.2144090434290382
+            xmax = 1.484625850340136
+            text = ""
+    item [5]:
+        class = "IntervalTier"
+        name = "syllables"
+        xmin = 0
+        xmax = 1.484625850340136
+        intervals: size = 9
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.10507221634716003
+            text = ""
+        intervals [2]:
+            xmin = 0.10507221634716003
+            xmax = 0.1792497082585245
+            text = "aɪ"
+        intervals [3]:
+            xmin = 0.1792497082585245
+            xmax = 0.30287886144413195
+            text = "nə"
+        intervals [4]:
+            xmin = 0.30287886144413195
+            xmax = 0.47973694153653174
+            text = "ɡɛl"
+        intervals [5]:
+            xmin = 0.47973694153653174
+            xmax = 0.6060641416025315
+            text = "bə"
+        intervals [6]:
+            xmin = 0.6060641416025315
+            xmax = 0.8088457755447005
+            text = "ba"
+        intervals [7]:
+            xmin = 0.8088457755447005
+            xmax = 1.0116274094868694
+            text = "naː"
+        intervals [8]:
+            xmin = 1.0116274094868694
+            xmax = 1.2144090434290382
+            text = "nə"
+        intervals [9]:
+            xmin = 1.2144090434290382
+            xmax = 1.484625850340136
+            text = ""
+    item [6]:
+        class = "IntervalTier"
+        name = "phones"
+        xmin = 0
+        xmax = 1.484625850340136
+        intervals: size = 16
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.10507221634716003
+            text = ""
+        intervals [2]:
+            xmin = 0.10507221634716003
+            xmax = 0.1792497082585245
+            text = "aɪ"
+        intervals [3]:
+            xmin = 0.1792497082585245
+            xmax = 0.22870136953276748
+            text = "n"
+        intervals [4]:
+            xmin = 0.22870136953276748
+            xmax = 0.30287886144413195
+            text = "ə"
+        intervals [5]:
+            xmin = 0.30287886144413195
+            xmax = 0.3534097414705319
+            text = "ɡ"
+        intervals [6]:
+            xmin = 0.3534097414705319
+            xmax = 0.4292060615101318
+            text = "ɛ"
+        intervals [7]:
+            xmin = 0.4292060615101318
+            xmax = 0.47973694153653174
+            text = "l"
+        intervals [8]:
+            xmin = 0.47973694153653174
+            xmax = 0.5302678215629316
+            text = "b"
+        intervals [9]:
+            xmin = 0.5302678215629316
+            xmax = 0.6060641416025315
+            text = "ə"
+        intervals [10]:
+            xmin = 0.6060641416025315
+            xmax = 0.6871767951793991
+            text = "b"
+        intervals [11]:
+            xmin = 0.6871767951793991
+            xmax = 0.8088457755447005
+            text = "a"
+        intervals [12]:
+            xmin = 0.8088457755447005
+            xmax = 0.8899584291215681
+            text = "n"
+        intervals [13]:
+            xmin = 0.8899584291215681
+            xmax = 1.0116274094868694
+            text = "aː"
+        intervals [14]:
+            xmin = 1.0116274094868694
+            xmax = 1.092740063063737
+            text = "n"
+        intervals [15]:
+            xmin = 1.092740063063737
+            xmax = 1.2144090434290382
+            text = "ə"
+        intervals [16]:
+            xmin = 1.2144090434290382
+            xmax = 1.484625850340136
+            text = ""
+    item [7]:
+        class = "IntervalTier"
+        name = "gtobi"
+        xmin = 0
+        xmax = 1.484625850340136
+        intervals: size = 9
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.10507221634716003
+            text = ""
+        intervals [2]:
+            xmin = 0.10507221634716003
+            xmax = 0.1792497082585245
+            text = ""
+        intervals [3]:
+            xmin = 0.1792497082585245
+            xmax = 0.30287886144413195
+            text = ""
+        intervals [4]:
+            xmin = 0.30287886144413195
+            xmax = 0.47973694153653174
+            text = ""
+        intervals [5]:
+            xmin = 0.47973694153653174
+            xmax = 0.6060641416025315
+            text = ""
+        intervals [6]:
+            xmin = 0.6060641416025315
+            xmax = 0.8088457755447005
+            text = ""
+        intervals [7]:
+            xmin = 0.8088457755447005
+            xmax = 1.0116274094868694
+            text = "L+H*"
+        intervals [8]:
+            xmin = 1.0116274094868694
+            xmax = 1.2144090434290382
+            text = ""
+        intervals [9]:
+            xmin = 1.2144090434290382
+            xmax = 1.484625850340136
+            text = ""
+    item [8]:
+        class = "IntervalTier"
+        name = "prosody"
+        xmin = 0
+        xmax = 1.484625850340136
+        intervals: size = 9
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.10507221634716003
+            text = ""
+        intervals [2]:
+            xmin = 0.10507221634716003
+            xmax = 0.1792497082585245
+            text = "\\"
+        intervals [3]:
+            xmin = 0.1792497082585245
+            xmax = 0.30287886144413195
+            text = "\\"
+        intervals [4]:
+            xmin = 0.30287886144413195
+            xmax = 0.47973694153653174
+            text = "\\"
+        intervals [5]:
+            xmin = 0.47973694153653174
+            xmax = 0.6060641416025315
+            text = "\\"
+        intervals [6]:
+            xmin = 0.6060641416025315
+            xmax = 0.8088457755447005
+            text = "_"
+        intervals [7]:
+            xmin = 0.8088457755447005
+            xmax = 1.0116274094868694
+            text = "*‾//"
+        intervals [8]:
+            xmin = 1.0116274094868694
+            xmax = 1.2144090434290382
+            text = "_"
+        intervals [9]:
+            xmin = 1.2144090434290382
+            xmax = 1.484625850340136
+            text = ""

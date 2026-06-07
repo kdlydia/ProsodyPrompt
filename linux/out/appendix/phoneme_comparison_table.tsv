@@ -1,0 +1,10 @@
+Metric	Human h_ph@TA	Automatic (WhisperX+espeak-ng IT)
+Total non-empty intervals	1065	790
+Pause/event intervals	89	0
+Coverage of recording	62%	41%
+Mean phone duration (ms)	95	85
+Distinct IPA symbols	33	36
+Shared symbols (remapped)	24	24
+Temporal overlap	55%	—
+Boundary-matched pairs (±30ms)	168/1065 (16%)	—
+Same symbol at matched boundaries	13/168 (8%)	—

@@ -1,0 +1,24 @@
+{
+  "backend": "speechprint_pipeline",
+  "version": "0.4.0",
+  "tiers": [
+    "words",
+    "syllables",
+    "phonemes",
+    "f0_pitch",
+    "prosody_labels",
+    "warnings_review"
+  ],
+  "stages": [
+    "Loading audio",
+    "Transcribing speech with Whisper",
+    "Preparing transcript for alignment",
+    "Running forced alignment",
+    "Extracting pitch, intensity, and formants",
+    "Creating IPA / phone layer",
+    "Creating symbolic prosody layer",
+    "Writing Praat TextGrid",
+    "Exporting CSV / ZIP"
+  ],
+  "alignment_source": "whisperx"
+}

@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: speechprint
+Version: 0.3.0
+Summary: SpeechPrint installer and corpus creator for Linux
+Requires-Python: >=3.11
+Requires-Dist: bleak>=3.0.2
+Requires-Dist: h5py>=3.16.0
+Requires-Dist: librosa>=0.11.0
+Requires-Dist: mediapipe>=0.10.35
+Requires-Dist: netcdf4>=1.7.4
+Requires-Dist: opencv-python>=4.13.0.92
+Requires-Dist: PyGObject
+Requires-Dist: pynput>=1.8.2
+Requires-Dist: python-osc>=1.10.2
+Requires-Dist: sounddevice>=0.5.5
+Requires-Dist: spaudiopy>=0.2.0

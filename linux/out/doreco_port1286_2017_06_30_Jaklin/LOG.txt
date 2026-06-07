@@ -1,0 +1,12 @@
+# SpeechPrint annotation log for doreco_port1286_2017_06_30_Jaklin.wav
+[1/9] Loading audio — /home/lydia/School/UPF/semester3/test2/SpeechPrint-main/linux/doreco_port1286_2017_06_30_Jaklin.wav
+[2/9] Transcribing speech with Whisper — language=it
+[3/9] Preparing transcript for alignment — s'occhini a te con napia non l'ombini non puni a punenso un'…
+[4/9] Running forced alignment
+[5/9] Extracting pitch, intensity, and formants
+[6/9] Creating IPA / phone layer
+[7/9] Creating symbolic prosody layer
+[8/9] Writing Praat TextGrid
+[9/9] Exporting CSV / ZIP
+
+✓ Wrote /home/lydia/School/UPF/semester3/test2/SpeechPrint-main/linux/out/doreco_port1286_2017_06_30_Jaklin

@@ -1,0 +1,891 @@
+SpeechPrint Prosody Minimal Pairs — Automatic Labels
+========================================================================
+Backend: MFA english_mfa (phone-level)
+Prosody symbols: / rising  \\ falling  // strong-rise  \\\\ strong-fall
+                 - high    _ low   * accent  combinations: *-\\ etc.
+F0 format: onset|midpoint|offset Hz  amplitude dB (at vowel nucleus)
+
+
+[1a] Do you want tea or COFFEE? [contrastive]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  duː        do             221|213|214Hz  65.7dB            _
+  juː        you            225|230|231Hz  71.2dB            -
+  wɔnt       want           234|223|221Hz  68.8dB            -
+  tiː        tea            219|249|272Hz  65.7dB            -//
+  ɔːɹ        or             272|132|129Hz  63.6dB            _\\
+> kɔ         coffee         203|188|184Hz  64.2dB            *-\\
+  fi         coffee         159|152|152Hz  54.4dB            _
+
+[1b] Did you meet MARY or MARTHA yesterday? [contr]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> dɪd        did            211|215|193Hz  66.4dB            *-\
+  juː        you            193|184|87Hz  59.0dB             _\\
+  miːt       meet           113|137|128Hz  62.9dB            _//
+  mɛ         mary           216|207|199Hz  63.4dB            _
+> ɹi         mary           262|343|303Hz  66.1dB            *-//
+  ɔːɹ        or             303|258|236Hz  64.7dB            \\
+  mɑːɹ       martha         209|206|213Hz  66.2dB            _
+  θə         martha         159|181|165Hz  62.3dB            -
+  jɛs        yesterday      165|160|164Hz  55.9dB            _
+  tɚ         yesterday                                       ?
+  deɪ        yesterday      153|166|163Hz  55.0dB            _
+
+
+[2a] Who flew to Milan yesterday? [wh-q]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> huː        who            211|206|203Hz  62.5dB            *-
+  fluː       flew           215|215|213Hz  67.0dB            -
+  tuː        to             213|210|212Hz  65.4dB            -
+> mɪ         milan          215|213|210Hz  66.0dB            *-
+  læn        milan          104|106|106Hz  51.9dB            _
+  jɛs                       99|88|89Hz  61.0dB               _\\
+
+[2b] MARY flew to Milan yesterday. [focus:MARY]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> mɛ         mary           212|226|245Hz  68.5dB            *-//
+  ɹi         mary           250|217|192Hz  66.1dB            -\\
+  fluː       flew           95|91|88Hz  62.6dB               _
+  tuː        to             100|99|94Hz  56.8dB              -
+  mɪ         milan          90|90|88Hz  59.5dB               -
+  læn        milan          87|86|85Hz  59.0dB               -
+  jɛs        yesterday      86|85|92Hz  57.0dB               _
+> tɚ         yesterday      175|172|168Hz  59.0dB            *-
+  deɪ        yesterday      83|87|88Hz  54.5dB               _
+
+[2c] Where did Mary fly yesterday? [wh-q]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> wɛɹ        where          272|280|292Hz  70.0dB            *-
+  dɪd        did                                             ?
+  mɛ         mary           280|274|270Hz  68.9dB            -
+  ɹi         mary           267|269|271Hz  58.8dB            -
+  flaɪ       fly            223|222|251Hz  65.2dB            //
+  jɛs                       209|175|178Hz  62.7dB            _\\
+  tɚ                        170|168|164Hz  60.3dB            -
+
+[2d] Mary flew to MILAN yesterday. [focus:MILAN]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  mɛ         mary           205|219|224Hz  69.7dB            _//
+  ɹi         mary           234|244|238Hz  68.7dB            -
+  fluː       flew           233|226|114Hz  66.8dB            _\\
+  tuː        to             232|225|213Hz  62.2dB            -
+  mɪ         milan          210|206|200Hz  69.5dB            -
+  læn        milan          197|214|232Hz  65.8dB            -//
+  jɛs        yesterday      188|184|182Hz  62.5dB            -
+  tɚ         yesterday      85|159|164Hz  61.4dB             //
+  deɪ        yesterday      81|88|89Hz  57.2dB               _//
+
+[2e] When did Mary fly to Milan? [wh-q]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> wɛn        when           199|195|199Hz  68.4dB            *-
+  dɪd        did            208|209|202Hz  68.9dB            -
+  mɛ         mary           201|194|190Hz  66.2dB            -
+  ɹi         mary           187|191|190Hz  62.1dB            -
+  flaɪ       fly            185|181|212Hz  64.2dB            _//
+  tuː        to             212|224|220Hz  62.1dB            -
+  mɪ         milan          252|242|234Hz  63.6dB            -
+  læn        milan          267|285|305Hz  64.2dB            -//
+
+[2f] Mary flew to Milan YESTERDAY. [focus:YEST]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  mɛ         mary           205|219|224Hz  69.7dB            _//
+  ɹi         mary           234|244|238Hz  68.7dB            -
+  fluː       flew           233|226|114Hz  66.8dB            _\\
+  tuː        to             232|225|213Hz  62.2dB            -
+  mɪ         milan          210|206|200Hz  69.5dB            -
+  læn        milan          197|214|232Hz  65.8dB            -//
+  jɛs        yesterday      188|184|182Hz  62.5dB            -
+  tɚ         yesterday      85|159|164Hz  61.4dB             //
+  deɪ        yesterday      81|88|89Hz  57.2dB               _//
+
+[2g] How did Mary go to Milan yesterday? [wh-q]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  haʊ        how            91|95|194Hz  61.7dB              _//
+> dɪd        did            220|215|213Hz  67.5dB            *-
+  mɛ         mary           203|193|189Hz  64.4dB            -
+  ɹi         mary           194|202|101Hz  59.7dB            _\\
+  ɡoʊ        go             187|184|183Hz  62.8dB            -
+  tuː        to             183|184|92Hz  60.9dB             -\\
+  mɪ         milan          93|93|88Hz  59.1dB               _
+  læn        milan          90|119|135Hz  62.5dB             _//
+
+[2h] Mary FLEW to Milan yesterday. [focus:FLEW]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> jɛs        yesterday      212|219|227Hz  68.5dB            *-
+  tɚ         yesterday      117|117|237Hz  57.9dB            //
+  deɪ        yesterday      115|115|115Hz  54.4dB            _
+> mɛ         mary           213|210|208Hz  67.6dB            *-
+  ɹi         mary           210|209|207Hz  68.5dB            -
+  fluː       flew           204|203|203Hz  66.4dB            -
+  tuː        to             203|205|201Hz  66.2dB            -
+  mɪ         milan          193|190|187Hz  64.5dB            -
+  læn        milan          190|197|216Hz  67.2dB            //
+  jɛs        yesterday                                       ?
+> tɚ         yesterday      159|155|85Hz  61.8dB             *-\\
+  deɪ        yesterday      166|88|89Hz  56.1dB              _\\
+
+
+[3a] Mary has arrived already. [statement]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> mɛ         mary           202|203|213Hz  67.9dB            *-
+> ɹi         mary           244|232|225Hz  67.2dB            *-
+  hæz        has            225|217|112Hz  60.5dB            _\\
+  ɚ          arrived        101|205|199Hz  64.0dB            _//
+  ɹaɪvd      arrived        182|240|239Hz  64.3dB            //
+  ɔːl        already        235|226|223Hz  62.2dB            -
+  ɹɛ         already        129|133|136Hz  64.4dB            _
+  di         already        135|137|137Hz  50.3dB            _
+
+[3b] Mary has arrived already? [question]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> mɛ         mary           217|216|218Hz  67.6dB            *-
+  ɹi         mary           225|112|113Hz  60.8dB            _\\
+> hæz        has            233|252|287Hz  66.8dB            *-//
+  ɚ          arrived        268|209|185Hz  65.5dB            \\
+  ɹaɪvd      arrived        164|160|167Hz  58.2dB            _
+  ɔːl        already                                         ?
+  ɹɛ         already        80|82|84Hz  59.8dB               -
+  di         already        86|86|86Hz  52.7dB               _
+
+[3c] Mary has arrived ALREADY? [incredulity]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> mɛ         mary           203|205|216Hz  67.2dB            *-
+  ɹi         mary           269|267|271Hz  68.8dB            -
+  hæz        has            271|257|236Hz  68.9dB            \\
+  ɚ          arrived        242|225|215Hz  68.0dB            _\\
+  ɹaɪvd      arrived        194|249|262Hz  66.9dB            -//
+  ɔːl        already        188|182|177Hz  66.5dB            _
+  ɹɛ         already        170|163|159Hz  62.3dB            -
+  di         already        164|161|166Hz  60.6dB            -
+  aɪ         i              166|170|166Hz  56.6dB            -
+
+
+[4a] I need to perMIT this. [verb stress]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  ɔːl        already        188|182|177Hz  66.5dB            _
+  ɹɛ         already        170|163|159Hz  62.3dB            -
+  di         already        164|161|166Hz  60.6dB            -
+  aɪ         i              166|170|166Hz  56.6dB            -
+> niːd       need           188|199|101Hz  66.1dB            *-\\
+  tuː        to             100|97|97Hz  62.4dB              _
+  pɜː        permit         185|172|166Hz  62.0dB            -\\
+  mɪt        permit         157|170|186Hz  60.0dB            -//
+  ðɪs        this           126|120|120Hz  59.9dB            _
+  aɪ         i              257|291|344Hz  60.5dB            -//
+
+[4b] I need a new PERmit today. [noun stress]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  mɪt                       157|170|186Hz  60.0dB            -//
+  ðɪs        this           126|120|120Hz  59.9dB            _
+  aɪ         i              257|291|344Hz  60.5dB            -//
+  niːd       need           201|194|195Hz  66.3dB            _
+> eɪ         a              200|98|180Hz  63.2dB             *-\
+  nuː        new            91|90|90Hz  51.9dB               _
+> pɜː        permit         178|174|171Hz  66.2dB            *-
+  mɪt        permit         168|163|192Hz  63.8dB            _//
+  tə         today          259|260|269Hz  66.3dB            -
+  deɪ        today          368|368|368Hz  50.6dB            -
+
+[4c] The CONtract was signed. [noun]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  mɪt                       168|163|192Hz  63.8dB            _//
+  tə         today          259|260|269Hz  66.3dB            -
+  deɪ        today          368|368|368Hz  50.6dB            -
+  ðə         the            229|225|161Hz  66.7dB            _\\
+  kɑːn       contract                                        ?
+> tɹækt      contract       207|227|233Hz  70.6dB            *-//
+  wʌz        was            84|89|89Hz  61.3dB               _
+> saɪnd      signed         191|196|205Hz  66.0dB            *-
+
+[4d] Please conTRACT the summary. [verb]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  pliːz      please         184|162|162Hz  61.0dB            _\\
+  kɑːn       contract       195|192|180Hz  59.8dB            -
+  tɹækt      contract       167|160|156Hz  61.8dB            _
+  ðə         the            219|108|109Hz  60.6dB            _\\
+  sʌ         summary        210|216|228Hz  66.8dB            -
+  mɚ         summary        257|267|274Hz  70.1dB            -
+  ɹi         summary        275|267|269Hz  63.5dB            -
+
+[4e] Please reCORD this for her. [verb]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  pliːz      please         177|174|175Hz  63.5dB            _
+> ɹɛ         record         233|241|247Hz  68.7dB            *-
+  kɚd        record                                          ?
+  ðɪs        this           225|199|94Hz  63.4dB             \\
+  fɔːɹ       for            215|202|200Hz  68.1dB            -
+  hɜː        her            200|217|110Hz  64.2dB            -\\
+
+[4f] That's a REcord for her. [noun]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  hɜː        her            200|217|110Hz  64.2dB            -\\
+  ðæts       that's         93|92|89Hz  60.9dB               _
+  eɪ         a              211|195|158Hz  63.9dB            -\\
+> ɹɛ         record         248|265|257Hz  69.6dB            *-
+> kɚd        record         251|257|267Hz  72.1dB            *-
+  fɔːɹ       for            161|160|160Hz  59.0dB            _
+  hɜː        her            160|166|166Hz  55.9dB            _
+
+
+[5a] John bought a new CAR yesterday. [broad/CAR]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> dʒɑːn      john           202|208|226Hz  70.4dB            *-//
+  bɔːt       bought         230|217|201Hz  65.3dB            \\
+  eɪ         a              207|217|253Hz  69.8dB            //
+  nuː        new            251|253|253Hz  55.3dB            -
+  kɑːɹ       car            214|195|181Hz  66.1dB            \\
+  jɛs        yesterday      158|157|157Hz  54.7dB            _
+> tɚ         yesterday      169|169|152Hz  55.3dB            *-\\
+  deɪ        yesterday      106|108|109Hz  51.6dB            _
+
+[5b] John bought a new CAR yesterday. [narrow:CAR]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> dʒɑːn      john           221|227|246Hz  68.8dB            *-//
+  bɔːt       bought         241|225|221Hz  69.0dB            -
+  eɪ         a              229|226|227Hz  71.2dB            -
+  nuː        new            221|219|157Hz  66.9dB            _\\
+  kɑːɹ       car            210|232|262Hz  66.6dB            -//
+  jɛs        yesterday      230|193|168Hz  67.2dB            _\\
+  tɚ         yesterday                                       ?
+  deɪ        yesterday      161|161|159Hz  56.8dB            -
+
+[5c] Did John buy a new BIKE yesterday? [q]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  jɛs        yesterday      230|193|168Hz  67.2dB            _\\
+  tɚ         yesterday                                       ?
+  deɪ        yesterday      161|161|159Hz  56.8dB            -
+  dɪd        did            150|85|88Hz  59.3dB              _\\
+> dʒɑːn      john           222|211|221Hz  70.0dB            *-
+  baɪ        buy            240|222|219Hz  70.9dB            \\
+  eɪ         a              219|217|219Hz  68.5dB            -
+  nuː        new            213|220|113Hz  63.3dB            _\\
+> baɪk       bike           209|222|230Hz  68.2dB            *-//
+  jɛs        yesterday      223|213|214Hz  65.3dB            -
+  tɚ         yesterday      176|165|155Hz  62.6dB            _\\
+  deɪ        yesterday                                       ?
+  noʊ        no             92|88|87Hz  55.5dB               _
+
+[5d] No, he bought a new CAR yesterday. [corr:CAR]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  jɛs        yesterday      223|213|214Hz  65.3dB            -
+  tɚ         yesterday      176|165|155Hz  62.6dB            _\\
+  deɪ        yesterday                                       ?
+  noʊ        no             92|88|87Hz  55.5dB               _
+> hiː        he             224|206|197Hz  67.5dB            *-\\
+  bɔːt       bought         183|182|186Hz  58.2dB            -
+> eɪ         a              206|98|92Hz  65.1dB              *-\\
+  nuː        new            92|87|92Hz  57.0dB               _
+  kɑːɹ       car            165|167|223Hz  63.6dB            //
+  jɛs        yesterday      256|251|243Hz  60.8dB            -
+  tɚ         yesterday      290|282|277Hz  66.4dB            _
+  deɪ        yesterday      347|354|353Hz  58.5dB            -
+
+[5e] Who bought a new car yesterday? [wh-q]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  huː        who            247|229|216Hz  69.0dB            _\\
+  bɔːt       bought         191|186|191Hz  68.9dB            _
+  eɪ         a              217|211|213Hz  69.3dB            -
+  nuː        new            244|242|236Hz  68.2dB            -
+  kɑːɹ       car            233|248|266Hz  66.5dB            -//
+  jɛs        yesterday      224|175|177Hz  65.3dB            _\\
+  tɚ         yesterday      155|156|153Hz  61.0dB            _
+  deɪ        yesterday      503|86|89Hz  57.4dB              \\
+
+[5f] JOHN bought a new car yesterday. [focus:JOHN]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> dʒɑːn      john           229|218|219Hz  68.5dB            *-
+  bɔːt       bought         235|220|216Hz  69.6dB            -
+  eɪ         a              209|211|207Hz  67.4dB            -
+  nuː        new            202|204|205Hz  65.5dB            -
+  kɑːɹ       car            204|181|185Hz  63.1dB            -\\
+  jɛs        yesterday      194|106|111Hz  62.3dB            _\\
+> tɚ         yesterday      243|239|234Hz  64.6dB            *-
+  deɪ        yesterday      274|178|100Hz  59.6dB            _\\
+
+[5g] Did Mary buy a car yesterday? [q]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  dɪd        did            238|233|236Hz  75.8dB            -
+  mɛ         mary           269|285|293Hz  71.4dB            -
+> ɹi         mary           269|261|246Hz  72.3dB            *-
+  baɪ        buy            222|175|167Hz  65.1dB            _\\
+  eɪ         a              167|166|164Hz  62.0dB            _
+> kɑːɹ       car            185|173|168Hz  63.0dB            *-\\
+  jɛs        yesterday      159|86|86Hz  59.0dB              _\\
+  tɚ         yesterday      77|77|75Hz  58.8dB               _
+  deɪ        yesterday      76|76|76Hz  59.1dB               -
+  noʊ        no                                              ?
+
+[5h] No, JOHN bought a new car. [corr:JOHN]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  tɚ                        77|77|75Hz  58.8dB               _
+  deɪ                       76|76|76Hz  59.1dB               -
+  noʊ        no                                              ?
+  dʒɑːn      john           205|201|201Hz  68.5dB            -
+  bɔːt       bought         189|189|186Hz  62.0dB            -
+  eɪ         a              183|100|192Hz  64.3dB            -
+  nuː        new            189|189|189Hz  64.2dB            -
+  kɑːɹ       car            174|167|172Hz  60.3dB            -
+  jɛs        yesterday      99|107|108Hz  58.0dB             _//
+> tɚ         yesterday      238|229|225Hz  63.7dB            *-
+  deɪ        yesterday      138|133|133Hz  57.5dB            _
+
+[5i] JOHN bought it. [contrastive topic]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  æz         as             231|225|224Hz  62.8dB            -
+> fɔːɹ       for            277|276|231Hz  69.3dB            *-\\
+  ðə         the                                             ?
+  kɑːɹ       car            217|252|262Hz  69.6dB            -//
+  huː        who            237|217|216Hz  68.5dB            -\\
+  bɔːt       bought         192|171|170Hz  63.3dB            _\\
+  ɪt         it             165|164|159Hz  57.5dB            _
+  oʊn                       184|184|182Hz  54.7dB            -
+
+
+[6a] ONLY JOHN called Maria.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  bɔːt       bought         192|171|170Hz  63.3dB            _\\
+  ɪt         it             165|164|159Hz  57.5dB            _
+  oʊn        only           184|184|182Hz  54.7dB            -
+  li         only           166|80|83Hz  58.6dB              _\\
+  dʒɑːn      john           155|154|152Hz  57.0dB            _
+> kɔːld      called         251|242|240Hz  68.2dB            *-
+  mɚ         maria          104|113|117Hz  64.5dB            _//
+> ɹiː        maria          198|204|204Hz  61.1dB            *-
+  ə          maria                                           ?
+
+[6b] John only CALLED Maria.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  dʒɑːn      john           204|207|207Hz  69.3dB            _
+  oʊn        only           216|234|245Hz  72.8dB            -//
+  li         only           272|247|111Hz  68.2dB            \\
+> kɔːld      called         224|232|258Hz  68.6dB            *-//
+  mɚ         maria          172|166|162Hz  61.3dB            _
+  ɹiː        maria          152|151|151Hz  59.2dB            -
+  ə          maria          78|78|78Hz  58.7dB               _
+
+[6c] John called only MARIA.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> dʒɑːn      john           209|200|206Hz  68.6dB            *-
+> kɔːld      called         203|207|238Hz  69.1dB            *-//
+  oʊn        only           149|98|99Hz  60.6dB              _\\
+> li         only           173|168|162Hz  64.8dB            *-
+  mɚ         maria          153|152|157Hz  60.5dB            _
+  ɹiː        maria          162|156|157Hz  60.4dB            -
+  ə          maria                                           ?
+  iː         even                                            ?
+  vən        even                                            ?
+
+[6d] EVEN JOHN passed the test.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  oʊn        only           149|98|99Hz  60.6dB              _\\
+> li         only           173|168|162Hz  64.8dB            *-
+  mɚ         maria          153|152|157Hz  60.5dB            _
+  ɹiː        maria          162|156|157Hz  60.4dB            -
+  ə          maria                                           ?
+  iː         even                                            ?
+  vən        even                                            ?
+  dʒɑːn      john           208|195|210Hz  68.4dB            -
+  pæst       passed         208|197|139Hz  65.1dB            _\\
+  ðə         the            502|173|147Hz  63.7dB            \\
+  tɛst       test           214|270|221Hz  70.7dB            -
+> dʒɑːn      john           226|303|293Hz  69.7dB            *-//
+
+[6e] John even PASSED the test.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  tɛst       test           214|270|221Hz  70.7dB            -
+> dʒɑːn      john           226|303|293Hz  69.7dB            *-//
+  iː         even           212|206|202Hz  64.3dB            _
+  vən        even           199|198|186Hz  59.4dB            -
+  pæst       passed         165|158|159Hz  61.8dB            -
+  ðə         the            141|138|136Hz  57.8dB            _
+  tɛst       test           173|167|167Hz  57.0dB            -
+
+[6f] Many STUDENTS solved the test.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  mɛ         many           192|200|205Hz  68.2dB            -
+> ni         many           234|249|237Hz  69.7dB            *-
+  stuː       students       242|242|242Hz  53.9dB            -
+> dənts      students       247|268|272Hz  70.3dB            *-//
+  sɑːlvd     solved         210|193|194Hz  66.5dB            _
+  ðə         the            197|188|187Hz  63.4dB            -
+  tɛst       test           186|83|87Hz  59.6dB              _\\
+
+[6g] Many students SOLVED the test.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  mɛ         many           193|199|201Hz  68.6dB            -
+> ni         many           226|234|223Hz  71.1dB            *-
+  stuː       students       113|112|237Hz  52.8dB            _//
+> dənts      students       213|217|217Hz  70.0dB            *-
+  sɑːlvd     solved         216|204|223Hz  69.4dB            -
+  ðə         the            182|172|167Hz  64.0dB            _
+  tɛst       test           181|174|174Hz  55.7dB            _
+
+
+[7a] You finished the report. [statement]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> juː        you            206|205|204Hz  65.9dB            *-
+  fɪ         finished       100|105|235Hz  54.6dB            _//
+> nɪʃt       finished       234|236|227Hz  70.1dB            *-
+  ðə         the            222|211|205Hz  68.2dB            -
+  ɹᵻpɔːɹt    report         202|230|174Hz  60.2dB            _\
+
+[7b] You finished the report? [question]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> juː        you            187|186|185Hz  62.0dB            *-
+  fɪ         finished                                        ?
+  nɪʃt       finished       208|202|209Hz  65.8dB            -
+  ðə         the            199|190|185Hz  61.2dB            _
+  ɹᵻpɔːɹt    report         178|162|307Hz  57.6dB            -//
+
+[7c] You finished the report, DIDN'T you.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  juː        you            99|99|98Hz  63.7dB               _
+  fɪ         finished       100|104|240Hz  59.6dB            _//
+> nɪʃt       finished       252|266|277Hz  66.9dB            *-//
+> ðə         the            257|247|238Hz  67.3dB            *-
+  ɹᵻpɔːɹt    report         226|107|158Hz  60.6dB            _\\
+> dɪdnt      didn't         205|225|224Hz  69.4dB            *-//
+  juː        you            158|88|94Hz  57.6dB              _\\
+
+[7d] You finished the report, didn't YOU?
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> juː        you            200|198|194Hz  66.6dB            *-
+  fɪ         finished       99|99|230Hz  60.8dB              _//
+> nɪʃt       finished       231|241|238Hz  71.4dB            *-
+  ðə         the            231|224|218Hz  70.5dB            -
+  ɹᵻpɔːɹt    report         210|227|198Hz  59.3dB            -
+  dɪdnt      didn't         188|166|223Hz  65.8dB            _//
+  juː        you            285|331|359Hz  62.7dB            -//
+
+
+[8a] Who are you meeting? [wh-q]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  juː        you            203|202|199Hz  62.9dB            _
+  fɪ         finished       102|250|243Hz  62.2dB            _//
+> nɪʃt       finished       243|240|233Hz  68.7dB            *-
+  ðə         the            225|215|209Hz  67.5dB            -
+  ɹᵻpɔːɹt    report         205|219|197Hz  59.3dB            _
+  dɪdnt      didn't         212|195|196Hz  66.3dB            -
+  juː        you            205|310|106Hz  64.0dB            \\
+  huː        who            240|250|260Hz  72.3dB            -
+  ɑːɹ        are            260|267|270Hz  76.8dB            -
+  juː        you            272|272|269Hz  72.6dB            -
+  miː        meeting        272|276|282Hz  70.9dB            -
+  ɾɪŋ        meeting        295|328|104Hz  64.2dB            -\\
+
+[8b] You're meeting WHO? [echo]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  jʊɹ        you're         218|223|212Hz  72.3dB            _
+  miː        meeting        233|240|248Hz  72.7dB            -
+  ɾɪŋ        meeting        254|254|248Hz  70.9dB            -
+  huː        who            203|295|380Hz  65.5dB            -//
+
+[8c] Who are you MEETING at noon? [wh-q]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  huː        who            227|241|253Hz  71.6dB            _//
+  ɑːɹ        are            253|254|255Hz  71.2dB            -
+  juː        you            237|232|226Hz  72.0dB            -
+  miː        meeting        194|195|197Hz  67.6dB            _
+> ɾɪŋ        meeting        232|253|260Hz  68.2dB            *-//
+  æt         at             265|256|238Hz  61.6dB            \\
+  nuːn       noon           257|277|327Hz  66.5dB            -//
+
+[8d] You're meeting WHO at noon? [echo]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  jʊɹ        you're         215|217|211Hz  72.2dB            _
+  miː        meeting        214|223|227Hz  71.7dB            -
+  ɾɪŋ        meeting        233|234|227Hz  71.6dB            -
+  huː        who            109|213|247Hz  65.8dB            _//
+  æt         at             247|242|248Hz  68.2dB            -
+  nuːn       noon           250|288|218Hz  64.5dB            -\\
+
+
+[9a] Do you want tea or COFFEE? [yes/no rising]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  duː        do             231|222|225Hz  68.7dB            _
+  juː        you            231|237|231Hz  70.0dB            -
+  wɔnt       want           239|233|229Hz  68.9dB            -
+  tiː        tea            234|249|258Hz  66.6dB            //
+  ɔːɹ        or             258|256|256Hz  72.7dB            -
+  kɔ         coffee         179|236|252Hz  65.1dB            -//
+  fi         coffee         171|147|93Hz  56.1dB             _\\
+
+[9b] Do you want TEA or COFFEE? [alternative]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> duː        do             215|206|207Hz  66.6dB            *-
+  juː        you            213|216|214Hz  69.1dB            -
+  wɔnt       want           222|206|166Hz  66.0dB            _\\
+  tiː        tea            225|277|313Hz  65.1dB            -//
+  ɔːɹ        or             228|228|233Hz  62.4dB            -
+  kɔ         coffee         126|131|131Hz  66.0dB            _
+  fi         coffee         198|87|91Hz  58.6dB              _\\
+
+[9c] Do you want TEA or COFFEE or...? [list]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  duː        do             198|206|207Hz  66.3dB            -
+> juː        you            215|223|219Hz  71.6dB            *-
+  wɔnt       want           212|180|175Hz  64.3dB            _\\
+  tiː        tea            239|235|223Hz  67.4dB            -
+  ɔːɹ        or             223|533|90Hz  64.0dB             -\\
+  kɔ         coffee         202|202|210Hz  64.3dB            -
+  fi         coffee         109|104|102Hz  62.7dB            _
+  ɔːɹ        or             180|180|175Hz  61.8dB            -
+
+
+[10a] That was incredibly good. [declarative]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  ðæt        that           191|188|191Hz  61.5dB            -
+  wʌz        was            214|221|218Hz  66.4dB            -
+> ɪŋ         incredibly     251|240|226Hz  69.6dB            *-\\
+  kɹɛ        incredibly     104|192|180Hz  62.6dB            _//
+  dɪb        incredibly     191|188|181Hz  63.8dB            -
+  li         incredibly     173|170|166Hz  64.1dB            -
+  ɡʊd        good           162|161|160Hz  64.7dB            _
+
+[10b] That was incredibly GOOD! [exclamation]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  ðæt        that           189|184|190Hz  64.3dB            -
+  wʌz        was            204|202|197Hz  64.7dB            -
+  ɪŋ         incredibly     223|206|197Hz  64.5dB            -\\
+  kɹɛ        incredibly     195|189|178Hz  67.5dB            _\\
+> dɪb        incredibly     221|223|220Hz  69.0dB            *-
+  li         incredibly     168|169|101Hz  55.4dB            _\\
+> ɡʊd        good           194|191|189Hz  71.5dB            *-
+
+[10c] It's so nice. [neutral]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  ɪts        it's           194|202|100Hz  56.3dB            _\\
+> soʊ        so             238|221|218Hz  69.0dB            *-\\
+  naɪs       nice           183|149|89Hz  58.0dB             _\\
+
+[10d] It's SO nice! [exclamation]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  ɪts        it's           206|213|106Hz  59.3dB            _\\
+> soʊ        so             222|214|218Hz  69.6dB            *-
+  naɪs       nice           200|167|157Hz  60.9dB            _\\
+
+
+[11a] As for the weather, it's getting COLD.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  æz         as             189|197|204Hz  64.2dB            -
+> fɔːɹ       for            237|230|229Hz  72.3dB            *-
+  ðə         the            224|214|208Hz  70.8dB            -
+  wɛ         weather        187|183|186Hz  66.9dB            _
+> ðɚ         weather        233|257|243Hz  67.9dB            *-
+  ɪts        it's           243|195|100Hz  54.7dB            _\\
+  ɡɛ         getting        196|191|183Hz  65.7dB            -
+  ɾɪŋ        getting        190|189|188Hz  61.9dB            -
+  koʊld      cold           199|191|176Hz  66.3dB            _\\
+
+[11b] JOHN I like; MARY I don't. [contr topic]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> dʒɑːn      john           209|235|248Hz  68.4dB            *-//
+  aɪ         i              189|191|185Hz  61.4dB            -
+  laɪk       like           179|164|163Hz  66.5dB            _\\
+  vɛ         very           172|168|164Hz  65.4dB            -
+  ɹi         very           158|161|151Hz  60.8dB            -
+  mʌtʃ       much           153|138|130Hz  58.1dB            _\\
+  mɛ         mary           173|184|200Hz  68.0dB            //
+  ɹi         mary           252|266|133Hz  63.8dB            -\\
+  aɪ         i              169|173|170Hz  60.4dB            _
+  doʊnt      don't          166|152|140Hz  62.3dB            _\\
+
+
+[12a] JOHN called Maria, too.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> dʒɑːn      john           212|227|211Hz  71.3dB            *-
+  kɔːld      called         184|170|158Hz  66.5dB            _\\
+  mɚ         maria          170|166|162Hz  61.5dB            -
+  ɹiː        maria          151|151|158Hz  62.2dB            _
+  ə          maria          164|173|177Hz  60.9dB            -
+  tuː        too            258|174|145Hz  60.0dB            -\\
+
+[12b] John called MARIA, too.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  dʒɑːn      john           211|200|215Hz  69.1dB            -
+  kɔːld      called         210|184|179Hz  66.4dB            \\
+  mɚ         maria          172|172|170Hz  62.8dB            -
+  ɹiː        maria          162|165|162Hz  61.2dB            -
+  ə          maria          159|160|161Hz  59.6dB            -
+  tuː        too            177|146|83Hz  60.3dB             _\\
+
+[12c] John CALLED Maria, too.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> dʒɑːn      john           192|185|197Hz  66.3dB            *-
+  kɔːld      called         208|188|187Hz  64.9dB            -\\
+  mɚ         maria          176|173|170Hz  63.8dB            _
+> ɹiː        maria          171|206|198Hz  64.4dB            *-//
+  ə          maria          198|156|156Hz  59.5dB            _\\
+  tuː        too                                             ?
+
+
+[13a] Did Emma submit the draft? [q]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> dɪd        did            210|204|203Hz  72.1dB            *-
+  ɛ          emma           188|188|188Hz  59.4dB            _
+> mə         emma           235|245|235Hz  70.0dB            *-
+  səb        submit         239|231|228Hz  70.2dB            -
+  mɪt        submit         216|210|204Hz  66.3dB            -
+  ðə         the            211|202|202Hz  66.3dB            _
+  dɹæft      draft          196|229|315Hz  66.5dB            -//
+
+[13b] She submitted it YESTERDAY. [new info]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  ʃiː        she            250|234|221Hz  69.4dB            \\
+  səb        submitted      247|238|230Hz  68.5dB            -
+  mɪɾᵻd      submitted      224|222|221Hz  70.0dB            -
+  ɪt         it             224|217|193Hz  67.7dB            \\
+  jɛs        yesterday      197|210|220Hz  67.0dB            -//
+  tɚ         yesterday      180|169|160Hz  60.9dB            _\\
+  deɪ        yesterday      152|171|166Hz  55.8dB            _//
+
+[13c] She submitted it YESTERDAY. [focus]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> ʃiː        she            231|231|223Hz  71.0dB            *-
+  səb        submitted      240|233|224Hz  68.7dB            -
+  mɪɾᵻd      submitted      218|214|213Hz  68.4dB            -
+  ɪt         it             217|204|170Hz  67.5dB            _\\
+  jɛs        yesterday      196|235|261Hz  66.0dB            -//
+  tɚ         yesterday      174|159|142Hz  64.5dB            \\
+  deɪ        yesterday      84|88|89Hz  55.3dB               _
+
+[13d] When did Emma submit the draft? [wh-q]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> wɛn        when           196|197|200Hz  68.2dB            *-
+  dɪd        did            221|216|209Hz  70.1dB            _
+  ɛ          emma           510|539|181Hz  65.9dB            -\\
+  mə         emma           201|205|201Hz  65.9dB            _
+  səb        submit         211|203|193Hz  64.1dB            \\
+  mɪt        submit         198|191|186Hz  63.5dB            -
+  ðə         the            201|191|189Hz  63.5dB            -
+  dɹæft      draft          174|187|247Hz  63.6dB            //
+
+[13e] Emma submitted the draft YESTERDAY.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  ɛ          emma           194|194|204Hz  58.8dB            _
+> mə         emma           232|244|235Hz  68.6dB            *-
+  səb        submitted      118|117|108Hz  52.9dB            _\\
+> mɪɾᵻd      submitted      249|239|232Hz  68.6dB            *-
+  ðə         the            216|207|205Hz  67.8dB            -
+  dɹæft      draft          195|200|204Hz  64.9dB            -
+> jɛs        yesterday      199|212|222Hz  68.1dB            *-//
+  tɚ         yesterday      172|170|164Hz  61.0dB            -
+  deɪ        yesterday      91|91|97Hz  56.2dB               _
+
+
+[14a] We need APPLES, PEARS, and BANANAS. [complete]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> wiː        we             209|202|198Hz  69.2dB            *-
+> niːd       need           201|199|185Hz  68.6dB            *-
+  æ          apples         100|102|193Hz  61.7dB            _//
+> pəlz       apples         257|245|243Hz  67.1dB            *-
+  pɛɹz       pears          101|92|98Hz  62.8dB              _
+  ænd        and            212|212|188Hz  55.6dB            -\\
+  bɐ         bananas        180|178|174Hz  65.1dB            -
+  næ         bananas        163|156|149Hz  58.7dB            \\
+  nəz        bananas        157|164|105Hz  52.8dB            _\\
+
+[14b] We need APPLES, PEARS, and... [incomplete]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> wiː        we             194|194|191Hz  65.4dB            *-
+  niːd       need           194|193|182Hz  65.1dB            -
+  æ          apples         174|177|202Hz  62.4dB            _//
+> pəlz       apples         242|234|235Hz  67.6dB            *-
+  pɛɹz       pears          198|187|196Hz  65.3dB            -
+  ænd        and            166|166|165Hz  54.3dB            _
+
+
+[15a] OLD men and women.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> oʊld       old            166|179|209Hz  64.6dB            *-//
+  mɛn        men            179|162|161Hz  63.9dB            _\\
+  ænd        and            169|165|164Hz  57.6dB            -
+> wɪ         women          164|161|158Hz  60.2dB            *-
+  mɪn        women          79|109|117Hz  55.9dB             _//
+
+[15b] old MEN and WOMEN.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  oʊld       old            219|200|205Hz  62.7dB            -
+  mɛn        men            183|190|194Hz  66.8dB            -
+  ænd        and            191|181|178Hz  60.9dB            -
+  wɪ         women          177|173|165Hz  65.8dB            -
+  mɪn        women          142|143|113Hz  53.6dB            _\\
+
+[15c] I saw the man with the TELESCOPE.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  aɪ         i              181|188|187Hz  60.7dB            -
+  sɔː        saw            221|210|212Hz  71.1dB            -
+> ðə         the            224|220|214Hz  72.0dB            *-
+  mæn        man            190|189|198Hz  65.2dB            _
+  wɪð        with           198|193|189Hz  64.4dB            -
+  ðə         the            198|191|188Hz  63.5dB            _
+> tɛlᵻ       telescope      218|236|232Hz  67.6dB            *-
+  skoʊp      telescope      162|154|154Hz  58.7dB            _
+
+[15d] I SAW the man with the telescope.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  aɪ         i              179|191|191Hz  58.4dB            -
+> sɔː        saw            226|215|171Hz  66.3dB            *-\\
+  ðə         the            177|173|168Hz  66.0dB            _
+  mæn        man            170|157|154Hz  58.9dB            \\
+  wɪð        with           160|157|157Hz  57.5dB            -
+  eɪ         a              160|158|158Hz  59.0dB            -
+  tɛlᵻ       telescope      179|162|124Hz  59.1dB            -\\
+  skoʊp      telescope      81|79|80Hz  57.1dB               _
+
+
+[16a] Are you comING? [rising]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  ɑːɹ        are            198|190|189Hz  61.4dB            -
+  juː        you            202|201|194Hz  64.1dB            _
+  kʌ         coming         545|185|179Hz  55.4dB            -\\
+> mɪŋ        coming         194|254|307Hz  67.5dB            *-//
+
+[16b] You're comING? [echo]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  jʊɹ        you're         198|194|191Hz  67.6dB            _
+  kʌ         coming         203|203|191Hz  60.2dB            _
+> mɪŋ        coming         241|300|369Hz  66.3dB            *-//
+
+
+[17a] Can you pass the SALT? [request]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  kæn        can            205|206|207Hz  64.4dB            _
+> juː        you            227|225|225Hz  69.5dB            *-
+  pæs        pass           116|114|113Hz  64.6dB            _
+  ðə         the            223|208|201Hz  60.4dB            -\\
+  sɔlt       salt           196|174|241Hz  65.2dB            _//
+
+[17b] Can you pass the SALT. [command]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  kæn        can            213|202|207Hz  66.6dB            -
+> juː        you            229|227|161Hz  70.3dB            *-\\
+  pæs        pass           104|106|107Hz  63.6dB            _
+  ðə         the            206|195|191Hz  62.2dB            -
+  sɔlt       salt           180|159|162Hz  60.8dB            -\\
+
+[17c] Can you PASS the salt? [alt stress]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  kæn        can            94|101|105Hz  61.6dB             _//
+  juː        you            113|111|113Hz  62.2dB            _
+  pæs        pass           169|196|252Hz  62.5dB            -//
+  ðə         the            269|264|190Hz  65.9dB            -\\
+  sɔlt       salt           281|274|299Hz  65.0dB            -
+
+[17d] You can pass the SALT. [decl]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  juː        you            224|224|225Hz  70.8dB            _
+  kæn        can            261|258|246Hz  68.0dB            -
+  pæs        pass           245|253|260Hz  62.2dB            -
+  ðə         the            99|99|99Hz  63.2dB               _
+  sɔlt       salt           159|150|148Hz  59.3dB            -
+
+[17e] You can pass the SALT? [q]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  juː        you            194|191|190Hz  64.4dB            -
+> kæn        can            229|218|201Hz  67.7dB            *-\\
+  pæs        pass           187|176|176Hz  62.2dB            -
+  ðə         the            91|91|89Hz  59.1dB               _
+  sɔlt       salt           170|148|201Hz  61.7dB            -//
+
+
+[18a] My brother who LIVES in Boston called. [restr]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  maɪ        my             142|178|175Hz  66.7dB            //
+  bɹʌ        brother        196|198|202Hz  70.6dB            -
+> ðɚ         brother        217|236|235Hz  72.8dB            *-
+  huː        who            235|221|208Hz  69.3dB            \\
+  laɪvz      lives          198|208|197Hz  67.2dB            _
+  ɪn         in             223|205|197Hz  64.8dB            -\\
+  bɔs        boston         188|170|178Hz  61.1dB            -
+  tən        boston         83|83|84Hz  55.0dB               _
+  kɔːld      called         172|166|160Hz  56.3dB            -
+
+[18b] My BROTHER, who lives in BOSTON, CALLED. [non]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  maɪ        my             201|192|180Hz  68.8dB            -\\
+  bɹʌ        brother        185|193|205Hz  69.7dB            _//
+  ðɚ         brother        240|267|196Hz  68.0dB            -\\
+  huː        who            221|209|205Hz  67.5dB            _
+> laɪvz      lives          204|200|197Hz  66.7dB            *-
+  ɪn         in             101|99|95Hz  60.9dB              _
+> bɔs        boston         187|170|181Hz  63.5dB            *-
+  tən        boston         183|176|167Hz  57.6dB            -\\
+  kɔːld      called         78|78|78Hz  58.6dB               _
+
+
+[19a] You met with the DIRECTOR? [confirm]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  juː        you            196|191|183Hz  64.7dB            -
+  mɛt        met            204|198|198Hz  65.4dB            -
+> wɪð        with           227|228|218Hz  69.1dB            *-
+  eɪ         a              211|206|206Hz  67.8dB            -
+  dᵻɹɛk      director       202|163|219Hz  64.9dB            _
+  tɚ         director       312|358|115Hz  62.3dB            -\\
+
+[19b] I met with the PRODUCER, not the DIRECTOR.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+  aɪ         i              197|198|194Hz  63.0dB            _
+> mɛt        met            224|241|243Hz  70.7dB            *-
+  wɪð        with           218|225|226Hz  69.0dB            _
+  eɪ         a              245|234|233Hz  66.9dB            -
+  pɹə        producer       212|206|199Hz  68.9dB            -
+  duː        producer       105|111|112Hz  68.9dB            _
+  sɚ         producer       194|174|165Hz  65.0dB            -\\
+  nɑːt       not            161|153|149Hz  60.1dB            _
+  ðə         the            155|156|156Hz  58.3dB            -
+  dᵻɹɛk      director       78|79|77Hz  59.9dB               _
+  tɚ         director       165|163|162Hz  56.2dB            -
+
+
+[20a] John did NOT call Maria.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> dʒɑːn      john           209|201|216Hz  65.9dB            *-
+  dɪd        did            208|180|169Hz  63.6dB            _\\
+  nɑːt       not            172|200|223Hz  67.6dB            -//
+  kɔːl       call           188|169|166Hz  64.7dB            \\
+  mɚ         maria          157|157|156Hz  60.4dB            -
+  ɹiː        maria          163|85|82Hz  57.5dB              _\\
+  ə          maria                                           ?
+
+[20b] John did not call MARIA; he called SARA.
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> dʒɑːn      john           199|194|202Hz  67.3dB            *-
+  dɪd        did            191|166|154Hz  63.6dB            _\\
+  nɑːt       not            162|191|183Hz  61.9dB            -//
+  kɔːl       call           148|149|150Hz  59.9dB            _
+  mɚ         maria          151|152|155Hz  56.2dB            -
+  ɹiː        maria          83|86|86Hz  56.8dB               _
+  ə          maria                                           ?
+  dʒɑːn      john           192|184|192Hz  65.7dB            -
+  dɪd        did            201|177|164Hz  63.6dB            \\
+  nɑːt       not            178|175|168Hz  62.1dB            -
+  kɔːl       call           188|178|174Hz  62.9dB            -
+  mɚ         maria          171|167|165Hz  61.8dB            _
+> ɹiː        maria          173|212|182Hz  67.2dB            *-
+  ə          maria          179|158|160Hz  62.5dB            _\\
+  hiː        he             183|172|169Hz  58.8dB            -
+  kɔːld      called         184|176|167Hz  62.8dB            \\
+  sɛ         sarah          193|193|182Hz  56.6dB            -
+  ɹə         sarah          157|151|151Hz  58.0dB            _
+
+
+[21a] He's thirty. [statement]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> hiːz       he's           238|223|219Hz  67.3dB            *-\\
+  θɜː        30             214|197|187Hz  63.1dB            \\
+  ɾi         30             185|177|168Hz  61.2dB            \\
+  hiːz       he's           165|161|156Hz  58.4dB            _
+
+[21b] He's THIRTY? [surprise]
+  syl        word           F0 onset|mid|off Hz  amp         prosody
+> hiːz       he's           238|223|219Hz  67.3dB            *-\\
+  θɜː        30             214|197|187Hz  63.1dB            \\
+  ɾi         30             185|177|168Hz  61.2dB            \\
+  hiːz       he's           165|161|156Hz  58.4dB            _
+  θɜː        30             181|181|181Hz  58.7dB            -
+  ɾi         30             175|172|168Hz  68.9dB            _
+  ɹiə        really         179|205|233Hz  66.2dB            _//
+  li         really         254|347|347Hz  64.0dB            -//
+  ɹiə        really         201|187|167Hz  68.8dB            _\\
+  li         really         135|84|89Hz  57.3dB              _\\
+

@@ -5,23 +5,23 @@ Drop a WAV in, get a Praat TextGrid out.
 
 Linux only for now. macOS and Windows planned.
 
-Source: https://github.com/kdlydia/SpeechPrint
+Source: https://github.com/kdlydia/ProsodyPrompt
 
 ---
 
-SpeechPrint is for anyone who needs to go from raw audio to structured prosodic annotation without a phonetics lab. It runs a pipeline from transcription through forced alignment to symbolic prosody labels, outputs a Praat TextGrid, and lets you compare five pitch trackers side by side so you can decide which one looks right for your recording.
+ProsodyPrompt is for anyone who needs to go from raw audio to structured prosodic annotation without a phonetics lab. It runs a pipeline from transcription through forced alignment to symbolic prosody labels, outputs a Praat TextGrid, and lets you compare five pitch trackers side by side so you can decide which one looks right for your recording.
 
 It works for two kinds of material: recordings where you have a human-annotated TextGrid already (DoReCo fieldwork corpora, ELAN exports) and recordings where you have audio only and need everything done automatically.
 
-The longer direction is a system where prosody is not just analysed but authored — a combined text editor and speech DAW where you draw an intonation contour or sketch a prosodic pattern and the system generates speech accordingly. People write scripts but need actors to figure out how to say them. The idea is to encode that in the script itself. DrawSpeech (Chen et al., 2025) showed this is tractable: users draw rough pitch sketches per word and a diffusion model recovers the full contour. SpeechPrint's symbolic tier is the analysis side of that loop; the synthesis side is where this is heading.
+The longer direction is a system where prosody is not just analysed but authored — a combined text editor and speech DAW where you draw an intonation contour or sketch a prosodic pattern and the system generates speech accordingly. People write scripts but need actors to figure out how to say them. The idea is to encode that in the script itself. DrawSpeech (Chen et al., 2025) showed this is tractable: users draw rough pitch sketches per word and a diffusion model recovers the full contour. ProsodyPrompt's symbolic tier is the analysis side of that loop; the synthesis side is where this is heading.
 
 ---
 
 ## Quick start
 
 ```bash
-git clone https://github.com/kdlydia/SpeechPrint
-cd SpeechPrint/linux
+git clone https://github.com/kdlydia/ProsodyPrompt
+cd ProsodyPrompt/linux
 python run.py
 ```
 
@@ -29,12 +29,12 @@ The interactive CLI opens immediately. No GUI, no config files. It asks question
 
 ```
 ════════════════════════════════════════════════════════
-  SpeechPrint  v0.3
+  ProsodyPrompt  v0.3
 ════════════════════════════════════════════════════════
 
   Linguistic prosody annotation environment
   For Linux machines only.
-  https://github.com/speechprint/SpeechPrint
+  https://github.com/kdlydia/ProsodyPrompt
 
 Main menu
 ────────────────────────────────────────────────────────
@@ -56,7 +56,7 @@ On first run, choose **3** to check and install missing dependencies automatical
 
 ## Step 0 — Do you have a human-annotated TextGrid?
 
-SpeechPrint asks this at launch. Your answer determines the entire pipeline.
+ProsodyPrompt asks this at launch. Your answer determines the entire pipeline.
 
 The CLI asks three questions before running.
 
@@ -65,13 +65,13 @@ If yes, point it at your file. DoReCo's `@TA` and `@6` tier suffixes are detecte
 If no, the full nine-stage pipeline runs from transcription to prosody labels.
 
 **2. Language.**
-For common languages (English, German, Spanish, French, Italian, and others) SpeechPrint uses WhisperX large-v3 for transcription and MFA for phone-level alignment on English. For endangered or under-resourced languages, it can suggest the phonologically closest supported model using consonant and vowel inventory overlap from PHOIBLE data. ASR output on an unsupported language will be phonetically plausible but lexically incorrect; the prosody labels are acoustically valid regardless of transcription quality.
+For common languages (English, German, Spanish, French, Italian, and others) ProsodyPrompt uses WhisperX large-v3 for transcription and MFA for phone-level alignment on English. For endangered or under-resourced languages, it can suggest the phonologically closest supported model using consonant and vowel inventory overlap from PHOIBLE data. ASR output on an unsupported language will be phonetically plausible but lexically incorrect; the prosody labels are acoustically valid regardless of transcription quality.
 
 ---
 
 ## Step 2 — Pitch tracker selection
 
-SpeechPrint supports five pitch trackers. You can run one or all in parallel; the comparison TextGrid shows every track as a separate prosody tier so you can visually choose which works best for your recording.
+ProsodyPrompt supports five pitch trackers. You can run one or all in parallel; the comparison TextGrid shows every track as a separate prosody tier so you can visually choose which works best for your recording.
 
 | Tracker | Type | Best for | Notes |
 |---------|------|----------|-------|

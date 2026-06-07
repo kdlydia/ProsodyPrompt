@@ -1,0 +1,2 @@
+file,language,duration_s,n_words,n_syllables,n_phonemes,mean_f0_hz,min_f0_hz,max_f0_hz,f0_std_st,mean_intensity_db,prominent_count,rising_count,falling_count,level_count,alignment_source
+ich_wohne_in_bern.wav,de,1.1548979591836734,4,5,12,115.84795883390731,94.55719137544148,140.62619782890062,5.000220598566099,70.50618280186397,1,2,3,0,whisperx

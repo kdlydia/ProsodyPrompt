@@ -1,0 +1,2 @@
+file,language,duration_s,n_words,n_syllables,n_phonemes,mean_f0_hz,min_f0_hz,max_f0_hz,f0_std_st,mean_intensity_db,prominent_count,rising_count,falling_count,level_count,alignment_source
+er_sang_die_lieder.wav,de,0.9963718820861678,4,5,11,118.7925624670469,97.2733855603424,149.68421107623269,4.304572808476446,71.22340376713106,1,1,2,2,whisperx

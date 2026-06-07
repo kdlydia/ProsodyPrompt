@@ -1,0 +1,26 @@
+Metric	English_MFA	Endangered_WhisperX_IT
+N articulated syllables	615	372
+N pauses (>250 ms)	99	43
+Recording time (s)	305.5	162.7
+Articulation dur (s)	139.8	76.7
+Pause duration (s)	165.7	85.9
+Pause ratio (%)	54.2	52.8
+Speech rate (syll/s)	2.01	2.29
+Articulation rate (syll/s)	4.4	4.85
+Speech segments (n)	99	42
+Mean seg duration (s)	1.41	1.83
+Mean seg length (syll)	6.2	8.9
+Mean syl duration (s)	0.223	0.18
+SD syl duration (s)	0.22	0.175
+F0 mean (ST re 1 Hz)	89.9	91.0
+F0 range 1–99% (ST)	22.2	16.4
+F0 narrow range 5–95% (ST)	16.2	7.9
+Static (%)	64.7	90.3
+Rising (%)	13.3	4.8
+Falling (%)	22.0	4.8
+Non-prominent syl (%) [top 75%]	75.0	75.0
+mean dur (ms)	208.0	169.0
+F0 mean (ST)	90.6	91.2
+Prominent syl (%) [top 25%]	25.0	25.0
+mean dur (ms)	266.0	212.0
+F0 mean (ST)	88.0	90.4

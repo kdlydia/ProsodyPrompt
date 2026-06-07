@@ -1,0 +1,204 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0
+xmax = 1.2600111896584387
+tiers? <exists>
+size = 6
+item []:
+    item [1]:
+        class = "IntervalTier"
+        name = "sentence"
+        xmin = 0
+        xmax = 1.2600111896584387
+        intervals: size = 3
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.16487678806825912
+            text = ""
+        intervals [2]:
+            xmin = 0.16487678806825912
+            xmax = 1.0326762359416497
+            text = "einige Melonen"
+        intervals [3]:
+            xmin = 1.0326762359416497
+            xmax = 1.2600111896584387
+            text = ""
+    item [2]:
+        class = "IntervalTier"
+        name = "words"
+        xmin = 0
+        xmax = 1.2600111896584387
+        intervals: size = 4
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.16487678806825912
+            text = ""
+        intervals [2]:
+            xmin = 0.16487678806825912
+            xmax = 0.4413328978907822
+            text = "einige"
+        intervals [3]:
+            xmin = 0.4413328978907822
+            xmax = 1.0326762359416497
+            text = "melonen"
+        intervals [4]:
+            xmin = 1.0326762359416497
+            xmax = 1.2600111896584387
+            text = ""
+    item [3]:
+        class = "IntervalTier"
+        name = "translation"
+        xmin = 0
+        xmax = 1.2600111896584387
+        intervals: size = 3
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.16487678806825912
+            text = ""
+        intervals [2]:
+            xmin = 0.16487678806825912
+            xmax = 1.0326762359416497
+            text = "some melons"
+        intervals [3]:
+            xmin = 1.0326762359416497
+            xmax = 1.2600111896584387
+            text = ""
+    item [4]:
+        class = "IntervalTier"
+        name = "syllables"
+        xmin = 0
+        xmax = 1.2600111896584387
+        intervals: size = 8
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.16487678806825912
+            text = ""
+        intervals [2]:
+            xmin = 0.16487678806825912
+            xmax = 0.22867435187345675
+            text = "aɪ"
+        intervals [3]:
+            xmin = 0.22867435187345675
+            xmax = 0.3350036248821195
+            text = "nɪ"
+        intervals [4]:
+            xmin = 0.3350036248821195
+            xmax = 0.4413328978907822
+            text = "ɡə"
+        intervals [5]:
+            xmin = 0.4413328978907822
+            xmax = 0.6152574090822138
+            text = "me"
+        intervals [6]:
+            xmin = 0.6152574090822138
+            xmax = 0.7891819202736454
+            text = "loː"
+        intervals [7]:
+            xmin = 0.7891819202736454
+            xmax = 1.0326762359416497
+            text = "nən"
+        intervals [8]:
+            xmin = 1.0326762359416497
+            xmax = 1.2600111896584387
+            text = ""
+    item [5]:
+        class = "IntervalTier"
+        name = "phones"
+        xmin = 0
+        xmax = 1.2600111896584387
+        intervals: size = 14
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.16487678806825912
+            text = ""
+        intervals [2]:
+            xmin = 0.16487678806825912
+            xmax = 0.22867435187345675
+            text = "aɪ"
+        intervals [3]:
+            xmin = 0.22867435187345675
+            xmax = 0.27120606107692186
+            text = "n"
+        intervals [4]:
+            xmin = 0.27120606107692186
+            xmax = 0.3350036248821195
+            text = "ɪ"
+        intervals [5]:
+            xmin = 0.3350036248821195
+            xmax = 0.3775353340855846
+            text = "ɡ"
+        intervals [6]:
+            xmin = 0.3775353340855846
+            xmax = 0.4413328978907822
+            text = "ə"
+        intervals [7]:
+            xmin = 0.4413328978907822
+            xmax = 0.5109027023673549
+            text = "m"
+        intervals [8]:
+            xmin = 0.5109027023673549
+            xmax = 0.6152574090822138
+            text = "e"
+        intervals [9]:
+            xmin = 0.6152574090822138
+            xmax = 0.6848272135587865
+            text = "l"
+        intervals [10]:
+            xmin = 0.6848272135587865
+            xmax = 0.7891819202736454
+            text = "oː"
+        intervals [11]:
+            xmin = 0.7891819202736454
+            xmax = 0.8587517247502181
+            text = "n"
+        intervals [12]:
+            xmin = 0.8587517247502181
+            xmax = 0.963106431465077
+            text = "ə"
+        intervals [13]:
+            xmin = 0.963106431465077
+            xmax = 1.0326762359416497
+            text = "n"
+        intervals [14]:
+            xmin = 1.0326762359416497
+            xmax = 1.2600111896584387
+            text = ""
+    item [6]:
+        class = "IntervalTier"
+        name = "prosody"
+        xmin = 0
+        xmax = 1.2600111896584387
+        intervals: size = 8
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.16487678806825912
+            text = ""
+        intervals [2]:
+            xmin = 0.16487678806825912
+            xmax = 0.22867435187345675
+            text = "_"
+        intervals [3]:
+            xmin = 0.22867435187345675
+            xmax = 0.3350036248821195
+            text = "_//"
+        intervals [4]:
+            xmin = 0.3350036248821195
+            xmax = 0.4413328978907822
+            text = "‾"
+        intervals [5]:
+            xmin = 0.4413328978907822
+            xmax = 0.6152574090822138
+            text = "‾\\"
+        intervals [6]:
+            xmin = 0.6152574090822138
+            xmax = 0.7891819202736454
+            text = "_\\"
+        intervals [7]:
+            xmin = 0.7891819202736454
+            xmax = 1.0326762359416497
+            text = "/"
+        intervals [8]:
+            xmin = 1.0326762359416497
+            xmax = 1.2600111896584387
+            text = ""

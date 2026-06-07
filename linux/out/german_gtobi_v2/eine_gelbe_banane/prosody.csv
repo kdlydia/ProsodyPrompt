@@ -1,0 +1,2 @@
+file,language,duration_s,n_words,n_syllables,n_phonemes,mean_f0_hz,min_f0_hz,max_f0_hz,f0_std_st,mean_intensity_db,prominent_count,rising_count,falling_count,level_count,alignment_source
+eine_gelbe_banane.wav,de,1.484625850340136,3,7,14,205.12647545562157,189.694800525409,238.05088974441819,2.866077122849907,71.1948275694963,1,1,1,5,whisperx

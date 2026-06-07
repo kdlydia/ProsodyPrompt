@@ -1,0 +1,2 @@
+file,language,duration_s,n_words,n_syllables,n_phonemes,mean_f0_hz,min_f0_hz,max_f0_hz,f0_std_st,mean_intensity_db,prominent_count,rising_count,falling_count,level_count,alignment_source
+einige_melonen.wav,de,1.2600226757369615,2,6,12,126.73783820604929,100.75932587034717,156.06862464494137,2.6967739670292192,74.96275770603219,1,2,2,2,whisperx

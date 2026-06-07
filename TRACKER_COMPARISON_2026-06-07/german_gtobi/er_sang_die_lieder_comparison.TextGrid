@@ -1,0 +1,270 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0
+xmax = 0.9963718820861678
+tiers? <exists>
+size = 11
+item []:
+    item [1]:
+        class = "IntervalTier"
+        name = "sentence"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 3
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.06343670737958328
+            text = ""
+        intervals [2]:
+            xmin = 0.06343670737958328
+            xmax = 0.9057840420634717
+            text = "er sang die Lieder"
+        intervals [3]:
+            xmin = 0.9057840420634717
+            xmax = 0.9963718820861678
+            text = ""
+    item [2]:
+        class = "IntervalTier"
+        name = "translation"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 3
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.06343670737958328
+            text = ""
+        intervals [2]:
+            xmin = 0.06343670737958328
+            xmax = 0.9057840420634717
+            text = "he sang the songs"
+        intervals [3]:
+            xmin = 0.9057840420634717
+            xmax = 0.9963718820861678
+            text = ""
+    item [3]:
+        class = "IntervalTier"
+        name = "words"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 6
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.06343670737958328
+            text = ""
+        intervals [2]:
+            xmin = 0.06343670737958328
+            xmax = 0.16806790146767633
+            text = "Er"
+        intervals [3]:
+            xmin = 0.16806790146767633
+            xmax = 0.3382591475476758
+            text = "sang"
+        intervals [4]:
+            xmin = 0.3382591475476758
+            xmax = 0.47600147900541856
+            text = "die"
+        intervals [5]:
+            xmin = 0.47600147900541856
+            xmax = 0.9057840420634717
+            text = "Lieder"
+        intervals [6]:
+            xmin = 0.9057840420634717
+            xmax = 0.9963718820861678
+            text = ""
+    item [4]:
+        class = "IntervalTier"
+        name = "syllables"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 7
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.06343670737958328
+            text = ""
+        intervals [2]:
+            xmin = 0.06343670737958328
+            xmax = 0.16806790146767633
+            text = "ɛɐ"
+        intervals [3]:
+            xmin = 0.16806790146767633
+            xmax = 0.3382591475476758
+            text = "zaŋ"
+        intervals [4]:
+            xmin = 0.3382591475476758
+            xmax = 0.47600147900541856
+            text = "diː"
+        intervals [5]:
+            xmin = 0.47600147900541856
+            xmax = 0.6908927605344451
+            text = "liː"
+        intervals [6]:
+            xmin = 0.6908927605344451
+            xmax = 0.9057840420634717
+            text = "dɐ"
+        intervals [7]:
+            xmin = 0.9057840420634717
+            xmax = 0.9963718820861678
+            text = ""
+    item [5]:
+        class = "IntervalTier"
+        name = "phones"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 12
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.06343670737958328
+            text = ""
+        intervals [2]:
+            xmin = 0.06343670737958328
+            xmax = 0.16806790146767633
+            text = "ɛɐ"
+        intervals [3]:
+            xmin = 0.16806790146767633
+            xmax = 0.2166939717762476
+            text = "z"
+        intervals [4]:
+            xmin = 0.2166939717762476
+            xmax = 0.2896330772391045
+            text = "a"
+        intervals [5]:
+            xmin = 0.2896330772391045
+            xmax = 0.3382591475476758
+            text = "ŋ"
+        intervals [6]:
+            xmin = 0.3382591475476758
+            xmax = 0.3933560801307729
+            text = "d"
+        intervals [7]:
+            xmin = 0.3933560801307729
+            xmax = 0.47600147900541856
+            text = "iː"
+        intervals [8]:
+            xmin = 0.47600147900541856
+            xmax = 0.5619579916170292
+            text = "l"
+        intervals [9]:
+            xmin = 0.5619579916170292
+            xmax = 0.6908927605344451
+            text = "iː"
+        intervals [10]:
+            xmin = 0.6908927605344451
+            xmax = 0.7768492731460558
+            text = "d"
+        intervals [11]:
+            xmin = 0.7768492731460558
+            xmax = 0.9057840420634717
+            text = "ɐ"
+        intervals [12]:
+            xmin = 0.9057840420634717
+            xmax = 0.9963718820861678
+            text = ""
+    item [6]:
+        class = "IntervalTier"
+        name = "gtobi"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 7
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.06343670737958328
+            text = ""
+        intervals [2]:
+            xmin = 0.06343670737958328
+            xmax = 0.16806790146767633
+            text = ""
+        intervals [3]:
+            xmin = 0.16806790146767633
+            xmax = 0.3382591475476758
+            text = ""
+        intervals [4]:
+            xmin = 0.3382591475476758
+            xmax = 0.47600147900541856
+            text = ""
+        intervals [5]:
+            xmin = 0.47600147900541856
+            xmax = 0.6908927605344451
+            text = "H+!H*"
+        intervals [6]:
+            xmin = 0.6908927605344451
+            xmax = 0.9057840420634717
+            text = ""
+        intervals [7]:
+            xmin = 0.9057840420634717
+            xmax = 0.9963718820861678
+            text = ""
+    item [7]:
+        class = "IntervalTier"
+        name = "prosody_crepe"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 1
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.9963718820861678
+            text = ""
+    item [8]:
+        class = "IntervalTier"
+        name = "prosody_pyin"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 7
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.06343670737958328
+            text = ""
+        intervals [2]:
+            xmin = 0.06343670737958328
+            xmax = 0.16806790146767633
+            text = "\\"
+        intervals [3]:
+            xmin = 0.16806790146767633
+            xmax = 0.3382591475476758
+            text = "_\\"
+        intervals [4]:
+            xmin = 0.3382591475476758
+            xmax = 0.47600147900541856
+            text = "‾//"
+        intervals [5]:
+            xmin = 0.47600147900541856
+            xmax = 0.6908927605344451
+            text = "_\\"
+        intervals [6]:
+            xmin = 0.6908927605344451
+            xmax = 0.9057840420634717
+            text = "_//"
+        intervals [7]:
+            xmin = 0.9057840420634717
+            xmax = 0.9963718820861678
+            text = ""
+    item [9]:
+        class = "IntervalTier"
+        name = "prosody_yin"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 1
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.9963718820861678
+            text = ""
+    item [10]:
+        class = "IntervalTier"
+        name = "prosody_praat"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 1
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.9963718820861678
+            text = ""
+    item [11]:
+        class = "IntervalTier"
+        name = "prosody_pesto"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 1
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.9963718820861678
+            text = ""

@@ -1,0 +1,52 @@
+SpeechPrint — files for supervisor review
+Generated: 2026-06-07
+Open each WAV + TextGrid together in Praat (select both → View & Edit).
+
+────────────────────────────────────────────────────────
+daakie/
+  doreco_port1286_2017_06_30_Jaklin.wav   original DoReCo audio
+  doreco_best.TextGrid                    CURRENT BEST
+    Tracker : CREPE (neural network, Kim et al. 2018)
+    Phones  : human DoReCo annotations (wd@TA, ph@TA)
+    Tiers   : sentence · translation · words · gloss · syllables · phones · prosody
+    Extras  : MAD threshold, utterance boundary reset, pitch declination removal,
+              nucleus edge trimming, octave recovery in spike removal
+
+────────────────────────────────────────────────────────
+german_gtobi/   (5 sentences)
+  <sentence>.wav + <sentence>.TextGrid    CURRENT BEST per sentence
+    Tracker : CREPE full model
+    Phones  : linguistically correct German IPA (hardcoded, not MFA)
+              MFA abandoned — produced wrong transcriptions for 3/5 sentences
+              and timing mismatches of 66–430 ms vs human Wort tier
+    Tiers   : sentence · translation · words · gloss · syllables · phones · gtobi · prosody
+              gtobi tier = expert GToBI label (human ground truth, for comparison)
+  gtobi_best_summary.png                  all 5 sentences in one image
+
+────────────────────────────────────────────────────────
+english_minimal_pairs/
+  audio_original.wav                      raw recording (Lydia, iPad, 2026-05-30)
+
+  prosody_old_v1_praat_scc.TextGrid       OLD — Praat default autocorrelation
+    Problem: 238 octave errors in first 30 s → wrong direction labels
+    Tiers: sentence · words · syllables · f0_vowel · prosody
+
+  prosody_auto_pyin_newest.TextGrid       CURRENT AUTO — pYIN + Xu(1999) correction
+    Tracker: Librosa pYIN (probabilistic, voiced/unvoiced mask)
+    Transcription: WhisperX large-v3 + MFA phone alignment
+    Built for questionnaire 2026-06-02
+    Tiers: sentence · words · syllables · phones · prosody
+
+  prosody_human_corrected.TextGrid        CURRENT BEST — hand-verified labels
+    Based on pyin_newest timing; prosody labels manually corrected
+    Tiers: sentence · words · syllables · f0_vowel · prosody
+
+────────────────────────────────────────────────────────
+Prosody symbol key:
+  /   weakly rising       //  strongly rising
+  \   weakly falling      \\  strongly falling
+  ‾   high level (above neighbours)
+  _   low level (below neighbours)
+  *   accent (louder + higher or longer than neighbours)
+  ?   unvoiced / insufficient F0
+  Combinations: *‾//  *_\\  ‾/  _\\  etc.

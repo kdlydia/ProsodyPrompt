@@ -150,7 +150,7 @@ is detecting the sub-octave.
 \subsection{Consequence for prosody labelling}
 
 The connection between octave errors and wrong prosody labels is direct and
-quantifiable. SpeechPrint's symbolic layer computes the intra-syllable pitch
+quantifiable. ProsodyPrompt's symbolic layer computes the intra-syllable pitch
 movement as:
 %
 \begin{equation}
@@ -166,12 +166,12 @@ example, $-2$\,ST (a mild fall, correctly labelled \texttt{\textbackslash}) will
 instead compute as $-2 + 12 = +10$\,ST and be labelled \texttt{//} (strongly
 rising). Conversely, an octave error on the offset value propagates a $-12$\,ST
 error: a rising syllable becomes an apparent strong fall. This is precisely the
-pattern visible in the SpeechPrint v1 and v2 outputs where the supervisor
+pattern visible in the ProsodyPrompt v1 and v2 outputs where the supervisor
 (Krifka, 2026) noted pitch marks that did not match perceived intonation.
 
 By switching to Librosa pYIN and applying Xu (1999) octave correction, the number
 of affected syllables in the English recording is substantially reduced. The
-resulting prosody labels in SpeechPrint v3 show qualitatively more consistent
+resulting prosody labels in ProsodyPrompt v3 show qualitatively more consistent
 agreement with perceptual intonation, as verified by the GToBI comparison
 (Section~\ref{sec:gtobi_results}).
 
@@ -225,7 +225,7 @@ The full ranking by accuracy and robustness is:
 
 The five German GToBI sentences provide a controlled benchmark where human
 expert annotations (Wort tier: word boundaries; Ton tier: GToBI tone symbols) can
-be compared directly with SpeechPrint prosody labels. Human word boundaries from
+be compared directly with ProsodyPrompt prosody labels. Human word boundaries from
 the Wort tier are used as input in all configurations; only the prosody
 assignment is automatic. MFA was evaluated as a phone-alignment source but
 abandoned after it produced wrong transcriptions for three of five sentences
@@ -234,18 +234,18 @@ and timing mismatches of 66--430\,ms against the human Wort tier
 linguistically verified German IPA distributed proportionally within the
 human Wort boundaries.
 
-Three sets of results are reported: (1)~SpeechPrint v3 (pYIN, baseline pipeline,
+Three sets of results are reported: (1)~ProsodyPrompt v3 (pYIN, baseline pipeline,
 no optimisations); (2)~an intermediate build using CREPE with all five algorithmic
 optimisations; and (3)~the final questionnaire pipeline (pYIN with all five
 optimisations), which is the configuration used in the perceptual evaluation.
 
-\subsection{SpeechPrint v3 — pYIN baseline}
+\subsection{ProsodyPrompt v3 — pYIN baseline}
 
 Table~\ref{tab:gtobi_pyin} shows results for the pYIN-based pipeline.
 
 \begin{table}[h]
 \centering
-\caption{GToBI vs.\ SpeechPrint v3 (pYIN) prosody labels. Syllables in IPA;
+\caption{GToBI vs.\ ProsodyPrompt v3 (pYIN) prosody labels. Syllables in IPA;
          the GToBI-accented syllable is the one the expert Ton label falls on.}
 \label{tab:gtobi_pyin}
 \small
@@ -275,7 +275,7 @@ lexically starred tone.
 
 \paragraph{MFA red flag and correction.}
 The first GTOBI BEST build revealed a critical error: the Montreal Forced Aligner
-(MFA) used in earlier SpeechPrint versions had produced wrong transcriptions for
+(MFA) used in earlier ProsodyPrompt versions had produced wrong transcriptions for
 three of five sentences (\textit{gelbe} transcribed as ``gerbe''; \textit{einige
 Melonen} as ``einigen mal lohnt''; \textit{er sang die Lieder} as ``hesangli
 lieder''). Furthermore, even for the two correctly transcribed sentences, MFA
@@ -319,7 +319,7 @@ all five sentences.
 
 \begin{table}[h]
 \centering
-\caption{GToBI vs.\ SpeechPrint BEST (CREPE + 5 optimisations, corrected IPA).
+\caption{GToBI vs.\ ProsodyPrompt BEST (CREPE + 5 optimisations, corrected IPA).
          Syllables now use linguistically correct German phonemization;
          word boundaries are from the human Wort tier exclusively.
          \texttt{‾} = high level (U+203E overline); \texttt{\_} = low level.}
@@ -356,7 +356,7 @@ Sentence & GToBI & Syllables & Prosody on accent syl. & Assessment \\
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{Figures/gtobi_best_summary.png}
-  \caption{SpeechPrint BEST TextGrid output for all five German GToBI sentences
+  \caption{ProsodyPrompt BEST TextGrid output for all five German GToBI sentences
            (eight tiers each). Tier sources: sentence and translation are
            hardcoded from the known text; words from the human Wort tier;
            gloss hardcoded English word-by-word; syllables and phones from
@@ -413,7 +413,7 @@ Table~\ref{tab:gtobi_pyin_final} shows the results.
 
 \begin{table}[h]
 \centering
-\caption{GToBI vs.\ SpeechPrint final pipeline (pYIN + 5 optimisations, corrected IPA).
+\caption{GToBI vs.\ ProsodyPrompt final pipeline (pYIN + 5 optimisations, corrected IPA).
          \texttt{‾} = high level; \texttt{\_} = low level.}
 \label{tab:gtobi_pyin_final}
 \small
@@ -530,7 +530,7 @@ measure cannot make this distinction. The local relative measure also correctly
 identifies \textit{yesterday} as non-prominent despite its absolute value being
 above the recording median.
 
-SpeechPrint v3 uses the local neighbourhood comparison (Section~\ref{sec:prosody_label_method})
+ProsodyPrompt v3 uses the local neighbourhood comparison (Section~\ref{sec:prosody_label_method})
 for this reason. The recording-median comparison is retained as a secondary
 reference for identifying syllables that are globally high or low.
 
@@ -619,7 +619,7 @@ correctly across all three variants with no misplacements.
 
 The lexical stress pair \textit{REcord}/\textit{reCORD} showed \texttt{*‾//}
 on the first syllable of the noun and \texttt{*‾} on the second syllable of
-the verb --- the most acoustically salient pair in the corpus, where the
+the verb, the most acoustically salient pair in the corpus, where the
 stress shift spans the full word.
 
 \subsection{Pairs with weaker or failed differentiation}
@@ -641,21 +641,21 @@ phenomena.
 
 \begin{enumerate}
 \item \textbf{Focus movement:} \textit{MARY flew to Milan yesterday}
-      vs.\ \textit{Mary flew to MILAN yesterday} --- the accent marker moves
+      vs.\ \textit{Mary flew to MILAN yesterday}: the accent marker moves
       from subject to locative, the paradigm case of narrow focus.
 \item \textbf{Too/also focus:} \textit{JOHN called Maria, too}
-      vs.\ \textit{John called MARIA, too} --- the accent moves between
+      vs.\ \textit{John called MARIA, too}: the accent moves between
       subject and object within an otherwise identical sentence frame.
 \item \textbf{Lexical stress:} \textit{That's a REcord for her}
-      vs.\ \textit{Please reCORD this for her} --- the most acoustically
+      vs.\ \textit{Please reCORD this for her}: the most acoustically
       obvious pair; the stress shift is reliably perceived even by
       non-linguists.
 \item \textbf{Focus-sensitive particle:} \textit{ONLY JOHN called Maria}
-      vs.\ \textit{John called only MARIA} --- the scope of \textit{only}
+      vs.\ \textit{John called only MARIA}: the scope of \textit{only}
       changes with intonation; the system marks the scope-bearing word
       correctly in both variants.
 \item \textbf{Tag question:} \textit{You finished the report, DIDN'T you}
-      vs.\ \textit{You finished the report, didn't YOU?} --- a pragmatically
+      vs.\ \textit{You finished the report, didn't YOU?}: a pragmatically
       subtle contrast (confirmation-seeking vs.\ challenging) in which the
       final focus shifts to the tag auxiliary or subject; the system assigns
       \texttt{*‾//} to the correct focus word in both variants.

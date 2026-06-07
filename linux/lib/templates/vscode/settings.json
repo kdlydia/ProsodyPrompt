@@ -1,0 +1,28 @@
+{
+  "files.associations": {
+    "*.TextGrid": "plaintext",
+    "*.eaf": "xml",
+    "corpus.toml": "toml"
+  },
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.venv": true,
+    "**/out/**/intermediates": true
+  },
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4
+  },
+  "python.analysis.extraPaths": [
+    "${env:SPEECHPRINT_ROOT}/lib"
+  ],
+  "terminal.integrated.env.linux": {
+    "SPEECHPRINT_LANGUAGE": "@LANGUAGE@"
+  },
+  "terminal.integrated.env.osx": {
+    "SPEECHPRINT_LANGUAGE": "@LANGUAGE@"
+  },
+  "terminal.integrated.env.windows": {
+    "SPEECHPRINT_LANGUAGE": "@LANGUAGE@"
+  }
+}

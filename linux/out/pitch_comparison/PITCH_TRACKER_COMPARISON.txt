@@ -1,0 +1,72 @@
+PITCH TRACKER COMPARISON REPORT
+============================================================
+
+Files analyzed: German GToBI sentences + English + Doreco
+Trackers: Praat SCC (raw), Praat AC + Xu(1999), Librosa pYIN, torchcrepe
+
+NOTES ON EACH TRACKER:
+----------------------------------------
+
+1. Praat SCC (raw):
+   - Default Praat pitch.  Susceptible to octave jumps (picks octave
+     harmonic instead of F0 when formants interfere).  Known to occasionally
+     double or halve the F0 estimate, especially at voicing boundaries.
+   - Range: 75–600 Hz (the default Praat range).  Too wide for a single
+     speaker → allows implausible values.
+
+2. Praat AC + Xu (1999) octave correction:
+   - Uses to_pitch_ac() with octave_jump_cost=0.5 (double the default
+     penalty, so Praat will avoid jumping an octave unless forced to).
+   - Post-hoc correction: median across voiced frames is computed; any
+     frame deviating >10 ST is tested with F0/2 and F0×2 — whichever
+     is closer to the median replaces the outlier.
+   - Followed by triangular smoothing (1:2:1 over 3 voiced frames).
+   - This mirrors the ProsodyPro approach recommended by Xu (1999).
+
+3. Librosa pYIN (probabilistic YIN):
+   - State-of-the-art monophonic F0 tracker.  Returns voiced/unvoiced
+     probability so unvoiced frames are cleanly masked.
+   - Less susceptible to octave errors than Praat SCC because it uses
+     a statistical model of F0 continuity.
+   - Handles whispery or breathy voice better than Praat.
+   - Small hop (10 ms) gives fine time resolution.
+
+4. torchcrepe (CREPE — Convolutional REpresentation for Pitch Estimation):
+   - Deep CNN trained on large corpora (NYU MARL, ICASSP 2018).
+   - Operates directly on waveform, not spectrum → avoids harmonic confusion.
+   - Best overall accuracy on speech and singing, outperforms pYIN/SWIPE
+     on challenging material (breathy, creaky, noisy speech).
+   - Requires 16 kHz input; uses ~100 ms context.
+   - Periodicity threshold 0.35 used here for voicing decision.
+
+RECOMMENDATION:
+   For SpeechPrint, use Librosa pYIN as the primary pitch tracker
+   (robust, no heavy model download needed) with Xu(1999) post-correction
+   as a safety net. torchcrepe gives the best accuracy but requires GPU
+   for production use.
+
+COMPARISON TABLE:
+------------------------------------------------------------
+File                          Praat_med(Hz)   Praat+Xu_med(Hz)  Lib_med(Hz)   CREPE_med(Hz)  Octave_errors                           
+-------------------------------------------------------------------------------------------------------------------------------------
+eine_gelbe_banane             196.5           196.7             198.2         195.6          No octave errors detected               
+einige_melonen                116.1           116.7             114.5         116.8          No octave errors detected               
+er_sang_die_lieder            111.3           111.3             110.6         112.7          No octave errors detected               
+er_will_die_rosen             105.6           106.0             105.0         105.1          No octave errors detected               
+ich_wohne_in_bern             104.6           104.8             102.3         None           No octave errors detected               
+audio_english_30s             107.3           107.0             107.4         180.4          238 probable octave errors (0 Praat-too-
+doreco_port1286_30s           189.2           191.8             192.5         190.5          40 probable octave errors (0 Praat-too-h
+
+OCTAVE ERROR EXAMPLES (top 3 per file):
+
+  audio_english_30s:
+    t=0.300s  Praat=111.8Hz  Librosa=213.6Hz  diff=-11.2ST  (praat_too_low)
+    t=0.310s  Praat=110.1Hz  Librosa=213.6Hz  diff=-11.5ST  (praat_too_low)
+    t=1.080s  Praat=137.4Hz  Librosa=272.3Hz  diff=-11.8ST  (praat_too_low)
+
+  doreco_port1286_30s:
+    t=10.590s  Praat=87.7Hz  Librosa=175.5Hz  diff=-12.0ST  (praat_too_low)
+    t=10.600s  Praat=87.7Hz  Librosa=176.6Hz  diff=-12.1ST  (praat_too_low)
+    t=10.610s  Praat=88.7Hz  Librosa=175.5Hz  diff=-11.8ST  (praat_too_low)
+
+END OF REPORT

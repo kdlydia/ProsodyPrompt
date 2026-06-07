@@ -1,0 +1,5 @@
+file,language,index,word,start,end,duration_s
+ich_wohne_in_bern.wav,de,1,ich,0.198,0.302,0.10399999999999998
+ich_wohne_in_bern.wav,de,2,wohne,0.344,0.573,0.22899999999999998
+ich_wohne_in_bern.wav,de,3,in,0.594,0.719,0.125
+ich_wohne_in_bern.wav,de,4,bern,0.761,0.969,0.20799999999999996

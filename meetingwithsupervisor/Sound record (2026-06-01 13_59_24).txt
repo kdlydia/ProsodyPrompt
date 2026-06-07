@@ -1,0 +1,866 @@
+So, how are you?
+Good, in general.
+Things are coming along.
+I thought I was completely ready with this questionnaire and demo,
+but then I tried it.
+I tried it on some recordings of actors,
+some actors that we hired to do sentences in different ways,
+and then I recorded my voice.
+I'm already in not the best environment,
+but I recorded a bunch of minimal pairs,
+where I just changed one thing from,
+make one thing phonologically different,
+so you have this direct way to compare,
+okay, the same sentence,
+but different accents,
+but different voices.
+Like the example that we talked about,
+that you gave in your paper.
+Exactly.
+And now, I recorded that,
+and honestly, some things work really well with the detection of sun rising
+and falling and accents,
+other things just don't work at all.
+And I'm thinking I might have to change the entire algorithm,
+maybe learn from why some of the other ones work better.
+Is it maybe I need to completely switch up my strategy
+and just go on to value?
+I'd like to see,
+I mean, you showed me a picture on your email, I guess,
+of where it looks like it...
+I can show a bunch of examples,
+so I actually just took,
+made some documentation of things that looked off,
+so I can show you.
+Okay.
+Okay.
+Okay.
+Okay.
+Okay.
+Okay.
+Okay.
+Okay.
+I can show a bunch of examples,
+so I actually just took,
+made some documentation of things that looked off,
+so let me see what I wrote here.
+So, I think here should be a fall coffee.
+So this blue is the pitch line.
+Exactly.
+And you're extracting it with the webinar.
+This is just using the default plot, like,
+so this might be something where I need to find a different algorithm for...
+And what's the frequency axis here?
+This amplitude.
+No, for the pitch, though.
+What's the range of pitch that I have here?
+Oh, maybe you can see.
+No, no, actually, I don't have...
+I forget the exact, the exact scale here.
+Right.
+So, I mean, it looks like it's linear, for one thing, but that's okay.
+But it also looks like there's something at common
+that happens in pitch detection.
+One thing is octave errors.
+Okay, yeah.
+Because to a pitch, the octave above,
+there's a lot of overlapping harmonics,
+and it's the same period,
+it's just that they're multiple,
+and so the detectors can be confused.
+Therefore, if you're looking for a pitch that would not be unheard of
+to restrict the range of pitches that it can take,
+so even when it drops down,
+it could be that the second most likely pitch
+would be the right one that you're looking for.
+So if you just cut off that kind of error...
+Yeah, eliminate that one because it can't work.
+Yeah, the octave error, that's for sure something.
+Or you might show both, like, the top three choices
+and show that, you know...
+Yeah, based on the other data,
+it would probably not be one or the other, for example,
+based on the range of values before and after.
+Right, right.
+So there are ways to, you know,
+if you have time to tweak your algorithm,
+which is a little commercial and all that,
+then you would spend time saying,
+okay, we're going to reduce the range here
+or under certain circumstances.
+So you can't do all of that now.
+But you can show that, A,
+this thing is actually reasonably tracking pitch
+even if it looks like it's not to right now.
+So I wouldn't just give up on that.
+I think that could be one of the sources of the error.
+That's why I asked about the range.
+I couldn't tell if it was an octave drop or not,
+but that's the most common error that pitch detectors make.
+Okay, yeah, yeah.
+Okay, that might be something to note,
+but I'll just check the scale.
+Here, I've made, like, a recording of it.
+Okay.
+Do you want coffee?
+Do you want to have coffee?
+There's no way to tap to auto-scroll and boom.
+You married a woman yesterday.
+Yeah, some things are not so ideal.
+Other things are working that weren't working before,
+but just kind of keeping...
+Also, I plan to maybe check
+how the pros and pros impose that
+between, I don't know, a few years in the making,
+how they handle the, yeah,
+the accurate F zero around the tune
+and this kind of thing.
+Oh, yeah, true.
+It's the state of the art.
+True, yeah.
+At least for instruments and stuff,
+but probably for speech,
+I don't know so much about speech.
+Mm-hmm.
+And I think that there might be
+a version of it at NYU
+in the moral lab somewhere.
+Right.
+Okay.
+Okay.
+Yes, I'll try
+to see what I can find.
+I'm trying to think, I guess,
+I wrote down some things that
+were, yeah,
+some things were working quite well,
+other things are just still flawed
+and I can't quite point to
+what's causing
+some smaller rises
+or falls where I don't hear it
+perceptually
+or like accents,
+for example, Mary flew
+to, so here the idea was
+I read it like this, Mary flew,
+like the question was how did Mary get to Milan
+yesterday, Mary flew to Milan yesterday,
+and so at least I was expecting
+an accent here,
+other places gets accents
+correct. Where would you see the accent?
+Like in the flu it should be
+like you would see an amplitude
+where's the amplitude? Here, here. Yes.
+Yeah. And this is the amplitude
+for how much time? This whole thing?
+Yes.
+Right. But that's a very wide
+range to look at the
+amplitude.
+True. So I
+really didn't think you'd want
+a RMS
+follower
+which would operate on a
+shorter window
+of time. Yeah, true. And then
+you would smooth it out to get
+a contour and not now on like
+a pitch contour.
+You could take it longer
+and then you'd smooth it.
+Yeah. And I think to you also
+I mean the amplitude is pretty dependable
+but over this whole window
+I don't know what's
+happening
+there
+and 66
+is what
+you're surprised at how
+I mean
+66 is relative to
+zero is
+nearly imperceptible
+or something. Yeah.
+So 66 doesn't
+sound that outrageous but I don't know
+in the context of what the other ones are.
+Yeah, I have to check
+at this more and also
+I did notice that many times
+when there's a nasal
+in that so you have the syllable
+on set
+according to you for this. So for sure
+with those nasals it's working
+better with the closest
+but in this case, yeah, that was
+for the rising and falling for the accents
+I don't know if I have to
+check more closely. Also I'm getting here
+like, yeah, there's some errors basically.
+Yeah.
+So, I mean
+I mean
+I would
+give up on this stuff.
+I would think about
+if you're using
+prep for everything
+I don't know how
+treatable it is or if some things are older
+if they're still straight in the art.
+As I say, prep will be one thing.
+It could also be
+easily
+have positive
+LMS. Oh yeah, yeah.
+That's I think the most default
+yeah, the RMS. There's probably other
+things as well.
+This is Ligrosa.
+And Ligrosa actually might have
+a prep pitch detector built into it.
+I don't know how controllable it is.
+You know Ligrosa though?
+Yes, yeah.
+Yeah.
+I can like
+put something together.
+Maybe this will look better than the
+other ones it has because I saw
+the people else in their research room.
+And when you're doing something like
+the flu, of course you need the other one
+to compare it to.
+And also it may not
+just be the absolute
+but it might be relative to the rest of the sentence.
+So those are all things
+that you can look at.
+So it does perform better
+if I use relative.
+I think
+the technologies that are out there
+and with the right tweaking
+and putting them together
+it's actually
+a good idea that would be
+doable to the point where you could say
+it's not perfect
+but this is just a first pass
+but with this
+information you can see how much more useful
+it would be and we got these
+feedback from the linguists
+to still show
+that you can
+that you're moving towards the goals.
+I think that's all Ligrosa.
+I don't have a long time
+today. I have a Spanish lesson
+I just came from a Spanish lesson
+but A1
+it's very basic.
+I'm weird, I'm all over the place
+I can't take a level test
+and get anything reliable
+because my vocabulary
+is great and I can read news stories
+but I can't put together a sentence
+to save my life because I just want to do it.
+If you do a lot more of that
+then suddenly all this vocabulary
+will come through.
+I think one of these days
+I do read and everything
+and I can tell
+my reading is even more fluent
+but it just doesn't come out my mouth
+and it feels like one of these days
+it's just going to bump up
+a level
+because it's all there but it's not
+internalized sort of.
+Anyway
+yeah
+and that's why
+I was reading about that table rather
+because I'm using
+a language that I'm sure
+will accept.
+Okay, so on the
+questionnaire it's definitely
+looking better. I think you can see
+why
+and how
+you will be willing more time
+for the evaluation part and
+getting good feedback from them about
+whether or not they think that
+what you're adding to is useful.
+What you're adding to the tool set
+is useful and that's what you want to
+get the feedback on.
+I think that it's time
+to start writing
+at least the abstract.
+You really have to nail an abstract
+and it should be about one page
+maybe a page and a half if it has to be
+but should really
+I mean if you can write a good abstract then it's not easy.
+I started
+I mean I spend as much time on the abstract
+as I do on other parts
+of dissertations with people I think in the past.
+Maybe that's an exaggeration but
+because it's hard because everything has to
+bubble up and have the right proportion
+and say just what you mean, what the contributions
+are, why it's important, you know, which
+is really hard work.
+And such a small
+space.
+But that's really
+important because that's one part of your
+dissertation that people will
+read. And also
+when you send it to people, everybody
+who wants to
+that's the part they're going to be reading.
+So I would definitely
+start looking at that because it will
+help you in your presentation too.
+Because it's about the same scale
+level of detail.
+We're going to provide more detail
+in the presentation.
+And also
+you have like
+it seems like
+what are these things? 50, 75
+pages or something like that?
+Actually I'm just going to ask you
+if it's average 50?
+Well I think we always start at 50
+but everybody does
+at least as they're doing.
+And you don't
+have to go through everything that's in there.
+But what I'm saying is that you've already
+devoted half of your space to
+the literature degree.
+And that's substantial.
+Because you've talked about
+what you were saying and all that
+and it's huge processing.
+Yeah, it's big.
+And
+in fact
+the speech processing thing
+again maybe if we had
+more time what we'd be talking about is
+this is relevant
+for speech processing in so far
+as that
+it helps disambiguate
+speech in a way that typical
+speech processing
+systems don't do. And we talked about
+maybe showing that or
+giving an example of how
+a speech
+processor understanding
+system doesn't catch those subtleties
+that are
+exotic.
+And so why am I
+saying that? I'm saying that because it may be
+that, and I didn't read it closely, but
+it may be that we want to narrow down the speech
+processing part of this
+background literature to directly
+inform
+what you're doing in the speech processing
+because you're not doing a
+generic speech processing system really.
+So, but I don't know
+I don't think whittling it down
+is the most important thing at this point, but I do
+think abstract and the other sections
+about what you're doing
+are important.
+And it's also partly
+to keep you on focus.
+I think you're doing
+I think you have managed to find some focus
+compared to the beginning when it was
+I want to explore this area
+of artistic things, of scientific things
+and now you're
+really sort of
+much more directed it feels to me.
+And that's good, but I think writing the abstract
+will help you nail that down
+and so that would be something
+we can always reference.
+And also
+when you do submit
+your next week or
+your next write-up
+please give me a little
+direction on what's new and different.
+Oh, yeah, yeah, yeah, okay.
+So I don't have to
+read and wonder
+what takes you so long.
+Okay.
+At some level.
+Whether it's
+in the emails
+or whatever.
+I can change this section and this section
+is really there.
+So
+I know
+that was quick, but I think
+I hit on the most important things that I
+had thought about and I want
+to make sure that we have addressed
+some of the questions
+or discomfort that you had about that.
+I think there's hope there from what I can see
+on putting
+still a good demo and video
+together to send out.
+Do you also think like
+I'm thinking to use
+German. So I found
+which is actually
+the pre
+pre-psychotic
+I compared to my system actually
+really well with German.
+I'm thinking to have like the English
+minimal pairs to show
+like five minutes or I don't know if that's too much
+for people to watch and then afterwards
+answer questions. And then I could show
+some German
+that has some questions. I'm not sure
+exactly. Like I don't
+want to show them too much
+to watch to also lose focus.
+So I'm thinking what is like the
+good amount to
+of a demo to show.
+Yeah, so I mean I would
+say that you have
+a good five minutes to do
+for your evaluation system.
+I don't think
+I think if you go
+too much over that you're going to have to
+depending on
+you know if there's a
+damn good reason for it and it seems like
+it could hold your attention and be
+relevant to their ability to answer and everything
+then you might
+justify going over that. Otherwise
+I would try to keep
+it to you know
+five, six.
+Yeah, yeah.
+And if
+German gives you a way to
+illustrate
+better than English
+that's fine. But like I said before
+you really only need one
+language to show the power of what your
+opposites are. Yeah, yeah.
+And I mean I appreciate that it works with more than one
+and that it can work with one and you can refer
+to that and say that in your
+article, your dissertation.
+And then the question is do you need
+the German to really illustrate
+well
+maybe.
+I don't know. But again
+as long as it doesn't get
+Yeah.
+Yeah.
+Yeah.
+Yeah.
+Yeah.
+I mean then I even
+I think I'll even just go to English
+because I
+suppose that's also the language that the
+language is all about.
+I mean if you can
+get your contributions to show
+in English
+then fine.
+And even if it's
+for the demo
+for your feedback it doesn't
+actually have
+to be
+robust software
+right. If you get it working
+once or even if you have to
+do something that says
+even a star this isn't
+working yet in my software
+but this is what it's going to do.
+Right.
+And just have a little footnote that says that.
+And that's all okay because
+I think it's really important that you understand
+if this is something
+what does this mean for
+people in the
+community.
+And you want to know that even if you're
+you know you haven't
+polished up software yet.
+So I don't think that's
+really cheating as long as you come clean
+on it and say clear about it.
+You've done the work you've thought about it
+you've designed it. This is what it's
+going to look like.
+We've corrected
+the pitch contour to
+show if it was more
+accurate than we're currently getting
+for the software to show
+how it can help.
+Then that's fine.
+But of course
+it's easier even to do that
+the better it works.
+The easier it is to even do that.
+Yeah.
+But I think you can
+I suspect that you'll be able to improve
+the behavior than just using the default settings
+and prep for pitch contour.
+Yeah.
+I'll try. I'm sure
+it'll get better.
+I don't know how it will get to a point
+where I think it's
+making less obvious
+things wrong.
+Good.
+I don't know. How does it
+work? So
+we had a major
+gas leak in our flat
+and actually we
+found out today that we can move out
+end of June.
+Now the thesis defense
+is like
+I heard it's the first to second week
+of July.
+Yeah. I'm not even sure yet.
+I don't know if I've even gotten that email yet.
+I think it's arranged
+at least from the students
+they said it's arranged in terms of
+doing something around that lines
+and I'm wondering if they have any
+because we're going to be moving them
+in one week.
+This place is full of options basically
+you like it but it's one thing after
+the next like a landlord that is
+not responsible about doing this
+every five years after you check
+and you're kind of about double
+I'm not sure because half of it is getting
+through. Yeah. So now
+for one and a half weeks we don't have gas all that stuff
+with a lot of problems.
+So we can move out end of this month
+but that also means that I won't have a place
+here in Barcelona so
+I'm wondering if I can write the secretary
+if there's any possibility to do it online
+the defense.
+How would that help?
+Then I wouldn't have to
+be in Barcelona
+serve a tenant.
+Because I live in
+Berlin otherwise.
+So yeah that's the thing.
+Samir is going to stay
+for next year like he's applying to
+season right now but I will be going to
+MIT next year so it doesn't make sense
+that it's like rents and
+stuff it's expensive
+to understand.
+But I wonder if there's some regulation for
+this if it's in the
+I don't know the answer to
+that question.
+I would say
+that it would benefit
+to be here
+if you can support it.
+And
+however
+I'm also concerned about
+the amount of time that
+moving out
+and apartments and all that
+is going to take.
+And so whether you're here or not physically
+is kind of maybe small
+compared to the
+impact. This is really unfortunate
+timing for that.
+So if you can
+swing in or find
+somebody that's going away for a summer
+and take care of the apartment
+or the animals
+or
+something there's a lot of moving around
+right now. People want to
+leave apartments before
+they've finished paying rent on them.
+I don't know
+if you could put a loan out
+and try to find some way to
+stay.
+Yeah.
+Yeah.
+Yeah.
+It's all good.
+Yeah.
+But definitely try to keep your
+focus going on this because
+even though you sort of
+have another master that you're walking
+into you like to
+not
+put this one at risk
+although I kind of doubt that
+that's where we are.
+Of course I want to do something.
+Yeah.
+This is an opportunity.
+Yeah.
+Yeah.
+Because once it's done, it's done. It's finished
+and that's what you will have
+to show your
+DSP program or your fellow employer
+or future employer or whatever.
+So
+I'd make this.
+But I don't know. Of course you can
+talk to the secretary if you really think
+that's what you need.
+Yeah.
+I want to figure something out.
+Yeah.
+I mean
+it would be good if you could find a way
+to not
+do the traveling and
+to not do it from
+abroad. I mean from
+the internet or whatever.
+I think I've
+seen some that
+were presented
+online
+as a matter of fact. I mean we're sitting in that room
+and people come up and they stand up there
+and they do the presentation.
+But it seems to me that you might not
+talk to the secretary. You might ask Frederick.
+Oh right. This was like the
+coordinator and that stuff.
+So that might
+be the person to ask.
+Yeah. Okay.
+And I think some people have whatever
+going back to China or before.
+They just
+have no other choice but to do that.
+Yeah.
+Let's see. I'll try and look for
+different options.
+Did you say we?
+You're sharing an apartment?
+It's just Samir and I. I see.
+But he's going to look for another place.
+It's a smaller place because it's huge.
+It's 95 square meters. So for sure
+that's too much for one person.
+And also it's the kind of
+place that we don't get registration here.
+So he has other rooms. We can rent a
+room. It's really nice. Like it's
+three bedrooms actually.
+We can't rent a
+room. It's a city that has a housing
+place. It's just
+ridiculous. So you just
+would have your short-term address and
+once we also have to
+make it with all of the pricing
+and all that stuff. It's actually
+somehow we can help. But all those were
+surprises. For example, we saw
+the flag and we said, yeah, we don't have
+to rent a room. We're going to
+call that message. Obviously
+they're recording this.
+So then in the end
+we were allowed to go register.
+And the person sitting
+down, they just said, oh, well
+somebody else has registered here. And that's
+what we thought about. It's not even possible.
+Because my feeling
+is that they think that we wouldn't move
+out. We'll just stay there forever.
+That's why they didn't allow the other
+room. So do you think there really is
+somebody else registered there? Someone really is
+registered. Maybe the cousin
+or maybe some family member is getting some
+benefit. Who knows? I don't know the whole story
+at all. I just know someone else is registered there.
+And then this thing about the gas
+and other things is just like very
+tense.
+In fact, if somebody else is registered
+there, it may be
+illegal for them to be
+renting it to you.
+Yeah, we could start something, but we won't.
+It's like, it's going to
+be dragging out.
+A lot of people said you should start
+some case against him.
+At least he'll have that bad
+landlord report or something.
+But I think that it was too much energy to
+put in. Also he's living the same
+like, he's kind of two floors
+above. So that's another thing.
+You never know if you arrive home and they're just
+like gluing your door open.
+So right now you've paid up until the
+end of June again? Yes.
+They were going to make us also pay for the gas
+thing, which is the responsibility
+of the landlord.
+And actually in this case,
+there was a leakage.
+And honestly,
+it got into a show
+so much of the gas
+was just going nowhere.
+And it's dangerous too.
+Yeah, it is dangerous.
+So I think, yeah, luckily
+nothing happened. It's dangerous to hit
+them when they're up two floors, for that matter. Exactly.
+It takes birds down, you know.
+Heat rises. Exactly.
+I wouldn't be too far.
+Anyways.
+So that was messy. I wish we had
+just stayed in here a while.
+Yeah.
+But still something
+like this.
+How long have you been in this place?
+Oh, now four months.
+Yeah, four months.
+I mean,
+sometimes I feel like
+I'm the really crazy stuff.
+But now still we have that problem
+left.
+He's going to
+take over like all the furniture
+because he's moving to a different place.
+Yeah.
+Yeah.
+He's going to take over most of his
+kind of stresses by the way.
+Andrea, who's got like a
+vacancy and it's too long to sit down here.
+Oh, no, no.
+The student.
+But he was not sure
+what he was going to do, right?
+Yeah, now he's going to take the job.
+He's not going to do his PhD.
+He's not sure actually.
+We had him tatted yesterday. He's not sure.
+I thought he had to decide by yesterday.
+He's sort of resented.
+He said that he's going to start.
+He won't take the PhD.
+But he was unsure about whether
+that was the right thing.
+But in any case,
+he'll be here in Barcelona.
+Yes.
+So he's going to move to an unfinished place
+and he's going to take over like a bunch of the things.
+So that helps.
+But I just hope nothing else
+comes out of this thing.
+It's very
+stressful.
+And it's
+like some years
+he basically
+has been
+waiting for
+a kind of confirmation
+on that.
+And that has to also happen.
+It stays weird.
+It's crazy.
+I don't know how
+he's navigated that stuff.
+And every time
+it came up, we were just hoping
+it can't come in before
+two weeks from now or else they're going to not
+give us the thing.
+And then everything came together somehow.
+It's quite us not even knowing
+what we were doing.
+Well, good luck.
+Thank you.
+And
+good luck.
+Yeah.
+Good luck on that software.
+Yeah.
+Alright. Okay.
+Thank you. Good.
+Take care. Bye.
+Bye.

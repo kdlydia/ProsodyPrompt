@@ -1,0 +1,37 @@
+{
+  "wav": "doreco_port1286_2017_06_30_Jaklin.wav",
+  "language": "it",
+  "duration_s": 162.68501133786847,
+  "transcript_source": "whisperx",
+  "transcript_preview": "ok sochi ne ha tucco napia nel lumbino ne ha punenso punen punenchia mi muo si li gavenso sen san yaku glom di gan san vero musungo san wawaso mi chiede di senn\u00f2 e mi chiede di senn\u00f2 e mi chiede di ti",
+  "backends": [
+    {
+      "backend": "whisper",
+      "source": "whisper-segment (proportional word timing within segments)",
+      "words": 202,
+      "syllables": 372,
+      "phonemes": 790,
+      "tg_path": "out/endangered_language_eval/whisper/doreco_port1286_2017_06_30_Jaklin_whisper.TextGrid"
+    },
+    {
+      "backend": "whisperx",
+      "source": "whisperx-ctc (CTC forced alignment, word-level)",
+      "words": 202,
+      "syllables": 372,
+      "phonemes": 790,
+      "tg_path": "out/endangered_language_eval/whisperx/doreco_port1286_2017_06_30_Jaklin_whisperx.TextGrid"
+    },
+    {
+      "backend": "gentle",
+      "words": 0,
+      "source": "gentle skipped: only supports English (got 'it')",
+      "error": "no words"
+    },
+    {
+      "backend": "mfa",
+      "words": 0,
+      "source": "mfa: no TextGrid output (rc=1, stderr=nosed with the \"mfa validate\" command\nERROR conda.cli.main_run:execute(148): `conda run mfa align /tmp/mfa_a1ff28ed/doreco_port1286_ /home/lydia/School/UPF/thesis260512/tools/mfa_models/pretrained_models/dictionary/italian_cv.dict /home/lydia/School/UPF/thesis260512/tools/mfa_models/pretrained_models/acoustic/italian_cv.zip /tmp/mfa_a1ff28ed/out --clean --num_jobs 2` failed. (See above for error)\n)",
+      "error": "no words"
+    }
+  ]
+}

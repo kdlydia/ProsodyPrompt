@@ -1,0 +1,304 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0.0
+xmax = 1.1548979591836734
+tiers? <exists>
+size = 7
+item []:
+    item [1]:
+        class = "IntervalTier"
+        name = "Wort"
+        xmin = 0.0
+        xmax = 1.1548979591836734
+        intervals: size = 6
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.07276211371875475
+            text = ""
+        intervals [2]:
+            xmin = 0.07276211371875475
+            xmax = 0.2155328468782882
+            text = "Ich"
+        intervals [3]:
+            xmin = 0.2155328468782882
+            xmax = 0.5003067286104759
+            text = "wohne"
+        intervals [4]:
+            xmin = 0.5003067286104759
+            xmax = 0.6469153847044055
+            text = "in"
+        intervals [5]:
+            xmin = 0.6469153847044055
+            xmax = 1.006912555950756
+            text = "Bern"
+        intervals [6]:
+            xmin = 1.006912555950756
+            xmax = 1.1548979591836734
+            text = ""
+    item [2]:
+        class = "TextTier"
+        name = "Ton"
+        xmin = 0.0
+        xmax = 1.1548979591836734
+        points: size = 2
+        points [1]:
+            number = 0.3022699051956392
+            mark = "L*+H"
+        points [2]:
+            number = 1.006912555950756
+            mark = "L-%"
+    item [3]:
+        class = "IntervalTier"
+        name = "sp_words"
+        xmin = 0.0
+        xmax = 1.1548979591836734
+        intervals: size = 9
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.196
+            text = ""
+        intervals [2]:
+            xmin = 0.196
+            xmax = 0.298
+            text = "ich"
+        intervals [3]:
+            xmin = 0.298
+            xmax = 0.339
+            text = ""
+        intervals [4]:
+            xmin = 0.339
+            xmax = 0.566
+            text = "wohne"
+        intervals [5]:
+            xmin = 0.566
+            xmax = 0.586
+            text = ""
+        intervals [6]:
+            xmin = 0.586
+            xmax = 0.71
+            text = "in"
+        intervals [7]:
+            xmin = 0.71
+            xmax = 0.751
+            text = ""
+        intervals [8]:
+            xmin = 0.751
+            xmax = 0.956
+            text = "bern"
+        intervals [9]:
+            xmin = 0.956
+            xmax = 1.1548979591836734
+            text = ""
+    item [4]:
+        class = "IntervalTier"
+        name = "sp_syllables"
+        xmin = 0.0
+        xmax = 1.1548979591836734
+        intervals: size = 10
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.196
+            text = ""
+        intervals [2]:
+            xmin = 0.196
+            xmax = 0.298
+            text = "ich"
+        intervals [3]:
+            xmin = 0.298
+            xmax = 0.339
+            text = ""
+        intervals [4]:
+            xmin = 0.339
+            xmax = 0.4525
+            text = "voː"
+        intervals [5]:
+            xmin = 0.4525
+            xmax = 0.566
+            text = "nə"
+        intervals [6]:
+            xmin = 0.566
+            xmax = 0.586
+            text = ""
+        intervals [7]:
+            xmin = 0.586
+            xmax = 0.71
+            text = "in"
+        intervals [8]:
+            xmin = 0.71
+            xmax = 0.751
+            text = ""
+        intervals [9]:
+            xmin = 0.751
+            xmax = 0.956
+            text = "bern"
+        intervals [10]:
+            xmin = 0.956
+            xmax = 1.1548979591836734
+            text = ""
+    item [5]:
+        class = "IntervalTier"
+        name = "sp_phonemes"
+        xmin = 0.0
+        xmax = 1.1548979591836734
+        intervals: size = 17
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.196
+            text = ""
+        intervals [2]:
+            xmin = 0.196
+            xmax = 0.247
+            text = "ɪ"
+        intervals [3]:
+            xmin = 0.247
+            xmax = 0.298
+            text = "ç"
+        intervals [4]:
+            xmin = 0.298
+            xmax = 0.339
+            text = ""
+        intervals [5]:
+            xmin = 0.339
+            xmax = 0.39575000000000005
+            text = "v"
+        intervals [6]:
+            xmin = 0.39575000000000005
+            xmax = 0.4525
+            text = "oː"
+        intervals [7]:
+            xmin = 0.4525
+            xmax = 0.50925
+            text = "n"
+        intervals [8]:
+            xmin = 0.50925
+            xmax = 0.566
+            text = "ə"
+        intervals [9]:
+            xmin = 0.566
+            xmax = 0.586
+            text = ""
+        intervals [10]:
+            xmin = 0.586
+            xmax = 0.6479999999999999
+            text = "ɪ"
+        intervals [11]:
+            xmin = 0.6479999999999999
+            xmax = 0.71
+            text = "n"
+        intervals [12]:
+            xmin = 0.71
+            xmax = 0.751
+            text = ""
+        intervals [13]:
+            xmin = 0.751
+            xmax = 0.80225
+            text = "b"
+        intervals [14]:
+            xmin = 0.80225
+            xmax = 0.8534999999999999
+            text = "ɛ"
+        intervals [15]:
+            xmin = 0.8534999999999999
+            xmax = 0.9047499999999999
+            text = "ɾ"
+        intervals [16]:
+            xmin = 0.9047499999999999
+            xmax = 0.956
+            text = "n"
+        intervals [17]:
+            xmin = 0.956
+            xmax = 1.1548979591836734
+            text = ""
+    item [6]:
+        class = "IntervalTier"
+        name = "sp_f0_pitch"
+        xmin = 0.0
+        xmax = 1.1548979591836734
+        intervals: size = 10
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.196
+            text = ""
+        intervals [2]:
+            xmin = 0.196
+            xmax = 0.298
+            text = "107"
+        intervals [3]:
+            xmin = 0.298
+            xmax = 0.339
+            text = ""
+        intervals [4]:
+            xmin = 0.339
+            xmax = 0.4525
+            text = "141"
+        intervals [5]:
+            xmin = 0.4525
+            xmax = 0.566
+            text = "138"
+        intervals [6]:
+            xmin = 0.566
+            xmax = 0.586
+            text = ""
+        intervals [7]:
+            xmin = 0.586
+            xmax = 0.71
+            text = "99"
+        intervals [8]:
+            xmin = 0.71
+            xmax = 0.751
+            text = ""
+        intervals [9]:
+            xmin = 0.751
+            xmax = 0.956
+            text = "95"
+        intervals [10]:
+            xmin = 0.956
+            xmax = 1.1548979591836734
+            text = ""
+    item [7]:
+        class = "IntervalTier"
+        name = "sp_prosody"
+        xmin = 0.0
+        xmax = 1.1548979591836734
+        intervals: size = 10
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.196
+            text = ""
+        intervals [2]:
+            xmin = 0.196
+            xmax = 0.298
+            text = "\"
+        intervals [3]:
+            xmin = 0.298
+            xmax = 0.339
+            text = ""
+        intervals [4]:
+            xmin = 0.339
+            xmax = 0.4525
+            text = "//"
+        intervals [5]:
+            xmin = 0.4525
+            xmax = 0.566
+            text = "*\\"
+        intervals [6]:
+            xmin = 0.566
+            xmax = 0.586
+            text = ""
+        intervals [7]:
+            xmin = 0.586
+            xmax = 0.71
+            text = "\"
+        intervals [8]:
+            xmin = 0.71
+            xmax = 0.751
+            text = ""
+        intervals [9]:
+            xmin = 0.751
+            xmax = 0.956
+            text = "/"
+        intervals [10]:
+            xmin = 0.956
+            xmax = 1.1548979591836734
+            text = ""

@@ -1,0 +1,2 @@
+file,language,duration_s,n_words,n_syllables,n_phonemes,mean_f0_hz,min_f0_hz,max_f0_hz,f0_std_st,mean_intensity_db,prominent_count,rising_count,falling_count,level_count,alignment_source
+doreco_port1286_2017_06_30_Jaklin.wav,es,162.68501133786847,776,918,1831,194.22885438234383,77.36494312234262,572.3417630630734,2.5742397512907353,70.10584712666686,1,94,113,615,whisperx

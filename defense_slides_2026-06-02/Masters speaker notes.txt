@@ -1,0 +1,362 @@
+SPEECHPRINT — Masters Defense Speaker Notes
+Lydia Krifka-Dobes · June 2026
+============================================================
+25 slides. Sentences marked [from B] taken from Bachelors speaker notes.txt
+(those lines are struck through in that file with ~~).
+
+NEW SLIDES (added after thesis update):
+  Slide 18b — DoReCo tracker comparison table + optimisation bar chart
+              [11_DORECO_tracker_table_and_optimisations.png]
+  Slide 21b — Five algorithmic optimisations table
+              [12_OPTIMISATIONS_table.png]
+  Insert 18b after current slide 17 (Daakie).
+  Insert 21b after current slide 21 (GToBI results table).
+============================================================
+
+
+── SLIDE 1: TITLE ──────────────────────────────────────────────────────────
+
+Hello, everyone. My name is Lydia.
+
+And this talk might seem a little unusual compared to the others that have happened so far. [from B]
+
+I do not come from a programming background or any kind of technical background whatsoever. I was a performing musician for a very long time. I played the violin, and slowly drifted towards what is now called interdisciplinary performance — where the borders between disciplines dissolve, and what matters is that what you make is coherent. [from B]
+
+That is still my starting point. This thesis is built from the same impulse: something was missing in the tools I was using, and it was simplest to try and make it myself.
+
+
+── SLIDE 2: WE ALREADY ENCODE PROSODY  [cartoon_highlighting.png] ──────────
+
+[image: "WHAT? YOU KILLED HIM?!" — comic panel with visual prosody]
+
+This image is from Logicomix — a graphic novel. Look at how the text is drawn, not just written. ALL-CAPS for shock. The question mark and exclamation stacked. The jagged speech bubble.
+
+We intuitively understand that pitch, stress, and amplitude are present in this speech. Comics have known this for a century. Digital communication has rediscovered it through emoji, ALL-CAPS, and vowel elongation — boooooring — to mime intonational lengthening.
+
+Writing and speech have always been in tension. But standard orthography, and the transcripts produced by automatic speech recognition, flatten this entirely. They give you the words. They do not give you how the words were said.
+
+SpeechPrint is an attempt to recover some of what is lost in that flattening — specifically the prosodic layer: pitch movements, duration, prominence.
+
+
+── SLIDE 3: SAY YOU WANT TO RECORD YOUR VOICE TO CHATGPT ──────────────────
+
+Say you want to record your voice to ChatGPT. You press the microphone button. Underneath, your voice is sent to a model called Whisper — OpenAI's automatic speech recogniser. Whisper transcribes it. The text arrives. ChatGPT reads and responds.
+
+Now: what did Whisper throw away?
+
+It kept the words. It discarded your question mark — not the symbol, but the rising pitch that made it a question. It discarded the stress on the word you were emphasising. It discarded the pause that meant you were uncertain. It discarded the slow drop in your voice that meant you were tired, or the clipped energy that meant you were excited.
+
+The transcript is flat. It is a shadow of what you said.
+
+
+── SLIDE 4: WHAT WHISPERX ACTUALLY GIVES YOU  [whisperxfeb22.png] ──────────
+
+[image: WhisperX output in ELAN-like view — word tiers, no prosody]
+
+This is the output of WhisperX — the best currently available speech-to-text aligner, which provides word-level timestamps and in some cases phone-level alignment.
+
+Each row is a tier. You can see the words aligned to the audio. This is extraordinary technology. It works across dozens of languages with near-human accuracy on clean audio.
+
+But look at what is not here. There is no tier for pitch. No tier for amplitude. No tier for stress. No tier for intonation. The transcript is horizontal — words in sequence — and the vertical dimension, the acoustic richness of the voice, is entirely absent.
+
+This is the gap SpeechPrint addresses. Not the word tier — Whisper already does that well. The prosodic tier that nobody has automated at this level of accessibility.
+
+
+── SLIDE 5: WHAT ASR DISCARDS ──────────────────────────────────────────────
+
+Automatic speech recognition prioritises orthographic transcription over fine-grained acoustic data.
+
+At its best it is a mapping from a highly individual, continuous system of complex sound waves — with rapidly varying fundamental frequencies, overtones, and amplitudes — into a very constrained, categorical, standardised sequence of letters.
+
+When we read that transcript, we don't read the voice of the person. We don't read their emotional arousal, the emphasis put on words for the purpose of highlighting, the de-emphasis on words that are treated as given, the changing frequency indicating a question or expressing incredulity.
+
+The key missing dimension is the F0 — the fundamental frequency, the pitch track — and what you can derive from it: intra-syllable movement (rising or falling), relative height (high or low), and prominence (accented or not).
+
+
+── SLIDE 6: THE TOOLS WE INHERITED  [praatscreen.png] ─────────────────────
+
+[image: Praat showing Daakie recording — waveform, spectrogram, pitch contour, TextGrid]
+
+This is Praat, showing the Daakie recording from the DoReCo corpus. You can see the waveform, the spectrogram, the blue pitch contour, and below — the TextGrid with word and phoneme tiers.
+
+Praat was initiated in 1992 by Paul Boersma and David Weenink in Amsterdam. It has been continuously developed since.
+
+This is a quick appreciation — and a little bit of a critique — of the tools that exist and have tried to solve these problems. [from B]
+
+In their early days these systems very elegantly solved the annotation problem and the alignment problem for spoken language research. [from B, adapted] But we have different hardware now. We have neural speech models trained on hundreds of thousands of hours.
+
+Yet, we are still using the same solutions. [from B]
+
+
+── SLIDE 7: ELAN FOR FIELDWORK  [ElanScreen.png] ───────────────────────────
+
+[image: ELAN with Daakie video and annotation tiers]
+
+This is ELAN — developed at the Max Planck Institute for Psycholinguistics. The standard tool for time-aligned annotation of video and audio in fieldwork contexts.
+
+Notice what it requires: the annotator is watching the video frame by frame, listening to the audio, and manually typing labels into tiers. For an endangered language like Daakie — which has no automatic speech recogniser trained on it — every second of annotation can take minutes of human effort.
+
+SpeechPrint's promise for fieldwork: give it a WAV file, and it produces a pre-annotation with words, phonemes, syllables, and a prosodic tier. The fieldworker does not start from silence. They start from a rough draft and correct from there. For a linguist working alone in the field, that difference is significant.
+
+
+── SLIDE 8: SO I STARTED WRITING ───────────────────────────────────────────
+
+Although I am completely a self-taught programmer, I learned it while I was writing my thesis at the Institute of Sonology, because some of the tools I was working with — I felt that they could do a little more, specifically for my research — and it was just simplest for me to try and do it myself. [from B]
+
+I wasn't very successful at the time, because it was very early in my programming journey. [from B] But the question stayed with me.
+
+The specific question was this: can a non-specialist — a field linguist, a conversation analyst, someone who has never opened Praat — get a reasonable prosodic pre-annotation from any recording, in any language, just by giving it a WAV file?
+
+That is what SpeechPrint tries to answer.
+
+
+── SLIDE 9: THE PIPELINE (9 stages) ────────────────────────────────────────
+
+SpeechPrint is implemented as a Python pipeline organised into nine sequential stages. The pipeline is invoked from the command line with a WAV file and a language code. It produces a Praat TextGrid, CSV tables, and a JSON manifest.
+
+Stage 1 loads the audio. Stage 2 uses WhisperX with the large-v3 model for transcript and coarse timing. Stage 3 cleans punctuation, normalises to lowercase, splits into tokens. Stage 4 uses the Montreal Forced Aligner for English to get phone-level timing; for other languages, WhisperX CTC gives word-level timestamps.
+
+Stage 5 is the core acoustic extraction: a single full-file pitch track is extracted using Librosa pYIN and stored in memory; intensity is extracted using Parselmouth with a 40 ms analysis window. Both computed once, queried by time index for each syllable.
+
+Stage 6 phonemizes using espeak-ng → IPA, then groups phones into syllables using maximum-onset heuristic. Stage 7 assigns symbolic prosody labels using ΔF₀ and adaptive thresholds. Stages 8 and 9 write the TextGrid and export CSV and JSON.
+
+The whole pipeline runs in under two minutes per minute of speech on a laptop CPU. Think of it as a swiss army knife for linguists and field researchers. Whichever is the fastest wins. [from B, adapted]
+
+
+── SLIDE 10: THE SYMBOLS ───────────────────────────────────────────────────
+
+The symbolic layer is the core contribution of SpeechPrint.
+
+The formula: ΔF₀ = 12 · log₂(F₀_offset / F₀_onset) in semitones. A positive value is rising (/), a negative value is falling (\). The threshold is adaptive — computed from the recording's pitch movement distribution, so a speaker with a narrow pitch range gets a narrow threshold.
+
+The accent marker (*) requires the syllable to be louder than its neighbours by at least 1.5 dB AND either higher in pitch by 1 ST or longer by a factor of 1.25 — a three-cue definition motivated by the phonetics literature on prosodic prominence.
+
+Height symbols: the overline ‾ marks a syllable whose mean F0 is above its neighbours; the underscore _ marks one that is below. They form a natural visual pair — a stroke above and a stroke below the baseline. They can combine with direction: ‾// means high and strongly rising; _\\ means low and strongly falling. The asterisk prefix means accented: *‾// is a prominent, high, strongly rising syllable.
+
+Note: earlier versions used a dash - for high level. This has been replaced by ‾ (U+203E overline) throughout — the dash was ambiguous and less visually distinct from an empty cell in Praat.
+
+The symbols were chosen because they are visually intuitive, fit in a narrow Praat tier column, and work in plain text files, spreadsheets, and ELAN tiers everywhere.
+
+
+── SLIDE 11: GERMAN A — "eine gelbe Banane"  [pitch comparison] ────────────
+
+[image: 4-panel pitch tracker comparison, no errors]
+
+On clean German sentences, all four trackers — Praat raw, Praat with Xu(1999) correction, Librosa pYIN, and CREPE — agree within 2 Hz on median F0. The red vertical lines mark octave-error frames. There are none here.
+
+GToBI annotation: L+H* L-% — a rising nuclear pitch accent followed by a low boundary tone. SpeechPrint v3 correctly assigns *-/ on the accented syllable [nɑː]. Assessment: correct.
+
+This is the baseline. German, in this recording, causes no disagreement between trackers.
+
+
+── SLIDE 12: GERMAN B — "einige Melonen" ───────────────────────────────────
+
+[image: 4-panel, no errors, falling contour]
+
+GToBI: H+L* L-% — a falling pitch accent. All trackers agree. SpeechPrint v3 assigns *-/ on [ɡə] and *-\ on [meː], capturing the rise-then-fall shape. Assessment: correct.
+
+
+── SLIDE 13: GERMAN C — "er sang die Lieder" ───────────────────────────────
+
+[image: 4-panel, no errors, downstepped]
+
+GToBI: H+!H* — a downstepped high accent. The second high is lower than the first, creating a gradual descending pattern. SpeechPrint v3 assigns *-/ on [diː] and *-\ on [liː], making the downstep visible. Assessment: correct.
+
+
+── SLIDE 14: GERMAN D — "er will die Rosen haben" ──────────────────────────
+
+[image: 4-panel, no errors — but L*+H pattern begins here]
+
+GToBI: L*+H — a rising accent where the starred tone falls on the lexically stressed syllable, and the high peak comes on the following, post-accent syllable.
+
+This is inherently difficult for a system that assigns accents based on local F0 height, because the acoustically prominent syllable comes after the lexically stressed syllable. SpeechPrint v3 detects the rise on [roː, zən] but does not assign the accent star to the correct syllable. Assessment: partial.
+
+
+── SLIDE 15: GERMAN E — "ich wohne in Bern" ────────────────────────────────
+
+[image: 4-panel, CREPE empty bottom panel]
+
+Same L*+H pattern. CREPE returned zero voiced frames — bottom panel empty — likely because the periodicity threshold of 0.35 is too conservative for this short sentence.
+
+SpeechPrint v3 assigns *- on [nə], which is the wrong syllable. Assessment: incorrect.
+
+Both failures share L*+H. A future version could add a look-ahead window: if the syllable following a low starred tone has a substantially higher F0 peak, shift the accent marker forward.
+
+
+── SLIDE 16: ENGLISH — 238 octave-error frames ─────────────────────────────
+
+[image: 4-panel, dense red marks near 100–140 Hz in Praat panel]
+
+On my English recording, Praat's raw output has 238 frames where it reports approximately half the true F0 — the classic octave error.
+
+Look at the top panel: dense scatter near 100–140 Hz, with red vertical marks on 238 frames. The pYIN panel shows the correct smooth contour near 180–220 Hz with clean voiced/unvoiced masking. CREPE agrees.
+
+Three examples from the data: at 0.300s — Praat 111.8 Hz, pYIN 213.6 Hz, difference 11.2 ST. At 1.080s — Praat 137.4 Hz, pYIN 272.3 Hz, difference 11.8 ST. In both cases, Praat is seeing the second sub-harmonic rather than the true fundamental.
+
+238 frames in 30 seconds. That is not noise. That is systematic.
+
+
+── SLIDE 17: DAAKIE — 40 octave-error frames ───────────────────────────────
+
+[image: 4-panel Daakie DoReCo recording]
+
+Daakie is an Oceanic endangered language from Vanuatu. 40 octave-error frames in 30 seconds. All three other trackers agree on a median near 190 Hz.
+
+This matters especially for endangered language fieldwork. A researcher working with Daakie may never have heard the language before. They have no intuition for what the pitch contour should look like. If Praat shows them a pitch track that is an octave low, they will annotate from that track — and the annotation will be wrong.
+
+This recording also gave me the opportunity to run all four trackers head to head on the same 162.7-second file and measure the actual output distribution — not just the F0 values, but what the prosody labeller does with them. The next slide shows those results.
+
+
+── SLIDE 18b: DORECO TRACKER COMPARISON + OPTIMISATIONS  [NEW] ─────────────
+
+[image: 11_DORECO_tracker_table_and_optimisations.png]
+
+Left panel — tracker comparison table (all four, on the full DoReCo recording):
+
+CREPE: 9,912 voiced frames (60.9% of total), 4 unknown syllables (0.9%).
+pYIN: 16,634 voiced frames — more frames because pYIN runs at a finer 5.8 ms hop vs CREPE's 10 ms. Proportionally voiced is the same — about 60%. 11 unknown syllables (2.4%).
+Praat AC: 16,784 voiced frames, 2 unknowns (0.4%). Looks good but has the octave error problem we just saw.
+YIN: 27,350 voiced frames — 97.7% of frames "voiced". Zero unknowns. This is a red flag, not a merit. YIN has no voiced/unvoiced detector. It always returns a pitch value. It cannot tell silence from speech. That zero-unknown rate means it is producing F0 values over silence, over fricatives, over stop closures. Its output is not reliable for prosody analysis.
+
+CREPE was chosen for the DoReCo production pipeline because it makes no assumptions about the harmonic structure of the voice — it learned pitch from data — and is therefore the most robust choice for an endangered language with potentially unusual phonation characteristics.
+
+Right panel — the label distribution before and after five algorithmic optimisations I developed.
+
+Before optimisation: 30.9% of syllables were labelled as "strongly" rising or falling. That is too high — the expected range from the phonetic literature is roughly 15–20%. Also: falls outnumbered rises by a factor of 1.6, which is implausible for a natural speech corpus.
+
+After five optimisations — strong movements: 30.9% → 21.0%; falls: 26.7% → 18.8%; rises-to-falls ratio: 0.61 → 0.72.
+
+Each optimisation addressed a specific, diagnosable failure. The next slide after the GToBI results explains them in detail.
+
+
+── SLIDE 18: KEY FINDING — bar chart ───────────────────────────────────────
+
+[image: bar chart comparing median F0 across trackers and recordings]
+
+This summarises the tracker comparison. For German: all bars at the same height — the trackers agree. For English: Praat raw (red) ~107 Hz, CREPE (purple) and pYIN (green) ~180–214 Hz.
+
+Two pipeline configurations result from this comparison.
+
+For English and German — the ASR-based pipeline — pYIN is the primary tracker. It requires no model download, runs at 3–5× real-time on CPU, and its probabilistic voiced/unvoiced mask cleanly suppresses unvoiced frames. It is the right tool for multilingual, real-time, CPU-only use.
+
+For Daakie and the endangered-language pipeline — CREPE. CREPE is a deep convolutional neural network trained on millions of pitch examples. It does not compute an autocorrelation or make any assumption about the voice being harmonic. For a language we know little about, with potentially unusual phonation patterns, that matters. The computational cost — 2–3× slower on CPU — is acceptable when processing one archival recording offline.
+
+Tracker ranking:
+1. CREPE — highest accuracy, best for offline/endangered language analysis
+2. Librosa pYIN — best overall for real-time multilingual production use
+3. Praat AC + Xu(1999) — good fallback, known octave error rate
+4. YIN — not suitable for prosody analysis (no voiced/unvoiced detection)
+5. Praat SCC default — not recommended
+
+
+── SLIDE 19: WHY IT MATTERS — label inversion ──────────────────────────────
+
+[image: diagram showing octave error → wrong label]
+
+The formula: ΔF₀ = 12 · log₂(F₀_offset / F₀_onset). If the onset is halved from 214 Hz to 107 Hz, ΔF₀ picks up +12 ST of error.
+
+A syllable whose true movement is −2 ST (mild fall, backslash) computes as −2 + 12 = +10 ST and is labelled // (strongly rising). Conversely, an octave error on the offset propagates −12 ST: a rising syllable becomes a strong fall.
+
+The octave error does not just add noise. It inverts the annotation. This is precisely the pattern the supervisor noted in v1 and v2: pitch marks that did not match perceived intonation. Switching to pYIN with Xu(1999) correction resolves this.
+
+
+── SLIDE 20: GToBI EXAMPLES  [GToBIExamples.png] ───────────────────────────
+
+[image: 5 Praat TextGrids showing GToBI-annotated German sentences]
+
+This is what GToBI annotation looks like in Praat — five expert-annotated sentences showing the full range of German intonation patterns.
+
+GToBI — German Tones and Break Indices — is the reference annotation system for German intonation. The Ton tier shows the tone labels; the Wort tier shows word boundaries.
+
+These expert annotations are the gold standard. Word boundaries from the human Wort tier are fed directly into SpeechPrint — alignment error is not a confound. Only the prosody labelling itself is being tested.
+
+
+── SLIDE 21: GToBI RESULTS TABLE — pYIN baseline ───────────────────────────
+
+[image: comparison table — human vs SpeechPrint v3 (pYIN)]
+
+pYIN baseline results:
+  eine gelbe Banane   (L+H*)   → *-/ on [nɑː]         ✓  correct
+  einige Melonen      (H+L*)   → *-/ + *-\             ✓  correct
+  er sang die Lieder  (H+!H*)  → *-/ + *-\             ✓  correct
+  er will die Rosen   (L*+H)   → rise detected, no *   ~  partial
+  ich wohne in Bern   (L*+H)   → * on wrong syllable   ✗  incorrect
+
+Three out of five. The two failures share L*+H — the delayed-peak pattern.
+
+I also ran the improved CREPE pipeline on the same sentences. That is the next slide.
+
+
+── SLIDE 21b: GTOBI BEST — CREPE + 5 optimisations + corrected IPA  [NEW] ──
+
+[image: 13_GTOBI_BEST_summary.png]
+
+Before I explain the results — there's a discovery here that's actually interesting methodologically.
+
+When I ran the initial CREPE build, I found that the MFA forced aligner had made transcription errors on three of the five sentences: "gelbe" was transcribed as "gerbe", "einige Melonen" became "einigen mal lohnt", and "er sang die Lieder" became "hesangli lieder". Additionally, even for the correct transcriptions, MFA word boundaries were off from the human Wort tier by 66 to 430 milliseconds — you can't put both in the same TextGrid without the intervals being out of sync.
+
+The fix: since these are five well-known sentences, I hardcoded the correct German IPA for each word and distributed the phones proportionally within the human Wort word boundaries. This gives syllabification that is linguistically correct — einige correctly splits as aɪ·nɪ·ɡə·me·loː·nən, er sang die Lieder gives ɛɐ·zaŋ·diː·liː·dɐ. No MFA. No ASR. Eight tiers, all from either human annotation or hardcoded text.
+
+The output now has the same 8-tier structure as the DoReCo BEST:
+sentence · translation · words · gloss · syllables · phones · gtobi · prosody
+
+CREPE results with corrected IPA:
+  eine gelbe Banane   (L+H*)   → *‾// on [naː]   ✓  correct — accented, high, strongly rising
+  einige Melonen      (H+L*)   → ‾\\\\ on [me]   ~  partial — high+falling on right syllable, no accent
+  er sang die Lieder  (H+!H*)  → \\\\ on [liː]   ~  partial — falling on right syllable, height not captured
+  er will die Rosen   (L*+H)   → _// on [roː]    ~  partial — low+rising on right word ← L*+H direction correct
+  ich wohne in Bern   (L*+H)   → _// on [voː]    ~  partial — rising on the right word per expert annotation
+
+One correct, four partial. pYIN scored 3 correct — better on the binary metric. But CREPE with corrected phonemization gets the pitch movement direction right on all five sentences. The four partials all have the correct direction and the correct word; what's missing is the * accent marker.
+
+Why no * on four sentences? These are short sentences — 1.0 to 1.5 seconds. In short sentences, relative amplitude differences between syllables are small. The 1.5 dB threshold is rarely triggered. This is a calibration issue for short utterances, not a fundamental failure of the method.
+
+The L*+H cases (Rosen, Bern): _// on [roː] and _// on [voː] is actually directly reading out L*+H — low level, strongly rising. That is exactly the pattern.
+
+What pYIN got wrong: it placed the accent on [nə] in "ich wohne in Bern" — completely the wrong syllable. CREPE gets the wrong syllable too (voː instead of Bern) but voː is at least the syllable the expert Ton label falls on at 0.298 seconds.
+
+
+── SLIDE 21b: FIVE ALGORITHMIC OPTIMISATIONS  [NEW] ─────────────────────────
+
+[image: 12_OPTIMISATIONS_table.png]
+
+Each of these optimisations came from looking at the output distribution and asking: what is wrong here, and why?
+
+Optimisation 1 — MAD threshold. The adaptive threshold for what counts as a "strong" pitch movement was based on standard deviation. But standard deviation is sensitive to outliers — a few very fast accent movements inflated it and dragged the threshold too low. The fix is the median absolute deviation, or MAD, multiplied by 1.4826. That factor makes it a consistent estimator of standard deviation when the data is Gaussian — which is the standard robust statistics approach taught in any ML course. Effect: strong movements fell from 30.9% to 21.0%.
+
+Optimisation 2 — Utterance boundary reset. The algorithm was comparing each syllable's F0 to its neighbours without checking whether those neighbours were in the same utterance. The last syllable of an utterance naturally undergoes final lowering — it is systematically lower in pitch. The first syllable of the next utterance resets high. Treating those two as neighbours produces a false height contrast. The fix is to use the utterance boundaries from the DoReCo tx@TA tier as block points — neighbours are only drawn from within the same utterance.
+
+Optimisation 3 — Pitch declination removal. This is why falls outnumbered rises so dramatically. F0 naturally drifts downward over the course of an utterance — this is called declination, and it has nothing to do with the prosodic structure. Without correcting for it, the algorithm labels the drift as falling movements. The fix is to fit a linear regression to the F0 values within each utterance and subtract the slope. This removes the trend while preserving the local contrasts. Effect: falls fell from 26.7% to 18.8%; the rises-to-falls ratio improved from 0.61 to 0.72.
+
+Optimisation 4 — Nucleus edge trimming. The first and last 15% of the vowel nucleus window were being included in the F0 sampling. At those edges, the vocal tract is still transitioning from the preceding consonant or into the following one. The pitch is unstable there. Trimming those edges gives cleaner onset and offset estimates. The slight increase in unknown syllables — 0.9% to 1.5% — is actually correct: very short nuclei that were previously forced to a value are now honestly flagged.
+
+Optimisation 5 — Octave recovery. The original Xu(1999) implementation simply discarded any F0 frame that deviated more than 12 semitones from the utterance median. But many of those frames are not random errors — they are octave errors, where the correct value is the current value multiplied or divided by two. Before discarding, the fix tries both alternatives and keeps the one closest to the median, if it passes the threshold. This recovers data rather than throwing it away.
+
+── SLIDE 22: RELATIVE, NOT ABSOLUTE ────────────────────────────────────────
+
+This is a methodological point the supervisor raised and that turned out to matter substantially.
+
+The original SpeechPrint compared pitch and amplitude against fixed absolute thresholds. But absolute values carry no information about prominence in context. A mean F0 of 130 Hz by itself tells you nothing about whether that syllable stands out.
+
+What matters is local contrast. SpeechPrint v3 therefore computes all comparisons relative to the ±2 syllable neighbourhood.
+
+The data: in the English recording, both Mary and flew are approximately 11 semitones above the recording median. The relative-to-neighbours measure distinguishes them: Mary is 4.2 ST above its local context (strongly prominent), flew is 2.1 ST above (moderately prominent). The absolute measure cannot make this distinction.
+
+For amplitude: switching from absolute to relative reduced the false-positive accent rate from approximately 35% to 24%.
+
+
+── SLIDE 23: WHAT'S NEXT ───────────────────────────────────────────────────
+
+The symbolic tier is language-agnostic. A slash means rising regardless of what language it was extracted from.
+
+Cross-lingual prosody transfer: run SpeechPrint on the English recording of a sentence, extract its symbolic prosody tier, warp via dynamic time warping to the syllable count of the German recording, resynthesize via Coqui TTS with F0 targets. Hear German words spoken with the prosodic contour of English. The Aesop database — twelve sentences in twenty languages — provides exactly the parallel structure needed.
+
+Speech DAW: the TextGrid annotation tiers as an editable timeline. Click a syllable label, change it, hear the result immediately.
+
+Automatic prosody classifier: five categories — declarative, interrogative, narrow focus, continuation, exclamation — for workflows that need a global sentence-level label rather than per-syllable symbols.
+
+So there are no hard truths here. Everything can actually be negotiated. [from B] The prosody of one language is not fixed to its words. SpeechPrint makes the separation possible. What you do with the separation is, I think, where this becomes interesting.
+
+============================================================
+END  ·  23 slides  ·  ~30–40 min talk
+============================================================

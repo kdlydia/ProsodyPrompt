@@ -1,0 +1,210 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0
+xmax = 0.9963718820861678
+tiers? <exists>
+size = 6
+item []:
+    item [1]:
+        class = "IntervalTier"
+        name = "Wort"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 6
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.06343670737958328
+            text = ""
+        intervals [2]:
+            xmin = 0.06343670737958328
+            xmax = 0.16806790146767633
+            text = "Er"
+        intervals [3]:
+            xmin = 0.16806790146767633
+            xmax = 0.3382591475476758
+            text = "sang"
+        intervals [4]:
+            xmin = 0.3382591475476758
+            xmax = 0.47600147900541856
+            text = "die"
+        intervals [5]:
+            xmin = 0.47600147900541856
+            xmax = 0.9057840420634717
+            text = "Lieder"
+        intervals [6]:
+            xmin = 0.9057840420634717
+            xmax = 0.9963718820861678
+            text = ""
+    item [2]:
+        class = "TextTier"
+        name = "Ton"
+        xmin = 0
+        xmax = 0.9963718820861678
+        points: size = 2
+        points [1]:
+            number = 0.6038104692522663
+            mark = "H+!H*"
+        points [2]:
+            number = 0.9057840420634717
+            mark = "L-%"
+    item [3]:
+        class = "IntervalTier"
+        name = "syllables"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 7
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.06343670737958328
+            text = ""
+        intervals [2]:
+            xmin = 0.06343670737958328
+            xmax = 0.16806790146767633
+            text = "ɛɾ"
+        intervals [3]:
+            xmin = 0.16806790146767633
+            xmax = 0.3382591475476758
+            text = "zaŋ"
+        intervals [4]:
+            xmin = 0.3382591475476758
+            xmax = 0.47600147900541856
+            text = "diː"
+        intervals [5]:
+            xmin = 0.47600147900541856
+            xmax = 0.6908927605344451
+            text = "liː"
+        intervals [6]:
+            xmin = 0.6908927605344451
+            xmax = 0.9057840420634717
+            text = "dɜ"
+        intervals [7]:
+            xmin = 0.9057840420634717
+            xmax = 0.9963718820861678
+            text = ""
+    item [4]:
+        class = "IntervalTier"
+        name = "phonemes"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 13
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.06343670737958328
+            text = ""
+        intervals [2]:
+            xmin = 0.06343670737958328
+            xmax = 0.1157523044236298
+            text = "ɛ"
+        intervals [3]:
+            xmin = 0.1157523044236298
+            xmax = 0.16806790146767633
+            text = "ɾ"
+        intervals [4]:
+            xmin = 0.16806790146767633
+            xmax = 0.22479831682767615
+            text = "z"
+        intervals [5]:
+            xmin = 0.22479831682767615
+            xmax = 0.28152873218767593
+            text = "a"
+        intervals [6]:
+            xmin = 0.28152873218767593
+            xmax = 0.3382591475476758
+            text = "ŋ"
+        intervals [7]:
+            xmin = 0.3382591475476758
+            xmax = 0.40713031327654714
+            text = "d"
+        intervals [8]:
+            xmin = 0.40713031327654714
+            xmax = 0.47600147900541856
+            text = "iː"
+        intervals [9]:
+            xmin = 0.47600147900541856
+            xmax = 0.5834471197699318
+            text = "l"
+        intervals [10]:
+            xmin = 0.5834471197699318
+            xmax = 0.6908927605344451
+            text = "iː"
+        intervals [11]:
+            xmin = 0.6908927605344451
+            xmax = 0.7983384012989585
+            text = "d"
+        intervals [12]:
+            xmin = 0.7983384012989585
+            xmax = 0.9057840420634717
+            text = "ɜ"
+        intervals [13]:
+            xmin = 0.9057840420634717
+            xmax = 0.9963718820861678
+            text = ""
+    item [5]:
+        class = "IntervalTier"
+        name = "f0_vowel"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 7
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.06343670737958328
+            text = ""
+        intervals [2]:
+            xmin = 0.06343670737958328
+            xmax = 0.16806790146767633
+            text = "111|109Hz  58.6dB"
+        intervals [3]:
+            xmin = 0.16806790146767633
+            xmax = 0.3382591475476758
+            text = "106|108Hz  73.4dB"
+        intervals [4]:
+            xmin = 0.3382591475476758
+            xmax = 0.47600147900541856
+            text = "150|159Hz  75.0dB"
+        intervals [5]:
+            xmin = 0.47600147900541856
+            xmax = 0.6908927605344451
+            text = "128|115Hz  73.2dB"
+        intervals [6]:
+            xmin = 0.6908927605344451
+            xmax = 0.9057840420634717
+            text = "97|104Hz  64.6dB"
+        intervals [7]:
+            xmin = 0.9057840420634717
+            xmax = 0.9963718820861678
+            text = ""
+    item [6]:
+        class = "IntervalTier"
+        name = "prosody"
+        xmin = 0
+        xmax = 0.9963718820861678
+        intervals: size = 7
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.06343670737958328
+            text = ""
+        intervals [2]:
+            xmin = 0.06343670737958328
+            xmax = 0.16806790146767633
+            text = "_"
+        intervals [3]:
+            xmin = 0.16806790146767633
+            xmax = 0.3382591475476758
+            text = "_"
+        intervals [4]:
+            xmin = 0.3382591475476758
+            xmax = 0.47600147900541856
+            text = "*-/"
+        intervals [5]:
+            xmin = 0.47600147900541856
+            xmax = 0.6908927605344451
+            text = "*-\"
+        intervals [6]:
+            xmin = 0.6908927605344451
+            xmax = 0.9057840420634717
+            text = "_/"
+        intervals [7]:
+            xmin = 0.9057840420634717
+            xmax = 0.9963718820861678
+            text = ""

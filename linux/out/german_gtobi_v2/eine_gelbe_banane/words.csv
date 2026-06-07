@@ -1,0 +1,4 @@
+file,language,index,word,start,end,duration_s
+eine_gelbe_banane.wav,de,1,eine,0.234,0.396,0.162
+eine_gelbe_banane.wav,de,2,gelbe,0.437,0.701,0.26399999999999996
+eine_gelbe_banane.wav,de,3,banane,0.721,1.127,0.406

@@ -1,4 +1,4 @@
-% Appendix — SpeechPrint evaluation results
+% Appendix — ProsodyPrompt evaluation results
 % Dependencies: booktabs, longtable (both in preamble). Nothing else.
 % No tipa, no external macros, no fancy packages.
 % IPA written only where the character is in standard T1/lmodern (a e i o u ae),
@@ -7,14 +7,14 @@
 \appendix
 
 % ============================================================
-\chapter{SpeechPrint Prosody Output: English Minimal-Pair Corpus}
+\chapter{ProsodyPrompt Prosody Output: English Minimal-Pair Corpus}
 \label{app:english}
 % ============================================================
 
 The English corpus (\texttt{audio\_2026-05-30\_19-01-35.wav}, 305.5\,s) contains
 82 sentences across 21 prosodic categories recorded by the author.
 No hand annotation is available for this recording.
-The analysis was produced by the full SpeechPrint pipeline: WhisperX (large-v3,
+The analysis was produced by the full ProsodyPrompt pipeline: WhisperX (large-v3,
 English model) for transcription and forced alignment, and Librosa pYIN for F0
 extraction. All five algorithmic optimisations are applied (MAD-based adaptive
 threshold, utterance boundary reset, declination removal, nucleus edge trimming,
@@ -46,7 +46,7 @@ Symbol & Meaning \\
 \begin{table}[h]
 \centering
 \caption{Selected minimal-pair sentences with per-syllable F0 (onset\,$|$\,mid\,$|$\,offset
-in Hz) and SpeechPrint prosody symbol.
+in Hz) and ProsodyPrompt prosody symbol.
 `Prom.\ syl' = syllable carrying \texttt{*}.}
 \label{tab:english_selected}
 \small
@@ -167,11 +167,11 @@ ID & Sentence & Symbol \\
 
 
 % ============================================================
-\chapter{German GToBI Training Sentences: Human Annotation vs.\ SpeechPrint}
+\chapter{German GToBI Training Sentences: Human Annotation vs.\ ProsodyPrompt}
 \label{app:german}
 % ============================================================
 
-Five GToBI-annotated German training sentences were processed with SpeechPrint.
+Five GToBI-annotated German training sentences were processed with ProsodyPrompt.
 The original TextGrids contain two hand-annotated tiers: \textit{Wort} (word
 boundaries) and \textit{Ton} (GToBI nuclear tone and boundary tone annotations).
 The final pipeline uses the human \textit{Wort} boundaries as the sole source of
@@ -208,11 +208,11 @@ Sentence & GToBI annotation & Expected direction \\
 \end{tabular}
 \end{table}
 
-\section*{SpeechPrint prosody output (pYIN + 5 optimisations, hardcoded IPA)}
+\section*{ProsodyPrompt prosody output (pYIN + 5 optimisations, hardcoded IPA)}
 
 All five sentences use linguistically correct German IPA.
 Table~\ref{tab:german} shows the per-syllable F0 (onset\,$\to$\,offset at the
-vowel nucleus) and the SpeechPrint prosody symbol.
+vowel nucleus) and the ProsodyPrompt prosody symbol.
 
 \begin{table}[h]
 \centering
@@ -321,7 +321,7 @@ The DoReCo corpus recording
 documents a fieldwork session in Daakie, an Oceanic language spoken on Malekula
 Island, Vanuatu (ISO 639-3: \texttt{mtp}).
 No automatic speech recognition model or pronunciation dictionary exists for Daakie.
-SpeechPrint was run twice on the same recording using the nearest available
+ProsodyPrompt was run twice on the same recording using the nearest available
 language models: Italian (\texttt{--language it}) and Spanish
 (\texttt{--language es}), both with Whisper large-v3 via WhisperX.
 Adaptive prosody thresholds: floor 0.5\,ST,
@@ -399,7 +399,7 @@ an artefact of the ASR language choice.
 
 \textbf{Recommendation.}
 The Italian/Spanish scaffolding documented here represents an earlier evaluation
-stage. The final SpeechPrint pipeline for Daakie does not use ASR at all:
+stage. The final ProsodyPrompt pipeline for Daakie does not use ASR at all:
 word and phone timing are taken directly from the DoReCo human annotations,
 and CREPE is used for F0 extraction. That approach is described in
 Section~\ref{sec:doreco_pipeline} and produces more reliable phoneme-tier
@@ -409,21 +409,21 @@ projection phenomenon discussed in Section~\ref{sec:bias_projection}.
 
 
 % ============================================================
-\chapter{SpeechPrint: Installation and CLI Reference}
+\chapter{ProsodyPrompt: Installation and CLI Reference}
 \label{app:speechprint_cli}
 % ============================================================
 
 \begin{center}
 \fbox{\parbox{0.88\linewidth}{\centering\vspace{2mm}
-\textbf{Navigate to the SpeechPrint repository:}\\[2mm]
-\texttt{https://github.com/speechprint/SpeechPrint}\\[2mm]
+\textbf{Navigate to the ProsodyPrompt repository:}\\[2mm]
+\texttt{https://github.com/speechprint/ProsodyPrompt}\\[2mm]
 \textbf{For Linux machines only.} macOS and Windows ports are planned.
 \vspace{2mm}}}
 \end{center}
 
 \medskip
 
-SpeechPrint is a prosody annotation environment and field-research toolkit.
+ProsodyPrompt is a prosody annotation environment and field-research toolkit.
 It takes a WAV file as input and produces a Praat TextGrid as output,
 combining forced alignment, phoneme extraction, F0 measurement across five
 pitch trackers, and a symbolic prosody layer. The output is ready for Praat
@@ -451,13 +451,13 @@ MFA & configured by installer \\
 \section*{Setup}
 
 \begin{verbatim}
-git clone https://github.com/speechprint/SpeechPrint
-cd SpeechPrint/linux
+git clone https://github.com/speechprint/ProsodyPrompt
+cd ProsodyPrompt/linux
 export SPEECHPRINT_ROOT="$PWD"
 uv run python -m lib.main        # opens the launcher GUI
 \end{verbatim}
 
-On first run, select \textbf{Install SpeechPrint} to configure all
+On first run, select \textbf{Install ProsodyPrompt} to configure all
 dependencies. Then select \textbf{New Project} to create an annotation
 workspace.
 
@@ -566,7 +566,7 @@ Symbol & Meaning \\
 \begin{center}
 \fbox{\parbox{0.88\linewidth}{\centering\vspace{2mm}
 A collection of experimental tools for prosody-driven articulatory synthesis.\\[2mm]
-These tools connect the SpeechPrint symbolic prosody layer to
+These tools connect the ProsodyPrompt symbolic prosody layer to
 VocalTractLab articulatory synthesis, enabling closed-loop prosody
 authoring: annotate intonation, then hear it resynthesised.\\[2mm]
 \textbf{Prototype status.} Windows required for VocalTractLab synthesis.
@@ -602,7 +602,7 @@ mkdir -p audio/output/
 
 \subsection*{\texttt{prosody2tract.py}}
 
-Convert a SpeechPrint prosody TextGrid tier to a VocalTractLab
+Convert a ProsodyPrompt prosody TextGrid tier to a VocalTractLab
 tract-sequence file. Each prosody symbol is mapped to an F0 target
 and duration, generating a source--target pair for the articulatory
 trajectory.

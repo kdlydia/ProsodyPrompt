@@ -1,0 +1,3 @@
+[console_scripts]
+speechprint = lib.cli:main
+speechprint-installer = lib.main:main

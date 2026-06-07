@@ -1,0 +1,17 @@
+{
+  "wav": "doreco_port1286_2017_06_30_Jaklin.wav",
+  "language": "es",
+  "duration_s": 162.68501133786847,
+  "transcript_source": "whisperx",
+  "transcript_preview": "qu\u00e9 qu\u00e9 qu\u00e9 qu\u00e9 qu\u00e9 mi nombre es sanwawa y mi nombre es sain sanwawa es mi mam\u00e1 mi nombre es mokoli y mi nombre es kolomdu y mi mam\u00e1 es mungo y mi mam\u00e1 es med mi mam\u00e1 es med y mi mam\u00e1 es santa tengon ",
+  "backends": [
+    {
+      "backend": "whisperx",
+      "source": "whisperx-ctc (CTC forced alignment, word-level)",
+      "words": 391,
+      "syllables": 425,
+      "phonemes": 834,
+      "tg_path": "out/endangered_spanish_eval/whisperx/doreco_port1286_2017_06_30_Jaklin_whisperx.TextGrid"
+    }
+  ]
+}

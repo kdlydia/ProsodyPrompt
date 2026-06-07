@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""SpeechPrint — interactive CLI launcher.
+"""ProsodyPrompt — interactive CLI launcher.
 
 Run from the linux/ directory:
 
@@ -196,7 +196,7 @@ def install_missing(missing):
 
 # ── Annotation wizard ─────────────────────────────────────────────────────────
 def annotation_wizard():
-    header("SpeechPrint — Annotation Wizard")
+    header("ProsodyPrompt — Annotation Wizard")
 
     # ── Step 1: annotation source ─────────────────────────────────────────────
     section("Step 1 of 3 — Annotation source")
@@ -384,11 +384,11 @@ def run_pipeline(wav: Path, config: dict):
 
 # ── Main menu ─────────────────────────────────────────────────────────────────
 def main():
-    header("SpeechPrint  v0.3")
+    header("ProsodyPrompt  v0.3")
     print(f"""
   {DIM}Linguistic prosody annotation environment{R}
   {DIM}For Linux machines only.{R}
-  {DIM}https://github.com/speechprint/SpeechPrint{R}
+  {DIM}https://github.com/speechprint/ProsodyPrompt{R}
 """)
 
     while True:

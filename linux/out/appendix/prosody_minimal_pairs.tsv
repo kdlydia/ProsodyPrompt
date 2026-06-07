@@ -1,0 +1,621 @@
+sentence_id	sentence	syllable	word	f0_vowel	prosody
+1a	Do you want tea or COFFEE? [contrastive]	duː	do	221|213|214Hz  65.7dB	_
+1a	Do you want tea or COFFEE? [contrastive]	juː	you	225|230|231Hz  71.2dB	-
+1a	Do you want tea or COFFEE? [contrastive]	wɔnt	want	234|223|221Hz  68.8dB	-
+1a	Do you want tea or COFFEE? [contrastive]	tiː	tea	219|249|272Hz  65.7dB	-//
+1a	Do you want tea or COFFEE? [contrastive]	ɔːɹ	or	272|132|129Hz  63.6dB	_\\
+1a	Do you want tea or COFFEE? [contrastive]	kɔ	coffee	203|188|184Hz  64.2dB	*-\\
+1a	Do you want tea or COFFEE? [contrastive]	fi	coffee	159|152|152Hz  54.4dB	_
+1b	Did you meet MARY or MARTHA yesterday? [contr]	dɪd	did	211|215|193Hz  66.4dB	*-\
+1b	Did you meet MARY or MARTHA yesterday? [contr]	juː	you	193|184|87Hz  59.0dB	_\\
+1b	Did you meet MARY or MARTHA yesterday? [contr]	miːt	meet	113|137|128Hz  62.9dB	_//
+1b	Did you meet MARY or MARTHA yesterday? [contr]	mɛ	mary	216|207|199Hz  63.4dB	_
+1b	Did you meet MARY or MARTHA yesterday? [contr]	ɹi	mary	262|343|303Hz  66.1dB	*-//
+1b	Did you meet MARY or MARTHA yesterday? [contr]	ɔːɹ	or	303|258|236Hz  64.7dB	\\
+1b	Did you meet MARY or MARTHA yesterday? [contr]	mɑːɹ	martha	209|206|213Hz  66.2dB	_
+1b	Did you meet MARY or MARTHA yesterday? [contr]	θə	martha	159|181|165Hz  62.3dB	-
+1b	Did you meet MARY or MARTHA yesterday? [contr]	jɛs	yesterday	165|160|164Hz  55.9dB	_
+1b	Did you meet MARY or MARTHA yesterday? [contr]	tɚ	yesterday		?
+1b	Did you meet MARY or MARTHA yesterday? [contr]	deɪ	yesterday	153|166|163Hz  55.0dB	_
+2a	Who flew to Milan yesterday? [wh-q]	huː	who	211|206|203Hz  62.5dB	*-
+2a	Who flew to Milan yesterday? [wh-q]	fluː	flew	215|215|213Hz  67.0dB	-
+2a	Who flew to Milan yesterday? [wh-q]	tuː	to	213|210|212Hz  65.4dB	-
+2a	Who flew to Milan yesterday? [wh-q]	mɪ	milan	215|213|210Hz  66.0dB	*-
+2a	Who flew to Milan yesterday? [wh-q]	læn	milan	104|106|106Hz  51.9dB	_
+2a	Who flew to Milan yesterday? [wh-q]	jɛs		99|88|89Hz  61.0dB	_\\
+2b	MARY flew to Milan yesterday. [focus:MARY]	mɛ	mary	212|226|245Hz  68.5dB	*-//
+2b	MARY flew to Milan yesterday. [focus:MARY]	ɹi	mary	250|217|192Hz  66.1dB	-\\
+2b	MARY flew to Milan yesterday. [focus:MARY]	fluː	flew	95|91|88Hz  62.6dB	_
+2b	MARY flew to Milan yesterday. [focus:MARY]	tuː	to	100|99|94Hz  56.8dB	-
+2b	MARY flew to Milan yesterday. [focus:MARY]	mɪ	milan	90|90|88Hz  59.5dB	-
+2b	MARY flew to Milan yesterday. [focus:MARY]	læn	milan	87|86|85Hz  59.0dB	-
+2b	MARY flew to Milan yesterday. [focus:MARY]	jɛs	yesterday	86|85|92Hz  57.0dB	_
+2b	MARY flew to Milan yesterday. [focus:MARY]	tɚ	yesterday	175|172|168Hz  59.0dB	*-
+2b	MARY flew to Milan yesterday. [focus:MARY]	deɪ	yesterday	83|87|88Hz  54.5dB	_
+2c	Where did Mary fly yesterday? [wh-q]	wɛɹ	where	272|280|292Hz  70.0dB	*-
+2c	Where did Mary fly yesterday? [wh-q]	dɪd	did		?
+2c	Where did Mary fly yesterday? [wh-q]	mɛ	mary	280|274|270Hz  68.9dB	-
+2c	Where did Mary fly yesterday? [wh-q]	ɹi	mary	267|269|271Hz  58.8dB	-
+2c	Where did Mary fly yesterday? [wh-q]	flaɪ	fly	223|222|251Hz  65.2dB	//
+2c	Where did Mary fly yesterday? [wh-q]	jɛs		209|175|178Hz  62.7dB	_\\
+2c	Where did Mary fly yesterday? [wh-q]	tɚ		170|168|164Hz  60.3dB	-
+2d	Mary flew to MILAN yesterday. [focus:MILAN]	mɛ	mary	205|219|224Hz  69.7dB	_//
+2d	Mary flew to MILAN yesterday. [focus:MILAN]	ɹi	mary	234|244|238Hz  68.7dB	-
+2d	Mary flew to MILAN yesterday. [focus:MILAN]	fluː	flew	233|226|114Hz  66.8dB	_\\
+2d	Mary flew to MILAN yesterday. [focus:MILAN]	tuː	to	232|225|213Hz  62.2dB	-
+2d	Mary flew to MILAN yesterday. [focus:MILAN]	mɪ	milan	210|206|200Hz  69.5dB	-
+2d	Mary flew to MILAN yesterday. [focus:MILAN]	læn	milan	197|214|232Hz  65.8dB	-//
+2d	Mary flew to MILAN yesterday. [focus:MILAN]	jɛs	yesterday	188|184|182Hz  62.5dB	-
+2d	Mary flew to MILAN yesterday. [focus:MILAN]	tɚ	yesterday	85|159|164Hz  61.4dB	//
+2d	Mary flew to MILAN yesterday. [focus:MILAN]	deɪ	yesterday	81|88|89Hz  57.2dB	_//
+2e	When did Mary fly to Milan? [wh-q]	wɛn	when	199|195|199Hz  68.4dB	*-
+2e	When did Mary fly to Milan? [wh-q]	dɪd	did	208|209|202Hz  68.9dB	-
+2e	When did Mary fly to Milan? [wh-q]	mɛ	mary	201|194|190Hz  66.2dB	-
+2e	When did Mary fly to Milan? [wh-q]	ɹi	mary	187|191|190Hz  62.1dB	-
+2e	When did Mary fly to Milan? [wh-q]	flaɪ	fly	185|181|212Hz  64.2dB	_//
+2e	When did Mary fly to Milan? [wh-q]	tuː	to	212|224|220Hz  62.1dB	-
+2e	When did Mary fly to Milan? [wh-q]	mɪ	milan	252|242|234Hz  63.6dB	-
+2e	When did Mary fly to Milan? [wh-q]	læn	milan	267|285|305Hz  64.2dB	-//
+2f	Mary flew to Milan YESTERDAY. [focus:YEST]	mɛ	mary	205|219|224Hz  69.7dB	_//
+2f	Mary flew to Milan YESTERDAY. [focus:YEST]	ɹi	mary	234|244|238Hz  68.7dB	-
+2f	Mary flew to Milan YESTERDAY. [focus:YEST]	fluː	flew	233|226|114Hz  66.8dB	_\\
+2f	Mary flew to Milan YESTERDAY. [focus:YEST]	tuː	to	232|225|213Hz  62.2dB	-
+2f	Mary flew to Milan YESTERDAY. [focus:YEST]	mɪ	milan	210|206|200Hz  69.5dB	-
+2f	Mary flew to Milan YESTERDAY. [focus:YEST]	læn	milan	197|214|232Hz  65.8dB	-//
+2f	Mary flew to Milan YESTERDAY. [focus:YEST]	jɛs	yesterday	188|184|182Hz  62.5dB	-
+2f	Mary flew to Milan YESTERDAY. [focus:YEST]	tɚ	yesterday	85|159|164Hz  61.4dB	//
+2f	Mary flew to Milan YESTERDAY. [focus:YEST]	deɪ	yesterday	81|88|89Hz  57.2dB	_//
+2g	How did Mary go to Milan yesterday? [wh-q]	haʊ	how	91|95|194Hz  61.7dB	_//
+2g	How did Mary go to Milan yesterday? [wh-q]	dɪd	did	220|215|213Hz  67.5dB	*-
+2g	How did Mary go to Milan yesterday? [wh-q]	mɛ	mary	203|193|189Hz  64.4dB	-
+2g	How did Mary go to Milan yesterday? [wh-q]	ɹi	mary	194|202|101Hz  59.7dB	_\\
+2g	How did Mary go to Milan yesterday? [wh-q]	ɡoʊ	go	187|184|183Hz  62.8dB	-
+2g	How did Mary go to Milan yesterday? [wh-q]	tuː	to	183|184|92Hz  60.9dB	-\\
+2g	How did Mary go to Milan yesterday? [wh-q]	mɪ	milan	93|93|88Hz  59.1dB	_
+2g	How did Mary go to Milan yesterday? [wh-q]	læn	milan	90|119|135Hz  62.5dB	_//
+2h	Mary FLEW to Milan yesterday. [focus:FLEW]	jɛs	yesterday	212|219|227Hz  68.5dB	*-
+2h	Mary FLEW to Milan yesterday. [focus:FLEW]	tɚ	yesterday	117|117|237Hz  57.9dB	//
+2h	Mary FLEW to Milan yesterday. [focus:FLEW]	deɪ	yesterday	115|115|115Hz  54.4dB	_
+2h	Mary FLEW to Milan yesterday. [focus:FLEW]	mɛ	mary	213|210|208Hz  67.6dB	*-
+2h	Mary FLEW to Milan yesterday. [focus:FLEW]	ɹi	mary	210|209|207Hz  68.5dB	-
+2h	Mary FLEW to Milan yesterday. [focus:FLEW]	fluː	flew	204|203|203Hz  66.4dB	-
+2h	Mary FLEW to Milan yesterday. [focus:FLEW]	tuː	to	203|205|201Hz  66.2dB	-
+2h	Mary FLEW to Milan yesterday. [focus:FLEW]	mɪ	milan	193|190|187Hz  64.5dB	-
+2h	Mary FLEW to Milan yesterday. [focus:FLEW]	læn	milan	190|197|216Hz  67.2dB	//
+2h	Mary FLEW to Milan yesterday. [focus:FLEW]	jɛs	yesterday		?
+2h	Mary FLEW to Milan yesterday. [focus:FLEW]	tɚ	yesterday	159|155|85Hz  61.8dB	*-\\
+2h	Mary FLEW to Milan yesterday. [focus:FLEW]	deɪ	yesterday	166|88|89Hz  56.1dB	_\\
+3a	Mary has arrived already. [statement]	mɛ	mary	202|203|213Hz  67.9dB	*-
+3a	Mary has arrived already. [statement]	ɹi	mary	244|232|225Hz  67.2dB	*-
+3a	Mary has arrived already. [statement]	hæz	has	225|217|112Hz  60.5dB	_\\
+3a	Mary has arrived already. [statement]	ɚ	arrived	101|205|199Hz  64.0dB	_//
+3a	Mary has arrived already. [statement]	ɹaɪvd	arrived	182|240|239Hz  64.3dB	//
+3a	Mary has arrived already. [statement]	ɔːl	already	235|226|223Hz  62.2dB	-
+3a	Mary has arrived already. [statement]	ɹɛ	already	129|133|136Hz  64.4dB	_
+3a	Mary has arrived already. [statement]	di	already	135|137|137Hz  50.3dB	_
+3b	Mary has arrived already? [question]	mɛ	mary	217|216|218Hz  67.6dB	*-
+3b	Mary has arrived already? [question]	ɹi	mary	225|112|113Hz  60.8dB	_\\
+3b	Mary has arrived already? [question]	hæz	has	233|252|287Hz  66.8dB	*-//
+3b	Mary has arrived already? [question]	ɚ	arrived	268|209|185Hz  65.5dB	\\
+3b	Mary has arrived already? [question]	ɹaɪvd	arrived	164|160|167Hz  58.2dB	_
+3b	Mary has arrived already? [question]	ɔːl	already		?
+3b	Mary has arrived already? [question]	ɹɛ	already	80|82|84Hz  59.8dB	-
+3b	Mary has arrived already? [question]	di	already	86|86|86Hz  52.7dB	_
+3c	Mary has arrived ALREADY? [incredulity]	mɛ	mary	203|205|216Hz  67.2dB	*-
+3c	Mary has arrived ALREADY? [incredulity]	ɹi	mary	269|267|271Hz  68.8dB	-
+3c	Mary has arrived ALREADY? [incredulity]	hæz	has	271|257|236Hz  68.9dB	\\
+3c	Mary has arrived ALREADY? [incredulity]	ɚ	arrived	242|225|215Hz  68.0dB	_\\
+3c	Mary has arrived ALREADY? [incredulity]	ɹaɪvd	arrived	194|249|262Hz  66.9dB	-//
+3c	Mary has arrived ALREADY? [incredulity]	ɔːl	already	188|182|177Hz  66.5dB	_
+3c	Mary has arrived ALREADY? [incredulity]	ɹɛ	already	170|163|159Hz  62.3dB	-
+3c	Mary has arrived ALREADY? [incredulity]	di	already	164|161|166Hz  60.6dB	-
+3c	Mary has arrived ALREADY? [incredulity]	aɪ	i	166|170|166Hz  56.6dB	-
+4a	I need to perMIT this. [verb stress]	ɔːl	already	188|182|177Hz  66.5dB	_
+4a	I need to perMIT this. [verb stress]	ɹɛ	already	170|163|159Hz  62.3dB	-
+4a	I need to perMIT this. [verb stress]	di	already	164|161|166Hz  60.6dB	-
+4a	I need to perMIT this. [verb stress]	aɪ	i	166|170|166Hz  56.6dB	-
+4a	I need to perMIT this. [verb stress]	niːd	need	188|199|101Hz  66.1dB	*-\\
+4a	I need to perMIT this. [verb stress]	tuː	to	100|97|97Hz  62.4dB	_
+4a	I need to perMIT this. [verb stress]	pɜː	permit	185|172|166Hz  62.0dB	-\\
+4a	I need to perMIT this. [verb stress]	mɪt	permit	157|170|186Hz  60.0dB	-//
+4a	I need to perMIT this. [verb stress]	ðɪs	this	126|120|120Hz  59.9dB	_
+4a	I need to perMIT this. [verb stress]	aɪ	i	257|291|344Hz  60.5dB	-//
+4b	I need a new PERmit today. [noun stress]	mɪt		157|170|186Hz  60.0dB	-//
+4b	I need a new PERmit today. [noun stress]	ðɪs	this	126|120|120Hz  59.9dB	_
+4b	I need a new PERmit today. [noun stress]	aɪ	i	257|291|344Hz  60.5dB	-//
+4b	I need a new PERmit today. [noun stress]	niːd	need	201|194|195Hz  66.3dB	_
+4b	I need a new PERmit today. [noun stress]	eɪ	a	200|98|180Hz  63.2dB	*-\
+4b	I need a new PERmit today. [noun stress]	nuː	new	91|90|90Hz  51.9dB	_
+4b	I need a new PERmit today. [noun stress]	pɜː	permit	178|174|171Hz  66.2dB	*-
+4b	I need a new PERmit today. [noun stress]	mɪt	permit	168|163|192Hz  63.8dB	_//
+4b	I need a new PERmit today. [noun stress]	tə	today	259|260|269Hz  66.3dB	-
+4b	I need a new PERmit today. [noun stress]	deɪ	today	368|368|368Hz  50.6dB	-
+4c	The CONtract was signed. [noun]	mɪt		168|163|192Hz  63.8dB	_//
+4c	The CONtract was signed. [noun]	tə	today	259|260|269Hz  66.3dB	-
+4c	The CONtract was signed. [noun]	deɪ	today	368|368|368Hz  50.6dB	-
+4c	The CONtract was signed. [noun]	ðə	the	229|225|161Hz  66.7dB	_\\
+4c	The CONtract was signed. [noun]	kɑːn	contract		?
+4c	The CONtract was signed. [noun]	tɹækt	contract	207|227|233Hz  70.6dB	*-//
+4c	The CONtract was signed. [noun]	wʌz	was	84|89|89Hz  61.3dB	_
+4c	The CONtract was signed. [noun]	saɪnd	signed	191|196|205Hz  66.0dB	*-
+4d	Please conTRACT the summary. [verb]	pliːz	please	184|162|162Hz  61.0dB	_\\
+4d	Please conTRACT the summary. [verb]	kɑːn	contract	195|192|180Hz  59.8dB	-
+4d	Please conTRACT the summary. [verb]	tɹækt	contract	167|160|156Hz  61.8dB	_
+4d	Please conTRACT the summary. [verb]	ðə	the	219|108|109Hz  60.6dB	_\\
+4d	Please conTRACT the summary. [verb]	sʌ	summary	210|216|228Hz  66.8dB	-
+4d	Please conTRACT the summary. [verb]	mɚ	summary	257|267|274Hz  70.1dB	-
+4d	Please conTRACT the summary. [verb]	ɹi	summary	275|267|269Hz  63.5dB	-
+4e	Please reCORD this for her. [verb]	pliːz	please	177|174|175Hz  63.5dB	_
+4e	Please reCORD this for her. [verb]	ɹɛ	record	233|241|247Hz  68.7dB	*-
+4e	Please reCORD this for her. [verb]	kɚd	record		?
+4e	Please reCORD this for her. [verb]	ðɪs	this	225|199|94Hz  63.4dB	\\
+4e	Please reCORD this for her. [verb]	fɔːɹ	for	215|202|200Hz  68.1dB	-
+4e	Please reCORD this for her. [verb]	hɜː	her	200|217|110Hz  64.2dB	-\\
+4f	That's a REcord for her. [noun]	hɜː	her	200|217|110Hz  64.2dB	-\\
+4f	That's a REcord for her. [noun]	ðæts	that's	93|92|89Hz  60.9dB	_
+4f	That's a REcord for her. [noun]	eɪ	a	211|195|158Hz  63.9dB	-\\
+4f	That's a REcord for her. [noun]	ɹɛ	record	248|265|257Hz  69.6dB	*-
+4f	That's a REcord for her. [noun]	kɚd	record	251|257|267Hz  72.1dB	*-
+4f	That's a REcord for her. [noun]	fɔːɹ	for	161|160|160Hz  59.0dB	_
+4f	That's a REcord for her. [noun]	hɜː	her	160|166|166Hz  55.9dB	_
+5a	John bought a new CAR yesterday. [broad/CAR]	dʒɑːn	john	202|208|226Hz  70.4dB	*-//
+5a	John bought a new CAR yesterday. [broad/CAR]	bɔːt	bought	230|217|201Hz  65.3dB	\\
+5a	John bought a new CAR yesterday. [broad/CAR]	eɪ	a	207|217|253Hz  69.8dB	//
+5a	John bought a new CAR yesterday. [broad/CAR]	nuː	new	251|253|253Hz  55.3dB	-
+5a	John bought a new CAR yesterday. [broad/CAR]	kɑːɹ	car	214|195|181Hz  66.1dB	\\
+5a	John bought a new CAR yesterday. [broad/CAR]	jɛs	yesterday	158|157|157Hz  54.7dB	_
+5a	John bought a new CAR yesterday. [broad/CAR]	tɚ	yesterday	169|169|152Hz  55.3dB	*-\\
+5a	John bought a new CAR yesterday. [broad/CAR]	deɪ	yesterday	106|108|109Hz  51.6dB	_
+5b	John bought a new CAR yesterday. [narrow:CAR]	dʒɑːn	john	221|227|246Hz  68.8dB	*-//
+5b	John bought a new CAR yesterday. [narrow:CAR]	bɔːt	bought	241|225|221Hz  69.0dB	-
+5b	John bought a new CAR yesterday. [narrow:CAR]	eɪ	a	229|226|227Hz  71.2dB	-
+5b	John bought a new CAR yesterday. [narrow:CAR]	nuː	new	221|219|157Hz  66.9dB	_\\
+5b	John bought a new CAR yesterday. [narrow:CAR]	kɑːɹ	car	210|232|262Hz  66.6dB	-//
+5b	John bought a new CAR yesterday. [narrow:CAR]	jɛs	yesterday	230|193|168Hz  67.2dB	_\\
+5b	John bought a new CAR yesterday. [narrow:CAR]	tɚ	yesterday		?
+5b	John bought a new CAR yesterday. [narrow:CAR]	deɪ	yesterday	161|161|159Hz  56.8dB	-
+5c	Did John buy a new BIKE yesterday? [q]	jɛs	yesterday	230|193|168Hz  67.2dB	_\\
+5c	Did John buy a new BIKE yesterday? [q]	tɚ	yesterday		?
+5c	Did John buy a new BIKE yesterday? [q]	deɪ	yesterday	161|161|159Hz  56.8dB	-
+5c	Did John buy a new BIKE yesterday? [q]	dɪd	did	150|85|88Hz  59.3dB	_\\
+5c	Did John buy a new BIKE yesterday? [q]	dʒɑːn	john	222|211|221Hz  70.0dB	*-
+5c	Did John buy a new BIKE yesterday? [q]	baɪ	buy	240|222|219Hz  70.9dB	\\
+5c	Did John buy a new BIKE yesterday? [q]	eɪ	a	219|217|219Hz  68.5dB	-
+5c	Did John buy a new BIKE yesterday? [q]	nuː	new	213|220|113Hz  63.3dB	_\\
+5c	Did John buy a new BIKE yesterday? [q]	baɪk	bike	209|222|230Hz  68.2dB	*-//
+5c	Did John buy a new BIKE yesterday? [q]	jɛs	yesterday	223|213|214Hz  65.3dB	-
+5c	Did John buy a new BIKE yesterday? [q]	tɚ	yesterday	176|165|155Hz  62.6dB	_\\
+5c	Did John buy a new BIKE yesterday? [q]	deɪ	yesterday		?
+5c	Did John buy a new BIKE yesterday? [q]	noʊ	no	92|88|87Hz  55.5dB	_
+5d	No, he bought a new CAR yesterday. [corr:CAR]	jɛs	yesterday	223|213|214Hz  65.3dB	-
+5d	No, he bought a new CAR yesterday. [corr:CAR]	tɚ	yesterday	176|165|155Hz  62.6dB	_\\
+5d	No, he bought a new CAR yesterday. [corr:CAR]	deɪ	yesterday		?
+5d	No, he bought a new CAR yesterday. [corr:CAR]	noʊ	no	92|88|87Hz  55.5dB	_
+5d	No, he bought a new CAR yesterday. [corr:CAR]	hiː	he	224|206|197Hz  67.5dB	*-\\
+5d	No, he bought a new CAR yesterday. [corr:CAR]	bɔːt	bought	183|182|186Hz  58.2dB	-
+5d	No, he bought a new CAR yesterday. [corr:CAR]	eɪ	a	206|98|92Hz  65.1dB	*-\\
+5d	No, he bought a new CAR yesterday. [corr:CAR]	nuː	new	92|87|92Hz  57.0dB	_
+5d	No, he bought a new CAR yesterday. [corr:CAR]	kɑːɹ	car	165|167|223Hz  63.6dB	//
+5d	No, he bought a new CAR yesterday. [corr:CAR]	jɛs	yesterday	256|251|243Hz  60.8dB	-
+5d	No, he bought a new CAR yesterday. [corr:CAR]	tɚ	yesterday	290|282|277Hz  66.4dB	_
+5d	No, he bought a new CAR yesterday. [corr:CAR]	deɪ	yesterday	347|354|353Hz  58.5dB	-
+5e	Who bought a new car yesterday? [wh-q]	huː	who	247|229|216Hz  69.0dB	_\\
+5e	Who bought a new car yesterday? [wh-q]	bɔːt	bought	191|186|191Hz  68.9dB	_
+5e	Who bought a new car yesterday? [wh-q]	eɪ	a	217|211|213Hz  69.3dB	-
+5e	Who bought a new car yesterday? [wh-q]	nuː	new	244|242|236Hz  68.2dB	-
+5e	Who bought a new car yesterday? [wh-q]	kɑːɹ	car	233|248|266Hz  66.5dB	-//
+5e	Who bought a new car yesterday? [wh-q]	jɛs	yesterday	224|175|177Hz  65.3dB	_\\
+5e	Who bought a new car yesterday? [wh-q]	tɚ	yesterday	155|156|153Hz  61.0dB	_
+5e	Who bought a new car yesterday? [wh-q]	deɪ	yesterday	503|86|89Hz  57.4dB	\\
+5f	JOHN bought a new car yesterday. [focus:JOHN]	dʒɑːn	john	229|218|219Hz  68.5dB	*-
+5f	JOHN bought a new car yesterday. [focus:JOHN]	bɔːt	bought	235|220|216Hz  69.6dB	-
+5f	JOHN bought a new car yesterday. [focus:JOHN]	eɪ	a	209|211|207Hz  67.4dB	-
+5f	JOHN bought a new car yesterday. [focus:JOHN]	nuː	new	202|204|205Hz  65.5dB	-
+5f	JOHN bought a new car yesterday. [focus:JOHN]	kɑːɹ	car	204|181|185Hz  63.1dB	-\\
+5f	JOHN bought a new car yesterday. [focus:JOHN]	jɛs	yesterday	194|106|111Hz  62.3dB	_\\
+5f	JOHN bought a new car yesterday. [focus:JOHN]	tɚ	yesterday	243|239|234Hz  64.6dB	*-
+5f	JOHN bought a new car yesterday. [focus:JOHN]	deɪ	yesterday	274|178|100Hz  59.6dB	_\\
+5g	Did Mary buy a car yesterday? [q]	dɪd	did	238|233|236Hz  75.8dB	-
+5g	Did Mary buy a car yesterday? [q]	mɛ	mary	269|285|293Hz  71.4dB	-
+5g	Did Mary buy a car yesterday? [q]	ɹi	mary	269|261|246Hz  72.3dB	*-
+5g	Did Mary buy a car yesterday? [q]	baɪ	buy	222|175|167Hz  65.1dB	_\\
+5g	Did Mary buy a car yesterday? [q]	eɪ	a	167|166|164Hz  62.0dB	_
+5g	Did Mary buy a car yesterday? [q]	kɑːɹ	car	185|173|168Hz  63.0dB	*-\\
+5g	Did Mary buy a car yesterday? [q]	jɛs	yesterday	159|86|86Hz  59.0dB	_\\
+5g	Did Mary buy a car yesterday? [q]	tɚ	yesterday	77|77|75Hz  58.8dB	_
+5g	Did Mary buy a car yesterday? [q]	deɪ	yesterday	76|76|76Hz  59.1dB	-
+5g	Did Mary buy a car yesterday? [q]	noʊ	no		?
+5h	No, JOHN bought a new car. [corr:JOHN]	tɚ		77|77|75Hz  58.8dB	_
+5h	No, JOHN bought a new car. [corr:JOHN]	deɪ		76|76|76Hz  59.1dB	-
+5h	No, JOHN bought a new car. [corr:JOHN]	noʊ	no		?
+5h	No, JOHN bought a new car. [corr:JOHN]	dʒɑːn	john	205|201|201Hz  68.5dB	-
+5h	No, JOHN bought a new car. [corr:JOHN]	bɔːt	bought	189|189|186Hz  62.0dB	-
+5h	No, JOHN bought a new car. [corr:JOHN]	eɪ	a	183|100|192Hz  64.3dB	-
+5h	No, JOHN bought a new car. [corr:JOHN]	nuː	new	189|189|189Hz  64.2dB	-
+5h	No, JOHN bought a new car. [corr:JOHN]	kɑːɹ	car	174|167|172Hz  60.3dB	-
+5h	No, JOHN bought a new car. [corr:JOHN]	jɛs	yesterday	99|107|108Hz  58.0dB	_//
+5h	No, JOHN bought a new car. [corr:JOHN]	tɚ	yesterday	238|229|225Hz  63.7dB	*-
+5h	No, JOHN bought a new car. [corr:JOHN]	deɪ	yesterday	138|133|133Hz  57.5dB	_
+5i	JOHN bought it. [contrastive topic]	æz	as	231|225|224Hz  62.8dB	-
+5i	JOHN bought it. [contrastive topic]	fɔːɹ	for	277|276|231Hz  69.3dB	*-\\
+5i	JOHN bought it. [contrastive topic]	ðə	the		?
+5i	JOHN bought it. [contrastive topic]	kɑːɹ	car	217|252|262Hz  69.6dB	-//
+5i	JOHN bought it. [contrastive topic]	huː	who	237|217|216Hz  68.5dB	-\\
+5i	JOHN bought it. [contrastive topic]	bɔːt	bought	192|171|170Hz  63.3dB	_\\
+5i	JOHN bought it. [contrastive topic]	ɪt	it	165|164|159Hz  57.5dB	_
+5i	JOHN bought it. [contrastive topic]	oʊn		184|184|182Hz  54.7dB	-
+6a	ONLY JOHN called Maria.	bɔːt	bought	192|171|170Hz  63.3dB	_\\
+6a	ONLY JOHN called Maria.	ɪt	it	165|164|159Hz  57.5dB	_
+6a	ONLY JOHN called Maria.	oʊn	only	184|184|182Hz  54.7dB	-
+6a	ONLY JOHN called Maria.	li	only	166|80|83Hz  58.6dB	_\\
+6a	ONLY JOHN called Maria.	dʒɑːn	john	155|154|152Hz  57.0dB	_
+6a	ONLY JOHN called Maria.	kɔːld	called	251|242|240Hz  68.2dB	*-
+6a	ONLY JOHN called Maria.	mɚ	maria	104|113|117Hz  64.5dB	_//
+6a	ONLY JOHN called Maria.	ɹiː	maria	198|204|204Hz  61.1dB	*-
+6a	ONLY JOHN called Maria.	ə	maria		?
+6b	John only CALLED Maria.	dʒɑːn	john	204|207|207Hz  69.3dB	_
+6b	John only CALLED Maria.	oʊn	only	216|234|245Hz  72.8dB	-//
+6b	John only CALLED Maria.	li	only	272|247|111Hz  68.2dB	\\
+6b	John only CALLED Maria.	kɔːld	called	224|232|258Hz  68.6dB	*-//
+6b	John only CALLED Maria.	mɚ	maria	172|166|162Hz  61.3dB	_
+6b	John only CALLED Maria.	ɹiː	maria	152|151|151Hz  59.2dB	-
+6b	John only CALLED Maria.	ə	maria	78|78|78Hz  58.7dB	_
+6c	John called only MARIA.	dʒɑːn	john	209|200|206Hz  68.6dB	*-
+6c	John called only MARIA.	kɔːld	called	203|207|238Hz  69.1dB	*-//
+6c	John called only MARIA.	oʊn	only	149|98|99Hz  60.6dB	_\\
+6c	John called only MARIA.	li	only	173|168|162Hz  64.8dB	*-
+6c	John called only MARIA.	mɚ	maria	153|152|157Hz  60.5dB	_
+6c	John called only MARIA.	ɹiː	maria	162|156|157Hz  60.4dB	-
+6c	John called only MARIA.	ə	maria		?
+6c	John called only MARIA.	iː	even		?
+6c	John called only MARIA.	vən	even		?
+6d	EVEN JOHN passed the test.	oʊn	only	149|98|99Hz  60.6dB	_\\
+6d	EVEN JOHN passed the test.	li	only	173|168|162Hz  64.8dB	*-
+6d	EVEN JOHN passed the test.	mɚ	maria	153|152|157Hz  60.5dB	_
+6d	EVEN JOHN passed the test.	ɹiː	maria	162|156|157Hz  60.4dB	-
+6d	EVEN JOHN passed the test.	ə	maria		?
+6d	EVEN JOHN passed the test.	iː	even		?
+6d	EVEN JOHN passed the test.	vən	even		?
+6d	EVEN JOHN passed the test.	dʒɑːn	john	208|195|210Hz  68.4dB	-
+6d	EVEN JOHN passed the test.	pæst	passed	208|197|139Hz  65.1dB	_\\
+6d	EVEN JOHN passed the test.	ðə	the	502|173|147Hz  63.7dB	\\
+6d	EVEN JOHN passed the test.	tɛst	test	214|270|221Hz  70.7dB	-
+6d	EVEN JOHN passed the test.	dʒɑːn	john	226|303|293Hz  69.7dB	*-//
+6e	John even PASSED the test.	tɛst	test	214|270|221Hz  70.7dB	-
+6e	John even PASSED the test.	dʒɑːn	john	226|303|293Hz  69.7dB	*-//
+6e	John even PASSED the test.	iː	even	212|206|202Hz  64.3dB	_
+6e	John even PASSED the test.	vən	even	199|198|186Hz  59.4dB	-
+6e	John even PASSED the test.	pæst	passed	165|158|159Hz  61.8dB	-
+6e	John even PASSED the test.	ðə	the	141|138|136Hz  57.8dB	_
+6e	John even PASSED the test.	tɛst	test	173|167|167Hz  57.0dB	-
+6f	Many STUDENTS solved the test.	mɛ	many	192|200|205Hz  68.2dB	-
+6f	Many STUDENTS solved the test.	ni	many	234|249|237Hz  69.7dB	*-
+6f	Many STUDENTS solved the test.	stuː	students	242|242|242Hz  53.9dB	-
+6f	Many STUDENTS solved the test.	dənts	students	247|268|272Hz  70.3dB	*-//
+6f	Many STUDENTS solved the test.	sɑːlvd	solved	210|193|194Hz  66.5dB	_
+6f	Many STUDENTS solved the test.	ðə	the	197|188|187Hz  63.4dB	-
+6f	Many STUDENTS solved the test.	tɛst	test	186|83|87Hz  59.6dB	_\\
+6g	Many students SOLVED the test.	mɛ	many	193|199|201Hz  68.6dB	-
+6g	Many students SOLVED the test.	ni	many	226|234|223Hz  71.1dB	*-
+6g	Many students SOLVED the test.	stuː	students	113|112|237Hz  52.8dB	_//
+6g	Many students SOLVED the test.	dənts	students	213|217|217Hz  70.0dB	*-
+6g	Many students SOLVED the test.	sɑːlvd	solved	216|204|223Hz  69.4dB	-
+6g	Many students SOLVED the test.	ðə	the	182|172|167Hz  64.0dB	_
+6g	Many students SOLVED the test.	tɛst	test	181|174|174Hz  55.7dB	_
+7a	You finished the report. [statement]	juː	you	206|205|204Hz  65.9dB	*-
+7a	You finished the report. [statement]	fɪ	finished	100|105|235Hz  54.6dB	_//
+7a	You finished the report. [statement]	nɪʃt	finished	234|236|227Hz  70.1dB	*-
+7a	You finished the report. [statement]	ðə	the	222|211|205Hz  68.2dB	-
+7a	You finished the report. [statement]	ɹᵻpɔːɹt	report	202|230|174Hz  60.2dB	_\
+7b	You finished the report? [question]	juː	you	187|186|185Hz  62.0dB	*-
+7b	You finished the report? [question]	fɪ	finished		?
+7b	You finished the report? [question]	nɪʃt	finished	208|202|209Hz  65.8dB	-
+7b	You finished the report? [question]	ðə	the	199|190|185Hz  61.2dB	_
+7b	You finished the report? [question]	ɹᵻpɔːɹt	report	178|162|307Hz  57.6dB	-//
+7c	You finished the report, DIDN'T you.	juː	you	99|99|98Hz  63.7dB	_
+7c	You finished the report, DIDN'T you.	fɪ	finished	100|104|240Hz  59.6dB	_//
+7c	You finished the report, DIDN'T you.	nɪʃt	finished	252|266|277Hz  66.9dB	*-//
+7c	You finished the report, DIDN'T you.	ðə	the	257|247|238Hz  67.3dB	*-
+7c	You finished the report, DIDN'T you.	ɹᵻpɔːɹt	report	226|107|158Hz  60.6dB	_\\
+7c	You finished the report, DIDN'T you.	dɪdnt	didn't	205|225|224Hz  69.4dB	*-//
+7c	You finished the report, DIDN'T you.	juː	you	158|88|94Hz  57.6dB	_\\
+7d	You finished the report, didn't YOU?	juː	you	200|198|194Hz  66.6dB	*-
+7d	You finished the report, didn't YOU?	fɪ	finished	99|99|230Hz  60.8dB	_//
+7d	You finished the report, didn't YOU?	nɪʃt	finished	231|241|238Hz  71.4dB	*-
+7d	You finished the report, didn't YOU?	ðə	the	231|224|218Hz  70.5dB	-
+7d	You finished the report, didn't YOU?	ɹᵻpɔːɹt	report	210|227|198Hz  59.3dB	-
+7d	You finished the report, didn't YOU?	dɪdnt	didn't	188|166|223Hz  65.8dB	_//
+7d	You finished the report, didn't YOU?	juː	you	285|331|359Hz  62.7dB	-//
+8a	Who are you meeting? [wh-q]	juː	you	203|202|199Hz  62.9dB	_
+8a	Who are you meeting? [wh-q]	fɪ	finished	102|250|243Hz  62.2dB	_//
+8a	Who are you meeting? [wh-q]	nɪʃt	finished	243|240|233Hz  68.7dB	*-
+8a	Who are you meeting? [wh-q]	ðə	the	225|215|209Hz  67.5dB	-
+8a	Who are you meeting? [wh-q]	ɹᵻpɔːɹt	report	205|219|197Hz  59.3dB	_
+8a	Who are you meeting? [wh-q]	dɪdnt	didn't	212|195|196Hz  66.3dB	-
+8a	Who are you meeting? [wh-q]	juː	you	205|310|106Hz  64.0dB	\\
+8a	Who are you meeting? [wh-q]	huː	who	240|250|260Hz  72.3dB	-
+8a	Who are you meeting? [wh-q]	ɑːɹ	are	260|267|270Hz  76.8dB	-
+8a	Who are you meeting? [wh-q]	juː	you	272|272|269Hz  72.6dB	-
+8a	Who are you meeting? [wh-q]	miː	meeting	272|276|282Hz  70.9dB	-
+8a	Who are you meeting? [wh-q]	ɾɪŋ	meeting	295|328|104Hz  64.2dB	-\\
+8b	You're meeting WHO? [echo]	jʊɹ	you're	218|223|212Hz  72.3dB	_
+8b	You're meeting WHO? [echo]	miː	meeting	233|240|248Hz  72.7dB	-
+8b	You're meeting WHO? [echo]	ɾɪŋ	meeting	254|254|248Hz  70.9dB	-
+8b	You're meeting WHO? [echo]	huː	who	203|295|380Hz  65.5dB	-//
+8c	Who are you MEETING at noon? [wh-q]	huː	who	227|241|253Hz  71.6dB	_//
+8c	Who are you MEETING at noon? [wh-q]	ɑːɹ	are	253|254|255Hz  71.2dB	-
+8c	Who are you MEETING at noon? [wh-q]	juː	you	237|232|226Hz  72.0dB	-
+8c	Who are you MEETING at noon? [wh-q]	miː	meeting	194|195|197Hz  67.6dB	_
+8c	Who are you MEETING at noon? [wh-q]	ɾɪŋ	meeting	232|253|260Hz  68.2dB	*-//
+8c	Who are you MEETING at noon? [wh-q]	æt	at	265|256|238Hz  61.6dB	\\
+8c	Who are you MEETING at noon? [wh-q]	nuːn	noon	257|277|327Hz  66.5dB	-//
+8d	You're meeting WHO at noon? [echo]	jʊɹ	you're	215|217|211Hz  72.2dB	_
+8d	You're meeting WHO at noon? [echo]	miː	meeting	214|223|227Hz  71.7dB	-
+8d	You're meeting WHO at noon? [echo]	ɾɪŋ	meeting	233|234|227Hz  71.6dB	-
+8d	You're meeting WHO at noon? [echo]	huː	who	109|213|247Hz  65.8dB	_//
+8d	You're meeting WHO at noon? [echo]	æt	at	247|242|248Hz  68.2dB	-
+8d	You're meeting WHO at noon? [echo]	nuːn	noon	250|288|218Hz  64.5dB	-\\
+9a	Do you want tea or COFFEE? [yes/no rising]	duː	do	231|222|225Hz  68.7dB	_
+9a	Do you want tea or COFFEE? [yes/no rising]	juː	you	231|237|231Hz  70.0dB	-
+9a	Do you want tea or COFFEE? [yes/no rising]	wɔnt	want	239|233|229Hz  68.9dB	-
+9a	Do you want tea or COFFEE? [yes/no rising]	tiː	tea	234|249|258Hz  66.6dB	//
+9a	Do you want tea or COFFEE? [yes/no rising]	ɔːɹ	or	258|256|256Hz  72.7dB	-
+9a	Do you want tea or COFFEE? [yes/no rising]	kɔ	coffee	179|236|252Hz  65.1dB	-//
+9a	Do you want tea or COFFEE? [yes/no rising]	fi	coffee	171|147|93Hz  56.1dB	_\\
+9b	Do you want TEA or COFFEE? [alternative]	duː	do	215|206|207Hz  66.6dB	*-
+9b	Do you want TEA or COFFEE? [alternative]	juː	you	213|216|214Hz  69.1dB	-
+9b	Do you want TEA or COFFEE? [alternative]	wɔnt	want	222|206|166Hz  66.0dB	_\\
+9b	Do you want TEA or COFFEE? [alternative]	tiː	tea	225|277|313Hz  65.1dB	-//
+9b	Do you want TEA or COFFEE? [alternative]	ɔːɹ	or	228|228|233Hz  62.4dB	-
+9b	Do you want TEA or COFFEE? [alternative]	kɔ	coffee	126|131|131Hz  66.0dB	_
+9b	Do you want TEA or COFFEE? [alternative]	fi	coffee	198|87|91Hz  58.6dB	_\\
+9c	Do you want TEA or COFFEE or...? [list]	duː	do	198|206|207Hz  66.3dB	-
+9c	Do you want TEA or COFFEE or...? [list]	juː	you	215|223|219Hz  71.6dB	*-
+9c	Do you want TEA or COFFEE or...? [list]	wɔnt	want	212|180|175Hz  64.3dB	_\\
+9c	Do you want TEA or COFFEE or...? [list]	tiː	tea	239|235|223Hz  67.4dB	-
+9c	Do you want TEA or COFFEE or...? [list]	ɔːɹ	or	223|533|90Hz  64.0dB	-\\
+9c	Do you want TEA or COFFEE or...? [list]	kɔ	coffee	202|202|210Hz  64.3dB	-
+9c	Do you want TEA or COFFEE or...? [list]	fi	coffee	109|104|102Hz  62.7dB	_
+9c	Do you want TEA or COFFEE or...? [list]	ɔːɹ	or	180|180|175Hz  61.8dB	-
+10a	That was incredibly good. [declarative]	ðæt	that	191|188|191Hz  61.5dB	-
+10a	That was incredibly good. [declarative]	wʌz	was	214|221|218Hz  66.4dB	-
+10a	That was incredibly good. [declarative]	ɪŋ	incredibly	251|240|226Hz  69.6dB	*-\\
+10a	That was incredibly good. [declarative]	kɹɛ	incredibly	104|192|180Hz  62.6dB	_//
+10a	That was incredibly good. [declarative]	dɪb	incredibly	191|188|181Hz  63.8dB	-
+10a	That was incredibly good. [declarative]	li	incredibly	173|170|166Hz  64.1dB	-
+10a	That was incredibly good. [declarative]	ɡʊd	good	162|161|160Hz  64.7dB	_
+10b	That was incredibly GOOD! [exclamation]	ðæt	that	189|184|190Hz  64.3dB	-
+10b	That was incredibly GOOD! [exclamation]	wʌz	was	204|202|197Hz  64.7dB	-
+10b	That was incredibly GOOD! [exclamation]	ɪŋ	incredibly	223|206|197Hz  64.5dB	-\\
+10b	That was incredibly GOOD! [exclamation]	kɹɛ	incredibly	195|189|178Hz  67.5dB	_\\
+10b	That was incredibly GOOD! [exclamation]	dɪb	incredibly	221|223|220Hz  69.0dB	*-
+10b	That was incredibly GOOD! [exclamation]	li	incredibly	168|169|101Hz  55.4dB	_\\
+10b	That was incredibly GOOD! [exclamation]	ɡʊd	good	194|191|189Hz  71.5dB	*-
+10c	It's so nice. [neutral]	ɪts	it's	194|202|100Hz  56.3dB	_\\
+10c	It's so nice. [neutral]	soʊ	so	238|221|218Hz  69.0dB	*-\\
+10c	It's so nice. [neutral]	naɪs	nice	183|149|89Hz  58.0dB	_\\
+10d	It's SO nice! [exclamation]	ɪts	it's	206|213|106Hz  59.3dB	_\\
+10d	It's SO nice! [exclamation]	soʊ	so	222|214|218Hz  69.6dB	*-
+10d	It's SO nice! [exclamation]	naɪs	nice	200|167|157Hz  60.9dB	_\\
+11a	As for the weather, it's getting COLD.	æz	as	189|197|204Hz  64.2dB	-
+11a	As for the weather, it's getting COLD.	fɔːɹ	for	237|230|229Hz  72.3dB	*-
+11a	As for the weather, it's getting COLD.	ðə	the	224|214|208Hz  70.8dB	-
+11a	As for the weather, it's getting COLD.	wɛ	weather	187|183|186Hz  66.9dB	_
+11a	As for the weather, it's getting COLD.	ðɚ	weather	233|257|243Hz  67.9dB	*-
+11a	As for the weather, it's getting COLD.	ɪts	it's	243|195|100Hz  54.7dB	_\\
+11a	As for the weather, it's getting COLD.	ɡɛ	getting	196|191|183Hz  65.7dB	-
+11a	As for the weather, it's getting COLD.	ɾɪŋ	getting	190|189|188Hz  61.9dB	-
+11a	As for the weather, it's getting COLD.	koʊld	cold	199|191|176Hz  66.3dB	_\\
+11b	JOHN I like; MARY I don't. [contr topic]	dʒɑːn	john	209|235|248Hz  68.4dB	*-//
+11b	JOHN I like; MARY I don't. [contr topic]	aɪ	i	189|191|185Hz  61.4dB	-
+11b	JOHN I like; MARY I don't. [contr topic]	laɪk	like	179|164|163Hz  66.5dB	_\\
+11b	JOHN I like; MARY I don't. [contr topic]	vɛ	very	172|168|164Hz  65.4dB	-
+11b	JOHN I like; MARY I don't. [contr topic]	ɹi	very	158|161|151Hz  60.8dB	-
+11b	JOHN I like; MARY I don't. [contr topic]	mʌtʃ	much	153|138|130Hz  58.1dB	_\\
+11b	JOHN I like; MARY I don't. [contr topic]	mɛ	mary	173|184|200Hz  68.0dB	//
+11b	JOHN I like; MARY I don't. [contr topic]	ɹi	mary	252|266|133Hz  63.8dB	-\\
+11b	JOHN I like; MARY I don't. [contr topic]	aɪ	i	169|173|170Hz  60.4dB	_
+11b	JOHN I like; MARY I don't. [contr topic]	doʊnt	don't	166|152|140Hz  62.3dB	_\\
+12a	JOHN called Maria, too.	dʒɑːn	john	212|227|211Hz  71.3dB	*-
+12a	JOHN called Maria, too.	kɔːld	called	184|170|158Hz  66.5dB	_\\
+12a	JOHN called Maria, too.	mɚ	maria	170|166|162Hz  61.5dB	-
+12a	JOHN called Maria, too.	ɹiː	maria	151|151|158Hz  62.2dB	_
+12a	JOHN called Maria, too.	ə	maria	164|173|177Hz  60.9dB	-
+12a	JOHN called Maria, too.	tuː	too	258|174|145Hz  60.0dB	-\\
+12b	John called MARIA, too.	dʒɑːn	john	211|200|215Hz  69.1dB	-
+12b	John called MARIA, too.	kɔːld	called	210|184|179Hz  66.4dB	\\
+12b	John called MARIA, too.	mɚ	maria	172|172|170Hz  62.8dB	-
+12b	John called MARIA, too.	ɹiː	maria	162|165|162Hz  61.2dB	-
+12b	John called MARIA, too.	ə	maria	159|160|161Hz  59.6dB	-
+12b	John called MARIA, too.	tuː	too	177|146|83Hz  60.3dB	_\\
+12c	John CALLED Maria, too.	dʒɑːn	john	192|185|197Hz  66.3dB	*-
+12c	John CALLED Maria, too.	kɔːld	called	208|188|187Hz  64.9dB	-\\
+12c	John CALLED Maria, too.	mɚ	maria	176|173|170Hz  63.8dB	_
+12c	John CALLED Maria, too.	ɹiː	maria	171|206|198Hz  64.4dB	*-//
+12c	John CALLED Maria, too.	ə	maria	198|156|156Hz  59.5dB	_\\
+12c	John CALLED Maria, too.	tuː	too		?
+13a	Did Emma submit the draft? [q]	dɪd	did	210|204|203Hz  72.1dB	*-
+13a	Did Emma submit the draft? [q]	ɛ	emma	188|188|188Hz  59.4dB	_
+13a	Did Emma submit the draft? [q]	mə	emma	235|245|235Hz  70.0dB	*-
+13a	Did Emma submit the draft? [q]	səb	submit	239|231|228Hz  70.2dB	-
+13a	Did Emma submit the draft? [q]	mɪt	submit	216|210|204Hz  66.3dB	-
+13a	Did Emma submit the draft? [q]	ðə	the	211|202|202Hz  66.3dB	_
+13a	Did Emma submit the draft? [q]	dɹæft	draft	196|229|315Hz  66.5dB	-//
+13b	She submitted it YESTERDAY. [new info]	ʃiː	she	250|234|221Hz  69.4dB	\\
+13b	She submitted it YESTERDAY. [new info]	səb	submitted	247|238|230Hz  68.5dB	-
+13b	She submitted it YESTERDAY. [new info]	mɪɾᵻd	submitted	224|222|221Hz  70.0dB	-
+13b	She submitted it YESTERDAY. [new info]	ɪt	it	224|217|193Hz  67.7dB	\\
+13b	She submitted it YESTERDAY. [new info]	jɛs	yesterday	197|210|220Hz  67.0dB	-//
+13b	She submitted it YESTERDAY. [new info]	tɚ	yesterday	180|169|160Hz  60.9dB	_\\
+13b	She submitted it YESTERDAY. [new info]	deɪ	yesterday	152|171|166Hz  55.8dB	_//
+13c	She submitted it YESTERDAY. [focus]	ʃiː	she	231|231|223Hz  71.0dB	*-
+13c	She submitted it YESTERDAY. [focus]	səb	submitted	240|233|224Hz  68.7dB	-
+13c	She submitted it YESTERDAY. [focus]	mɪɾᵻd	submitted	218|214|213Hz  68.4dB	-
+13c	She submitted it YESTERDAY. [focus]	ɪt	it	217|204|170Hz  67.5dB	_\\
+13c	She submitted it YESTERDAY. [focus]	jɛs	yesterday	196|235|261Hz  66.0dB	-//
+13c	She submitted it YESTERDAY. [focus]	tɚ	yesterday	174|159|142Hz  64.5dB	\\
+13c	She submitted it YESTERDAY. [focus]	deɪ	yesterday	84|88|89Hz  55.3dB	_
+13d	When did Emma submit the draft? [wh-q]	wɛn	when	196|197|200Hz  68.2dB	*-
+13d	When did Emma submit the draft? [wh-q]	dɪd	did	221|216|209Hz  70.1dB	_
+13d	When did Emma submit the draft? [wh-q]	ɛ	emma	510|539|181Hz  65.9dB	-\\
+13d	When did Emma submit the draft? [wh-q]	mə	emma	201|205|201Hz  65.9dB	_
+13d	When did Emma submit the draft? [wh-q]	səb	submit	211|203|193Hz  64.1dB	\\
+13d	When did Emma submit the draft? [wh-q]	mɪt	submit	198|191|186Hz  63.5dB	-
+13d	When did Emma submit the draft? [wh-q]	ðə	the	201|191|189Hz  63.5dB	-
+13d	When did Emma submit the draft? [wh-q]	dɹæft	draft	174|187|247Hz  63.6dB	//
+13e	Emma submitted the draft YESTERDAY.	ɛ	emma	194|194|204Hz  58.8dB	_
+13e	Emma submitted the draft YESTERDAY.	mə	emma	232|244|235Hz  68.6dB	*-
+13e	Emma submitted the draft YESTERDAY.	səb	submitted	118|117|108Hz  52.9dB	_\\
+13e	Emma submitted the draft YESTERDAY.	mɪɾᵻd	submitted	249|239|232Hz  68.6dB	*-
+13e	Emma submitted the draft YESTERDAY.	ðə	the	216|207|205Hz  67.8dB	-
+13e	Emma submitted the draft YESTERDAY.	dɹæft	draft	195|200|204Hz  64.9dB	-
+13e	Emma submitted the draft YESTERDAY.	jɛs	yesterday	199|212|222Hz  68.1dB	*-//
+13e	Emma submitted the draft YESTERDAY.	tɚ	yesterday	172|170|164Hz  61.0dB	-
+13e	Emma submitted the draft YESTERDAY.	deɪ	yesterday	91|91|97Hz  56.2dB	_
+14a	We need APPLES, PEARS, and BANANAS. [complete]	wiː	we	209|202|198Hz  69.2dB	*-
+14a	We need APPLES, PEARS, and BANANAS. [complete]	niːd	need	201|199|185Hz  68.6dB	*-
+14a	We need APPLES, PEARS, and BANANAS. [complete]	æ	apples	100|102|193Hz  61.7dB	_//
+14a	We need APPLES, PEARS, and BANANAS. [complete]	pəlz	apples	257|245|243Hz  67.1dB	*-
+14a	We need APPLES, PEARS, and BANANAS. [complete]	pɛɹz	pears	101|92|98Hz  62.8dB	_
+14a	We need APPLES, PEARS, and BANANAS. [complete]	ænd	and	212|212|188Hz  55.6dB	-\\
+14a	We need APPLES, PEARS, and BANANAS. [complete]	bɐ	bananas	180|178|174Hz  65.1dB	-
+14a	We need APPLES, PEARS, and BANANAS. [complete]	næ	bananas	163|156|149Hz  58.7dB	\\
+14a	We need APPLES, PEARS, and BANANAS. [complete]	nəz	bananas	157|164|105Hz  52.8dB	_\\
+14b	We need APPLES, PEARS, and... [incomplete]	wiː	we	194|194|191Hz  65.4dB	*-
+14b	We need APPLES, PEARS, and... [incomplete]	niːd	need	194|193|182Hz  65.1dB	-
+14b	We need APPLES, PEARS, and... [incomplete]	æ	apples	174|177|202Hz  62.4dB	_//
+14b	We need APPLES, PEARS, and... [incomplete]	pəlz	apples	242|234|235Hz  67.6dB	*-
+14b	We need APPLES, PEARS, and... [incomplete]	pɛɹz	pears	198|187|196Hz  65.3dB	-
+14b	We need APPLES, PEARS, and... [incomplete]	ænd	and	166|166|165Hz  54.3dB	_
+15a	OLD men and women.	oʊld	old	166|179|209Hz  64.6dB	*-//
+15a	OLD men and women.	mɛn	men	179|162|161Hz  63.9dB	_\\
+15a	OLD men and women.	ænd	and	169|165|164Hz  57.6dB	-
+15a	OLD men and women.	wɪ	women	164|161|158Hz  60.2dB	*-
+15a	OLD men and women.	mɪn	women	79|109|117Hz  55.9dB	_//
+15b	old MEN and WOMEN.	oʊld	old	219|200|205Hz  62.7dB	-
+15b	old MEN and WOMEN.	mɛn	men	183|190|194Hz  66.8dB	-
+15b	old MEN and WOMEN.	ænd	and	191|181|178Hz  60.9dB	-
+15b	old MEN and WOMEN.	wɪ	women	177|173|165Hz  65.8dB	-
+15b	old MEN and WOMEN.	mɪn	women	142|143|113Hz  53.6dB	_\\
+15c	I saw the man with the TELESCOPE.	aɪ	i	181|188|187Hz  60.7dB	-
+15c	I saw the man with the TELESCOPE.	sɔː	saw	221|210|212Hz  71.1dB	-
+15c	I saw the man with the TELESCOPE.	ðə	the	224|220|214Hz  72.0dB	*-
+15c	I saw the man with the TELESCOPE.	mæn	man	190|189|198Hz  65.2dB	_
+15c	I saw the man with the TELESCOPE.	wɪð	with	198|193|189Hz  64.4dB	-
+15c	I saw the man with the TELESCOPE.	ðə	the	198|191|188Hz  63.5dB	_
+15c	I saw the man with the TELESCOPE.	tɛlᵻ	telescope	218|236|232Hz  67.6dB	*-
+15c	I saw the man with the TELESCOPE.	skoʊp	telescope	162|154|154Hz  58.7dB	_
+15d	I SAW the man with the telescope.	aɪ	i	179|191|191Hz  58.4dB	-
+15d	I SAW the man with the telescope.	sɔː	saw	226|215|171Hz  66.3dB	*-\\
+15d	I SAW the man with the telescope.	ðə	the	177|173|168Hz  66.0dB	_
+15d	I SAW the man with the telescope.	mæn	man	170|157|154Hz  58.9dB	\\
+15d	I SAW the man with the telescope.	wɪð	with	160|157|157Hz  57.5dB	-
+15d	I SAW the man with the telescope.	eɪ	a	160|158|158Hz  59.0dB	-
+15d	I SAW the man with the telescope.	tɛlᵻ	telescope	179|162|124Hz  59.1dB	-\\
+15d	I SAW the man with the telescope.	skoʊp	telescope	81|79|80Hz  57.1dB	_
+16a	Are you comING? [rising]	ɑːɹ	are	198|190|189Hz  61.4dB	-
+16a	Are you comING? [rising]	juː	you	202|201|194Hz  64.1dB	_
+16a	Are you comING? [rising]	kʌ	coming	545|185|179Hz  55.4dB	-\\
+16a	Are you comING? [rising]	mɪŋ	coming	194|254|307Hz  67.5dB	*-//
+16b	You're comING? [echo]	jʊɹ	you're	198|194|191Hz  67.6dB	_
+16b	You're comING? [echo]	kʌ	coming	203|203|191Hz  60.2dB	_
+16b	You're comING? [echo]	mɪŋ	coming	241|300|369Hz  66.3dB	*-//
+17a	Can you pass the SALT? [request]	kæn	can	205|206|207Hz  64.4dB	_
+17a	Can you pass the SALT? [request]	juː	you	227|225|225Hz  69.5dB	*-
+17a	Can you pass the SALT? [request]	pæs	pass	116|114|113Hz  64.6dB	_
+17a	Can you pass the SALT? [request]	ðə	the	223|208|201Hz  60.4dB	-\\
+17a	Can you pass the SALT? [request]	sɔlt	salt	196|174|241Hz  65.2dB	_//
+17b	Can you pass the SALT. [command]	kæn	can	213|202|207Hz  66.6dB	-
+17b	Can you pass the SALT. [command]	juː	you	229|227|161Hz  70.3dB	*-\\
+17b	Can you pass the SALT. [command]	pæs	pass	104|106|107Hz  63.6dB	_
+17b	Can you pass the SALT. [command]	ðə	the	206|195|191Hz  62.2dB	-
+17b	Can you pass the SALT. [command]	sɔlt	salt	180|159|162Hz  60.8dB	-\\
+17c	Can you PASS the salt? [alt stress]	kæn	can	94|101|105Hz  61.6dB	_//
+17c	Can you PASS the salt? [alt stress]	juː	you	113|111|113Hz  62.2dB	_
+17c	Can you PASS the salt? [alt stress]	pæs	pass	169|196|252Hz  62.5dB	-//
+17c	Can you PASS the salt? [alt stress]	ðə	the	269|264|190Hz  65.9dB	-\\
+17c	Can you PASS the salt? [alt stress]	sɔlt	salt	281|274|299Hz  65.0dB	-
+17d	You can pass the SALT. [decl]	juː	you	224|224|225Hz  70.8dB	_
+17d	You can pass the SALT. [decl]	kæn	can	261|258|246Hz  68.0dB	-
+17d	You can pass the SALT. [decl]	pæs	pass	245|253|260Hz  62.2dB	-
+17d	You can pass the SALT. [decl]	ðə	the	99|99|99Hz  63.2dB	_
+17d	You can pass the SALT. [decl]	sɔlt	salt	159|150|148Hz  59.3dB	-
+17e	You can pass the SALT? [q]	juː	you	194|191|190Hz  64.4dB	-
+17e	You can pass the SALT? [q]	kæn	can	229|218|201Hz  67.7dB	*-\\
+17e	You can pass the SALT? [q]	pæs	pass	187|176|176Hz  62.2dB	-
+17e	You can pass the SALT? [q]	ðə	the	91|91|89Hz  59.1dB	_
+17e	You can pass the SALT? [q]	sɔlt	salt	170|148|201Hz  61.7dB	-//
+18a	My brother who LIVES in Boston called. [restr]	maɪ	my	142|178|175Hz  66.7dB	//
+18a	My brother who LIVES in Boston called. [restr]	bɹʌ	brother	196|198|202Hz  70.6dB	-
+18a	My brother who LIVES in Boston called. [restr]	ðɚ	brother	217|236|235Hz  72.8dB	*-
+18a	My brother who LIVES in Boston called. [restr]	huː	who	235|221|208Hz  69.3dB	\\
+18a	My brother who LIVES in Boston called. [restr]	laɪvz	lives	198|208|197Hz  67.2dB	_
+18a	My brother who LIVES in Boston called. [restr]	ɪn	in	223|205|197Hz  64.8dB	-\\
+18a	My brother who LIVES in Boston called. [restr]	bɔs	boston	188|170|178Hz  61.1dB	-
+18a	My brother who LIVES in Boston called. [restr]	tən	boston	83|83|84Hz  55.0dB	_
+18a	My brother who LIVES in Boston called. [restr]	kɔːld	called	172|166|160Hz  56.3dB	-
+18b	My BROTHER, who lives in BOSTON, CALLED. [non]	maɪ	my	201|192|180Hz  68.8dB	-\\
+18b	My BROTHER, who lives in BOSTON, CALLED. [non]	bɹʌ	brother	185|193|205Hz  69.7dB	_//
+18b	My BROTHER, who lives in BOSTON, CALLED. [non]	ðɚ	brother	240|267|196Hz  68.0dB	-\\
+18b	My BROTHER, who lives in BOSTON, CALLED. [non]	huː	who	221|209|205Hz  67.5dB	_
+18b	My BROTHER, who lives in BOSTON, CALLED. [non]	laɪvz	lives	204|200|197Hz  66.7dB	*-
+18b	My BROTHER, who lives in BOSTON, CALLED. [non]	ɪn	in	101|99|95Hz  60.9dB	_
+18b	My BROTHER, who lives in BOSTON, CALLED. [non]	bɔs	boston	187|170|181Hz  63.5dB	*-
+18b	My BROTHER, who lives in BOSTON, CALLED. [non]	tən	boston	183|176|167Hz  57.6dB	-\\
+18b	My BROTHER, who lives in BOSTON, CALLED. [non]	kɔːld	called	78|78|78Hz  58.6dB	_
+19a	You met with the DIRECTOR? [confirm]	juː	you	196|191|183Hz  64.7dB	-
+19a	You met with the DIRECTOR? [confirm]	mɛt	met	204|198|198Hz  65.4dB	-
+19a	You met with the DIRECTOR? [confirm]	wɪð	with	227|228|218Hz  69.1dB	*-
+19a	You met with the DIRECTOR? [confirm]	eɪ	a	211|206|206Hz  67.8dB	-
+19a	You met with the DIRECTOR? [confirm]	dᵻɹɛk	director	202|163|219Hz  64.9dB	_
+19a	You met with the DIRECTOR? [confirm]	tɚ	director	312|358|115Hz  62.3dB	-\\
+19b	I met with the PRODUCER, not the DIRECTOR.	aɪ	i	197|198|194Hz  63.0dB	_
+19b	I met with the PRODUCER, not the DIRECTOR.	mɛt	met	224|241|243Hz  70.7dB	*-
+19b	I met with the PRODUCER, not the DIRECTOR.	wɪð	with	218|225|226Hz  69.0dB	_
+19b	I met with the PRODUCER, not the DIRECTOR.	eɪ	a	245|234|233Hz  66.9dB	-
+19b	I met with the PRODUCER, not the DIRECTOR.	pɹə	producer	212|206|199Hz  68.9dB	-
+19b	I met with the PRODUCER, not the DIRECTOR.	duː	producer	105|111|112Hz  68.9dB	_
+19b	I met with the PRODUCER, not the DIRECTOR.	sɚ	producer	194|174|165Hz  65.0dB	-\\
+19b	I met with the PRODUCER, not the DIRECTOR.	nɑːt	not	161|153|149Hz  60.1dB	_
+19b	I met with the PRODUCER, not the DIRECTOR.	ðə	the	155|156|156Hz  58.3dB	-
+19b	I met with the PRODUCER, not the DIRECTOR.	dᵻɹɛk	director	78|79|77Hz  59.9dB	_
+19b	I met with the PRODUCER, not the DIRECTOR.	tɚ	director	165|163|162Hz  56.2dB	-
+20a	John did NOT call Maria.	dʒɑːn	john	209|201|216Hz  65.9dB	*-
+20a	John did NOT call Maria.	dɪd	did	208|180|169Hz  63.6dB	_\\
+20a	John did NOT call Maria.	nɑːt	not	172|200|223Hz  67.6dB	-//
+20a	John did NOT call Maria.	kɔːl	call	188|169|166Hz  64.7dB	\\
+20a	John did NOT call Maria.	mɚ	maria	157|157|156Hz  60.4dB	-
+20a	John did NOT call Maria.	ɹiː	maria	163|85|82Hz  57.5dB	_\\
+20a	John did NOT call Maria.	ə	maria		?
+20b	John did not call MARIA; he called SARA.	dʒɑːn	john	199|194|202Hz  67.3dB	*-
+20b	John did not call MARIA; he called SARA.	dɪd	did	191|166|154Hz  63.6dB	_\\
+20b	John did not call MARIA; he called SARA.	nɑːt	not	162|191|183Hz  61.9dB	-//
+20b	John did not call MARIA; he called SARA.	kɔːl	call	148|149|150Hz  59.9dB	_
+20b	John did not call MARIA; he called SARA.	mɚ	maria	151|152|155Hz  56.2dB	-
+20b	John did not call MARIA; he called SARA.	ɹiː	maria	83|86|86Hz  56.8dB	_
+20b	John did not call MARIA; he called SARA.	ə	maria		?
+20b	John did not call MARIA; he called SARA.	dʒɑːn	john	192|184|192Hz  65.7dB	-
+20b	John did not call MARIA; he called SARA.	dɪd	did	201|177|164Hz  63.6dB	\\
+20b	John did not call MARIA; he called SARA.	nɑːt	not	178|175|168Hz  62.1dB	-
+20b	John did not call MARIA; he called SARA.	kɔːl	call	188|178|174Hz  62.9dB	-
+20b	John did not call MARIA; he called SARA.	mɚ	maria	171|167|165Hz  61.8dB	_
+20b	John did not call MARIA; he called SARA.	ɹiː	maria	173|212|182Hz  67.2dB	*-
+20b	John did not call MARIA; he called SARA.	ə	maria	179|158|160Hz  62.5dB	_\\
+20b	John did not call MARIA; he called SARA.	hiː	he	183|172|169Hz  58.8dB	-
+20b	John did not call MARIA; he called SARA.	kɔːld	called	184|176|167Hz  62.8dB	\\
+20b	John did not call MARIA; he called SARA.	sɛ	sarah	193|193|182Hz  56.6dB	-
+20b	John did not call MARIA; he called SARA.	ɹə	sarah	157|151|151Hz  58.0dB	_
+21a	He's thirty. [statement]	hiːz	he's	238|223|219Hz  67.3dB	*-\\
+21a	He's thirty. [statement]	θɜː	30	214|197|187Hz  63.1dB	\\
+21a	He's thirty. [statement]	ɾi	30	185|177|168Hz  61.2dB	\\
+21a	He's thirty. [statement]	hiːz	he's	165|161|156Hz  58.4dB	_
+21b	He's THIRTY? [surprise]	hiːz	he's	238|223|219Hz  67.3dB	*-\\
+21b	He's THIRTY? [surprise]	θɜː	30	214|197|187Hz  63.1dB	\\
+21b	He's THIRTY? [surprise]	ɾi	30	185|177|168Hz  61.2dB	\\
+21b	He's THIRTY? [surprise]	hiːz	he's	165|161|156Hz  58.4dB	_
+21b	He's THIRTY? [surprise]	θɜː	30	181|181|181Hz  58.7dB	-
+21b	He's THIRTY? [surprise]	ɾi	30	175|172|168Hz  68.9dB	_
+21b	He's THIRTY? [surprise]	ɹiə	really	179|205|233Hz  66.2dB	_//
+21b	He's THIRTY? [surprise]	li	really	254|347|347Hz  64.0dB	-//
+21b	He's THIRTY? [surprise]	ɹiə	really	201|187|167Hz  68.8dB	_\\
+21b	He's THIRTY? [surprise]	li	really	135|84|89Hz  57.3dB	_\\

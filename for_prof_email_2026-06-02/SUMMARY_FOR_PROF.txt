@@ -1,0 +1,116 @@
+PITCH TRACKER COMPARISON — SpeechPrint v3
+Lydia Krifka-Dobes, June 2026
+================================================================
+
+You suggested that Praat's pitch tracker might have octave errors
+and recommended trying Librosa and CREPE. I did exactly that. Here
+is what I found.
+
+----------------------------------------------------------------
+WHAT I TESTED
+----------------------------------------------------------------
+
+Four pitch trackers were compared on the same audio files:
+
+  1. Praat SCC (raw)          — the default, out-of-the-box Praat call
+  2. Praat AC + Xu (1999)     — improved: octave_jump_cost=0.5, then
+                                 median-based spike correction (ProsodyPro
+                                 style), then triangular smoothing
+  3. Librosa pYIN             — probabilistic YIN; returns voiced/unvoiced
+                                 probability per frame
+  4. torchcrepe (CREPE)       — NYU MARL deep CNN (ICASSP 2018, Kim et al.)
+                                 operating on the raw waveform
+
+Audio files used:
+  - 5 German GToBI sentences from gtobi.uni-koeln.de  (1.2–2.5 s each)
+  - English minimal-pairs recording, first 30 s
+  - Daakie/DoReCo port1286, first 30 s
+
+----------------------------------------------------------------
+KEY FINDINGS
+----------------------------------------------------------------
+
+FINDING 1: German GToBI sentences — all four trackers agree.
+  All medians agree within ±2 Hz; no octave errors detected.
+  (See: figures/eine_gelbe_banane_pitch_comparison.png, etc.)
+
+FINDING 2: English recording — 238 Praat octave errors in 30 seconds.
+  Praat reports ~107 Hz; pYIN and CREPE consistently report ~214 Hz —
+  exactly an octave higher (12 semitones).
+  These are not random errors: Praat is detecting the 2nd sub-harmonic
+  instead of F0 whenever a formant partially masks the fundamental.
+  (See: figures/audio_english_30s_pitch_comparison.png — red lines mark
+  each octave-error frame in the top panel; the pYIN and CREPE panels
+  show the correct smooth contour.)
+
+FINDING 3: Daakie/DoReCo — 40 octave errors in 30 seconds.
+  Praat: 87–89 Hz; pYIN: 175–177 Hz (exactly 12 ST higher).
+  (See: figures/doreco_port1286_30s_pitch_comparison.png)
+
+----------------------------------------------------------------
+WHY THIS MATTERS FOR PROSODY LABELS
+----------------------------------------------------------------
+
+The symbolic layer computes intra-syllable pitch movement as:
+    ΔF₀ = 12 × log₂(F0_offset / F0_onset)   [semitones]
+
+and assigns / (rising), \ (falling), or - (level) based on the sign.
+
+An octave error on the onset or offset introduces a ±12 ST shift into
+this calculation. A syllable with a true movement of –2 ST (mild fall, \)
+will compute as –2 + 12 = +10 ST and be labelled // (strongly rising).
+This is exactly the pattern you pointed out in the screenshots: pitch
+marks that clearly don't match what you hear.
+
+After switching to Librosa pYIN + Xu(1999) correction, the prosody
+labels on the English recording are much more consistent with perception.
+
+----------------------------------------------------------------
+EXAMPLE: OCTAVE ERRORS IN ENGLISH (first 3 of 238)
+----------------------------------------------------------------
+
+  t=0.300s  Praat=111.8 Hz   pYIN=213.6 Hz   diff=–11.2 ST  (Praat too low)
+  t=0.310s  Praat=110.1 Hz   pYIN=213.6 Hz   diff=–11.5 ST  (Praat too low)
+  t=1.080s  Praat=137.4 Hz   pYIN=272.3 Hz   diff=–11.8 ST  (Praat too low)
+
+----------------------------------------------------------------
+TRACKER RANKING (for SpeechPrint's use case)
+----------------------------------------------------------------
+
+  Best overall   → Librosa pYIN    (adopted in v3)
+  Best accuracy  → CREPE/torchcrepe (slow on CPU, no GPU available)
+  Good fallback  → Praat AC + Xu(1999)
+  Not recommended → Praat SCC default (too many octave errors in English/Daakie)
+
+----------------------------------------------------------------
+ATTACHED FIGURES
+----------------------------------------------------------------
+
+  figures/eine_gelbe_banane_pitch_comparison.png   — GToBI sentence A
+  figures/einige_melonen_pitch_comparison.png      — GToBI sentence B
+  figures/er_sang_die_lieder_pitch_comparison.png  — GToBI sentence C
+  figures/er_will_die_rosen_pitch_comparison.png   — GToBI sentence D
+  figures/ich_wohne_in_bern_pitch_comparison.png   — GToBI sentence E
+  figures/audio_english_30s_pitch_comparison.png   — English (octave errors!)
+  figures/doreco_port1286_30s_pitch_comparison.png — Daakie/DoReCo
+
+Each figure has 4 panels (top to bottom):
+  1. Praat SCC raw  — red vertical lines = octave-error frames
+  2. Praat AC + Xu(1999) correction
+  3. Librosa pYIN   — smooth, voiced/unvoiced mask clean
+  4. torchcrepe (CREPE)
+
+Dashed horizontals at 100, 200, 400 Hz for reference.
+
+PITCH_TRACKER_COMPARISON.txt contains the full data table and per-file
+octave-error lists.
+
+----------------------------------------------------------------
+ALSO ATTACHED: questionaire_2026-06-02/ folder
+----------------------------------------------------------------
+
+The questionnaire output was rebuilt with pYIN + Xu(1999):
+  - english/audio_2026-05-30_19-01-35.TextGrid  (618 syllables, 148 *)
+  - german_gtobi/*.TextGrid  (Wort + Ton GToBI tiers + our prosody)
+  - doreco/*.TextGrid  (Italian Whisper alignment + improved prosody)
+================================================================

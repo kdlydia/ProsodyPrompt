@@ -1,0 +1,36 @@
+#!/bin/bash
+# SpeechPrint - Unified launcher for both CLI and GUI modes
+# Run without args for GUI, with args for CLI
+
+set -euo pipefail
+
+SPEECHPRINT_LAUNCHER_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+if [ -f "$SPEECHPRINT_LAUNCHER_DIR/speechprint-config.json" ]; then
+    export SPEECHPRINT_ROOT="$SPEECHPRINT_LAUNCHER_DIR"
+elif [ -f "$SPEECHPRINT_LAUNCHER_DIR/../speechprint-config.json" ]; then
+    export SPEECHPRINT_ROOT="$(cd "$SPEECHPRINT_LAUNCHER_DIR/.." && pwd)"
+else
+    echo "Error: speechprint-config.json not found" >&2
+    echo "Expected at: $SPEECHPRINT_LAUNCHER_DIR/speechprint-config.json" >&2
+    exit 1
+fi
+
+export SPEECHPRINT_LAUNCHER_DIR
+# Make both the GUI library (lib.main) and the pipeline package (speechprint_pkg)
+# importable when run directly from the repo. If the deps were installed via the
+# venv created by install_deps.sh, prefer that.
+export PYTHONPATH="$SPEECHPRINT_ROOT:$SPEECHPRINT_ROOT/lib:${PYTHONPATH:-}"
+
+PY=python3
+if [ -x "$HOME/SpeechPrint/.venv/bin/python" ]; then
+    PY="$HOME/SpeechPrint/.venv/bin/python"
+elif [ -x "$SPEECHPRINT_ROOT/.venv/bin/python" ]; then
+    PY="$SPEECHPRINT_ROOT/.venv/bin/python"
+fi
+
+if [ $# -eq 0 ]; then
+    exec "$PY" -m lib.main
+else
+    exec "$PY" -m lib.cli "$@"
+fi

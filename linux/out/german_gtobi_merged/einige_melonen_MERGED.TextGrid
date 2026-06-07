@@ -1,0 +1,276 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0.0
+xmax = 1.2600111896584387
+tiers? <exists>
+size = 7
+item []:
+    item [1]:
+        class = "IntervalTier"
+        name = "Wort"
+        xmin = 0.0
+        xmax = 1.2600111896584387
+        intervals: size = 4
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.16487678806825912
+            text = ""
+        intervals [2]:
+            xmin = 0.16487678806825912
+            xmax = 0.4413328978907822
+            text = "einige"
+        intervals [3]:
+            xmin = 0.4413328978907822
+            xmax = 1.0326762359416497
+            text = "melonen"
+        intervals [4]:
+            xmin = 1.0326762359416497
+            xmax = 1.2600111896584387
+            text = ""
+    item [2]:
+        class = "TextTier"
+        name = "Ton"
+        xmin = 0.0
+        xmax = 1.2600111896584387
+        points: size = 2
+        points [1]:
+            number = 0.7363847101677354
+            mark = "H+L*"
+        points [2]:
+            number = 1.0326762359416497
+            mark = "L-%"
+    item [3]:
+        class = "IntervalTier"
+        name = "sp_words"
+        xmin = 0.0
+        xmax = 1.2600111896584387
+        intervals: size = 7
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.295
+            text = ""
+        intervals [2]:
+            xmin = 0.295
+            xmax = 0.539
+            text = "einigen"
+        intervals [3]:
+            xmin = 0.539
+            xmax = 0.58
+            text = ""
+        intervals [4]:
+            xmin = 0.58
+            xmax = 0.681
+            text = "mal"
+        intervals [5]:
+            xmin = 0.681
+            xmax = 0.701
+            text = ""
+        intervals [6]:
+            xmin = 0.701
+            xmax = 0.925
+            text = "lohnt"
+        intervals [7]:
+            xmin = 0.925
+            xmax = 1.2600226757369615
+            text = ""
+    item [4]:
+        class = "IntervalTier"
+        name = "sp_syllables"
+        xmin = 0.0
+        xmax = 1.2600111896584387
+        intervals: size = 9
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.295
+            text = ""
+        intervals [2]:
+            xmin = 0.295
+            xmax = 0.33566666666666667
+            text = "ei"
+        intervals [3]:
+            xmin = 0.33566666666666667
+            xmax = 0.41700000000000004
+            text = "ni"
+        intervals [4]:
+            xmin = 0.41700000000000004
+            xmax = 0.539
+            text = "gen"
+        intervals [5]:
+            xmin = 0.539
+            xmax = 0.58
+            text = ""
+        intervals [6]:
+            xmin = 0.58
+            xmax = 0.681
+            text = "mal"
+        intervals [7]:
+            xmin = 0.681
+            xmax = 0.701
+            text = ""
+        intervals [8]:
+            xmin = 0.701
+            xmax = 0.925
+            text = "lohnt"
+        intervals [9]:
+            xmin = 0.925
+            xmax = 1.2600226757369615
+            text = ""
+    item [5]:
+        class = "IntervalTier"
+        name = "sp_phonemes"
+        xmin = 0.0
+        xmax = 1.2600111896584387
+        intervals: size = 17
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.295
+            text = ""
+        intervals [2]:
+            xmin = 0.295
+            xmax = 0.33566666666666667
+            text = "aɪ"
+        intervals [3]:
+            xmin = 0.33566666666666667
+            xmax = 0.37633333333333335
+            text = "n"
+        intervals [4]:
+            xmin = 0.37633333333333335
+            xmax = 0.41700000000000004
+            text = "ɪ"
+        intervals [5]:
+            xmin = 0.41700000000000004
+            xmax = 0.4576666666666667
+            text = "ɡ"
+        intervals [6]:
+            xmin = 0.4576666666666667
+            xmax = 0.49833333333333335
+            text = "ə"
+        intervals [7]:
+            xmin = 0.49833333333333335
+            xmax = 0.539
+            text = "n"
+        intervals [8]:
+            xmin = 0.539
+            xmax = 0.58
+            text = ""
+        intervals [9]:
+            xmin = 0.58
+            xmax = 0.6136666666666667
+            text = "m"
+        intervals [10]:
+            xmin = 0.6136666666666667
+            xmax = 0.6473333333333333
+            text = "ɑː"
+        intervals [11]:
+            xmin = 0.6473333333333333
+            xmax = 0.681
+            text = "l"
+        intervals [12]:
+            xmin = 0.681
+            xmax = 0.701
+            text = ""
+        intervals [13]:
+            xmin = 0.701
+            xmax = 0.757
+            text = "l"
+        intervals [14]:
+            xmin = 0.757
+            xmax = 0.813
+            text = "oː"
+        intervals [15]:
+            xmin = 0.813
+            xmax = 0.869
+            text = "n"
+        intervals [16]:
+            xmin = 0.869
+            xmax = 0.925
+            text = "t"
+        intervals [17]:
+            xmin = 0.925
+            xmax = 1.2600226757369615
+            text = ""
+    item [6]:
+        class = "IntervalTier"
+        name = "sp_f0_pitch"
+        xmin = 0.0
+        xmax = 1.2600111896584387
+        intervals: size = 9
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.295
+            text = ""
+        intervals [2]:
+            xmin = 0.295
+            xmax = 0.33566666666666667
+            text = "118"
+        intervals [3]:
+            xmin = 0.33566666666666667
+            xmax = 0.41700000000000004
+            text = "128"
+        intervals [4]:
+            xmin = 0.41700000000000004
+            xmax = 0.539
+            text = "154"
+        intervals [5]:
+            xmin = 0.539
+            xmax = 0.58
+            text = ""
+        intervals [6]:
+            xmin = 0.58
+            xmax = 0.681
+            text = "142"
+        intervals [7]:
+            xmin = 0.681
+            xmax = 0.701
+            text = ""
+        intervals [8]:
+            xmin = 0.701
+            xmax = 0.925
+            text = "103"
+        intervals [9]:
+            xmin = 0.925
+            xmax = 1.2600226757369615
+            text = ""
+    item [7]:
+        class = "IntervalTier"
+        name = "sp_prosody"
+        xmin = 0.0
+        xmax = 1.2600111896584387
+        intervals: size = 9
+        intervals [1]:
+            xmin = 0.0
+            xmax = 0.295
+            text = ""
+        intervals [2]:
+            xmin = 0.295
+            xmax = 0.33566666666666667
+            text = "–"
+        intervals [3]:
+            xmin = 0.33566666666666667
+            xmax = 0.41700000000000004
+            text = "//"
+        intervals [4]:
+            xmin = 0.41700000000000004
+            xmax = 0.539
+            text = "/"
+        intervals [5]:
+            xmin = 0.539
+            xmax = 0.58
+            text = ""
+        intervals [6]:
+            xmin = 0.58
+            xmax = 0.681
+            text = "*\\"
+        intervals [7]:
+            xmin = 0.681
+            xmax = 0.701
+            text = ""
+        intervals [8]:
+            xmin = 0.701
+            xmax = 0.925
+            text = "\"
+        intervals [9]:
+            xmin = 0.925
+            xmax = 1.2600226757369615
+            text = ""

@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+# speechprint-run — batch annotate a folder of WAVs and aggregate.
+#
+# Usage:
+#   speechprint-run /path/to/wavs            # language defaults to 'en'
+#   speechprint-run /path/to/wavs de         # German
+#   speechprint-run /path/to/wavs en ~/Corpora/MyCorpus
+#
+# Looks up the SpeechPrint Python environment via SPEECHPRINT_ROOT, or falls
+# back to whichever venv contains the speechprint_pkg module.
+
+set -euo pipefail
+
+INPUT="${1:-}"
+LANG="${2:-en}"
+OUT="${3:-$HOME/Corpora/SpeechPrintRun}"
+
+if [ -z "$INPUT" ]; then
+    cat <<EOF
+SpeechPrint batch runner.
+
+Usage:
+    speechprint-run <wav-dir> [language] [output-corpus-dir]
+
+Examples:
+    speechprint-run ~/recordings
+    speechprint-run ~/recordings de
+    speechprint-run ~/recordings en ~/Corpora/MyCorpus
+EOF
+    exit 1
+fi
+
+# ---- locate python ---------------------------------------------------------
+PY=""
+
+if [ -n "${SPEECHPRINT_ROOT:-}" ] && [ -x "$SPEECHPRINT_ROOT/.venv/bin/python" ]; then
+    PY="$SPEECHPRINT_ROOT/.venv/bin/python"
+fi
+
+if [ -z "$PY" ]; then
+    # Try the user's default SpeechPrint location
+    for cand in "$HOME/SpeechPrint/.venv/bin/python" \
+                "/opt/speechprint/.venv/bin/python"; do
+        [ -x "$cand" ] && { PY="$cand"; break; }
+    done
+fi
+
+if [ -z "$PY" ]; then
+    # Fall back to system python if it has speechprint_pkg
+    if python3 -c "import speechprint_pkg" 2>/dev/null; then
+        PY="python3"
+    fi
+fi
+
+if [ -z "$PY" ]; then
+    echo "ERROR: Could not find a Python with speechprint_pkg installed." >&2
+    echo "       Set SPEECHPRINT_ROOT or run the installer first." >&2
+    exit 1
+fi
+
+# ---- copy inputs into corpus ----------------------------------------------
+mkdir -p "$OUT/data" "$OUT/out"
+
+if ! ls "$INPUT"/*.wav >/dev/null 2>&1; then
+    echo "ERROR: No .wav files found in $INPUT" >&2
+    exit 1
+fi
+
+cp "$INPUT"/*.wav "$OUT/data/"
+
+cd "$OUT"
+
+# ---- annotate each WAV ----------------------------------------------------
+for f in data/*.wav; do
+    echo ""
+    echo "============================================="
+    echo "  $f"
+    echo "============================================="
+    "$PY" -m speechprint_pkg.cli annotate "$f" --language "$LANG"
+done
+
+# ---- aggregate ------------------------------------------------------------
+"$PY" -m speechprint_pkg.cli ensemble
+
+echo ""
+echo "Done."
+echo "Corpus:     $OUT"
+echo "TextGrids:  $OUT/out/*/*.TextGrid"
+echo "Aggregate:  $OUT/{syllables,phonemes,prosody}_all.csv"
+echo ""
+
+FIRST="$(find out -name '*.wav' | head -1 || true)"
+if [ -n "$FIRST" ]; then
+    TG="${FIRST%.wav}.TextGrid"
+    echo "Open first file in Praat:"
+    echo "    praat --open \"$FIRST\" \"$TG\""
+fi

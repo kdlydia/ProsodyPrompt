@@ -1,0 +1,41 @@
+{
+  "wav": "audio_2026-05-30_19-01-35.wav",
+  "language": "en",
+  "duration_s": 305.4585,
+  "transcript_source": "whisperx",
+  "transcript_preview": "do you want tea or coffee did you meet mary or martha yesterday who flew to milan yesterday where did mary fly yesterday mary flew to milan yesterday when did mary fly to milan mary flew to milan yest",
+  "backends": [
+    {
+      "backend": "whisper",
+      "source": "whisper-segment (proportional word timing within segments)",
+      "words": 451,
+      "syllables": 615,
+      "phonemes": 1526,
+      "tg_path": "out/english_eval/whisper/audio_2026-05-30_19-01-35_whisper.TextGrid"
+    },
+    {
+      "backend": "whisperx",
+      "source": "whisperx-ctc (CTC forced alignment, word-level)",
+      "words": 451,
+      "syllables": 615,
+      "phonemes": 1526,
+      "tg_path": "out/english_eval/whisperx/audio_2026-05-30_19-01-35_whisperx.TextGrid"
+    },
+    {
+      "backend": "gentle",
+      "source": "gentle-kaldi (Kaldi acoustic model, 448 words aligned)",
+      "words": 448,
+      "syllables": 611,
+      "phonemes": 1515,
+      "tg_path": "out/english_eval/gentle/audio_2026-05-30_19-01-35_gentle.TextGrid"
+    },
+    {
+      "backend": "mfa",
+      "source": "mfa-english_mfa (phone-level Kaldi+MFA, 451 words, 1516 phones)",
+      "words": 451,
+      "syllables": 615,
+      "phonemes": 3032,
+      "tg_path": "out/english_eval/mfa/audio_2026-05-30_19-01-35_mfa.TextGrid"
+    }
+  ]
+}
