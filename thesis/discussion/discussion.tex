@@ -52,10 +52,29 @@
 \subsection{Prosody Resynthesis: From Annotation to Sound}
 \label{sec:resynthesis}
 
+In 1769 Wolfgang von Kempelen built the Mechanical Turk, an automaton that
+appeared to play chess. Shortly after, he built a second machine: die
+Sprech-Maschine, described in his \textit{Mechanismus der menschlichen
+Sprache} \cite{kempelen1791}, assembled from bellows, reeds, and a leather
+vocal tract shaped to produce vowels and a small number of consonants. The
+conjunction of the two inventions implies something precise: without die
+Sprech-Maschine preceding it with a voice, the Turk was a clever trick in
+a wooden box. The voice was not an ornament on the rational machine. It was
+what made the rational machine believable. Mladen Dolar, writing about the
+metaphysics of voice, calls this ``the most human of effects, an effect of
+`interiority'\,'' \cite[10]{dolar2006}: the sense that something is present
+behind the mechanism, that a subject inhabits the sound. Two and a half
+centuries later, the same question returns. Speech recognition and synthesis
+systems now transcribe and generate language at a level indistinguishable
+from human production in many conditions. What they do not yet recover or
+produce reliably is the prosodic layer: the emphasis, the question, the
+hesitation, the attitude. The voice without prosody is still, in some sense,
+the Turk without the Sprech-Maschine.
+
 A natural extension of the SpeechPrint pipeline is to close the loop between
 analysis and synthesis. The current system moves in one direction: from audio
-to symbolic annotation. The inverse direction -- from symbolic annotation to
-audio -- would constitute a \emph{prosody resynthesis} capability. This concept
+to symbolic annotation. The inverse direction (from symbolic annotation to
+audio) would constitute a \emph{prosody resynthesis} capability. This concept
 is illustrated in Figure~\ref{fig:resynthesis_pipeline}.
 
 The proposed pipeline would work as follows. First, a recording is processed by
@@ -86,7 +105,7 @@ segment and accepts prosodic modifications through its Python API. The SpeechPri
 symbolic tier would be compiled into a sequence of pitch targets at word or
 syllable boundaries, which the synthesis system would interpolate into a smooth
 F0 contour. This would allow a researcher to hear the prosodic consequences of an
-annotation change without recording a new utterance -- a capability that could be
+annotation change without recording a new utterance, a capability that could be
 valuable both for validation of the annotation and for generating stimuli in
 prosody experiments.
 
@@ -108,6 +127,30 @@ work. The loop would allow a user to modify prosody symbols and hear the result
 without re-recording.}
 \label{fig:resynthesis_pipeline}
 \end{figure}
+
+A recent system called DrawSpeech \cite{chen2025drawspeech} provides
+direct empirical support for this direction. DrawSpeech conditions a
+latent diffusion model on prosodic sketches drawn by users: instead of
+specifying a full F0 contour, the user draws a rough line indicating the
+desired pitch trend per word, and the model recovers the detailed contour
+from that coarse input. Experimental results show that sketch-conditioned
+synthesis achieves a mean opinion score of 4.49 (slightly above the
+4.46 ground-truth reference) while also enabling precise per-word
+prosody control. Their Figure~3 demonstrates four different sketches
+applied to the sentence ``I didn't say you stole the money'', each
+emphasising a different word, producing perceptually distinct utterances.
+This is precisely the minimal-pairs corpus used in this thesis, but as
+synthesised output rather than recorded speech.
+
+The connection to SpeechPrint is direct. The symbolic prosody tier
+produced by SpeechPrint (per-syllable labels such as
+\texttt{*{\={}}/}, accented, high, rising) functions as a
+human-readable version of the DrawSpeech sketch. The analysis pipeline
+described in this thesis extracts the sketch from recorded speech; a
+DrawSpeech-style synthesis system would use an edited version of that
+sketch to generate new speech. The two systems are complementary halves
+of a closed loop: analyse prosody from audio, edit it symbolically, and
+synthesise it back.
 
 \subsection{A Speech DAW: Interactive Prosody Manipulation}
 \label{sec:speech_daw}
@@ -134,8 +177,8 @@ prosodic structure by listening to counterfactual examples.
 
 A third future direction is the development of a classifier that assigns one of a
 small number of prosodic categories to each sentence or utterance. The motivation
-is that a single global label -- for example, whether a sentence is a statement, a
-question, an emphatic assertion, a continuation, or a boundary -- is often more
+is that a single global label (whether a sentence is a statement, a
+question, an emphatic assertion, a continuation, or a boundary) is often more
 useful for annotation workflows than a fine-grained per-syllable sequence of
 symbols. The classification would be trained on existing annotated corpora and
 applied to new recordings.
@@ -166,7 +209,7 @@ summary alongside the syllable-level labels.
 
 A recurring observation in this thesis is that applying a speech model trained
 on one language to a recording in an unrelated language does not produce random
-noise --- it produces something coherent but wrong. When Whisper's Italian
+noise: it produces something coherent but wrong. When Whisper's Italian
 acoustic model was applied to the Daakie recording, it returned phonetically
 plausible Italian word sequences, not silence or unintelligible garbage
 (Appendix~\ref{app:daakie}). The model could not understand Daakie, but it
@@ -179,8 +222,8 @@ producing emergent changes in apparent timbre, prosody, and intelligibility that
 are not random but structured by the model's prior. The SpeechPrint prosody
 layer applied to such a mistranscribed signal assigns labels that are acoustically
 correct but linguistically misaligned, creating a kind of prosodic ghost of the
-original utterance. This phenomenon --- the gap between what a model hears and
-what was said --- represents a potential compositional space for work at the
+original utterance. This phenomenon (the gap between what a model hears and
+what was said) represents a potential compositional space for work at the
 intersection of speech technology and sound art, and connects to a broader
 research thread on how bias and error in computational listening shape the
 transformation of voice across systems.
