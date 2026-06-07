@@ -1,0 +1,732 @@
+% Appendix — SpeechPrint evaluation results
+% Dependencies: booktabs, longtable (both in preamble). Nothing else.
+% No tipa, no external macros, no fancy packages.
+% IPA written only where the character is in standard T1/lmodern (a e i o u ae),
+% otherwise plain orthographic or ASCII approximation.
+
+\appendix
+
+% ============================================================
+\chapter{SpeechPrint Prosody Output: English Minimal-Pair Corpus}
+\label{app:english}
+% ============================================================
+
+The English corpus (\texttt{audio\_2026-05-30\_19-01-35.wav}, 305.5\,s) contains
+82 sentences across 21 prosodic categories recorded by the author.
+No hand annotation is available for this recording.
+The analysis was produced by the full SpeechPrint pipeline: WhisperX (large-v3,
+English model) for transcription and forced alignment, and Librosa pYIN for F0
+extraction. All five algorithmic optimisations are applied (MAD-based adaptive
+threshold, utterance boundary reset, declination removal, nucleus edge trimming,
+octave recovery). Prosody symbols are computed relative to within-utterance
+neighbours with MAD-based adaptive thresholds (floor 0.5\,ST,
+factor $0.35 \times \hat{\sigma}_\mathrm{MAD}$).
+
+\medskip\noindent\textbf{Prosody symbol key:}
+
+\begin{center}
+\small
+\begin{tabular}{ll}
+\toprule
+Symbol & Meaning \\
+\midrule
+\texttt{/}   & weakly rising pitch within the syllable \\
+\texttt{//}  & strongly rising (${>}\ 2.5\times$ adaptive threshold) \\
+\texttt{\textbackslash}  & weakly falling \\
+\texttt{\textbackslash\textbackslash} & strongly falling \\
+\texttt{{\={}}}  & high level (U+203E overline; above neighbouring syllables) \\
+\texttt{\_}  & low level (below neighbouring syllables) \\
+\texttt{*}   & most prominent syllable in the utterance \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Sections 1--4: Selected examples with F0 detail}
+
+\begin{table}[h]
+\centering
+\caption{Selected minimal-pair sentences with per-syllable F0 (onset\,$|$\,mid\,$|$\,offset
+in Hz) and SpeechPrint prosody symbol.
+`Prom.\ syl' = syllable carrying \texttt{*}.}
+\label{tab:english_selected}
+\small
+\begin{tabular}{llllll}
+\toprule
+ID & Category & Sentence & Prom.\ syl & F0 (Hz) & Symbol \\
+\midrule
+1a & contr.\ stress
+   & \textit{Do you want tea or COFFEE?}
+   & k-o (coffee)  & 203$|$188$|$184 & \texttt{*‾\textbackslash} \\
+1b & contr.\ stress
+   & \textit{Did you meet MARY or MARTHA?}
+   & m-ei (Mary)   & 262$|$343$|$303 & \texttt{*‾//} \\
+\midrule
+2b & focus: subj.
+   & \textit{MARY flew to Milan yesterday.}
+   & m-e (Mary)    & 212$|$226$|$245 & \texttt{*‾//} \\
+2d & focus: loc.
+   & \textit{Mary flew to MILAN yesterday.}
+   & l-an (Milan)  & 197$|$214$|$232 & \texttt{‾//} \\
+2f & focus: time
+   & \textit{Mary flew to Milan YESTERDAY.}
+   & yes-          & 212$|$219$|$227 & \texttt{*‾//} \\
+2g & focus: manner
+   & \textit{How did Mary go to Milan?}
+   & did           & 220$|$215$|$213 & \texttt{*‾\textbackslash} \\
+\midrule
+3a & stmt./q.
+   & \textit{Mary has arrived already.} [stmt]
+   & m-e (Mary)    & 202$|$203$|$213 & \texttt{*‾} \\
+3b & stmt./q.
+   & \textit{Mary has arrived already?} [q]
+   & has           & 233$|$252$|$287 & \texttt{*‾//} \\
+3c & stmt./q.
+   & \textit{Mary has arrived ALREADY?} [incred.]
+   & m-e (Mary)    & 203$|$205$|$216 & \texttt{*‾} \\
+\midrule
+4b & lex.\ stress
+   & \textit{I need a new \textbf{PER}mit.} [noun]
+   & per-          & 178$|$174$|$171 & \texttt{*‾} \\
+4a & lex.\ stress
+   & \textit{I need to per\textbf{MIT} this.} [verb]
+   & -mit          & 185$|$190$|$198 & \texttt{*‾/} \\
+4c & lex.\ stress
+   & \textit{The \textbf{CON}tract was signed.} [noun]
+   & con-          & 207$|$227$|$233 & \texttt{*‾//} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent
+The statement/question pair (3a/3b) is a clear test case:
+the declarative receives a level or slightly falling nucleus (\texttt{*‾}),
+while the interrogative accent on \textit{has} shows a strongly rising contour
+(\texttt{*‾//}, 233\,$\to$\,287\,Hz), consistent with a final rise in English
+polar questions.
+In the lexical-stress pair (4b/4a) the \texttt{*} marker shifts correctly
+between the first and second syllable, confirming that forced alignment captures
+the acoustic difference.
+
+\section*{Sections 5--21: Summary table}
+
+\begin{longtable}{lll}
+\caption{Prosody symbols for all 21 corpus categories (one representative sentence
+per category where multiple exist). Full per-syllable data available in
+\texttt{out/appendix/prosody\_minimal\_pairs\_readable.txt}.} \\
+\toprule
+ID & Sentence (abbreviated) & Symbol \\
+\midrule
+\endfirsthead
+\toprule
+ID & Sentence & Symbol \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+5a  & \textit{John bought a new CAR yesterday.} [broad focus]    & \texttt{*‾} \\
+5f  & \textit{JOHN bought a new car yesterday.} [narrow focus]   & \texttt{*‾} \\
+5i  & \textit{JOHN bought it.} [contrastive topic]               & \texttt{*‾} \\
+6a  & \textit{ONLY JOHN called Maria.}                           & \texttt{*‾\textbackslash} \\
+6b  & \textit{John only CALLED Maria.}                           & \texttt{*‾} \\
+6c  & \textit{John called only MARIA.}                           & \texttt{*‾} \\
+6d  & \textit{EVEN JOHN passed the test.}                        & \texttt{*‾\textbackslash} \\
+7a  & \textit{You finished the report.} [statement]              & \texttt{*‾} \\
+7b  & \textit{You finished the report?} [question]               & \texttt{*‾} \\
+7c  & \textit{You finished the report, DIDN'T you.}              & \texttt{*‾\textbackslash} \\
+7d  & \textit{You finished the report, didn't YOU?}              & \texttt{*‾} \\
+8a  & \textit{Who are you meeting?} [wh-question]                & \texttt{*‾} \\
+8b  & \textit{You're meeting WHO?} [echo question]               & \texttt{*‾} \\
+9a  & \textit{Do you want tea or COFFEE?} [yes/no]               & \texttt{*‾\textbackslash} \\
+9b  & \textit{Do you want TEA or COFFEE?} [alternative]          & \texttt{*‾//} \\
+9c  & \textit{Do you want TEA, COFFEE, or\ldots?} [list]         & \texttt{*‾//} \\
+10a & \textit{That was incredibly good.} [declarative]           & \texttt{*‾} \\
+10b & \textit{That was incredibly GOOD!} [exclamative]           & \texttt{*‾} \\
+11a & \textit{As for the weather, it's getting COLD.}            & \texttt{*‾\textbackslash} \\
+11b & \textit{JOHN I like; MARY I don't.} [contrastive topic]    & \texttt{*‾} \\
+12a & \textit{JOHN called Maria, too.}                           & \texttt{*‾} \\
+12b & \textit{John called MARIA, too.}                           & \texttt{*‾} \\
+12c & \textit{John CALLED Maria, too.}                           & \texttt{*‾} \\
+13b & \textit{She submitted it YESTERDAY.} [new information]     & \texttt{*‾\textbackslash} \\
+13e & \textit{Emma submitted the draft YESTERDAY.}               & \texttt{*‾//} \\
+14a & \textit{We need APPLES, PEARS, and BANANAS.}               & \texttt{*‾} \\
+14b & \textit{We need APPLES, PEARS, and\ldots} [incomplete]     & \texttt{*‾\textbackslash} \\
+15a & \textit{OLD men and women.}                                & \texttt{*‾\textbackslash\textbackslash} \\
+15b & \textit{old MEN and WOMEN.}                                & \texttt{*‾} \\
+16a & \textit{Are you comING?} [rising intonation]               & \texttt{*‾} \\
+17a & \textit{Can you pass the SALT?} [request]                  & \texttt{*‾} \\
+17b & \textit{Can you pass the SALT.} [command]                  & \texttt{*‾\textbackslash} \\
+18a & \textit{My brother who LIVES in Boston called.} [restr.]   & \texttt{*‾} \\
+18b & \textit{My BROTHER, who lives in BOSTON, CALLED.} [non-restr.] & \texttt{*‾\textbackslash} \\
+19a & \textit{You met with the DIRECTOR?} [confirmation]         & \texttt{*‾} \\
+19b & \textit{I met with the PRODUCER, not the DIRECTOR.}        & \texttt{*‾} \\
+20a & \textit{John did NOT call Maria.}                          & \texttt{*‾//} \\
+20b & \textit{John did not call MARIA; he called SARA.}          & \texttt{*‾} \\
+21a & \textit{He's thirty.} [statement]                          & \texttt{*‾} \\
+21b & \textit{He's THIRTY?} [surprise]                           & \texttt{*‾} \\
+\end{longtable}
+
+
+% ============================================================
+\chapter{German GToBI Training Sentences: Human Annotation vs.\ SpeechPrint}
+\label{app:german}
+% ============================================================
+
+Five GToBI-annotated German training sentences were processed with SpeechPrint.
+The original TextGrids contain two hand-annotated tiers: \textit{Wort} (word
+boundaries) and \textit{Ton} (GToBI nuclear tone and boundary tone annotations).
+The final pipeline uses the human \textit{Wort} boundaries as the sole source of
+word-level timing, with linguistically verified German IPA phone sequences
+hardcoded per word and distributed proportionally within those boundaries.
+
+\medskip\noindent
+\textbf{A note on MFA.}
+Montreal Forced Aligner (MFA) was evaluated as a phone-alignment source but
+abandoned after discovering that it produced wrong transcriptions for three of
+the five sentences even with the large-v3 Whisper transcript as input:
+\textit{gelbe} became ``gerbe'', \textit{einige Melonen} became ``einigen mal
+lohnt'', and \textit{er sang die Lieder} became ``hesangli lieder''.
+In addition, MFA word-boundary timing deviated from the human \textit{Wort} tier
+by 66--430\,ms across all five sentences, making it incompatible with the
+human-annotation tiers. The hardcoded IPA approach eliminates both sources of
+error.
+
+\section*{GToBI annotations and expected pitch direction}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lll}
+\toprule
+Sentence & GToBI annotation & Expected direction \\
+\midrule
+\textit{eine gelbe Banane}       & L+H* L-\%  & rising \\
+\textit{einige Melonen}          & H+L* L-\%  & falling \\
+\textit{er sang die Lieder}      & H+!H* L-\% & falling (downstepped) \\
+\textit{er will die Rosen haben} & L*+H       & rising \\
+\textit{ich wohne in Bern}       & L*+H L-\%  & rising \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{SpeechPrint prosody output (pYIN + 5 optimisations, hardcoded IPA)}
+
+All five sentences use linguistically correct German IPA.
+Table~\ref{tab:german} shows the per-syllable F0 (onset\,$\to$\,offset at the
+vowel nucleus) and the SpeechPrint prosody symbol.
+
+\begin{table}[h]
+\centering
+\caption{Per-syllable F0 and prosody symbols for the five German GToBI sentences.
+F0 onset\,$\to$\,offset in Hz. Syllable labels from linguistically verified
+German IPA (hardcoded, not espeak-ng).
+\texttt{*} = most prominent syllable; other symbols as in
+Appendix~\ref{app:english}.}
+\label{tab:german}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{p{3.6cm} l l p{6.4cm}}
+\toprule
+Sentence & GToBI & Expected & Syllable: F0 onset$\to$offset (Hz) \quad symbol \\
+\midrule
+\textit{eine gelbe Banane}
+  & L+H* L-\%
+  & rising
+  & eine-1: 205$\to$199\;\texttt{{\={}}} \quad
+    eine-2: 199$\to$195\;\texttt{{\={}}} \quad
+    gel: 192$\to$188\;\texttt{{\={}}} \quad
+    ba: 193$\to$204\;\texttt{{\={}}} \quad
+    \textbf{na}: 204$\to$261\;\texttt{//} \quad
+    *na:\ 261$\to$182\;\texttt{\textbackslash\textbackslash} \\
+\addlinespace[4pt]
+\textit{einige Melonen}
+  & H+L* L-\%
+  & falling
+  & ei: 115$\to$118\;\texttt{{\={}}} \quad
+    ni: 118$\to$140\;\texttt{//} \quad
+    ge: 140$\to$163\;\texttt{//} \quad
+    *me: 159$\to$123\;\texttt{\textbackslash\textbackslash} \quad
+    lo: 123$\to$104\;\texttt{\textbackslash} \quad
+    nen: 104$\to$99\;\texttt{{\={}}} \\
+\addlinespace[4pt]
+\textit{er sang die Lieder}
+  & H+!H* L-\%
+  & falling
+  & er: 103$\to$108\;\texttt{{\={}}} \quad
+    *sang: 104$\to$165\;\texttt{//} \quad
+    die: 166$\to$131\;\texttt{\textbackslash} \quad
+    lie: 124$\to$101\;\texttt{\textbackslash} \quad
+    der: 101$\to$103\;\texttt{{\={}}} \\
+\addlinespace[4pt]
+\textit{er will die Rosen haben}
+  & L*+H
+  & rising
+  & er: 110$\to$108\;\texttt{{\={}}} \quad
+    will: 109$\to$103\;\texttt{{\={}}} \quad
+    die: 99$\to$104\;\texttt{{\={}}} \quad
+    ro: 115$\to$157\;\texttt{//} \quad
+    *sen: 157$\to$103\;\texttt{\textbackslash\textbackslash} \quad
+    ha: 95$\to$90\;\texttt{{\={}}} \quad
+    ben: 118$\to$100\;\texttt{\textbackslash} \\
+\addlinespace[4pt]
+\textit{ich wohne in Bern}
+  & L*+H L-\%
+  & rising
+  & ich: 115$\to$104\;\texttt{{\={}}} \quad
+    *woh: 113$\to$167\;\texttt{//} \quad
+    ne: 167$\to$107\;\texttt{\textbackslash\textbackslash} \quad
+    in: 102$\to$92\;\texttt{\textbackslash} \quad
+    bern: 88$\to$107\;\texttt{/} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{Discussion}
+
+\textbf{Rising accents (L+H*, L*+H).}
+All three rising-accent sentences show a hat-shaped movement:
+a strongly rising syllable (\texttt{//}) followed by a prominent falling peak
+(\texttt{*\textbackslash\textbackslash}).
+For \textit{Banane} (L+H*) the rise on the pre-nuclear syllable \textit{na}
+(204\,$\to$\,261\,Hz, $+$4.3\,ST) and the fall from the peak
+(261\,$\to$\,182\,Hz) are both captured correctly.
+The phrase-final syllable \textit{bern} in \textit{ich wohne in Bern}
+receives a slight rise (\texttt{/}, 88\,$\to$\,107\,Hz), consistent with a
+continuation tone before the boundary.
+
+\textbf{Falling accents (H+L*, H+!H*).}
+For \textit{Melonen} (H+L*) the approach syllables \textit{ni} and \textit{ge}
+carry \texttt{//} labels, and the nuclear syllable \textit{me} is marked
+prominent with a strong fall (\texttt{*\textbackslash\textbackslash},
+159\,$\to$\,123\,Hz), corresponding to L* low alignment.
+For \textit{er sang die Lieder} (H+!H*) acoustic prominence falls on
+\textit{sang} rather than on \textit{lieder}, because the largest pitch
+excursion in the recording is the jump on \textit{sang} (104\,$\to$\,165\,Hz).
+The Lieder syllables descend correctly.
+
+\textbf{Pipeline note.}
+For German GToBI, MFA and WhisperX are not used in the final pipeline. Word
+boundaries come from the human \textit{Wort} tier; phone sequences are
+hardcoded correct German IPA. The prosody layer (pYIN F0, five optimisations)
+is entirely automatic and is the only component evaluated against the
+human \textit{Ton} annotation.
+
+
+% ============================================================
+\chapter{Daakie (DoReCo): Italian and Spanish Model Comparison}
+\label{app:daakie}
+% ============================================================
+
+The DoReCo corpus recording
+\texttt{doreco\_port1286\_2017\_06\_30\_Jaklin.wav} (162.7\,s, 44100\,Hz, mono)
+documents a fieldwork session in Daakie, an Oceanic language spoken on Malekula
+Island, Vanuatu (ISO 639-3: \texttt{mtp}).
+No automatic speech recognition model or pronunciation dictionary exists for Daakie.
+SpeechPrint was run twice on the same recording using the nearest available
+language models: Italian (\texttt{--language it}) and Spanish
+(\texttt{--language es}), both with Whisper large-v3 via WhisperX.
+Adaptive prosody thresholds: floor 0.5\,ST,
+factor $0.35 \times \hat{\sigma}_\mathrm{MAD}$ (normalised median absolute deviation).
+
+\section*{Transcription quality}
+
+Neither model produces a correct orthographic transcription of Daakie.
+Both generate plausible-sounding words from their own phonologies:
+Italian yields forms such as \textit{s'occhini}, \textit{napia},
+\textit{lumbino}; Spanish yields \textit{socine}, \textit{kolomdu},
+\textit{san~wawa}.
+The phoneme tier therefore reflects Italian or Spanish phonological categories
+applied to Daakie acoustics, and should be treated as an acoustic scaffold
+requiring manual correction for phonological work.
+
+A phoneme-tier comparison against the DoReCo hand annotation is given in the body
+of the thesis. The main finding is that the Italian model introduces segments absent
+from Daakie (palatal nasal, lateral approximant, affricates, geminates) while
+missing Daakie-specific features (labialized consonants, bilabial fricative,
+pharyngeal /h/). The Spanish model introduces a different but similarly
+mismatched inventory.
+
+\section*{Coverage and prosody statistics}
+
+\begin{table}[h]
+\centering
+\caption{Prosody statistics for Italian and Spanish mismatched-language conditions
+on the Daakie DoReCo recording (162.7\,s).
+v2 = updated adaptive thresholds (floor 0.5\,ST).
+Old Italian v1 values (floor 3.0\,ST) in parentheses where they changed.}
+\label{tab:daakie}
+\small
+\begin{tabular}{lrr}
+\toprule
+Metric & Italian (v2) & Spanish (v2) \\
+\midrule
+Words detected                    & 332           & 776 \\
+Syllables                         & 572           & 918 \\
+No-F0 syllables                   & 24\,(4.2\%)   & 96\,(10.5\%) \\
+Mean F0 (Hz)                      & 194.6         & 194.2 \\
+Static / level (\%)               & 76.2\,(v1: 90.3) & 67.0 \\
+Weakly rising \texttt{/} (\%)     & 5.6           & 6.6 \\
+Strongly rising \texttt{//} (\%)  & 4.0           & 3.6 \\
+Weakly falling \texttt{\textbackslash} (\%)  & 7.0  & 9.8 \\
+Strongly falling \texttt{\textbackslash\textbackslash} (\%) & 3.0 & 2.5 \\
+Total rising (\%)                 & 9.6\,(v1: 4.0) & 10.2 \\
+Total falling (\%)                & 10.0\,(v1: 2.8) & 12.3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{Observations}
+
+\textbf{Coverage.}
+Spanish detects roughly 60\,\% more speech (918 vs.\ 572 syllables).
+Higher recall means more of the recording receives a prosodic annotation
+but also increases false-positive word detections in quieter sections,
+reflected in the higher no-F0 rate (10.5\,\% vs.\ 4.2\,\%).
+
+\textbf{Prosodic movement.}
+Both conditions produce similar total rising+falling proportions
+(Italian 19.6\,\%, Spanish 22.5\,\%), substantially higher than with the
+original 3.0\,ST threshold (Italian v1: 6.8\,\%).
+The updated thresholds detect approximately three times more pitch movement.
+Strong-movement categories (\texttt{//} and
+\texttt{\textbackslash\textbackslash}) make up roughly 6--7\,\% of syllables
+combined, confirming that the double-symbol category is reserved for the
+most prominent pitch excursions only.
+
+\textbf{Prosody validity.}
+Mean F0 is nearly identical across both conditions (194.6 vs.\ 194.2\,Hz),
+confirming that the prosody symbols reflect the acoustic signal and are not
+an artefact of the ASR language choice.
+
+\textbf{Recommendation.}
+The Italian/Spanish scaffolding documented here represents an earlier evaluation
+stage. The final SpeechPrint pipeline for Daakie does not use ASR at all:
+word and phone timing are taken directly from the DoReCo human annotations,
+and CREPE is used for F0 extraction. That approach is described in
+Section~\ref{sec:doreco_pipeline} and produces more reliable phoneme-tier
+alignment than either mismatched ASR model can provide.
+This appendix is retained as documentation of the cross-lingual phonological
+projection phenomenon discussed in Section~\ref{sec:bias_projection}.
+
+
+% ============================================================
+\chapter{SpeechPrint: Installation and CLI Reference}
+\label{app:speechprint_cli}
+% ============================================================
+
+\begin{center}
+\fbox{\parbox{0.88\linewidth}{\centering\vspace{2mm}
+\textbf{Navigate to the SpeechPrint repository:}\\[2mm]
+\texttt{https://github.com/speechprint/SpeechPrint}\\[2mm]
+\textbf{For Linux machines only.} macOS and Windows ports are planned.
+\vspace{2mm}}}
+\end{center}
+
+\medskip
+
+SpeechPrint is a prosody annotation environment and field-research toolkit.
+It takes a WAV file as input and produces a Praat TextGrid as output,
+combining forced alignment, phoneme extraction, F0 measurement across five
+pitch trackers, and a symbolic prosody layer. The output is ready for Praat
+without additional software installation.
+
+\section*{Requirements}
+
+\begin{center}
+\small
+\begin{tabular}{ll}
+\toprule
+Package & Installation \\
+\midrule
+\texttt{uv} & \texttt{pip install uv} \\
+\texttt{librosa} & installed automatically \\
+\texttt{torchcrepe} & installed automatically \\
+\texttt{pesto-pitch} & installed automatically \\
+\texttt{parselmouth} & installed automatically \\
+\texttt{WhisperX} & configured by installer \\
+MFA & configured by installer \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Setup}
+
+\begin{verbatim}
+git clone https://github.com/speechprint/SpeechPrint
+cd SpeechPrint/linux
+export SPEECHPRINT_ROOT="$PWD"
+uv run python -m lib.main        # opens the launcher GUI
+\end{verbatim}
+
+On first run, select \textbf{Install SpeechPrint} to configure all
+dependencies. Then select \textbf{New Project} to create an annotation
+workspace.
+
+\section*{CLI reference}
+
+\subsection*{Annotate a single recording}
+
+\begin{verbatim}
+# English, pYIN tracker
+python -m speechprint run \
+    --wav recording.wav \
+    --language en \
+    --tracker pyin
+
+# Endangered language with human-annotated TextGrid (DoReCo)
+python -m speechprint run \
+    --wav doreco.wav \
+    --textgrid doreco.TextGrid \
+    --tier-suffix "@TA" \
+    --tracker crepe
+
+# All five trackers, comparison TextGrid
+python -m speechprint run \
+    --wav recording.wav \
+    --language en \
+    --tracker pyin crepe pesto praat \
+    --comparison
+\end{verbatim}
+
+\subsection*{Find a phonologically similar language}
+
+\begin{verbatim}
+# Suggest the closest supported ASR language for an endangered language
+python -m speechprint suggest-language --iso "mtp"   # Daakie
+python -m speechprint suggest-language --iso "cjp"   # Cabécar
+\end{verbatim}
+
+\subsection*{Batch processing}
+
+\begin{verbatim}
+# Annotate all WAV files in a folder
+python -m speechprint batch \
+    --input-dir corpora/recordings/ \
+    --language en \
+    --tracker pyin crepe \
+    --comparison
+
+# Export prosody tier to CSV
+python -m speechprint export \
+    --textgrid out/recording.TextGrid \
+    --tier prosody \
+    --format csv
+\end{verbatim}
+
+\subsection*{Evaluate against GToBI benchmark}
+
+\begin{verbatim}
+python -m speechprint evaluate-gtobi \
+    --sentences-dir " five GToBI annotated sentences/" \
+    --tracker pyin    # or crepe
+\end{verbatim}
+
+\section*{Output}
+
+\begin{verbatim}
+recording_name/
+├── recording.TextGrid          ← open in Praat
+├── words.csv
+├── syllables.csv
+├── phonemes.csv
+├── prosody.csv
+└── comparison/
+    ├── prosody_pyin.TextGrid
+    ├── prosody_crepe.TextGrid
+    ├── prosody_pesto.TextGrid
+    ├── prosody_praat.TextGrid
+    └── tracker_comparison.csv
+\end{verbatim}
+
+\section*{Prosody symbol reference}
+
+\begin{center}
+\small
+\begin{tabular}{ll}
+\toprule
+Symbol & Meaning \\
+\midrule
+\texttt{/}  & Weakly rising pitch within syllable \\
+\texttt{//} & Strongly rising \\
+\texttt{\textbackslash}  & Weakly falling \\
+\texttt{\textbackslash\textbackslash} & Strongly falling \\
+\texttt{{\={}}} & High level (U+203E; above neighbouring syllables) \\
+\texttt{\_} & Low level (below neighbouring syllables) \\
+\texttt{*}  & Prominent accent (louder + higher or longer) \\
+\texttt{?}  & Unvoiced / insufficient F0 data \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+% ============================================================
+\chapter{Prosody Synthesis Toolkit: Articulatory Extensions}
+\label{app:articulatory}
+% ============================================================
+
+\begin{center}
+\fbox{\parbox{0.88\linewidth}{\centering\vspace{2mm}
+A collection of experimental tools for prosody-driven articulatory synthesis.\\[2mm]
+These tools connect the SpeechPrint symbolic prosody layer to
+VocalTractLab articulatory synthesis, enabling closed-loop prosody
+authoring: annotate intonation, then hear it resynthesised.\\[2mm]
+\textbf{Prototype status.} Windows required for VocalTractLab synthesis.
+\vspace{2mm}}}
+\end{center}
+
+\medskip
+
+\begin{center}
+\small
+\begin{tabular}{ll}
+\toprule
+Package & Installation \\
+\midrule
+\texttt{tensortract2} & \texttt{pip install tensortract2} \\
+\texttt{vocaltractlab-cython} & \texttt{pip install vocaltractlab-cython} \\
+\texttt{pesto-pitch} & \texttt{pip install pesto-pitch} \\
+\texttt{python-flucoma} & \texttt{https://github.com/jamesb93/python-flucoma} \\
+\texttt{soundfile} & \texttt{pip install soundfile} \\
+\texttt{scipy} & \texttt{pip install scipy} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Setup}
+
+\begin{verbatim}
+# Create output folder from script directory
+mkdir -p audio/output/
+\end{verbatim}
+
+\section*{Patches}
+
+\subsection*{\texttt{prosody2tract.py}}
+
+Convert a SpeechPrint prosody TextGrid tier to a VocalTractLab
+tract-sequence file. Each prosody symbol is mapped to an F0 target
+and duration, generating a source--target pair for the articulatory
+trajectory.
+
+\begin{verbatim}
+# Basic conversion: prosody tier → VTL tract sequence
+python prosody2tract.py recording.TextGrid
+
+# Set F0 ceiling and floor from speaker range
+python prosody2tract.py recording.TextGrid \
+    --f0-floor 85 --f0-ceiling 300
+
+# Use a specific movement generator for each pair
+python prosody2tract.py recording.TextGrid \
+    --generator sigmoid          # smooth S-curve
+    --generator lorenz           # chaotic modulation
+    --generator gendy            # Xenakis-style stochastic
+
+# List available parameters and operations
+python prosody2tract.py --list-params
+python prosody2tract.py --list-generators
+\end{verbatim}
+
+\subsection*{\texttt{audio2tract.py}}
+
+Audio-to-articulatory inversion. Converts a WAV file to a VTL
+tract-sequence via TensorTract, optionally applying articulatory
+parameter manipulations.
+
+\begin{verbatim}
+# Basic inversion (no manipulation)
+python audio2tract.py my_audio.wav
+
+# Raise pitch floor by scaling f0
+python audio2tract.py my_audio.wav -m f0 set 150
+
+# Increase tongue body constriction
+python audio2tract.py my_audio.wav -m TCX multiply 1.5
+
+# Smooth the subglottal pressure contour
+python audio2tract.py my_audio.wav -m pressure smooth 10
+
+# Multiple manipulations at once
+python audio2tract.py my_audio.wav \
+    -m TCX multiply 1.5 \
+    -m TTY add 0.5 \
+    -m f0 smooth 10
+
+# Invert and write tract-sequence only (no synthesis)
+python audio2tract.py my_audio.wav --no-synthesize
+\end{verbatim}
+
+\subsection*{\texttt{prosody\_morph.py} (Vox Prima / Vox Secunda)}
+
+Morphs the prosodic contour of one speaker continuously into another.
+Both recordings are inverted to articulatory trajectories; the morph
+blends the F0 and vocal tract parameters at each frame.
+
+\begin{verbatim}
+# Morph speaker A prosody into speaker B (50% blend)
+python prosody_morph.py \
+    --prima speaker_a.wav \
+    --secunda speaker_b.wav \
+    --blend 0.5
+
+# Animate the blend over the full duration
+python prosody_morph.py \
+    --prima speaker_a.wav \
+    --secunda speaker_b.wav \
+    --blend-curve sigmoid      # or lorenz, gendy
+    --num-variations 5
+\end{verbatim}
+
+The output is a VTL tract-sequence file compatible with VocalTractLab~2.3
+(\texttt{vocaltractlab.de}, Windows).
+
+\section*{Movement generators}
+
+Each source--target pair in the articulatory trajectory is shaped by a
+movement generator that defines how parameters travel from source to target.
+
+\begin{center}
+\small
+\begin{tabular}{lll}
+\toprule
+Generator & Category & Description \\
+\midrule
+\texttt{linear}      & Smooth    & Straight-line interpolation \\
+\texttt{sigmoid}     & Smooth    & S-curve; slow at extremes, fast in middle \\
+\texttt{ease\_in\_out} & Smooth  & Smoothstep cubic \\
+\texttt{elastic}     & Smooth    & Overshoot-and-settle spring motion \\
+\texttt{lorenz}      & Chaotic   & Lorenz attractor projected to one axis \\
+\texttt{henon}       & Chaotic   & H\'enon map overlay \\
+\texttt{duffing}     & Chaotic   & Duffing forced oscillator \\
+\texttt{gendy}       & Stochastic & GENDY breakpoint synthesis (Xenakis, 1992) \\
+\texttt{random\_walk} & Stochastic & Biased random walk arriving at target \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The \texttt{gendy} generator (adapted from Iannis Xenakis's GENDY
+algorithm) is particularly relevant for prosody: it produces trajectories
+where amplitude and duration at each breakpoint are independently updated
+by random walks drawn from a Cauchy distribution, producing occasional
+large jumps separated by small steps --- the characteristic behaviour of
+emphatic and emotionally expressive speech intonation.
+
+\section*{Parameter reference}
+
+Tract parameters (indices 0--18):
+\texttt{HX HY JX JA LP LD VS VO TCX TCY TTX TTY TBX TBY TRX TRY TS1 TS2 TS3}
+
+Glottis parameters (indices 19--29):
+\texttt{f0 pressure x\_bottom x\_top chink\_area lag rel\_amp double\_pulsing pulse\_skewness flutter aspiration\_strength}
+
+\section*{Web-based TTS DAW (works now)}
+
+\begin{center}
+\fbox{\parbox{0.88\linewidth}{\centering\vspace{2mm}
+\textbf{Pink Trombone Timeline Editor}\\[2mm]
+Draw phoneme sequences on a timeline. Control articulation in real time.
+Export audio directly from the browser.\\[2mm]
+\texttt{https://zakaton.github.io/pink-trombone-editor/}\\[2mm]
+A practical prototype of prosody-as-vector-graphics: the voice as an
+editable object rather than a fixed recording.
+\vspace{2mm}}}
+\end{center}

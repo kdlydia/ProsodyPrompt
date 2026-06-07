@@ -1,0 +1,27 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1}{\ignorespaces Realization of vowels by an English speaker, adapted from \cite {whalen}.}}{5}{figure.2.1}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Higlighting in writing by boldface and italics in comics. Example: \textit {. An epic search for truth} \cite {logicomix}}}{8}{figure.2.2}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Example of a Praat work screen, from a recording of the language Daakie (Oceanic, Vanuatu), derived from the DoReCo corpus \cite {paschen2020doreco}. From top to bottom: Amplitude, spectrogram with intensity (yellow) and F0 (blue), sentence number and recording identifier, transcription, time-aligned words, time-aligned segments and translation, here to the English-based creole language Bislama.}}{13}{figure.2.3}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Cutout from an ELAN screen, with video and audio represented by a spectrum and an amplitude. Annotation tiers are original language (Daakie) and translation into the national language, Bislama}}{15}{figure.2.4}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5}{\ignorespaces Comparative analysis in Audacity showing word-level timestamp drift in WhisperX versions 3.3.0 through 3.4.2. Note the lack of tight alignment with the audio signal following the version 3.3.3 regression \cite {bain2025whisperxissues1220}.}}{22}{figure.3.5}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Community report documenting persistent timestamp regressions in WhisperX versions up to 3.8.1. The issue concerns premature segment triggering and alignment instability introduced after commit \texttt {69281f3}, motivating the comparative multi-aligner architecture adopted in \textit {SpeechPrint}. Source: \cite {bain2025whisperxissues1220}.}}{23}{figure.3.6}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7}{\ignorespaces Five recordings of example sentences annotated following the GToBI convention. Wavelines and spectrogram are shown, the spectrogram also contains information about pitch (blue) and amplitude (yellow). Line 1: orthographic rendering, 2: GToBI annotation, 3: individual words, 4: syllables, 5: phonemes, 6: syllable length in ms, 7: pitch and intensity representation by SpeechPrint}}{38}{figure.5.7}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8}{\ignorespaces Pitch tracker comparison for \textit {eine gelbe Banane} (GToBI: L+H* L-\%). Four panels from top to bottom: Praat SCC raw, Praat AC + Xu(1999) correction, Librosa pYIN, torchcrepe (CREPE). Red vertical lines in the top panel mark frames flagged as probable octave errors relative to pYIN; none appear here. Dashed horizontal reference lines at 100, 200, and 400\,Hz.}}{63}{figure.8.8}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Pitch tracker comparison for \textit {einige Melonen} (GToBI: H+L* L-\%). All trackers agree; falling contour visible in all panels.}}{64}{figure.8.9}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Pitch tracker comparison for \textit {er sang die Lieder} (GToBI: H+!H* L-\%). Downstepped high accent visible as a mild fall across all trackers.}}{65}{figure.8.10}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Pitch tracker comparison for \textit {er will die Rosen haben} (GToBI: L*+H L-\%). Rising tone region correctly captured by all trackers.}}{66}{figure.8.11}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Pitch tracker comparison for \textit {ich wohne in Bern} (GToBI: L*+H L-\%). CREPE returned zero voiced frames (bottom panel empty), likely because the periodicity threshold of 0.35 is too conservative for the short sentence. The other three trackers agree.}}{67}{figure.8.12}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Pitch tracker comparison for the English recording (first 30\,s). \emph {Top:} Praat SCC shows many frames near 100--140\,Hz (sub-octave errors) alongside correct values near 200--350\,Hz. Red vertical lines mark the 238 octave-error frames. \emph {Second:} Praat AC + Xu(1999) correction reduces but does not fully eliminate the errors. \emph {Third:} Librosa pYIN produces a smooth, consistent contour near 180--220\,Hz with clean voiced/unvoiced masking. \emph {Bottom:} torchcrepe (CREPE) agrees with pYIN at a median of 180\,Hz.}}{69}{figure.8.13}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Pitch tracker comparison for the Daakie (DoReCo port1286) recording, first 30\,s. Forty octave errors detected (Praat too low). All three other trackers agree on a median near 190\,Hz.}}{70}{figure.8.14}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {15}{\ignorespaces The proposed bidirectional SpeechPrint pipeline. The analysis direction is fully implemented; the resynthesis direction is a design concept for future work. The loop would allow a user to modify prosody symbols and hear the result without re-recording.}}{77}{figure.9.15}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

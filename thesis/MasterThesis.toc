@@ -1,0 +1,105 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}The Multidimensional Signal: Layers of Meaning in Spoken Language}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Elements of spoken language}{4}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Segments: The building blocks of meaningful units}{4}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Suprasegmentals: Prosody}{6}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Linguistic research on spoken language}{10}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Tools for investigating spoken language}{12}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Praat}{12}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}ELAN}{13}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Room for improvement}{15}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {3}Automated speech recognition and speech analysis tools}{17}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Automated speech recognition}{17}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Speech recognizers, phoneme aligners, and prosody recognizers}{19}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Speech recognizer: wav2vec, HuBERT, Whisper}{19}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Phoneme aligners: Montreal Forced Aligner (MFA)}{21}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Choice of Languages and Datasets}{27}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Technical Realization and Tool Trade-offs}{27}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Prosody recognizers: ProsodyPro}{28}{subsection.3.2.5}%
+\contentsline {chapter}{\numberline {4}A new tool: SpeechPrint}{31}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Motivation}{31}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Phoneme identification}{31}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Rendering of Prosody}{32}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Testing SpeechPrint}{33}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Choice of languages and recordings}{33}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Benchmarks for phoneme identification and alignment}{33}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Small languages: DoReCo}{34}{subsection.5.2.1}%
+\contentsline {section}{\numberline {5.3}Benchmarks for prosody}{35}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Testing prosody identification}{37}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Results of the testing for the individual languages}{37}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}German: GToBI}{37}{subsection.5.4.1}%
+\contentsline {chapter}{\numberline {6}Use scenarios}{40}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Scientific use scenario}{40}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Aesthetic use scenario}{40}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Further developments}{40}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Motivation}{43}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Objectives}{44}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Structure of the Report}{44}{section.6.6}%
+\contentsline {chapter}{\numberline {7}Methods}{45}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Pitch Extraction and Octave Error Correction}{45}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Comparative Evaluation: Praat, Librosa pYIN, and CREPE}{46}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Speaker-adaptive pitch range}{47}{subsection.7.1.2}%
+\contentsline {subsection}{\numberline {7.1.3}Final pipeline}{48}{subsection.7.1.3}%
+\contentsline {section}{\numberline {7.2}System Architecture and Implementation}{48}{section.7.2}%
+\contentsline {paragraph}{Stage 1: Load audio.}{48}{section.7.2}%
+\contentsline {paragraph}{Stage 2: Transcribe.}{49}{section.7.2}%
+\contentsline {paragraph}{Stage 3: Prepare transcript.}{49}{section.7.2}%
+\contentsline {paragraph}{Stage 4: Forced alignment.}{49}{section.7.2}%
+\contentsline {paragraph}{Stage 5: Pitch and intensity extraction.}{49}{section.7.2}%
+\contentsline {paragraph}{Stage 6: Phonemization.}{49}{section.7.2}%
+\contentsline {paragraph}{Stage 7: Symbolic prosody labelling.}{50}{section.7.2}%
+\contentsline {paragraph}{Stage 8: Write TextGrid.}{50}{section.7.2}%
+\contentsline {paragraph}{Stage 9: Export CSV and JSON.}{50}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Syllabification and Nucleus Identification}{50}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Prosody Labelling Algorithm}{51}{section.7.4}%
+\contentsline {paragraph}{Pitch movement.}{51}{section.7.4}%
+\contentsline {paragraph}{Adaptive thresholds.}{51}{equation.7.4.1}%
+\contentsline {paragraph}{Height relative to neighbours.}{51}{equation.7.4.2}%
+\contentsline {paragraph}{Relative amplitude and accent detection.}{51}{equation.7.4.2}%
+\contentsline {paragraph}{Symbol assembly.}{52}{equation.7.4.2}%
+\contentsline {section}{\numberline {7.5}Amplitude Analysis: Window Size and Relative Measurement}{52}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Evaluation Design}{53}{section.7.6}%
+\contentsline {subsection}{\numberline {7.6.1}Automatic benchmark: GToBI comparison}{53}{subsection.7.6.1}%
+\contentsline {subsection}{\numberline {7.6.2}Perceptual evaluation: questionnaire}{53}{subsection.7.6.2}%
+\contentsline {section}{\numberline {7.7}Demo Design: ASCII Prosody Symbols as Visual Representation}{54}{section.7.7}%
+\contentsline {section}{\numberline {7.8}Linguistic Rationale for Syllable-Level Annotation}{55}{section.7.8}%
+\contentsline {section}{\numberline {7.9}Algorithmic Optimisations to the Prosody Labeller}{56}{section.7.9}%
+\contentsline {subsection}{\numberline {7.9.1}MAD-based adaptive threshold}{56}{subsection.7.9.1}%
+\contentsline {subsection}{\numberline {7.9.2}Utterance boundary reset}{56}{subsection.7.9.2}%
+\contentsline {subsection}{\numberline {7.9.3}Pitch declination removal}{57}{subsection.7.9.3}%
+\contentsline {subsection}{\numberline {7.9.4}Nucleus edge trimming}{58}{subsection.7.9.4}%
+\contentsline {subsection}{\numberline {7.9.5}Octave recovery in spike removal}{58}{subsection.7.9.5}%
+\contentsline {section}{\numberline {7.10}Application to DoReCo Daakie: Endangered-Language Pipeline}{59}{section.7.10}%
+\contentsline {subsection}{\numberline {7.10.1}Tier sources}{59}{subsection.7.10.1}%
+\contentsline {subsection}{\numberline {7.10.2}Syllabification from human-annotated phones}{59}{subsection.7.10.2}%
+\contentsline {subsection}{\numberline {7.10.3}F0 extraction: CREPE at full resolution}{60}{subsection.7.10.3}%
+\contentsline {subsection}{\numberline {7.10.4}Comparative tracker evaluation on Daakie}{60}{subsection.7.10.4}%
+\contentsline {chapter}{\numberline {8}Results}{61}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Pitch Tracker Comparison}{62}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}German GToBI sentences: all trackers agree}{62}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}English recording: 238 octave errors in 30 seconds}{62}{subsection.8.1.2}%
+\contentsline {subsection}{\numberline {8.1.3}Consequence for prosody labelling}{68}{subsection.8.1.3}%
+\contentsline {subsection}{\numberline {8.1.4}Tracker recommendations}{71}{subsection.8.1.4}%
+\contentsline {section}{\numberline {8.2}GToBI Comparison}{72}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Relative vs.\ Absolute Measurements}{73}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Pitch: absolute vs.\ relative}{73}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Amplitude: absolute vs.\ relative}{74}{subsection.8.3.2}%
+\contentsline {chapter}{\numberline {9}Designing and Implementing SpeechPrint}{75}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Initial Prototype}{75}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Implementing SpeechPrint-V2}{75}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}Selecting Musical Features for SpeechPrint-V2}{75}{subsection.9.2.1}%
+\contentsline {section}{\numberline {9.3}Methods}{75}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Results}{75}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Objective Performance Metrics}{75}{subsection.9.4.1}%
+\contentsline {subsection}{\numberline {9.4.2}Perceived Performance Metrics}{75}{subsection.9.4.2}%
+\contentsline {subsection}{\numberline {9.4.3}XMetrics}{75}{subsection.9.4.3}%
+\contentsline {subsection}{\numberline {9.4.4}Sentiment Analysis (RAVDESS)}{75}{subsection.9.4.4}%
+\contentsline {section}{\numberline {9.5}Future Directions}{76}{section.9.5}%
+\contentsline {subsection}{\numberline {9.5.1}Prosody Resynthesis: From Annotation to Sound}{76}{subsection.9.5.1}%
+\contentsline {subsection}{\numberline {9.5.2}A Speech DAW: Interactive Prosody Manipulation}{77}{subsection.9.5.2}%
+\contentsline {subsection}{\numberline {9.5.3}Automatic Prosody Classification}{78}{subsection.9.5.3}%
+\contentsline {chapter}{List of Figures}{79}{section*.1}%
+\contentsline {chapter}{List of Tables}{82}{section*.2}%
+\contentsline {chapter}{\numberline {A}SpeechPrint Prosody Output: English Minimal-Pair Corpus}{84}{chapter.1}%
+\contentsline {chapter}{\numberline {B}German GToBI Training Sentences: Human Annotation vs.\ SpeechPrint}{88}{chapter.2}%
+\contentsline {chapter}{\numberline {C}Daakie (DoReCo): Italian and Spanish Model Comparison}{91}{chapter.3}%
