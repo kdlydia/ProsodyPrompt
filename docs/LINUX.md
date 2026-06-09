@@ -1,6 +1,6 @@
-# SpeechPrint for Linux
+# ProsodyPrompt for Linux
 
-Complete guide for installing, using, and troubleshooting SpeechPrint on Linux.
+Complete guide for installing, using, and troubleshooting ProsodyPrompt on Linux.
 
 ## Installation
 
@@ -14,40 +14,40 @@ Complete guide for installing, using, and troubleshooting SpeechPrint on Linux.
 
 **Distribution Requirements:**
 
-SpeechPrint requires modern Python and audio tooling (Python 3.11, ffmpeg 6+, Praat 6.4+, libsndfile 1.2+). Check your distro:
+ProsodyPrompt requires modern Python and audio tooling (Python 3.11, ffmpeg 6+, Praat 6.4+, libsndfile 1.2+). Check your distro:
 
 - **Arch Linux** - Run `pacman -Syu` (always up-to-date)
 - **Fedora** - Fedora 43 or later
 - **Ubuntu** - Ubuntu 25 or later
 - **openSUSE** - Tumbleweed (rolling release, same as Arch)
 
-Advanced users with custom Python builds can use SpeechPrint on older distributions.
+Advanced users with custom Python builds can use ProsodyPrompt on older distributions.
 
 ### Install from Tarball
 
-1. **Download** `SpeechPrint-X.X.X-linux.tar.gz` from [Releases](https://github.com/SpeechPrint/SpeechPrint/releases)
+1. **Download** `ProsodyPrompt-X.X.X-linux.tar.gz` from [Releases](https://github.com/kdlydia/ProsodyPrompt/releases)
 2. **Extract to `.local`:**
    ```bash
-   tar -xzf SpeechPrint-X.X.X-linux.tar.gz -C ~/.local/
+   tar -xzf ProsodyPrompt-X.X.X-linux.tar.gz -C ~/.local/
    ```
-3. **Launch SpeechPrint GUI:**
+3. **Launch ProsodyPrompt GUI:**
    ```bash
-   ~/.local/SpeechPrint-X.X.X/SpeechPrint
+   ~/.local/ProsodyPrompt-X.X.X/ProsodyPrompt
    ```
-4. **SpeechPrint GUI opens:**
-   - Select "Install SpeechPrint" mode
+4. **ProsodyPrompt GUI opens:**
+   - Select "Install ProsodyPrompt" mode
    - Follow step-by-step installer
    - May prompt for password (sudo needed for system packages)
 5. **When complete**, you can create corpora and annotate recordings
 
 ### Installed components
 
-- **`~/.local/SpeechPrint-X.X.X/`** - SpeechPrint application, CLI tool, templates
-- **SpeechPrint toolchain** - Via package manager:
-  - Arch: `speechprint-bin` from AUR
-  - Fedora: `speechprint` from custom COPR
-- **`~/.local/bin/speechprint`** - Symlink to CLI tool (added to PATH)
-- **`~/.bashrc` or `~/.zshrc`** - Environment variables (SPEECHPRINT_ROOT, MFA_ROOT_DIR, PATH)
+- **`~/.local/ProsodyPrompt-X.X.X/`** - ProsodyPrompt application, CLI tool, templates
+- **ProsodyPrompt toolchain** - Via package manager:
+  - Arch: `prosodyprompt-bin` from AUR
+  - Fedora: `prosodyprompt` from custom COPR
+- **`~/.local/bin/prosodyprompt`** - Symlink to CLI tool (added to PATH)
+- **`~/.bashrc` or `~/.zshrc`** - Environment variables (PROSODYPROMPT_ROOT, MFA_ROOT_DIR, PATH)
 
 ### Post-Installation
 
@@ -66,10 +66,10 @@ Or restart your terminal.
 **Verify installation:**
 
 ```bash
-echo $SPEECHPRINT_ROOT
-# Should output: ~/SpeechPrint
+echo $PROSODYPROMPT_ROOT
+# Should output: ~/ProsodyPrompt
 
-speechprint --version
+prosodyprompt --version
 # Should show version number
 ```
 
@@ -77,9 +77,9 @@ speechprint --version
 
 ## Creating Corpora
 
-### Using SpeechPrint GUI
+### Using ProsodyPrompt GUI
 
-1. Run: `~/.local/SpeechPrint-X.X.X/SpeechPrint`
+1. Run: `~/.local/ProsodyPrompt-X.X.X/ProsodyPrompt`
 2. Select **"Create Corpus"** mode
 3. Enter **Corpus Name** (e.g., "FieldRecordings_2025")
 4. Click **"Browse..."** to select location
@@ -92,13 +92,13 @@ speechprint --version
 
 ```bash
 # Basic corpus
-speechprint new MyCorpus ~/Corpora/
+prosodyprompt new MyCorpus ~/Corpora/
 
 # With default language preset
-speechprint new MyCorpus ~/Corpora/ --language it
+prosodyprompt new MyCorpus ~/Corpora/ --language it
 
 # Without VS Code setup
-speechprint new MyCorpus ~/Corpora/ --no-vscode
+prosodyprompt new MyCorpus ~/Corpora/ --no-vscode
 ```
 
 ---
@@ -126,18 +126,18 @@ ls out/recording/
 ```bash
 cd MyCorpus
 # Step-by-step rather than the full annotate command
-speechprint transcribe data/recording.wav --language en
-speechprint align     data/recording.wav --language en
-speechprint prosody   data/recording.wav --language en
-speechprint export    data/recording.wav --formats textgrid,eaf,csv
+prosodyprompt transcribe data/recording.wav --language en
+prosodyprompt align     data/recording.wav --language en
+prosodyprompt prosody   data/recording.wav --language en
+prosodyprompt export    data/recording.wav --formats textgrid,eaf,csv
 ```
 
 ### Batch corpus
 
 ```bash
 cd MyCorpus
-speechprint corpus data/ --language en
-speechprint ensemble
+prosodyprompt corpus data/ --language en
+prosodyprompt ensemble
 ```
 
 ---
@@ -148,8 +148,8 @@ After installation, these are set in your shell config:
 
 | Variable             | Value                                              | Purpose                       |
 | -------------------- | -------------------------------------------------- | ----------------------------- |
-| `SPEECHPRINT_ROOT`   | `~/SpeechPrint` or `/usr/` (if via package manager) | Toolchain location           |
-| `MFA_ROOT_DIR`       | `$SPEECHPRINT_ROOT/mfa`                            | Montreal Forced Aligner cache |
+| `PROSODYPROMPT_ROOT` | `~/ProsodyPrompt` or `/usr/` (if via package manager) | Toolchain location           |
+| `MFA_ROOT_DIR`       | `$PROSODYPROMPT_ROOT/mfa`                          | Montreal Forced Aligner cache |
 | `WHISPERX_MODEL`     | `large-v3`                                         | Default WhisperX model        |
 | `PATH`               | Includes `~/.local/bin`                            | CLI tools                     |
 
@@ -181,9 +181,9 @@ sudo apt install libgtk-4-dev
 sudo zypper install gtk4-devel
 ```
 
-Then run SpeechPrint again.
+Then run ProsodyPrompt again.
 
-### "speechprint: command not found"
+### "prosodyprompt: command not found"
 
 **Cause:** Environment variables not loaded
 
@@ -191,7 +191,7 @@ Then run SpeechPrint again.
 
 ```bash
 source ~/.bashrc    # or ~/.zshrc
-speechprint new MyCorpus
+prosodyprompt new MyCorpus
 ```
 
 Or restart your terminal completely.
@@ -202,7 +202,7 @@ Or restart your terminal completely.
 
 ```bash
 echo $MFA_ROOT_DIR
-# Should show: ~/SpeechPrint/mfa or /home/username/SpeechPrint/mfa
+# Should show: ~/ProsodyPrompt/mfa or /home/username/ProsodyPrompt/mfa
 ```
 
 **If empty, reload:**
@@ -220,12 +220,12 @@ mfa model download dictionary italian_mfa
 
 ### "No suitable asset found" during download
 
-**This shouldn't happen.** SpeechPrint automatically detects your distribution and installs dependencies via the appropriate package manager (AUR for Arch, COPR for Fedora).
+**This shouldn't happen.** ProsodyPrompt automatically detects your distribution and installs dependencies via the appropriate package manager (AUR for Arch, COPR for Fedora).
 
 If you see this error:
 
 1. Verify you're on a supported distribution (Arch or Fedora 43+)
-2. Check installation log: `~/.speechprint_install.log`
+2. Check installation log: `~/.prosodyprompt_install.log`
 3. Report as issue on GitHub
 
 ### WhisperX fails to load on CPU
@@ -258,8 +258,8 @@ sudo zypper install python311-pytorch
 **Fix permissions:**
 
 ```bash
-chmod +x ~/.local/bin/speechprint
-chmod +x ~/.local/SpeechPrint-X.X.X/SpeechPrint
+chmod +x ~/.local/bin/prosodyprompt
+chmod +x ~/.local/ProsodyPrompt-X.X.X/ProsodyPrompt
 ```
 
 ### Dependency installation asks for password
@@ -291,45 +291,45 @@ sudo zypper install python3
 ### Remove Everything
 
 ```bash
-# Remove SpeechPrint installation
-rm -rf ~/.local/SpeechPrint-*
+# Remove ProsodyPrompt installation
+rm -rf ~/.local/ProsodyPrompt-*
 
 # Remove CLI symlink
-rm ~/.local/bin/speechprint
+rm ~/.local/bin/prosodyprompt
 
 # Remove MFA cache (large — frees ~3GB)
-rm -rf ~/SpeechPrint/mfa
+rm -rf ~/ProsodyPrompt/mfa
 
 # Remove environment setup (optional)
 nano ~/.bashrc    # or ~/.zshrc
-# Find and delete lines containing SPEECHPRINT_ROOT, MFA_ROOT_DIR additions
+# Find and delete lines containing PROSODYPROMPT_ROOT, MFA_ROOT_DIR additions
 ```
 
-### Remove SpeechPrint Package
+### Remove ProsodyPrompt Package
 
 ```bash
 # Arch Linux
-yay -R speechprint-bin
+yay -R prosodyprompt-bin
 
 # Fedora
-sudo dnf remove speechprint
+sudo dnf remove prosodyprompt
 ```
 
 ---
 
 ## FAQ
 
-**Q: Can I use SpeechPrint on Ubuntu 24 / Fedora 42 / older Arch?**
+**Q: Can I use ProsodyPrompt on Ubuntu 24 / Fedora 42 / older Arch?**
 
-A: SpeechPrint requires modern audio tooling:
+A: ProsodyPrompt requires modern audio tooling:
 
 - **Python 3.11** (modern asyncio + type hints used by the pipeline)
 - **ffmpeg 6+** (resampling and channel handling)
 - **Praat 6.4+** (Parselmouth compatibility)
 
-Check your distro versions. If you want to use SpeechPrint on older systems, you'll need to install newer Python and audio packages yourself (not officially supported).
+Check your distro versions. If you want to use ProsodyPrompt on older systems, you'll need to install newer Python and audio packages yourself (not officially supported).
 
-**Q: Can I use SpeechPrint CLI and GUI together?**
+**Q: Can I use ProsodyPrompt CLI and GUI together?**
 
 A: Yes. Use whichever is more convenient. Both create the same corpus structure.
 
@@ -339,11 +339,11 @@ A: Yes. Override per call or globally:
 
 ```bash
 # Per call
-speechprint annotate data/recording.wav --language en --whisperx-model medium
+prosodyprompt annotate data/recording.wav --language en --whisperx-model medium
 
 # Globally
 export WHISPERX_MODEL=medium
-speechprint annotate data/recording.wav --language en
+prosodyprompt annotate data/recording.wav --language en
 ```
 
 **Q: How do I switch the default GPU device?**
@@ -352,7 +352,7 @@ A: Set the standard CUDA environment variable before running:
 
 ```bash
 export CUDA_VISIBLE_DEVICES=0
-speechprint annotate data/recording.wav --language en
+prosodyprompt annotate data/recording.wav --language en
 ```
 
 If no GPU is detected, SpeechPrint falls back to CPU automatically.
@@ -361,5 +361,5 @@ If no GPU is detected, SpeechPrint falls back to CPU automatically.
 
 ## Links
 
-- **[SpeechPrint Pipeline](https://github.com/SpeechPrint/SpeechPrint)** - Learn the annotation steps
+- **[ProsodyPrompt Pipeline](https://github.com/kdlydia/ProsodyPrompt)** - Learn the annotation steps
 - **[Back to README](../README.md)** - Overview and quick start

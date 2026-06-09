@@ -1,0 +1,36 @@
+# Core audio processing
+librosa>=0.10.0
+numpy>=1.21.0
+scipy>=1.7.0
+soundfile>=0.12.0
+sounddevice>=0.4.5
+torchaudio>=2.0.0
+
+# Pitch tracking
+torch>=2.0.0
+torchcrepe>=0.0.20
+
+# Speech recognition (optional, for transcription path)
+openai-whisper>=20231117
+whisperx>=3.1.0
+
+# Praat interface and TextGrid format
+parselmouth>=0.4.0
+textgrid>=1.5
+
+# Forced alignment (optional)
+Montreal-Forced-Aligner>=3.0.0
+
+# Audio visualization and comparison
+matplotlib>=3.5.0
+opencv-python>=4.6.0
+
+# OSC communication (for some experimental features)
+pythonosc>=1.1.1
+
+# Spatial audio processing (optional, for some analysis scripts)
+spaudiopy>=0.1.2
+
+# Additional tools
+scipy>=1.7.0
+scikit-learn>=1.0.0
