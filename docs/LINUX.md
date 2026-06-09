@@ -8,13 +8,14 @@ Complete guide for installing, using, and troubleshooting ProsodyPrompt on Linux
 
 - Linux x86_64 (kernel 5.0+)
 - Python 3.11+
-- GTK4
-- ~5GB free disk space (models + dependencies)
+- Git
+- ffmpeg 6+
+- ~5GB free disk space (for models and dependencies)
 - Internet connection
 
 **Distribution Requirements:**
 
-ProsodyPrompt requires modern Python and audio tooling (Python 3.11, ffmpeg 6+, Praat 6.4+, libsndfile 1.2+). Check your distro:
+ProsodyPrompt requires modern Python and audio tooling. Check your distro:
 
 - **Arch Linux** - Run `pacman -Syu` (always up-to-date)
 - **Fedora** - Fedora 43 or later
@@ -23,140 +24,152 @@ ProsodyPrompt requires modern Python and audio tooling (Python 3.11, ffmpeg 6+, 
 
 Advanced users with custom Python builds can use ProsodyPrompt on older distributions.
 
-### Install from Tarball
+### Quick Start (Development Installation)
 
-1. **Download** `ProsodyPrompt-X.X.X-linux.tar.gz` from [Releases](https://github.com/kdlydia/ProsodyPrompt/releases)
-2. **Extract to `.local`:**
+1. **Clone the repository:**
    ```bash
-   tar -xzf ProsodyPrompt-X.X.X-linux.tar.gz -C ~/.local/
+   git clone https://github.com/kdlydia/ProsodyPrompt
+   cd ProsodyPrompt
    ```
-3. **Launch ProsodyPrompt GUI:**
+
+2. **Create virtual environment:**
    ```bash
-   ~/.local/ProsodyPrompt-X.X.X/ProsodyPrompt
+   python3.11 -m venv venv
+   source venv/bin/activate
    ```
-4. **ProsodyPrompt GUI opens:**
-   - Select "Install ProsodyPrompt" mode
-   - Follow step-by-step installer
-   - May prompt for password (sudo needed for system packages)
-5. **When complete**, you can create corpora and annotate recordings
 
-### Installed components
+3. **Install dependencies:**
+   ```bash
+   pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
 
-- **`~/.local/ProsodyPrompt-X.X.X/`** - ProsodyPrompt application, CLI tool, templates
-- **ProsodyPrompt toolchain** - Via package manager:
-  - Arch: `prosodyprompt-bin` from AUR
-  - Fedora: `prosodyprompt` from custom COPR
-- **`~/.local/bin/prosodyprompt`** - Symlink to CLI tool (added to PATH)
-- **`~/.bashrc` or `~/.zshrc`** - Environment variables (PROSODYPROMPT_ROOT, MFA_ROOT_DIR, PATH)
+4. **Run ProsodyPrompt:**
+   ```bash
+   cd linux
+   python run.py
+   ```
 
-### Post-Installation
+The interactive CLI opens immediately. No GUI, no config files. It asks questions and shows numbered options — choose language, tracker, annotation source — then runs the pipeline.
 
-**Reload environment variables:**
+### Installation Troubleshooting
+
+#### "command not found: python3.11"
+
+Use your distribution's Python:
 
 ```bash
-# For bash
-source ~/.bashrc
+# Check available Python version
+python3 --version
 
-# For zsh
-source ~/.zshrc
+# Arch Linux (install if needed)
+sudo pacman -S python
+
+# Fedora 43+
+sudo dnf install python3
+
+# Ubuntu 25+
+sudo apt install python3
+
+# openSUSE Tumbleweed
+sudo zypper install python3
 ```
 
-Or restart your terminal.
+#### "ffmpeg not found"
 
-**Verify installation:**
+Install ffmpeg for your distribution:
 
 ```bash
-echo $PROSODYPROMPT_ROOT
-# Should output: ~/ProsodyPrompt
+# Arch Linux
+sudo pacman -S ffmpeg
 
-prosodyprompt --version
-# Should show version number
+# Fedora
+sudo dnf install ffmpeg
+
+# Ubuntu/Debian
+sudo apt install ffmpeg
+
+# openSUSE
+sudo zypper install ffmpeg
+```
+
+#### "pip install" fails on PyTorch
+
+PyTorch can be finicky. Use CPU-only to start:
+
+```bash
+pip install torch --index-url https://download.pytorch.org/whl/cpu
+pip install torchaudio
+pip install torchcrepe
+```
+
+If you have a GPU (CUDA 12.x):
+
+```bash
+pip install torch torchcrepe torchaudio --index-url https://download.pytorch.org/whl/cu121
+```
+
+#### "No module named parselmouth"
+
+Parselmouth requires Praat to be installed on your system:
+
+```bash
+# Arch Linux
+sudo pacman -S praat
+
+# Fedora
+sudo dnf install praat
+
+# Ubuntu/Debian
+sudo apt install praat
+
+# openSUSE
+sudo zypper install praat
+
+# Then reinstall parselmouth
+pip install --force-reinstall --no-cache-dir parselmouth
 ```
 
 ---
 
-## Creating Corpora
+## Quick Usage
 
-### Using ProsodyPrompt GUI
-
-1. Run: `~/.local/ProsodyPrompt-X.X.X/ProsodyPrompt`
-2. Select **"Create Corpus"** mode
-3. Enter **Corpus Name** (e.g., "FieldRecordings_2025")
-4. Click **"Browse..."** to select location
-5. Choose **default language** (en, de, it, es, fr, cs)
-6. Optional: Enable "Auto-ensemble" or "VS Code configuration"
-7. Click **"Create Corpus"**
-8. Success shows your corpus location
-
-### Using CLI Tool
+### Basic Annotation (from audio file only)
 
 ```bash
-# Basic corpus
-prosodyprompt new MyCorpus ~/Corpora/
-
-# With default language preset
-prosodyprompt new MyCorpus ~/Corpora/ --language it
-
-# Without VS Code setup
-prosodyprompt new MyCorpus ~/Corpora/ --no-vscode
+cd linux
+python run.py
+# Choose: 1) Annotate a recording
+# Follow prompts for language and pitch tracker
 ```
 
----
-
-## Annotating & Exporting
-
-### Quick Start
+### With Existing TextGrid (DoReCo, ELAN)
 
 ```bash
-cd MyCorpus
-speechprint annotate data/recording.wav --language de
-speechprint ensemble
-ls out/recording/
-```
-
-### With VS Code
-
-1. Open corpus folder: `code .`
-2. VS Code should auto-detect the SpeechPrint task configuration
-3. Terminal → Run Task → "Annotate active file"
-4. Inspect outputs in `out/<recording>/`
-
-### Manual Annotation Pipeline
-
-```bash
-cd MyCorpus
-# Step-by-step rather than the full annotate command
-prosodyprompt transcribe data/recording.wav --language en
-prosodyprompt align     data/recording.wav --language en
-prosodyprompt prosody   data/recording.wav --language en
-prosodyprompt export    data/recording.wav --formats textgrid,eaf,csv
-```
-
-### Batch corpus
-
-```bash
-cd MyCorpus
-prosodyprompt corpus data/ --language en
-prosodyprompt ensemble
+cd linux
+python run.py
+# Choose: 1) Annotate a recording
+# When asked "Do you have a human-annotated TextGrid?", answer yes
+# Point to your .TextGrid file
 ```
 
 ---
 
 ## Environment Variables
 
-After installation, these are set in your shell config:
-
-| Variable             | Value                                              | Purpose                       |
-| -------------------- | -------------------------------------------------- | ----------------------------- |
-| `PROSODYPROMPT_ROOT` | `~/ProsodyPrompt` or `/usr/` (if via package manager) | Toolchain location           |
-| `MFA_ROOT_DIR`       | `$PROSODYPROMPT_ROOT/mfa`                          | Montreal Forced Aligner cache |
-| `WHISPERX_MODEL`     | `large-v3`                                         | Default WhisperX model        |
-| `PATH`               | Includes `~/.local/bin`                            | CLI tools                     |
-
-**To apply immediately without restarting:**
+After installation, you may want to set these for batch processing:
 
 ```bash
-source ~/.bashrc   # or ~/.zshrc
+export PROSODYPROMPT_ROOT=~/ProsodyPrompt
+export WHISPERX_MODEL=large-v3
+export CUDA_VISIBLE_DEVICES=0  # if you have a GPU
+```
+
+Add to `~/.bashrc` or `~/.zshrc` if you want them persistent:
+
+```bash
+echo 'export PROSODYPROMPT_ROOT=~/ProsodyPrompt' >> ~/.bashrc
+source ~/.bashrc
 ```
 
 ---
@@ -165,14 +178,14 @@ source ~/.bashrc   # or ~/.zshrc
 
 ### "GTK4 not found" during GUI launch
 
-**Fix:**
+Install GTK4 development files:
 
 ```bash
 # Arch Linux
 sudo pacman -S gtk4
 
 # Fedora
-sudo dnf install gtk4
+sudo dnf install gtk4-devel
 
 # Ubuntu/Debian
 sudo apt install libgtk-4-dev
@@ -181,138 +194,102 @@ sudo apt install libgtk-4-dev
 sudo zypper install gtk4-devel
 ```
 
-Then run ProsodyPrompt again.
+### "WhisperX fails to load on CPU"
 
-### "prosodyprompt: command not found"
-
-**Cause:** Environment variables not loaded
-
-**Fix:**
-
-```bash
-source ~/.bashrc    # or ~/.zshrc
-prosodyprompt new MyCorpus
-```
-
-Or restart your terminal completely.
-
-### MFA can't find the acoustic model
-
-**Verify environment is set:**
-
-```bash
-echo $MFA_ROOT_DIR
-# Should show: ~/ProsodyPrompt/mfa or /home/username/ProsodyPrompt/mfa
-```
-
-**If empty, reload:**
-
-```bash
-source ~/.bashrc    # or ~/.zshrc
-```
-
-**If still not found, download the model manually:**
-
-```bash
-mfa model download acoustic italian_mfa
-mfa model download dictionary italian_mfa
-```
-
-### "No suitable asset found" during download
-
-**This shouldn't happen.** ProsodyPrompt automatically detects your distribution and installs dependencies via the appropriate package manager (AUR for Arch, COPR for Fedora).
-
-If you see this error:
-
-1. Verify you're on a supported distribution (Arch or Fedora 43+)
-2. Check installation log: `~/.prosodyprompt_install.log`
-3. Report as issue on GitHub
-
-### WhisperX fails to load on CPU
-
-**Ensure you have a working ffmpeg and a recent PyTorch:**
+Ensure you have recent PyTorch and ffmpeg:
 
 ```bash
 ffmpeg -version    # Should be 6+
 python -c "import torch; print(torch.__version__)"  # Should be 2.1+
 ```
 
-**Reinstall PyTorch (CPU-only build):**
+Reinstall with explicit versions:
 
 ```bash
-# Arch Linux
-sudo pacman -S python-pytorch
-
-# Fedora
-sudo dnf install python3-torch
-
-# Ubuntu/Debian
-sudo apt install python3-torch
-
-# openSUSE
-sudo zypper install python311-pytorch
+pip install --force-reinstall --no-cache-dir torch==2.1.2 torchaudio==2.1.2
 ```
 
-### Permission denied on ~/.local/bin/speechprint
+### "MFA model not found"
 
-**Fix permissions:**
+If Montreal Forced Aligner can't find acoustic models:
 
 ```bash
-chmod +x ~/.local/bin/prosodyprompt
-chmod +x ~/.local/ProsodyPrompt-X.X.X/ProsodyPrompt
+# Download manually
+mfa model download acoustic english_us_arpa
+
+# Or set explicit path
+export MFA_ROOT_DIR=$PROSODYPROMPT_ROOT/mfa
 ```
 
-### Dependency installation asks for password
+### "CREPE fails on GPU" (CUDA out of memory)
 
-**This is normal.** Installing system packages requires sudo. Provide your password when prompted.
-
-### "python3 not found" during GUI launch
-
-**Install Python:**
+Fall back to pYIN or use CPU:
 
 ```bash
-# Arch Linux
-sudo pacman -S python
+# In run.py, choose pYIN instead of CREPE
+# Or disable GPU:
+export CUDA_VISIBLE_DEVICES=
+```
 
-# Fedora
-sudo dnf install python3
+### "Permission denied" running scripts
 
-# Ubuntu/Debian
-sudo apt install python3
+Make sure scripts are executable:
 
-# openSUSE
-sudo zypper install python3
+```bash
+chmod +x linux/run.py
 ```
 
 ---
 
 ## Uninstalling
 
-### Remove Everything
+### Remove Development Installation
 
 ```bash
-# Remove ProsodyPrompt installation
-rm -rf ~/.local/ProsodyPrompt-*
+# Remove directory
+rm -rf ~/ProsodyPrompt
 
-# Remove CLI symlink
-rm ~/.local/bin/prosodyprompt
-
-# Remove MFA cache (large — frees ~3GB)
-rm -rf ~/ProsodyPrompt/mfa
-
-# Remove environment setup (optional)
-nano ~/.bashrc    # or ~/.zshrc
-# Find and delete lines containing PROSODYPROMPT_ROOT, MFA_ROOT_DIR additions
+# Remove virtual environment
+rm -rf ~/ProsodyPrompt/venv
 ```
 
-### Remove ProsodyPrompt Package
+### Clear Cache and Models
 
 ```bash
-# Arch Linux
-yay -R prosodyprompt-bin
+# Remove MFA models (large — frees ~3GB)
+rm -rf ~/.local/share/mfa
 
-# Fedora
-sudo dnf remove prosodyprompt
+# Remove Whisper cache
+rm -rf ~/.cache/huggingface
+```
+
+---
+
+## Development Notes
+
+### Running Build Scripts
+
+For generating thesis appendices or test corpora:
+
+```bash
+cd linux
+python build_questionnaire_v3.py   # English minimal pairs
+python build_doreco_speechprint.py # Daakie (DoReCo) corpus
+python build_cabeca.py             # Cabécar (DoReCo) corpus
+```
+
+### Testing on Different Linux Distributions
+
+Test environment matrix (Arch, Fedora 43+, Ubuntu 25+, openSUSE Tumbleweed):
+
+```bash
+# In each container/VM:
+git clone https://github.com/kdlydia/ProsodyPrompt
+cd ProsodyPrompt
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+cd linux && python run.py
 ```
 
 ---
@@ -321,45 +298,32 @@ sudo dnf remove prosodyprompt
 
 **Q: Can I use ProsodyPrompt on Ubuntu 24 / Fedora 42 / older Arch?**
 
-A: ProsodyPrompt requires modern audio tooling:
+A: ProsodyPrompt requires:
+- Python 3.11+ (async, type hints)
+- ffmpeg 6+ (resampling, channel handling)
+- Praat 6.4+ (Parselmouth compatibility)
 
-- **Python 3.11** (modern asyncio + type hints used by the pipeline)
-- **ffmpeg 6+** (resampling and channel handling)
-- **Praat 6.4+** (Parselmouth compatibility)
+Older distributions may have outdated packages. You can install newer Python manually, but it's not officially supported.
 
-Check your distro versions. If you want to use ProsodyPrompt on older systems, you'll need to install newer Python and audio packages yourself (not officially supported).
+**Q: Can I use a GPU?**
 
-**Q: Can I use ProsodyPrompt CLI and GUI together?**
-
-A: Yes. Use whichever is more convenient. Both create the same corpus structure.
-
-**Q: Can I annotate with a different WhisperX model?**
-
-A: Yes. Override per call or globally:
+A: Yes. CREPE and WhisperX will auto-detect CUDA (12.x). For older CUDA versions, install PyTorch explicitly:
 
 ```bash
-# Per call
-prosodyprompt annotate data/recording.wav --language en --whisperx-model medium
-
-# Globally
-export WHISPERX_MODEL=medium
-prosodyprompt annotate data/recording.wav --language en
+pip install torch --index-url https://download.pytorch.org/whl/cu118
 ```
 
-**Q: How do I switch the default GPU device?**
+**Q: How do I run batch processing?**
 
-A: Set the standard CUDA environment variable before running:
+A: Use the main `run.py` with option 2 (Batch annotate), or modify `build_questionnaire_v3.py` for your corpus.
 
-```bash
-export CUDA_VISIBLE_DEVICES=0
-prosodyprompt annotate data/recording.wav --language en
-```
+**Q: Where are output files?**
 
-If no GPU is detected, SpeechPrint falls back to CPU automatically.
+A: In `linux/out/` directory structure: `out/recording_name/recording.TextGrid` and per-word/per-syllable CSV exports.
 
 ---
 
 ## Links
 
-- **[ProsodyPrompt Pipeline](https://github.com/kdlydia/ProsodyPrompt)** - Learn the annotation steps
+- **[ProsodyPrompt GitHub](https://github.com/kdlydia/ProsodyPrompt)** - Source code
 - **[Back to README](../README.md)** - Overview and quick start
