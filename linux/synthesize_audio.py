@@ -75,8 +75,8 @@ def synthesize(textgrid_path, output_path='output.wav'):
 
 def main():
     # Use the generated TextGrid
-    tg_path = '../out/questionaire_2026-06-02/english/audio_2026-05-30_19-01-35.TextGrid'
-    output_path = '../out/synthesized_prosody.wav'
+    tg_path = 'out/questionaire_2026-06-02/english/audio_2026-05-30_19-01-35.TextGrid'
+    output_path = 'out/synthesized_prosody.wav'
 
     print("=" * 70)
     print("ProsodyPrompt Audio Synthesis")

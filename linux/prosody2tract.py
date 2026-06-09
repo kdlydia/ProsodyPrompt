@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""
+r"""
 prosody2tract.py: Convert ProsodyPrompt TextGrid to articulatory synthesis parameters
 
 Converts prosody tier symbols (/, //, \, etc.) to F0 targets and articulatory
