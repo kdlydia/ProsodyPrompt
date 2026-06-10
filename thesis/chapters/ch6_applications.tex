@@ -1,0 +1,284 @@
+\chapter{Applications and Use Cases}
+\label{scenarios}
+
+\section{Primary Use Cases and Applications}
+
+\subsection{Linguistic Field Work}
+
+For endangered languages: automatic pre-annotation provides a first draft.
+
+\begin{enumerate}
+\item Run SpeechPrint
+\item Review and correct in Praat
+\item Export for analysis
+\end{enumerate}
+
+\subsection{Subtitle Enhancement for Film and Media}
+
+Video subtitles are typically plain text with no prosodic information. A speaker might ask a question with rising intonation, but the subtitle just shows the words. Using SpeechPrint, one could:
+
+\begin{enumerate}
+\item Extract the prosody layer from the audio
+\item Add subtle visual markup to the subtitle text (italics for emphasis, punctuation for pauses)
+\item Create a richer reading experience that hints at the speaker's tone
+\end{enumerate}
+
+This benefits accessibility (helping deaf or hard-of-hearing viewers understand emotional tone) and enables media creators to produce more expressive subtitles.
+
+\subsection{Text-to-Speech with Prosodic Control}
+
+Modern text-to-speech systems (like those in audiobook production) need prosodic cues to sound natural. SpeechPrint can extract the prosody from a human recording of a text, then that prosody profile can be fed to a TTS system as control parameters, making the synthetic speech sound more like the human original.
+
+\subsection{Aesthetic and Artistic Use: Annotated Poetry}
+
+SpeechPrint enables new ways to represent poetry and oral literature. For example:
+
+\begin{enumerate}
+\item Record a recitation of a poem
+\item Run SpeechPrint to extract phoneme boundaries and prosody
+\item Overlay the prosody markup (/, \textbackslash, *, \={}, \_) onto the original poem text
+\item Display the annotated poem alongside the audio waveform
+\end{enumerate}
+
+This creates a visual representation of how the poem is performed: where emphasis falls, where pitch rises for dramatic effect, where pauses create silence. For literary scholars, this reveals the "sonic topology" of verse (rhythm, rhyme, pitch patterns) that written analysis often misses. For educators, it provides quantitative feedback on expression and control in oral performance.
+
+\section{Conclusions}
+\label{ch:conclusions}
+
+\subsection{Summary of Findings}
+
+This thesis presented SpeechPrint, a computational pipeline designed to extract and represent prosodic features from speech recordings in a form accessible to linguistic researchers who lack specialized phonetic training. The system combines modern speech recognition tools (Whisper, WhisperX, Gentle, MFA) with acoustic analysis (Parselmouth) to produce structured TextGrid files containing aligned phonetic and prosodic annotations.
+
+\subsection{Key Contributions}
+
+The main contributions of this work are:
+
+\begin{enumerate}
+\item \textbf{Octave error detection and correction}: Systematic evaluation of pitch tracker accuracy, identifying 238 octave errors in Praat's default autocorrelation method on English recordings and demonstrating the superiority of pYIN and CREPE for clean studio speech.
+
+\item \textbf{Integrated annotation pipeline}: A hybrid alignment architecture combining multiple forced aligners (MFA, Gentle, WhisperX) with unified output format, addressing practical limitations of individual tools.
+
+\item \textbf{Symbolic prosody representation}: A minimalist encoding system using ASCII-compatible symbols (\texttt{/}, \texttt{\textbackslash}, \texttt{–}, \texttt{\_}, \texttt{*}) for intuitive visualization of pitch contours and prominence, bridging the gap between phonetic measurement and human interpretation.
+
+\item \textbf{Multilingual evaluation}: Testing across typologically diverse languages (English, German, Daakie, Cabécar) with both high-resource benchmarks (GToBI) and low-resource corpora (DoReCo), demonstrating cross-linguistic applicability.
+\end{enumerate}
+
+\subsection{Performance Assessment}
+
+On German GToBI reference sentences, all four pitch trackers achieved agreement within 2\,Hz with no octave errors, confirming that clean studio recordings pose no difficulty for modern methods. English and archival recordings revealed systematic biases in Praat's raw output, successfully corrected by pYIN and CREPE. The final SpeechPrint configuration (pYIN for read speech, CREPE for archival recordings) achieved partial-to-full correctness on benchmark sentences, with consistent pitch direction labeling.
+
+\subsection{Implications for Linguistic Annotation}
+
+SpeechPrint addresses a concrete gap in the linguistic annotation workflow: the absence of prosodic pre-analysis in tools like ELAN. By providing automatic suggestions for phoneme boundaries, syllable structure, and pitch patterns, the system reduces the cognitive load on human annotators while preserving their authority over final annotations. This is particularly valuable for linguistic fieldwork on under-resourced languages, where annotators may lack phonetic training.
+
+\subsection{Objectives Achieved}
+
+The main objective of this thesis was the development of SpeechPrint, a tool that combines phonemic segmentation with phonetic and prosodic analysis. Specific objectives included:
+
+\begin{itemize}
+\item Developing a reproducible speech analysis workflow.
+\item Combining transcription, forced alignment, and acoustic analysis.
+\item Extracting F0, amplitude, duration, and vowel-related information.
+\item Testing the system across multiple languages.
+\item Investigating prosodic annotation and representation.
+\item Exploring artistic, linguistic, and technological use cases.
+\item Supporting annotation workflows for linguistic corpora and endangered language documentation.
+\end{itemize}
+
+These objectives have been addressed throughout this thesis, with varying degrees of completion and success as detailed in the preceding chapters.
+
+\subsection{Limitations of the Current Implementation}
+
+Despite these contributions, several limitations warrant acknowledgment:
+
+\begin{itemize}
+\item Alignment quality remains sensitive to recording conditions; audio with significant background noise or overlapping speakers requires manual correction.
+\item Pitch extraction accuracy depends on voice quality; creaky or breathy phonation can produce unreliable F0 estimates even from modern trackers.
+\item The symbolic prosody layer encodes only three pitch categories (rising, level, falling), necessarily reducing the granularity of phonetic description compared to systems like ToBI.
+\item Cross-linguistic generalization has been tested on a limited sample; performance on languages with fundamentally different prosodic structures (e.g., truly tonal languages) remains unexplored.
+\end{itemize}
+
+\section{Future Directions and Open Problems}
+\label{ch:discussion}
+
+\subsection{Prosody Resynthesis: From Annotation to Sound}
+\label{sec:resynthesis}
+
+In 1769 Wolfgang von Kempelen built the Mechanical Turk, an automaton that
+appeared to play chess. Shortly after, he built a second machine: die
+Sprech-Maschine, described in his \textit{Mechanismus der menschlichen
+Sprache} \cite{kempelen1791}, assembled from bellows, reeds, and a leather
+vocal tract shaped to produce vowels and a small number of consonants. The
+conjunction of the two inventions implies something precise: without die
+Sprech-Maschine preceding it with a voice, the Turk was a clever trick in
+a wooden box. The voice was not an ornament on the rational machine. It was
+what made the rational machine believable. Mladen Dolar, writing about the
+metaphysics of voice, calls this ``the most human of effects, an effect of
+`interiority'\,'' \cite[10]{dolar2006}: the sense that something is present
+behind the mechanism, that a subject inhabits the sound. Two and a half
+centuries later, the same question returns. Speech recognition and synthesis
+systems now transcribe and generate language at a level indistinguishable
+from human production in many conditions. What they do not yet recover or
+produce reliably is the prosodic layer: the emphasis, the question, the
+hesitation, the attitude. The voice without prosody is still, in some sense,
+the Turk without the Sprech-Maschine.
+
+A natural extension of the SpeechPrint pipeline is to close the loop between
+analysis and synthesis. The current system moves in one direction: from audio
+to symbolic annotation. The inverse direction (from symbolic annotation to
+audio) would constitute a \emph{prosody resynthesis} capability. This concept
+is illustrated in Figure~\ref{fig:resynthesis_pipeline}.
+
+The proposed pipeline would work as follows. First, a recording is processed by
+the existing SpeechPrint pipeline to produce a TextGrid with a prosody tier.
+Second, a user modifies the prosody symbols in the TextGrid, for example,
+changing a falling accent (\texttt{*\textbackslash}) to a rising one
+(\texttt{*/}) on the word \textit{Mary} to produce the reading ``MARY flew to
+Milan yesterday'' rather than ``Mary FLEW to Milan yesterday.'' Third, the
+modified symbolic annotation is translated into prosody control parameters that
+are passed to a speech synthesis system. The synthesis system produces a new
+audio file with the requested prosodic pattern while preserving the voice quality
+and segmental content of the original.
+
+The linguistic term for this operation is \emph{prosody transfer} or
+\emph{intonation resynthesis}. It has been studied in the context of
+human-to-human style transfer and as a component of expressive text-to-speech
+synthesis \cite{skerry2018towards}. The key challenge is the mapping from
+symbolic prosody (the / and \textbackslash\ labels of SpeechPrint's tier) to
+quantitative F0 targets that a synthesis system can use. One approach is to
+learn this mapping from a corpus of annotated speech; another is to use a
+parametric F0 model in which the symbolic labels directly control the slope,
+height, and velocity of F0 movements.
+
+A practical implementation using currently available tools would use the
+Coqui TTS framework or a similar system that exposes duration and pitch control
+parameters. Coqui XTTS, for example, allows voice cloning from a short reference
+segment and accepts prosodic modifications through its Python API. The SpeechPrint
+symbolic tier would be compiled into a sequence of pitch targets at word or
+syllable boundaries, which the synthesis system would interpolate into a smooth
+F0 contour. This would allow a researcher to hear the prosodic consequences of an
+annotation change without recording a new utterance, a capability that could be
+valuable both for validation of the annotation and for generating stimuli in
+prosody experiments.
+
+\begin{figure}[htbp]
+\centering
+\begin{tabular}{|c|}
+\hline
+\textbf{Analysis Direction (Current)} \\[0.5em]
+Audio File $\rightarrow$ Speech Recognition (WhisperX) $\rightarrow$ \\
+Forced Alignment (MFA / Gentle) $\rightarrow$ Pitch Extraction \\
+(pYIN or CREPE) $\rightarrow$ Symbolic Prosody (/, \textbackslash, *, \_) $\rightarrow$ \\
+Annotated TextGrid \\[1em]
+\hline
+\textbf{Resynthesis Direction (Proposed)} \\[0.5em]
+Edited TextGrid $\rightarrow$ F0 Target Compiler $\rightarrow$ \\
+Speech Synthesis (Coqui TTS/XTTS) $\rightarrow$ Resynthesized Audio \\
+\hline
+\end{tabular}
+\caption{The proposed bidirectional SpeechPrint pipeline. The analysis direction
+is fully implemented and demonstrated on multiple languages. The resynthesis direction
+(future work) would enable users to modify prosody annotations and hear the perceptual
+consequences without re-recording.}
+\label{fig:resynthesis_pipeline}
+\end{figure}
+
+A recent system called DrawSpeech \cite{chen2025drawspeech} provides
+direct empirical support for this direction. DrawSpeech conditions a
+latent diffusion model on prosodic sketches drawn by users: instead of
+specifying a full F0 contour, the user draws a rough line indicating the
+desired pitch trend per word, and the model recovers the detailed contour
+from that coarse input. Experimental results show that sketch-conditioned
+synthesis achieves a mean opinion score of 4.49 (slightly above the
+4.46 ground-truth reference) while also enabling precise per-word
+prosody control. Their Figure~3 demonstrates four different sketches
+applied to the sentence ``I didn't say you stole the money'', each
+emphasising a different word, producing perceptually distinct utterances.
+This is precisely the minimal-pairs corpus used in this thesis, but as
+synthesised output rather than recorded speech.
+
+The symbolic prosody tier
+produced by SpeechPrint (per-syllable labels such as
+\texttt{*{\={}}/}, accented, high, rising) functions as a
+human-readable version of the DrawSpeech sketch. The analysis pipeline
+described in this thesis extracts the sketch from recorded speech; a
+DrawSpeech-style synthesis system would use an edited version of that
+sketch to generate new speech. The two systems are complementary halves
+of a closed loop: analyse prosody from audio, edit it symbolically, and
+synthesise it back.
+
+\subsection{A Speech DAW: Interactive Prosody Manipulation}
+\label{sec:speech_daw}
+
+Taking the resynthesis concept further, a \emph{speech digital audio workstation}
+(Speech DAW) would present the TextGrid annotation tiers as an editable timeline,
+similar in concept to how a music DAW presents MIDI notes. The user would be able
+to click on any syllable label in the prosody tier and change it, drag the onset
+or offset of a pitch movement, raise or lower the height symbol from \texttt{\_}
+to \texttt{{\={}}}, or add or remove an accent marker \texttt{*}. Each edit would
+trigger a re-synthesis of the affected region, allowing real-time auditory
+feedback.
+
+The design is motivated by a gap in current tools. Praat allows the manual
+manipulation of a pitch track at the acoustic level, which requires expert
+knowledge of what a changed F0 contour sounds like. The proposed Speech DAW
+would operate at the symbolic level, where the units (/ \textbackslash\, *) are
+interpretable by a non-specialist. This lowers the barrier for users in
+conversation analysis or field linguistics who want to test hypotheses about
+prosodic structure by listening to counterfactual examples.
+
+\subsection{Automatic Prosody Classification}
+\label{sec:prosody_classifier}
+
+A third future direction is the development of a classifier that assigns one of a
+small number of prosodic categories to each sentence or utterance. The motivation
+is that a single global label (whether a sentence is a statement, a
+question, an emphatic assertion, a continuation, or a boundary) is often more
+useful for annotation workflows than a fine-grained per-syllable sequence of
+symbols. The classification would be trained on existing annotated corpora and
+applied to new recordings.
+
+A candidate set of five prosodic categories, sufficient to cover the most
+frequent intonational events in English and German, might be:
+\begin{enumerate}
+\item \textbf{Declarative}: broad-focus statement with final fall.
+\item \textbf{Interrogative}: yes/no question with final rise.
+\item \textbf{Narrow focus}: prominent accent on a single content word,
+      marking contrast or correction.
+\item \textbf{Continuation}: non-final intonational phrase with
+      non-falling boundary tone, signalling that more speech follows.
+\item \textbf{Exclamation}: emphatic or expressive contour, typically with
+      high onset and rapid fall.
+\end{enumerate}
+
+This classification scheme is a simplification of the GToBI inventory but
+captures the categories most relevant to the use cases described in
+Chapter~\ref{scenarios}. The classifier would take the sequence of SpeechPrint
+symbolic labels as input features, supplemented by the mean F0, F0 range, and
+final boundary tone of the utterance. The output category would be displayed as
+an additional tier in the TextGrid, providing a sentence-level interpretive
+summary alongside the syllable-level labels.
+
+\subsection{Bias, Projection, and Cross-Lingual Phonological Approximation}
+\label{sec:bias_projection}
+
+A recurring observation in this thesis is that applying a speech model trained
+on one language to a recording in an unrelated language does not produce random
+noise: it produces something coherent but wrong. When Whisper's Italian
+acoustic model was applied to the Daakie recording, it returned phonetically
+plausible Italian word sequences, not silence or unintelligible garbage.
+The model could not understand Daakie, but it
+projected its learned phonological structure onto the signal and produced the
+nearest thing in its training distribution. This is model bias operating as a
+generative mechanism: the failure is systematic and, viewed from a different
+angle, compositionally interesting. Each reinterpretation layer introduces a
+transformation that is determined by what the model knows and what it does not,
+producing emergent changes in apparent timbre, prosody, and intelligibility that
+are not random but structured by the model's prior. The SpeechPrint prosody
+layer applied to such a mistranscribed signal assigns labels that are acoustically
+correct but linguistically misaligned, creating a kind of prosodic ghost of the
+original utterance. This phenomenon (the gap between what a model hears and
+what was said) represents a potential compositional space for work at the
+intersection of speech technology and sound art, and connects to a broader
+research thread on how bias and error in computational listening shape the
+transformation of voice across systems.

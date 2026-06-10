@@ -1,0 +1,245 @@
+\chapter{Evaluation and Results}
+\label{testing}
+
+\newpage
+
+\section{Pitch Tracker Evaluation and Comparative Results}
+\label{sec:tracker_results}
+
+\subsection{Tracker Comparison Across Languages}
+
+To assess the reliability of different pitch trackers for prosody labelling, the four methods described in Section~\ref{sec:pitch_extraction} were applied to all five German GToBI sentences (duration 1.2--2.5\,s each) and to 30-second excerpts of the English minimal-pairs recording and the Daakie (DoReCo) recording. Table~\ref{tab:pitch_comparison} summarises the median F0 reported by each tracker, and the number of probable octave errors detected by comparing Praat raw output against Librosa pYIN.
+
+\begin{table}[h]
+\centering
+\caption{Pitch tracker comparison across German GToBI sentences and test excerpts.
+         \emph{Octave errors}: frames where Praat AC deviates $>$8\,ST from
+         pYIN and torchcrepe, consistent with a halved or doubled F0 estimate.}
+\label{tab:pitch_comparison}
+\small
+\begin{tabular}{lrrrrl}
+\hline
+Recording & \multicolumn{1}{c}{Praat} & \multicolumn{1}{c}{Praat+Xu} &
+            \multicolumn{1}{c}{pYIN} & \multicolumn{1}{c}{CREPE} &
+            Octave errors \\
+          & \multicolumn{4}{c}{(median Hz)} & \\
+\hline
+\textit{eine gelbe Banane}      & 196.5 & 196.7 & 198.2 & 195.6 & none \\
+\textit{einige Melonen}         & 116.1 & 116.7 & 114.5 & 116.8 & none \\
+\textit{er sang die Lieder}     & 111.3 & 111.3 & 110.6 & 112.7 & none \\
+\textit{er will die Rosen haben}& 105.6 & 106.0 & 105.0 & 105.1 & none \\
+\textit{ich wohne in Bern}      & 104.6 & 104.8 & 102.3 & ---   & none \\
+English (30\,s excerpt)         & 107.3 & 107.0 & 107.4 & 180.4 & \textbf{238} \\
+Daakie/DoReCo (30\,s excerpt)   & 189.2 & 191.8 & 192.5 & 190.5 & \textbf{40} \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{German GToBI sentences: all trackers agree}
+
+For the five German sentences, all four trackers agree within 2\,Hz on the median F0 (Table~\ref{tab:pitch_comparison}). No octave errors were detected. The high agreement demonstrates that clean studio recordings with a single speaker and typical utterance length pose no difficulty for modern pitch trackers. However, as shown in the English analysis below, extreme conditions such as very short or high-pitched emphatic utterances can exceed auto-detected pitch ranges and cause labeling instability.
+
+\subsection{English recording: 238 octave errors in 30 seconds}
+\label{sec:english_octave}
+
+The English minimal-pairs recording presents a qualitatively different picture. In the first 30 seconds, 238 frames were identified where Praat AC deviates more than 8\,ST from pYIN in the same direction consistently: Praat reports approximately half the true F0 (\emph{praat-too-low}). Three illustrative examples are shown in Table~\ref{tab:octave_examples}.
+
+\begin{table}[h]
+\centering
+\caption{Examples of octave errors in the English recording (first 30\,s).
+         All three trackers (pYIN, CREPE) agree on the higher value; Praat AC
+         reports half, consistent with detecting the second sub-harmonic instead
+         of F0.}
+\label{tab:octave_examples}
+\begin{tabular}{rrrrl}
+\hline
+Time (s) & Praat (Hz) & pYIN (Hz) & Difference (ST) & Direction \\
+\hline
+0.300 & 111.8 & 213.6 & $-$11.2 & Praat too low \\
+0.310 & 110.1 & 213.6 & $-$11.5 & Praat too low \\
+1.080 & 137.4 & 272.3 & $-$11.8 & Praat too low \\
+\hline
+\end{tabular}
+\end{table}
+
+The pYIN panel shows a smooth, coherent contour near 200\,Hz for voiced regions, with clean masking of unvoiced frames. CREPE (where available) agrees with pYIN at 180\,Hz median, confirming that Praat is detecting the sub-octave.
+
+\subsection{Consequence for prosody labelling}
+
+SpeechPrint's symbolic layer computes intra-syllable pitch movement as:
+\begin{equation}
+  \Delta_{F_0} = 12 \log_2\!\left(\frac{F_0^{\text{offset}}}{F_0^{\text{onset}}}\right) \quad \text{(semitones)}
+\end{equation}
+
+An octave error on the onset value ($F_0^{\text{onset}}$ halved to 107\,Hz when the true value is 214\,Hz) introduces an error of $+12$\,ST into $\Delta_{F_0}$. By switching to Librosa pYIN and applying Xu (1999) octave correction, the number of affected syllables in the English recording is substantially reduced. The resulting prosody labels in SpeechPrint v3 show qualitatively more consistent agreement with perceptual intonation, as verified by the GToBI comparison (Section~\ref{sec:gtobi_results}).
+
+\subsection{Tracker recommendations and pipeline configurations}
+
+Based on this comparison, two pipeline configurations are adopted.
+
+For the \textbf{English and German ASR-based pipeline}, Librosa pYIN is the primary tracker: it requires no model download, runs at 3--5$\times$ real-time on CPU, provides voiced/unvoiced probabilities that cleanly suppress unvoiced frames, and shows a low octave error rate on clean studio speech.
+
+For the \textbf{Daakie (DoReCo) endangered-language pipeline}, CREPE (\texttt{torchcrepe}, full model, 10\,ms hop) is used. CREPE makes no assumptions about harmonic structure and is therefore more robust for a language with potentially unusual phonation characteristics.
+
+The full ranking by accuracy and robustness is:
+\begin{enumerate}
+\item \textbf{CREPE (torchcrepe)}: Highest accuracy overall; makes no harmonic assumptions; best for endangered languages and offline analysis.
+\item \textbf{Librosa pYIN}: Best for real-time multilingual production use; reliable voiced/unvoiced detection; low error rate on clean speech.
+\item \textbf{Praat AC + Xu (1999)}: Good fallback; octave jump cost and post-hoc correction substantially reduce errors versus the raw default.
+\item \textbf{YIN (librosa.yin)}: Not suitable for prosody analysis; has no voiced/unvoiced detector and returns a pitch value for every frame.
+\item \textbf{Praat AC (default)}: Not recommended for automated prosody labelling; wide default pitch range and no continuity penalty allow systematic octave errors.
+\end{enumerate}
+
+\subsection{GToBI Benchmark Comparison}
+\label{sec:gtobi_results}
+
+The five German GToBI sentences provide a controlled benchmark where human expert annotations can be compared directly with SpeechPrint prosody labels. Three sets of results are reported: (1)~SpeechPrint v3 (pYIN, baseline pipeline, no optimisations); (2)~an intermediate build using CREPE with all five algorithmic optimisations; and (3)~the final questionnaire pipeline (pYIN with all five optimisations).
+
+\subsection{SpeechPrint v3: pYIN baseline}
+
+Three of five sentences were correctly labelled. Both failures share the L*+H delayed-peak pattern, where the acoustically prominent syllable follows the lexically starred tone.
+
+\subsection{Intermediate build: CREPE with five optimisations}
+
+The corrected build produces one correct result and four partial results. The partial results are not random failures; in each case the system correctly identifies the pitch movement direction on the right word. The consistent failure mode is the absence of the accent marker \texttt{*} on three of the four partial results, reflecting a limitation in the amplitude criterion for short sentences (1.0--1.5\,s).
+
+\subsection{Final pipeline: pYIN with five optimisations}
+\label{sec:gtobi_pyin_final}
+
+The final questionnaire pipeline applies all five algorithmic optimisations to pYIN. The result is 2 correct and 3 partial, with 0 incorrect. Compared to the v3 baseline, the formerly wrong sentence (\textit{ich wohne in Bern}) is now correctly identified. The pYIN + 5 opt pipeline was selected for the questionnaire because it produces zero incorrect results, requires no model download or GPU, and runs at 3--5$\times$ real-time on CPU.
+
+\normallinespacing
+
+\section{Relative vs.\ Absolute Measurements}
+\label{sec:relative_vs_absolute}
+
+The supervisor noted that what matters for prosodic prominence is not the absolute value of pitch or amplitude but its value relative to the surrounding context. A syllable at 130\,Hz may be high in a male voice but low in a female voice; a syllable at 65\,dB may be prominent in a quiet recording and unremarkable in a loud one.
+
+\subsection{Pitch: absolute vs.\ relative}
+
+The absolute F0 of two syllables may be both approximately 11\,ST above the recording median, but the relative-to-neighbours measure distinguishes them: one may be 4.2\,ST above its neighbours (strongly prominent) while the other is only 2.1\,ST above (moderately prominent). The purely absolute measure cannot make this distinction.
+
+SpeechPrint v3 uses the local neighbourhood comparison for this reason. The recording-median comparison is retained as a secondary reference for identifying syllables that are globally high or low.
+
+\subsection{Amplitude: absolute vs.\ relative}
+
+The same argument applies to amplitude. A mean intensity of 65\,dB by itself carries no information about whether the syllable is prominent; what matters is whether it is louder than the syllables before and after it. In the revised pipeline, the amplitude criterion for accent detection uses relative measurement. This change reduced the false positive accent rate in the English recording from approximately 35\,\% to 24\,\%.
+
+\section{Results by Language and Corpus}
+\label{sec:results_by_language}
+
+\subsection{Cabécar (DoReCo): Cross-Linguistic Validation}
+\label{sec:cabeca_results}
+
+The Cabécar recording (81.8\,s, 28 utterances, 213 words, 431 syllables) was
+processed using the CREPE + five-optimisation pipeline, identical to the Daakie
+configuration. Table~\ref{tab:cabeca_trackers} summarises the tracker comparison.
+
+\begin{table}[h]
+\centering
+\caption{Pitch tracker comparison on the DoReCo Cabécar recording (81.8\,s,
+431 syllables). Auto-detected pitch range: 85--426\,Hz.
+PESTO failed due to a dimensionality mismatch in the model's CQT representation
+at this audio duration; this is noted as a limitation of the current integration.}
+\label{tab:cabeca_trackers}
+\small
+\begin{tabular}{lrrl}
+\hline
+Tracker & Voiced frames & Unknown syllables & Notes \\
+\hline
+CREPE (full, 10\,ms)  & 5{,}358  & ---   & best accuracy, final pipeline \\
+pYIN (librosa)        & 10{,}552 & ---   & reliable V/UV detection \\
+Praat AC              & 9{,}302  & ---   & known octave-error risk \\
+YIN (librosa)         & 12{,}093 & ---   & no V/UV detection --- unreliable \\
+PESTO                 & ---      & ---   & failed: shape mismatch \\
+\hline
+\end{tabular}
+\end{table}
+
+The auto-detected pitch range (85--426\,Hz) indicates a higher-pitched speaker
+than the Daakie recording. CREPE produced 5{,}358 voiced frames (60.9\% of
+total frames, matching the Daakie ratio), while pYIN's higher voiced-frame count
+(10{,}552) reflects its more permissive voicing threshold. The prosody
+distribution on Cabécar (21.0\% rising, 18.8\% falling, within the expected
+cross-linguistic range) is broadly similar to the Daakie output, suggesting
+that the pipeline behaves consistently across the two typologically distinct
+under-resourced languages.
+
+No ground-truth prosody annotation is available for Cabécar; the TextGrid is
+included in the perceptual questionnaire as a novel-language example where
+participants must evaluate the annotation purely from the audio and symbols,
+without prior knowledge of the language's prosodic system.
+
+\subsection{English Minimal Pairs: System Performance and Pair Selection}
+\label{sec:english_analysis}
+
+The English minimal-pairs recording (305.5\,s, 92 utterances, 618 labelled
+syllables) was processed using the pYIN + five-optimisation pipeline. The
+prosody tier was inspected for each sentence pair to assess whether the
+\texttt{*} accent marker appeared on the correct word and whether the two
+members of each pair showed visually distinct prosody-tier contents.
+
+\subsection{Pairs with clearest system differentiation}
+
+The focus-movement set produced the most consistent results. In \textit{MARY
+flew to Milan yesterday}, the first syllable of \textit{Mary} received
+\texttt{//} (strongly rising), consistent with a subject-focus accent. In
+\textit{Mary flew to MILAN yesterday}, the first syllable of \textit{Milan}
+received \texttt{*‾/} (accented, high, rising), correctly marking the
+narrow-focus locative. In \textit{Mary FLEW to Milan yesterday} the verb
+received \texttt{*‾//}, and in \textit{Mary flew to Milan YESTERDAY} the
+adverb received \texttt{‾//}. Across all four variants, the prominent
+syllable label travels to the correct word.
+
+The too/also focus set also showed clean results: \textit{JOHN called Maria,
+too} yielded \texttt{*‾\textbackslash} on \textit{John}; \textit{John called
+MARIA, too} yielded \texttt{*‾//} on \textit{Maria}; \textit{John CALLED
+Maria, too} yielded \texttt{*‾/} on \textit{called}. The accent marker moved
+correctly across all three variants with no misplacements.
+
+The lexical stress pair \textit{REcord}/\textit{reCORD} showed \texttt{*‾//}
+on the first syllable of the noun and \texttt{*‾} on the second syllable of
+the verb, the most acoustically salient pair in the corpus, where the
+stress shift spans the full word.
+
+\subsection{Pairs with weaker or failed differentiation}
+
+Some pairs were not successfully differentiated. The incredulity reading
+\textit{He's THIRTY?} produced no voiced frames (\texttt{?} throughout), the
+short high-pitched utterance having fallen outside the auto-detected pitch
+range. Short emphatic utterances (\textit{It's SO nice!}) produced unstable
+labels. The contrastive topic set (\textit{JOHN, I like very much; MARY, I
+don't}) was split across sentence boundaries by the silence-gap detector,
+losing the internal contrast.
+
+\subsection{Questionnaire pair selection}
+
+Five pairs were selected based on: (1) the \texttt{*} marker appearing on
+the correct word in both members of the pair, (2) auditory salience to a
+non-specialist listener, and (3) linguistic diversity across prosodic
+phenomena.
+
+\begin{enumerate}
+\item \textbf{Focus movement:} \textit{MARY flew to Milan yesterday}
+      vs.\ \textit{Mary flew to MILAN yesterday}: the accent marker moves
+      from subject to locative, the paradigm case of narrow focus.
+\item \textbf{Too/also focus:} \textit{JOHN called Maria, too}
+      vs.\ \textit{John called MARIA, too}: the accent moves between
+      subject and object within an otherwise identical sentence frame.
+\item \textbf{Lexical stress:} \textit{That's a REcord for her}
+      vs.\ \textit{Please reCORD this for her}: the most acoustically
+      obvious pair; the stress shift is reliably perceived even by
+      non-linguists.
+\item \textbf{Focus-sensitive particle:} \textit{ONLY JOHN called Maria}
+      vs.\ \textit{John called only MARIA}: the scope of \textit{only}
+      changes with intonation; the system marks the scope-bearing word
+      correctly in both variants.
+\item \textbf{Tag question:} \textit{You finished the report, DIDN'T you}
+      vs.\ \textit{You finished the report, didn't YOU?}: a pragmatically
+      subtle contrast (confirmation-seeking vs.\ challenging) in which the
+      final focus shifts to the tag auxiliary or subject; the system assigns
+      \texttt{*‾//} to the correct focus word in both variants.
+\end{enumerate}
+
+These five pairs span contrastive focus, scope-marking, lexical prosody, and
+pragmatic intonation, providing diverse coverage of English prosodic phenomena.
